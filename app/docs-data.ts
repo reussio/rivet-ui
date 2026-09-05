@@ -532,6 +532,52 @@ export const componentDocs = [
     ],
   },
   {
+    number: "030",
+    name: "Pagination",
+    slug: "pagination",
+    description: "Navigates a paginated collection with explicit current and boundary states.",
+    usage: code(
+      'import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@/components/ui/pagination"',
+      "",
+      "<Pagination>",
+      "  <PaginationContent>",
+      "    <PaginationItem>",
+      '      <PaginationPrevious href="?page=1" />',
+      "    </PaginationItem>",
+      "    <PaginationItem>",
+      '      <PaginationLink href="?page=2" isActive>2</PaginationLink>',
+      "    </PaginationItem>",
+      "    <PaginationItem>",
+      '      <PaginationNext href="?page=3" />',
+      "    </PaginationItem>",
+      "  </PaginationContent>",
+      "</Pagination>",
+    ),
+    notes: [
+      {
+        title: "Current page",
+        description: "isActive applies the visual treatment and aria-current=page together.",
+        code: '<PaginationLink href="?page=3" isActive>3</PaginationLink>',
+      },
+      {
+        title: "Unknown range",
+        description: "Use an ellipsis only where undisplayed pages exist between visible links.",
+        code: "<PaginationItem><PaginationEllipsis /></PaginationItem>",
+      },
+      {
+        title: "Boundary",
+        description:
+          "Expose unavailable directions as disabled and remove them from the tab order.",
+        code: '<PaginationPrevious aria-disabled="true" tabIndex={-1} />',
+      },
+    ],
+    api: [
+      { name: "isActive", type: "boolean", defaultValue: "false" },
+      { name: "href", type: "string", defaultValue: "—" },
+      { name: "aria-label", type: "string", defaultValue: '"Pagination"' },
+    ],
+  },
+  {
     number: "010",
     name: "Popover",
     slug: "popover",

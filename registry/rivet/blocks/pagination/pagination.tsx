@@ -1,0 +1,109 @@
+import { ChevronLeft, ChevronRight, MoreHorizontal } from "lucide-react";
+
+import { cn } from "@/lib/utils";
+
+function Pagination({
+  className,
+  "aria-label": ariaLabel = "Pagination",
+  ...props
+}: React.ComponentProps<"nav">) {
+  return (
+    <nav
+      data-slot="pagination"
+      aria-label={ariaLabel}
+      className={cn("flex w-full justify-center", className)}
+      {...props}
+    />
+  );
+}
+
+function PaginationContent({ className, ...props }: React.ComponentProps<"ul">) {
+  return (
+    <ul
+      data-slot="pagination-content"
+      className={cn("flex items-center gap-1", className)}
+      {...props}
+    />
+  );
+}
+
+function PaginationItem(props: React.ComponentProps<"li">) {
+  return <li data-slot="pagination-item" {...props} />;
+}
+
+type PaginationLinkProps = React.ComponentProps<"a"> & {
+  isActive?: boolean;
+};
+
+function PaginationLink({ className, isActive = false, ...props }: PaginationLinkProps) {
+  return (
+    <a
+      data-slot="pagination-link"
+      aria-current={isActive ? "page" : undefined}
+      data-active={isActive ? "" : undefined}
+      className={cn(
+        "inline-flex size-10 items-center justify-center rounded-none border border-transparent text-sm font-medium outline-none transition-[background-color,border-color,color,box-shadow] duration-100 hover:border-border hover:bg-accent hover:text-accent-foreground focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/40 data-active:border-foreground data-active:bg-foreground data-active:text-background motion-reduce:transition-none",
+        className,
+      )}
+      {...props}
+    />
+  );
+}
+
+function PaginationPrevious({ className, children, ...props }: React.ComponentProps<"a">) {
+  return (
+    <a
+      data-slot="pagination-previous"
+      className={cn(
+        "inline-flex h-10 items-center justify-center gap-2 rounded-none border border-transparent px-3 text-sm font-medium outline-none transition-[background-color,border-color,color,box-shadow] duration-100 hover:border-border hover:bg-accent hover:text-accent-foreground focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/40 aria-disabled:pointer-events-none aria-disabled:opacity-40 motion-reduce:transition-none",
+        className,
+      )}
+      {...props}
+    >
+      <ChevronLeft className="size-4" aria-hidden="true" />
+      {children ?? <span>Previous</span>}
+    </a>
+  );
+}
+
+function PaginationNext({ className, children, ...props }: React.ComponentProps<"a">) {
+  return (
+    <a
+      data-slot="pagination-next"
+      className={cn(
+        "inline-flex h-10 items-center justify-center gap-2 rounded-none border border-transparent px-3 text-sm font-medium outline-none transition-[background-color,border-color,color,box-shadow] duration-100 hover:border-border hover:bg-accent hover:text-accent-foreground focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/40 aria-disabled:pointer-events-none aria-disabled:opacity-40 motion-reduce:transition-none",
+        className,
+      )}
+      {...props}
+    >
+      {children ?? <span>Next</span>}
+      <ChevronRight className="size-4" aria-hidden="true" />
+    </a>
+  );
+}
+
+function PaginationEllipsis({ className, ...props }: React.ComponentProps<"span">) {
+  return (
+    <span
+      data-slot="pagination-ellipsis"
+      className={cn(
+        "inline-flex size-10 items-center justify-center text-muted-foreground",
+        className,
+      )}
+      {...props}
+    >
+      <MoreHorizontal className="size-4" aria-hidden="true" />
+      <span className="sr-only">More pages</span>
+    </span>
+  );
+}
+
+export {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+};

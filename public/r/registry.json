@@ -370,6 +370,19 @@
           "type": "registry:ui"
         }
       ]
+    },
+    {
+      "name": "pagination",
+      "type": "registry:ui",
+      "title": "Pagination",
+      "description": "Semantic page navigation with previous, next, current, disabled, and overflow states.",
+      "dependencies": ["lucide-react"],
+      "files": [
+        {
+          "path": "registry/rivet/blocks/pagination/pagination.tsx",
+          "type": "registry:ui"
+        }
+      ]
     }
   ]
 }

@@ -81,6 +81,11 @@ const components = [
     description: "Global navigation progress anchored to the application edge.",
   },
   {
+    name: "Pagination",
+    slug: "pagination",
+    description: "Page navigation with explicit current, boundary, and overflow states.",
+  },
+  {
     name: "Popover",
     slug: "popover",
     description: "A collision-aware interactive surface anchored to a trigger.",

@@ -58,6 +58,10 @@ export async function ComponentPreview({ slug }: { slug: ComponentSlug }) {
       const { LoadingBarPreview } = await import("@/app/loading-bar-preview");
       return <LoadingBarPreview />;
     }
+    case "pagination": {
+      const { PaginationPreview } = await import("@/app/pagination-preview");
+      return <PaginationPreview />;
+    }
     case "popover": {
       const { PopoverPreview } = await import("@/app/popover-preview");
       return <PopoverPreview />;
