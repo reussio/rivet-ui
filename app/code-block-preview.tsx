@@ -36,6 +36,7 @@ export function CodeBlockPreview() {
             language="tsx"
             code={exampleCode}
             showLineNumbers
+            highlightLinesOnHover
           />
         </div>
 
@@ -48,6 +49,7 @@ export function CodeBlockPreview() {
             <Specification term="Metadata" detail="2" />
             <Specification term="Copy" detail="Native" />
             <Specification term="Lines" detail="Optional" />
+            <Specification term="Hover" detail="Opt-in" />
           </dl>
         </aside>
       </div>
@@ -58,6 +60,7 @@ export function CodeBlockPreview() {
             filename="install.sh"
             language="shell"
             code="bunx --bun shadcn@latest add @rivet/button"
+            highlightLinesOnHover
             className="max-w-2xl"
           />
         </PreviewRow>

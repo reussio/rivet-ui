@@ -260,6 +260,11 @@ export const componentDocs = [
         code: "<CodeBlock code={source} showLineNumbers />",
       },
       {
+        title: "Line hover",
+        description: "Highlight complete rows on pointer hover when scanning longer source files.",
+        code: "<CodeBlock code={source} highlightLinesOnHover />",
+      },
+      {
         title: "Content only",
         description: "Remove the header when no metadata or copy action is required.",
         code: "<CodeBlock code={source} copyable={false} />",
@@ -271,6 +276,7 @@ export const componentDocs = [
       { name: "filename", type: "string", defaultValue: "—" },
       { name: "copyable", type: "boolean", defaultValue: "true" },
       { name: "showLineNumbers", type: "boolean", defaultValue: "false" },
+      { name: "highlightLinesOnHover", type: "boolean", defaultValue: "false" },
     ],
   },
   {

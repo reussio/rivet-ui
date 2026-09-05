@@ -12,6 +12,7 @@ type CodeBlockProps = Omit<React.ComponentProps<"div">, "children"> & {
   filename?: string;
   copyable?: boolean;
   showLineNumbers?: boolean;
+  highlightLinesOnHover?: boolean;
 };
 
 function CodeBlock({
@@ -20,6 +21,7 @@ function CodeBlock({
   filename,
   copyable = true,
   showLineNumbers = false,
+  highlightLinesOnHover = false,
   className,
   ...props
 }: CodeBlockProps) {
@@ -77,10 +79,15 @@ function CodeBlock({
         data-slot="code-block-content"
         className={cn(
           "min-w-0 overflow-x-auto py-4 font-mono text-xs leading-6",
-          !showLineNumbers && "px-4",
+          !showLineNumbers && !highlightLinesOnHover && "px-4",
         )}
       >
-        <SyntaxHighlight code={code} language={language} showLineNumbers={showLineNumbers} />
+        <SyntaxHighlight
+          code={code}
+          language={language}
+          showLineNumbers={showLineNumbers}
+          highlightLinesOnHover={highlightLinesOnHover}
+        />
       </pre>
     </div>
   );

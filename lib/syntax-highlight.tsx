@@ -118,6 +118,7 @@ type SyntaxHighlightProps = {
   code: string;
   language?: string;
   showLineNumbers?: boolean;
+  highlightLinesOnHover?: boolean;
 };
 
 function normalizeLanguage(language: string | undefined) {
@@ -137,7 +138,12 @@ function getLineIds(code: string) {
   });
 }
 
-function SyntaxHighlight({ code, language, showLineNumbers = false }: SyntaxHighlightProps) {
+function SyntaxHighlight({
+  code,
+  language,
+  showLineNumbers = false,
+  highlightLinesOnHover = false,
+}: SyntaxHighlightProps) {
   const normalizedLanguage = normalizeLanguage(language);
   const lineIds = getLineIds(code);
 
@@ -157,20 +163,26 @@ function SyntaxHighlight({ code, language, showLineNumbers = false }: SyntaxHigh
               return <span {...tokenProps} key={`${signature}-${occurrence}`} />;
             });
 
-            if (showLineNumbers) {
+            if (showLineNumbers || highlightLinesOnHover) {
               return (
                 <span
                   {...lineProps}
                   key={lineIds[lineIndex]}
-                  className={`${lineProps.className} table w-full min-w-max table-fixed`}
+                  className={`${lineProps.className} table w-full min-w-max table-fixed ${
+                    highlightLinesOnHover
+                      ? "transition-colors duration-100 hover:bg-muted/50 motion-reduce:transition-none"
+                      : ""
+                  }`}
                 >
-                  <span
-                    key="line-number"
-                    aria-hidden="true"
-                    className="table-cell w-12 select-none border-r border-border pr-3 text-right tabular-nums text-muted-foreground/60"
-                  >
-                    {lineIndex + 1}
-                  </span>
+                  {showLineNumbers ? (
+                    <span
+                      key="line-number"
+                      aria-hidden="true"
+                      className="table-cell w-12 select-none border-r border-border pr-3 text-right tabular-nums text-muted-foreground/60"
+                    >
+                      {lineIndex + 1}
+                    </span>
+                  ) : null}
                   <span key="line-content" className="table-cell px-4 whitespace-pre">
                     {content}
                   </span>
