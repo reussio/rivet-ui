@@ -4,7 +4,7 @@ const packageCommands = [
   {
     value: "bun",
     label: "Bun",
-    command: "bun add lucide-react",
+    command: "bun add lucide-react --exact",
   },
   {
     value: "npm",
@@ -76,6 +76,7 @@ export function TerminalPreview() {
             label="Build result"
             prompt={false}
             copyable={false}
+            language="text"
             command={"✓ Compiled successfully\n✓ Generated 28 static pages\nDone in 2.84s"}
             className="max-w-2xl"
           />

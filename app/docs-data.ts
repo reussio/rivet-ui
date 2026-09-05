@@ -250,7 +250,8 @@ export const componentDocs = [
     notes: [
       {
         title: "Metadata",
-        description: "Filename and language remain visible without competing with the source.",
+        description:
+          "The language selects syntax highlighting and remains visible with the filename.",
         code: '<CodeBlock filename="route.ts" language="tsx" code={source} />',
       },
       {
@@ -1014,7 +1015,7 @@ export const componentDocs = [
     notes: [
       {
         title: "Single command",
-        description: "Use the direct command API when no choice is required.",
+        description: "Shell syntax highlighting is enabled by default for direct commands.",
         code: '<Terminal command="bun run build" />',
       },
       {
@@ -1044,6 +1045,7 @@ export const componentDocs = [
       { name: "onValueChange", type: "(value: string) => void", defaultValue: "—" },
       { name: "label", type: "ReactNode", defaultValue: '"Terminal"' },
       { name: "prompt", type: "ReactNode | false", defaultValue: '"$"' },
+      { name: "language", type: "string", defaultValue: '"shell"' },
       { name: "copyable", type: "boolean", defaultValue: "true" },
     ],
   },

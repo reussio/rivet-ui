@@ -3,6 +3,7 @@
 import { Check, Copy } from "lucide-react";
 import * as React from "react";
 
+import { SyntaxHighlight } from "@/lib/syntax-highlight";
 import { cn } from "@/lib/utils";
 
 type CodeBlockProps = Omit<React.ComponentProps<"div">, "children"> & {
@@ -12,17 +13,6 @@ type CodeBlockProps = Omit<React.ComponentProps<"div">, "children"> & {
   copyable?: boolean;
   showLineNumbers?: boolean;
 };
-
-function getCodeLines(code: string) {
-  const occurrences = new Map<string, number>();
-
-  return code.split("\n").map((content) => {
-    const occurrence = (occurrences.get(content) ?? 0) + 1;
-    occurrences.set(content, occurrence);
-
-    return { content, id: `${content}-${occurrence}` };
-  });
-}
 
 function CodeBlock({
   code,
@@ -34,7 +24,6 @@ function CodeBlock({
   ...props
 }: CodeBlockProps) {
   const [copied, setCopied] = React.useState(false);
-  const lines = getCodeLines(code);
   const hasHeader = filename !== undefined || language !== undefined || copyable;
 
   async function copyCode() {
@@ -91,21 +80,7 @@ function CodeBlock({
           !showLineNumbers && "px-4",
         )}
       >
-        <code data-language={language} className={cn(language && `language-${language}`)}>
-          {showLineNumbers
-            ? lines.map((line, index) => (
-                <span key={line.id} className="table w-full min-w-max table-fixed">
-                  <span
-                    aria-hidden="true"
-                    className="table-cell w-12 select-none border-r border-border pr-3 text-right tabular-nums text-muted-foreground/60"
-                  >
-                    {index + 1}
-                  </span>
-                  <span className="table-cell px-4 whitespace-pre">{line.content || " "}</span>
-                </span>
-              ))
-            : code}
-        </code>
+        <SyntaxHighlight code={code} language={language} showLineNumbers={showLineNumbers} />
       </pre>
     </div>
   );

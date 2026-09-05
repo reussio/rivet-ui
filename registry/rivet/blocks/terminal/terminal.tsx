@@ -4,12 +4,14 @@ import { Tabs as TabsPrimitive } from "@base-ui/react/tabs";
 import { Check, Copy } from "lucide-react";
 import * as React from "react";
 
+import { SyntaxHighlight } from "@/lib/syntax-highlight";
 import { cn } from "@/lib/utils";
 
 type TerminalCommand<TValue extends string = string> = {
   label: string;
   value: TValue;
   command: string;
+  language?: string;
 };
 
 type TerminalCommandList = readonly [TerminalCommand, ...TerminalCommand[]];
@@ -20,6 +22,7 @@ type TerminalCommonProps = Omit<React.ComponentProps<"div">, "children" | "defau
   label?: React.ReactNode;
   prompt?: React.ReactNode | false;
   copyable?: boolean;
+  language?: string;
 };
 
 type TerminalSingleProps = TerminalCommonProps & {
@@ -60,6 +63,7 @@ function TerminalSingle({
   label = "Terminal",
   prompt = "$",
   copyable = true,
+  language = "shell",
   className,
   ...props
 }: TerminalSingleProps) {
@@ -72,7 +76,7 @@ function TerminalSingle({
       <TerminalHeader label={label}>
         {copyable ? <TerminalCopyButton value={command} /> : null}
       </TerminalHeader>
-      <TerminalCode command={command} prompt={prompt} />
+      <TerminalCode command={command} prompt={prompt} language={language} />
     </div>
   );
 }
@@ -85,6 +89,7 @@ function TerminalVariants<const TCommands extends TerminalCommandList>({
   label = "Terminal",
   prompt = "$",
   copyable = true,
+  language = "shell",
   className,
   ...props
 }: TerminalVariantsProps<TCommands>) {
@@ -141,7 +146,11 @@ function TerminalVariants<const TCommands extends TerminalCommandList>({
           value={item.value}
           className="outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring/40"
         >
-          <TerminalCode command={item.command} prompt={prompt} />
+          <TerminalCode
+            command={item.command}
+            prompt={prompt}
+            language={item.language ?? language}
+          />
         </TabsPrimitive.Panel>
       ))}
     </TabsPrimitive.Root>
@@ -168,7 +177,15 @@ function TerminalHeader({
   );
 }
 
-function TerminalCode({ command, prompt }: { command: string; prompt: React.ReactNode | false }) {
+function TerminalCode({
+  command,
+  prompt,
+  language,
+}: {
+  command: string;
+  prompt: React.ReactNode | false;
+  language: string;
+}) {
   return (
     <div data-slot="terminal-content" className="min-w-0 overflow-x-auto px-4 py-4 sm:px-5">
       <pre
@@ -182,7 +199,7 @@ function TerminalCode({ command, prompt }: { command: string; prompt: React.Reac
             {prompt}
           </span>
         ) : null}
-        <code>{command}</code>
+        <SyntaxHighlight code={command} language={language} />
       </pre>
     </div>
   );
