@@ -58,6 +58,10 @@ export async function ComponentPreview({ slug }: { slug: ComponentSlug }) {
       const { InputFieldPreview } = await import("@/app/input-field-preview");
       return <InputFieldPreview />;
     }
+    case "keyboard-shortcut": {
+      const { KeyboardShortcutPreview } = await import("@/app/keyboard-shortcut-preview");
+      return <KeyboardShortcutPreview />;
+    }
     case "loading-bar": {
       const { LoadingBarPreview } = await import("@/app/loading-bar-preview");
       return <LoadingBarPreview />;

@@ -406,6 +406,18 @@
       ]
     },
     {
+      "name": "keyboard-shortcut",
+      "type": "registry:ui",
+      "title": "Keyboard Shortcut",
+      "description": "A semantic key or key-combination hint with familiar symbols, accessible labels, and two sizes.",
+      "files": [
+        {
+          "path": "registry/rivet/blocks/keyboard-shortcut/keyboard-shortcut.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "rivet-style",
       "type": "registry:style",
       "title": "Rivet Style",

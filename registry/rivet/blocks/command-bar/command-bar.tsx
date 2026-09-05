@@ -12,7 +12,7 @@ type CommandBarAction = {
   description?: string;
   group?: string;
   keywords?: readonly string[];
-  shortcut?: string;
+  shortcut?: React.ReactNode;
   icon?: React.ReactNode;
   disabled?: boolean;
   onSelect?: () => void;
@@ -242,10 +242,12 @@ function CommandBar({
                             </span>
                           ) : null}
                         </span>
-                        {action.shortcut ? (
+                        {typeof action.shortcut === "string" ? (
                           <kbd className="shrink-0 border border-border px-1.5 py-0.5 font-mono text-[0.625rem] text-muted-foreground">
                             {action.shortcut}
                           </kbd>
+                        ) : action.shortcut ? (
+                          <span className="shrink-0">{action.shortcut}</span>
                         ) : null}
                       </button>
                     );

@@ -8,6 +8,7 @@ import {
   type CommandBarAction,
   CommandBarTrigger,
 } from "@/registry/rivet/blocks/command-bar/command-bar";
+import { KeyboardShortcut } from "@/registry/rivet/blocks/keyboard-shortcut/keyboard-shortcut";
 
 const actions: readonly CommandBarAction[] = [
   {
@@ -16,7 +17,7 @@ const actions: readonly CommandBarAction[] = [
     description: "Add a file to the current project",
     group: "Create",
     keywords: ["new", "document"],
-    shortcut: "⌘N",
+    shortcut: <KeyboardShortcut keys={["command", "N"]} size="sm" />,
     icon: <FilePlus aria-hidden="true" />,
   },
   {
@@ -24,7 +25,7 @@ const actions: readonly CommandBarAction[] = [
     label: "Open terminal",
     description: "Start a shell in the project root",
     group: "Create",
-    shortcut: "⌃`",
+    shortcut: <KeyboardShortcut keys={["control", "`"]} size="sm" />,
     icon: <TerminalSquare aria-hidden="true" />,
   },
   {
@@ -33,7 +34,7 @@ const actions: readonly CommandBarAction[] = [
     description: "Create a production deployment",
     group: "Project",
     keywords: ["publish", "release"],
-    shortcut: "⌘D",
+    shortcut: <KeyboardShortcut keys={["command", "D"]} size="sm" />,
     icon: <Rocket aria-hidden="true" />,
   },
   {
@@ -41,7 +42,7 @@ const actions: readonly CommandBarAction[] = [
     label: "Project settings",
     description: "Configure build and runtime settings",
     group: "Project",
-    shortcut: "⌘,",
+    shortcut: <KeyboardShortcut keys={["command", ","]} size="sm" />,
     icon: <Settings aria-hidden="true" />,
   },
 ];
@@ -74,9 +75,7 @@ export function CommandBarPreview() {
           <CommandBar actions={actions}>
             <CommandBarTrigger render={<Button variant="outline" />}>
               Open command bar
-              <kbd className="border border-current/20 px-1.5 py-0.5 font-mono text-[0.625rem] opacity-70">
-                ⌘K
-              </kbd>
+              <KeyboardShortcut keys={["command", "K"]} size="sm" />
             </CommandBarTrigger>
           </CommandBar>
         </div>

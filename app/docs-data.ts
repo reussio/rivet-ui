@@ -542,6 +542,45 @@ export const componentDocs = [
     ],
   },
   {
+    number: "032",
+    name: "Keyboard Shortcut",
+    slug: "keyboard-shortcut",
+    description: "Displays one key or a keyboard combination with an accessible text label.",
+    usage: code(
+      'import { KeyboardShortcut } from "@/components/ui/keyboard-shortcut"',
+      "",
+      '<KeyboardShortcut keys={["command", "K"]} />',
+    ),
+    notes: [
+      {
+        title: "Known keys",
+        description:
+          "Canonical key names render familiar symbols while remaining readable to assistive technology.",
+        code: '<KeyboardShortcut keys={["shift", "command", "P"]} />',
+      },
+      {
+        title: "Custom keys",
+        description: "Arbitrary string values remain available for application-specific shortcuts.",
+        code: '<KeyboardShortcut keys={["G", "G"]} />',
+      },
+      {
+        title: "Compact",
+        description: "Use the compact size inside dense menus and command surfaces.",
+        code: '<KeyboardShortcut keys={["command", "K"]} size="sm" />',
+      },
+    ],
+    api: [
+      {
+        name: "keys",
+        type: "readonly [KeyboardShortcutKey, ...KeyboardShortcutKey[]]",
+        defaultValue: "—",
+      },
+      { name: "size", type: '"sm" | "default"', defaultValue: '"default"' },
+      { name: "aria-label", type: "string", defaultValue: "generated" },
+      { name: "className", type: "string", defaultValue: "—" },
+    ],
+  },
+  {
     number: "027",
     name: "Loading Bar",
     slug: "loading-bar",
