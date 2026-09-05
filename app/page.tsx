@@ -3,6 +3,7 @@ import { BadgePreview } from "@/app/badge-preview";
 import { ButtonPreview } from "@/app/button-preview";
 import { CardPreview } from "@/app/card-preview";
 import { CheckboxPreview } from "@/app/checkbox-preview";
+import { CollapsiblePreview } from "@/app/collapsible-preview";
 import { DialogPreview } from "@/app/dialog-preview";
 import { DropdownMenuPreview } from "@/app/dropdown-menu-preview";
 import { InputFieldPreview } from "@/app/input-field-preview";
@@ -48,6 +49,7 @@ export default function Home() {
           <SeparatorPreview />
           <SkeletonPreview />
           <AccordionPreview />
+          <CollapsiblePreview />
         </div>
       </div>
     </main>

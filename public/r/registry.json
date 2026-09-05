@@ -243,6 +243,19 @@
           "type": "registry:ui"
         }
       ]
+    },
+    {
+      "name": "collapsible",
+      "type": "registry:ui",
+      "title": "Collapsible",
+      "description": "A single disclosure region with controlled or uncontrolled state and measured panel motion.",
+      "dependencies": ["@base-ui/react", "lucide-react"],
+      "files": [
+        {
+          "path": "registry/rivet/blocks/collapsible/collapsible.tsx",
+          "type": "registry:ui"
+        }
+      ]
     }
   ]
 }
