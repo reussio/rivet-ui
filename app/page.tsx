@@ -1,6 +1,7 @@
 import { ButtonPreview } from "@/app/button-preview";
 import { CheckboxPreview } from "@/app/checkbox-preview";
 import { InputFieldPreview } from "@/app/input-field-preview";
+import { PopoverPreview } from "@/app/popover-preview";
 import { RadioGroupPreview } from "@/app/radio-group-preview";
 import { SelectPreview } from "@/app/select-preview";
 import { SwitchPreview } from "@/app/switch-preview";
@@ -28,6 +29,7 @@ export default function Home() {
           <SwitchPreview />
           <TabsPreview />
           <TooltipPreview />
+          <PopoverPreview />
         </div>
       </div>
     </main>
