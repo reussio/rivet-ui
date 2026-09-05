@@ -9,6 +9,7 @@ import { PopoverPreview } from "@/app/popover-preview";
 import { RadioGroupPreview } from "@/app/radio-group-preview";
 import { SelectPreview } from "@/app/select-preview";
 import { SeparatorPreview } from "@/app/separator-preview";
+import { SkeletonPreview } from "@/app/skeleton-preview";
 import { SwitchPreview } from "@/app/switch-preview";
 import { TablePreview } from "@/app/table-preview";
 import { TabsPreview } from "@/app/tabs-preview";
@@ -44,6 +45,7 @@ export default function Home() {
           <TextareaPreview />
           <BadgePreview />
           <SeparatorPreview />
+          <SkeletonPreview />
         </div>
       </div>
     </main>

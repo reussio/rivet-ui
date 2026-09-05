@@ -218,6 +218,18 @@
           "type": "registry:ui"
         }
       ]
+    },
+    {
+      "name": "skeleton",
+      "type": "registry:ui",
+      "title": "Skeleton",
+      "description": "A neutral loading placeholder with reduced-motion support and composable geometry.",
+      "files": [
+        {
+          "path": "registry/rivet/blocks/skeleton/skeleton.tsx",
+          "type": "registry:ui"
+        }
+      ]
     }
   ]
 }
