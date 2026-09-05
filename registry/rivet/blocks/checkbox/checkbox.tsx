@@ -10,7 +10,7 @@ function Checkbox({ className, ...props }: CheckboxPrimitive.Root.Props) {
     <CheckboxPrimitive.Root
       data-slot="checkbox"
       className={cn(
-        "peer relative inline-flex size-4 shrink-0 items-center justify-center rounded-none border border-input bg-background text-primary-foreground outline-none transition-[background-color,border-color,box-shadow,opacity] duration-100 after:absolute after:-inset-2.5 hover:border-foreground/50 focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/40 data-checked:border-primary data-checked:bg-primary data-indeterminate:border-primary data-indeterminate:bg-primary data-readonly:bg-muted/40 data-disabled:cursor-not-allowed data-disabled:opacity-40 aria-invalid:border-destructive aria-invalid:ring-2 aria-invalid:ring-destructive/20 motion-reduce:transition-none",
+        "peer relative inline-flex size-4 shrink-0 items-center justify-center rounded-none border border-input bg-background text-primary-foreground outline-none transition-[background-color,border-color,box-shadow,opacity] duration-100 after:absolute after:-inset-2.5 hover:border-foreground/50 focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/40 data-checked:border-primary data-checked:bg-primary data-indeterminate:border-primary data-indeterminate:bg-primary data-readonly:bg-muted/40 data-disabled:cursor-not-allowed data-disabled:opacity-40 aria-invalid:border-destructive aria-invalid:focus-visible:border-destructive aria-invalid:focus-visible:ring-destructive/25 motion-reduce:transition-none",
         className,
       )}
       {...props}
