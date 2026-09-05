@@ -273,6 +273,56 @@ export const componentDocs = [
     ],
   },
   {
+    number: "029",
+    name: "Combobox",
+    slug: "combobox",
+    description: "Combines text search and single selection in one keyboard-ready control.",
+    usage: code(
+      'import { Combobox, ComboboxContent, ComboboxInput, ComboboxInputGroup, ComboboxItem, ComboboxList, ComboboxTrigger } from "@/components/ui/combobox"',
+      "",
+      "<Combobox items={regions} autoHighlight>",
+      "  <ComboboxInputGroup>",
+      '    <ComboboxInput placeholder="Search regions" />',
+      '    <ComboboxTrigger aria-label="Open regions" />',
+      "  </ComboboxInputGroup>",
+      "  <ComboboxContent>",
+      "    <ComboboxList>",
+      "      {regions.map((region) => (",
+      "        <ComboboxItem key={region} value={region}>{region}</ComboboxItem>",
+      "      ))}",
+      "    </ComboboxList>",
+      "  </ComboboxContent>",
+      "</Combobox>",
+    ),
+    notes: [
+      {
+        title: "Filtering",
+        description:
+          "Pass the complete collection to items so Base UI can filter it as the query changes.",
+        code: "<Combobox items={regions}>…</Combobox>",
+      },
+      {
+        title: "Empty result",
+        description: "Keep a polite empty state mounted so screen readers receive result changes.",
+        code: "<ComboboxEmpty>No regions found.</ComboboxEmpty>",
+      },
+      {
+        title: "Keyboard",
+        description:
+          "Arrow keys move the active option, Enter selects, and Escape closes the popup.",
+        code: "<Combobox items={regions} autoHighlight>…</Combobox>",
+      },
+    ],
+    api: [
+      { name: "items", type: "readonly Item[]", defaultValue: "—" },
+      { name: "value", type: "Value | null", defaultValue: "—" },
+      { name: "defaultValue", type: "Value | null", defaultValue: "—" },
+      { name: "onValueChange", type: "(value: Value | null) => void", defaultValue: "—" },
+      { name: "autoHighlight", type: "boolean", defaultValue: "false" },
+      { name: "disabled", type: "boolean", defaultValue: "false" },
+    ],
+  },
+  {
     number: "020",
     name: "Collapsible",
     slug: "collapsible",

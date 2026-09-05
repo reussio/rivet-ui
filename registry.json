@@ -357,6 +357,19 @@
           "type": "registry:ui"
         }
       ]
+    },
+    {
+      "name": "combobox",
+      "type": "registry:ui",
+      "title": "Combobox",
+      "description": "A searchable selection control with filtering, empty state, and complete keyboard navigation.",
+      "dependencies": ["@base-ui/react", "lucide-react"],
+      "files": [
+        {
+          "path": "registry/rivet/blocks/combobox/combobox.tsx",
+          "type": "registry:ui"
+        }
+      ]
     }
   ]
 }

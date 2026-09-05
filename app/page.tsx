@@ -46,6 +46,11 @@ const components = [
     description: "Source code with file metadata, copying, and optional line numbers.",
   },
   {
+    name: "Combobox",
+    slug: "combobox",
+    description: "A searchable single-select control with complete keyboard navigation.",
+  },
+  {
     name: "Collapsible",
     slug: "collapsible",
     description: "A single disclosure region with measured motion.",
