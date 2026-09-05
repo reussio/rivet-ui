@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tabs",
+  "title": "Tabs",
+  "description": "Composable tabbed navigation with horizontal and vertical layouts and complete keyboard interaction.",
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "files": [
+    {
+      "path": "registry/rivet/blocks/tabs/tabs.tsx",
+      "content": "\"use client\";\n\nimport { Tabs as TabsPrimitive } from \"@base-ui/react/tabs\";\n\nimport { cn } from \"@/lib/utils\";\n\nfunction Tabs({ className, ...props }: TabsPrimitive.Root.Props) {\n  return (\n    <TabsPrimitive.Root\n      data-slot=\"tabs\"\n      className={cn(\n        \"flex w-full min-w-0 flex-col gap-3 sm:data-[orientation=vertical]:grid sm:data-[orientation=vertical]:grid-cols-[minmax(8rem,12rem)_minmax(0,1fr)] sm:data-[orientation=vertical]:items-start\",\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\nfunction TabsList({ className, activateOnFocus = true, ...props }: TabsPrimitive.List.Props) {\n  return (\n    <TabsPrimitive.List\n      data-slot=\"tabs-list\"\n      activateOnFocus={activateOnFocus}\n      className={cn(\n        \"inline-flex w-fit max-w-full items-center gap-1 overflow-x-auto rounded-none border border-border bg-muted/40 p-1 data-[orientation=vertical]:w-full data-[orientation=vertical]:flex-col data-[orientation=vertical]:items-stretch data-[orientation=vertical]:overflow-visible\",\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\nfunction TabsTrigger({ className, ...props }: TabsPrimitive.Tab.Props) {\n  return (\n    <TabsPrimitive.Tab\n      data-slot=\"tabs-trigger\"\n      className={cn(\n        \"inline-flex min-h-9 flex-none cursor-pointer items-center justify-center gap-2 rounded-none border border-transparent px-3 py-2 text-sm font-medium whitespace-nowrap text-muted-foreground outline-none transition-[background-color,border-color,box-shadow,color,opacity] duration-100 hover:text-foreground focus-visible:z-10 focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/40 data-active:border-border data-active:bg-background data-active:text-foreground data-disabled:pointer-events-none data-disabled:opacity-40 data-[orientation=vertical]:w-full data-[orientation=vertical]:justify-start motion-reduce:transition-none\",\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\nfunction TabsContent({ className, ...props }: TabsPrimitive.Panel.Props) {\n  return (\n    <TabsPrimitive.Panel\n      data-slot=\"tabs-content\"\n      className={cn(\n        \"min-w-0 rounded-none border border-border bg-background p-4 outline-none focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/40\",\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\nexport { Tabs, TabsContent, TabsList, TabsTrigger };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

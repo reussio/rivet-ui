@@ -91,6 +91,19 @@
           "type": "registry:ui"
         }
       ]
+    },
+    {
+      "name": "tabs",
+      "type": "registry:ui",
+      "title": "Tabs",
+      "description": "Composable tabbed navigation with horizontal and vertical layouts and complete keyboard interaction.",
+      "dependencies": ["@base-ui/react"],
+      "files": [
+        {
+          "path": "registry/rivet/blocks/tabs/tabs.tsx",
+          "type": "registry:ui"
+        }
+      ]
     }
   ]
 }
