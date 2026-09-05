@@ -1,36 +1,109 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Rivet UI
 
-## Getting Started
+Rivet UI ist eine eigenständige [shadcn/ui Registry](https://ui.shadcn.com/docs/registry/getting-started) auf Basis von Base UI, Next.js, React, TypeScript und Tailwind CSS v4. Bun übernimmt Runtime und Paketverwaltung; Biome formatiert und prüft den Code.
 
-First, run the development server:
+- Projekt- und Package-Name: `rivet-ui`
+- Sichtbarer Name: `Rivet UI`
+- Registry-Namespace: `@rivet`
+
+## Voraussetzungen
+
+- Bun 1.3.14 oder neuer
+
+## Installation
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+bun install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Entwicklung
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+bun run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Die Preview läuft unter `http://localhost:3000`. Der Registry-Katalog ist unter `http://localhost:3000/r/registry.json` erreichbar.
 
-## Learn More
+## Registry bauen und validieren
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+bun run registry:build
+bun run registry:validate
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Oder beides zusammen:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+bun run registry:check
+```
 
-## Deploy on Vercel
+`shadcn build` liest die Root-Datei `registry.json` und schreibt den Katalog sowie die installierbaren Registry-Items nach `public/r`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Neue Registry-Komponente hinzufügen
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Die Quelldatei unter `registry/rivet/blocks/<name>/` anlegen.
+2. Das Item in der Root-`registry.json` ergänzen.
+3. shadcn-Komponenten wie `button` unter `registryDependencies` deklarieren; Paketabhängigkeiten gehören unter `dependencies`.
+4. `bun run registry:check` ausführen und die Preview bei Bedarf in `app/page.tsx` ergänzen.
+
+Für normale Komponenten ist `registry:component` passend. `target` wird nur benötigt, wenn der Standard-Zielpfad überschrieben werden soll; für `registry:page` und `registry:file` ist er erforderlich.
+
+## Registry-Komponenten lokal über `@rivet` testen
+
+Die lokale Namespace-Zuordnung steht in `components.json`:
+
+```json
+{
+  "registries": {
+    "@rivet": "http://localhost:3000/r/{name}.json"
+  }
+}
+```
+
+Während `bun run dev` läuft, kann die Registry mit der CLI geprüft werden:
+
+```bash
+bunx --bun shadcn@latest list @rivet
+bunx --bun shadcn@latest view @rivet/component-name
+bunx --bun shadcn@latest add @rivet/component-name
+```
+
+In einem anderen Consumer-Projekt muss der Namespace einmalig konfiguriert werden:
+
+```bash
+bunx --bun shadcn@latest registry add @rivet=http://localhost:3000/r/{name}.json
+bunx --bun shadcn@latest add @rivet/component-name
+```
+
+Rivet UI selbst ist in `components.json` mit `style: "base-nova"` auf Base UI konfiguriert.
+
+## Veröffentlichung
+
+Nach dem Deployment wird im Consumer die öffentliche URL der Registry hinterlegt:
+
+```bash
+bunx --bun shadcn@latest registry add @rivet=https://example.com/r/{name}.json
+bunx --bun shadcn@latest add @rivet/component-name
+```
+
+Mit npm statt Bun lautet der gewünschte Installationsbefehl anschließend:
+
+```bash
+npx shadcn add @rivet/component-name
+```
+
+Wird `@rivet` später in den offiziellen shadcn Registry-Index aufgenommen, kann die vorgelagerte Namespace-Konfiguration entfallen. Alternativ lässt sich ein öffentliches GitHub-Repository ohne eigenen Registry-Server direkt verwenden:
+
+```bash
+bunx --bun shadcn@latest add username/rivet-ui/component-name
+```
+
+## Codequalität mit Biome
+
+```bash
+bun run lint
+bun run check
+bun run format
+```
+
+`bun run check` prüft Formatierung, Lint-Regeln und Importorganisation. `bun run check:write` wendet sichere Korrekturen und die Formatierung automatisch an. Die erzeugten Dateien unter `public/r` sind von Biome ausgenommen, da `shadcn build` sie reproduzierbar neu schreibt.
