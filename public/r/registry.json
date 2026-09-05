@@ -196,12 +196,25 @@
     {
       "name": "badge",
       "type": "registry:ui",
-      "title": "Badge / Status",
-      "description": "Compact metadata badges and semantic operational status indicators.",
+      "title": "Badge",
+      "description": "A compact label for metadata, identifiers, and categorical information.",
       "dependencies": ["class-variance-authority"],
       "files": [
         {
           "path": "registry/rivet/blocks/badge/badge.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "status",
+      "type": "registry:ui",
+      "title": "Status",
+      "description": "A semantic operational-state indicator that combines written meaning with restrained color.",
+      "dependencies": ["class-variance-authority"],
+      "files": [
+        {
+          "path": "registry/rivet/blocks/status/status.tsx",
           "type": "registry:ui"
         }
       ]

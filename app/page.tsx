@@ -1,11 +1,12 @@
 import { ArrowRight, ArrowUpRight, Check } from "lucide-react";
 
 import { getShadcnCommands } from "@/app/install-commands";
-import { Badge, Status } from "@/registry/rivet/blocks/badge/badge";
+import { Badge } from "@/registry/rivet/blocks/badge/badge";
 import { Button, buttonVariants } from "@/registry/rivet/blocks/button/button";
 import { Checkbox } from "@/registry/rivet/blocks/checkbox/checkbox";
 import { CodeBlock } from "@/registry/rivet/blocks/code-block/code-block";
 import { Input } from "@/registry/rivet/blocks/input/input";
+import { Status } from "@/registry/rivet/blocks/status/status";
 import { Switch } from "@/registry/rivet/blocks/switch/switch";
 import { Terminal } from "@/registry/rivet/blocks/terminal/terminal";
 
@@ -21,9 +22,9 @@ const components = [
     description: "A structured message for information, success, warning, and failure.",
   },
   {
-    name: "Badge / Status",
+    name: "Badge",
     slug: "badge",
-    description: "Compact metadata and restrained operational states.",
+    description: "Compact metadata, identifiers, and categorical labels.",
   },
   {
     name: "Button",
@@ -129,6 +130,11 @@ const components = [
     name: "Stepper",
     slug: "stepper",
     description: "A controlled or uncontrolled sequence with precise progress states.",
+  },
+  {
+    name: "Status",
+    slug: "status",
+    description: "A semantic indicator for current operational states.",
   },
   {
     name: "Switch",

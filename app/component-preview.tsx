@@ -102,6 +102,10 @@ export async function ComponentPreview({ slug }: { slug: ComponentSlug }) {
       const { StepperPreview } = await import("@/app/stepper-preview");
       return <StepperPreview />;
     }
+    case "status": {
+      const { StatusPreview } = await import("@/app/status-preview");
+      return <StatusPreview />;
+    }
     case "switch": {
       const { SwitchPreview } = await import("@/app/switch-preview");
       return <SwitchPreview />;

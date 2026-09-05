@@ -92,38 +92,33 @@ export const componentDocs = [
   },
   {
     number: "016",
-    name: "Badge / Status",
+    name: "Badge",
     slug: "badge",
-    description: "Displays compact metadata or a restrained operational state.",
+    description: "Displays compact metadata, identifiers, and categorical labels.",
     usage: code(
-      'import { Badge, Status } from "@/components/ui/badge"',
+      'import { Badge } from "@/components/ui/badge"',
       "",
       '<Badge variant="outline">FRA1</Badge>',
-      '<Status tone="success">Operational</Status>',
     ),
     notes: [
       {
-        title: "Badge",
-        description: "Use badges for identifiers, versions, filters, and compact metadata.",
+        title: "Variants",
+        description: "Choose visual weight by metadata hierarchy, not decoration.",
         code: '<Badge variant="secondary">Preview</Badge>',
       },
       {
-        title: "Status",
-        description: "Use a status when the value describes a live operational condition.",
-        code: '<Status tone="warning">Degraded</Status>',
+        title: "Metadata",
+        description: "Keep labels short enough to scan inside dense technical layouts.",
+        code: '<Badge variant="outline">Bun 1.3</Badge>',
       },
     ],
     api: [
       {
-        name: "Badge.variant",
+        name: "variant",
         type: '"default" | "secondary" | "outline" | "destructive"',
         defaultValue: '"default"',
       },
-      {
-        name: "Status.tone",
-        type: '"neutral" | "success" | "warning" | "destructive"',
-        defaultValue: '"neutral"',
-      },
+      { name: "className", type: "string", defaultValue: "—" },
     ],
   },
   {
@@ -984,6 +979,37 @@ export const componentDocs = [
       { name: "disabled", type: "boolean", defaultValue: "false" },
       { name: "StepperItem.step", type: "number", defaultValue: "—" },
       { name: "StepperItem.disabled", type: "boolean", defaultValue: "false" },
+    ],
+  },
+  {
+    number: "033",
+    name: "Status",
+    slug: "status",
+    description: "Communicates a current operational state with text and restrained color.",
+    usage: code(
+      'import { Status } from "@/components/ui/status"',
+      "",
+      '<Status tone="success">Operational</Status>',
+    ),
+    notes: [
+      {
+        title: "Semantic tone",
+        description: "Use tone to reinforce the written state, never as its only signal.",
+        code: '<Status tone="warning">Degraded</Status>',
+      },
+      {
+        title: "Constrained width",
+        description: "Long values truncate when the surrounding layout provides a width limit.",
+        code: '<Status className="max-w-40">Waiting for capacity</Status>',
+      },
+    ],
+    api: [
+      {
+        name: "tone",
+        type: '"neutral" | "success" | "warning" | "destructive"',
+        defaultValue: '"neutral"',
+      },
+      { name: "className", type: "string", defaultValue: "—" },
     ],
   },
   {
