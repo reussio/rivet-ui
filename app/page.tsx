@@ -7,6 +7,7 @@ import { PopoverPreview } from "@/app/popover-preview";
 import { RadioGroupPreview } from "@/app/radio-group-preview";
 import { SelectPreview } from "@/app/select-preview";
 import { SwitchPreview } from "@/app/switch-preview";
+import { TablePreview } from "@/app/table-preview";
 import { TabsPreview } from "@/app/tabs-preview";
 import { TooltipPreview } from "@/app/tooltip-preview";
 
@@ -34,6 +35,7 @@ export default function Home() {
           <PopoverPreview />
           <CardPreview />
           <DialogPreview />
+          <TablePreview />
         </div>
       </div>
     </main>

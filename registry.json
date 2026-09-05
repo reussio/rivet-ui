@@ -155,6 +155,18 @@
           "type": "registry:ui"
         }
       ]
+    },
+    {
+      "name": "table",
+      "type": "registry:ui",
+      "title": "Table",
+      "description": "A native responsive table with technical headers, row states, captions, and horizontal overflow.",
+      "files": [
+        {
+          "path": "registry/rivet/blocks/table/table.tsx",
+          "type": "registry:ui"
+        }
+      ]
     }
   ]
 }
