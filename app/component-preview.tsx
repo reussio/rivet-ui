@@ -34,6 +34,10 @@ export async function ComponentPreview({ slug }: { slug: ComponentSlug }) {
       const { ComboboxPreview } = await import("@/app/combobox-preview");
       return <ComboboxPreview />;
     }
+    case "command-bar": {
+      const { CommandBarPreview } = await import("@/app/command-bar-preview");
+      return <CommandBarPreview />;
+    }
     case "collapsible": {
       const { CollapsiblePreview } = await import("@/app/collapsible-preview");
       return <CollapsiblePreview />;

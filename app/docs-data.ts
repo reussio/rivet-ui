@@ -323,6 +323,44 @@ export const componentDocs = [
     ],
   },
   {
+    number: "031",
+    name: "Command Bar",
+    slug: "command-bar",
+    description: "Searches and executes grouped application actions from a modal keyboard surface.",
+    usage: code(
+      'import { CommandBar, CommandBarTrigger } from "@/components/ui/command-bar"',
+      "",
+      "<CommandBar actions={actions}>",
+      "  <CommandBarTrigger render={<Button />}>Open commands</CommandBarTrigger>",
+      "</CommandBar>",
+    ),
+    notes: [
+      {
+        title: "Global shortcut",
+        description: "The default Mod+K shortcut opens the bar on macOS and Windows keyboards.",
+        code: "<CommandBar actions={actions} hotkey>…</CommandBar>",
+      },
+      {
+        title: "Search metadata",
+        description: "Labels, descriptions, groups, and keywords all participate in filtering.",
+        code: '{ id: "deploy", label: "Deploy", keywords: ["publish", "release"] }',
+      },
+      {
+        title: "Selection",
+        description: "Arrow keys move the active command and Enter executes it.",
+        code: "<CommandBar actions={actions} onActionSelect={runAction}>…</CommandBar>",
+      },
+    ],
+    api: [
+      { name: "actions", type: "readonly CommandBarAction[]", defaultValue: "—" },
+      { name: "open", type: "boolean", defaultValue: "—" },
+      { name: "defaultOpen", type: "boolean", defaultValue: "false" },
+      { name: "hotkey", type: "boolean", defaultValue: "true" },
+      { name: "closeOnSelect", type: "boolean", defaultValue: "true" },
+      { name: "onActionSelect", type: "(action) => void", defaultValue: "—" },
+    ],
+  },
+  {
     number: "020",
     name: "Collapsible",
     slug: "collapsible",

@@ -383,6 +383,19 @@
           "type": "registry:ui"
         }
       ]
+    },
+    {
+      "name": "command-bar",
+      "type": "registry:ui",
+      "title": "Command Bar",
+      "description": "A modal command surface with search, grouped actions, keyboard navigation, and shortcuts.",
+      "dependencies": ["@base-ui/react", "lucide-react"],
+      "files": [
+        {
+          "path": "registry/rivet/blocks/command-bar/command-bar.tsx",
+          "type": "registry:ui"
+        }
+      ]
     }
   ]
 }

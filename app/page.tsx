@@ -51,6 +51,11 @@ const components = [
     description: "A searchable single-select control with complete keyboard navigation.",
   },
   {
+    name: "Command Bar",
+    slug: "command-bar",
+    description: "Searchable, grouped application actions with visible keyboard shortcuts.",
+  },
+  {
     name: "Collapsible",
     slug: "collapsible",
     description: "A single disclosure region with measured motion.",
