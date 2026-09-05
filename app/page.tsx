@@ -1,4 +1,5 @@
 import { ButtonPreview } from "@/app/button-preview";
+import { InputFieldPreview } from "@/app/input-field-preview";
 
 export default function Home() {
   return (
@@ -12,7 +13,10 @@ export default function Home() {
           <span className="h-px w-8 bg-border" />
           Rivet UI / Component Index
         </div>
-        <ButtonPreview />
+        <div className="space-y-12">
+          <ButtonPreview />
+          <InputFieldPreview />
+        </div>
       </div>
     </main>
   );

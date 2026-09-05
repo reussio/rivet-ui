@@ -15,6 +15,30 @@
           "type": "registry:ui"
         }
       ]
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "title": "Input",
+      "description": "A native text input primitive with precise focus, invalid, and disabled states.",
+      "files": [
+        {
+          "path": "registry/rivet/blocks/input/input.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "field",
+      "type": "registry:ui",
+      "title": "Field",
+      "description": "Composable field structure for labels, controls, descriptions, and errors.",
+      "files": [
+        {
+          "path": "registry/rivet/blocks/field/field.tsx",
+          "type": "registry:ui"
+        }
+      ]
     }
   ]
 }
