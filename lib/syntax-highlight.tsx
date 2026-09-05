@@ -1,4 +1,4 @@
-import { Highlight, type PrismTheme } from "prism-react-renderer";
+import { Highlight, Prism, type PrismGrammar, type PrismTheme } from "prism-react-renderer";
 
 const languageAliases: Record<string, string> = {
   html: "markup",
@@ -12,6 +12,48 @@ const languageAliases: Record<string, string> = {
   xml: "markup",
   yml: "yaml",
 };
+
+const shellGrammar: PrismGrammar = {
+  comment: {
+    pattern: /(^|[^\\])#.*/,
+    lookbehind: true,
+    greedy: true,
+  },
+  string: [
+    {
+      pattern: /"(?:\\[\s\S]|[^"\\])*"/,
+      greedy: true,
+    },
+    {
+      pattern: /'(?:[^']*)'/,
+      greedy: true,
+    },
+  ],
+  variable: [
+    /\$(?:[a-z_][\w]*|\d+|[?$!#@*-])/i,
+    {
+      pattern: /\$\{[^}]+\}/,
+      greedy: true,
+    },
+  ],
+  option: {
+    pattern: /(^|\s)--?[\w-]+(?:=[^\s]+)?/,
+    lookbehind: true,
+    alias: "attr-name",
+  },
+  command: {
+    pattern: /(^|[\n;|&]\s*)[\w@./-]+/m,
+    lookbehind: true,
+    alias: "function",
+  },
+  symbol: /@[\w./-]+/,
+  operator: /&&|\|\||[|;&]|>>?|<<?/,
+  punctuation: /[()[\]{}]/,
+};
+
+if (!Prism.languages.bash) {
+  Prism.languages.bash = shellGrammar;
+}
 
 const rivetSyntaxTheme: PrismTheme = {
   plain: {
@@ -34,35 +76,33 @@ const rivetSyntaxTheme: PrismTheme = {
     {
       types: ["string", "char", "attr-value", "regex", "inserted"],
       style: {
-        color: "color-mix(in oklab, var(--foreground) 72%, var(--muted-foreground))",
+        color: "color-mix(in oklab, var(--foreground) 42%, oklch(0.74 0.14 155))",
       },
     },
     {
       types: ["keyword", "module", "control-flow", "important", "atrule"],
       style: {
-        color: "var(--foreground)",
+        color: "color-mix(in oklab, var(--foreground) 42%, oklch(0.72 0.15 300))",
         fontWeight: "600",
       },
     },
     {
-      types: [
-        "function",
-        "function-variable",
-        "class-name",
-        "builtin",
-        "property",
-        "tag",
-        "attr-name",
-      ],
+      types: ["function", "function-variable", "class-name", "builtin", "property", "tag"],
       style: {
-        color: "color-mix(in oklab, var(--foreground) 88%, var(--muted-foreground))",
+        color: "color-mix(in oklab, var(--foreground) 42%, oklch(0.72 0.14 235))",
         fontWeight: "600",
       },
     },
     {
-      types: ["boolean", "number", "constant", "symbol", "variable"],
+      types: ["attr-name", "variable"],
       style: {
-        color: "color-mix(in oklab, var(--foreground) 80%, var(--muted-foreground))",
+        color: "color-mix(in oklab, var(--foreground) 42%, oklch(0.74 0.14 300))",
+      },
+    },
+    {
+      types: ["boolean", "number", "constant", "symbol"],
+      style: {
+        color: "color-mix(in oklab, var(--foreground) 42%, oklch(0.78 0.13 75))",
       },
     },
     {
