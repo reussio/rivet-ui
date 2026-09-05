@@ -282,6 +282,19 @@
           "type": "registry:ui"
         }
       ]
+    },
+    {
+      "name": "progress",
+      "type": "registry:ui",
+      "title": "Progress",
+      "description": "A labelled progress indicator with determinate, complete, and indeterminate task states.",
+      "dependencies": ["@base-ui/react"],
+      "files": [
+        {
+          "path": "registry/rivet/blocks/progress/progress.tsx",
+          "type": "registry:ui"
+        }
+      ]
     }
   ]
 }

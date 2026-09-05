@@ -9,6 +9,7 @@ import { DialogPreview } from "@/app/dialog-preview";
 import { DropdownMenuPreview } from "@/app/dropdown-menu-preview";
 import { InputFieldPreview } from "@/app/input-field-preview";
 import { PopoverPreview } from "@/app/popover-preview";
+import { ProgressPreview } from "@/app/progress-preview";
 import { RadioGroupPreview } from "@/app/radio-group-preview";
 import { SelectPreview } from "@/app/select-preview";
 import { SeparatorPreview } from "@/app/separator-preview";
@@ -54,6 +55,7 @@ export default function Home() {
           <CollapsiblePreview />
           <ToastPreview />
           <AlertPreview />
+          <ProgressPreview />
         </div>
       </div>
     </main>
