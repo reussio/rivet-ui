@@ -1,3 +1,4 @@
+import { BadgePreview } from "@/app/badge-preview";
 import { ButtonPreview } from "@/app/button-preview";
 import { CardPreview } from "@/app/card-preview";
 import { CheckboxPreview } from "@/app/checkbox-preview";
@@ -40,6 +41,7 @@ export default function Home() {
           <TablePreview />
           <DropdownMenuPreview />
           <TextareaPreview />
+          <BadgePreview />
         </div>
       </div>
     </main>

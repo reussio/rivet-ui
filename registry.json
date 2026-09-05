@@ -192,6 +192,19 @@
           "type": "registry:ui"
         }
       ]
+    },
+    {
+      "name": "badge",
+      "type": "registry:ui",
+      "title": "Badge / Status",
+      "description": "Compact metadata badges and semantic operational status indicators.",
+      "dependencies": ["class-variance-authority"],
+      "files": [
+        {
+          "path": "registry/rivet/blocks/badge/badge.tsx",
+          "type": "registry:ui"
+        }
+      ]
     }
   ]
 }

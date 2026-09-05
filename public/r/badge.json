@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "badge",
+  "title": "Badge / Status",
+  "description": "Compact metadata badges and semantic operational status indicators.",
+  "dependencies": [
+    "class-variance-authority"
+  ],
+  "files": [
+    {
+      "path": "registry/rivet/blocks/badge/badge.tsx",
+      "content": "import { cva, type VariantProps } from \"class-variance-authority\";\nimport type * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\nconst badgeVariants = cva(\n  \"inline-flex h-6 max-w-full items-center gap-1.5 rounded-none border px-2 font-mono text-[0.625rem] font-medium uppercase tracking-[0.12em] whitespace-nowrap [&_svg]:size-3 [&_svg]:shrink-0\",\n  {\n    variants: {\n      variant: {\n        default: \"border-primary bg-primary text-primary-foreground\",\n        secondary: \"border-border bg-secondary text-secondary-foreground\",\n        outline: \"border-border bg-background text-foreground\",\n        destructive: \"border-destructive/40 bg-destructive/10 text-destructive\",\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n    },\n  },\n);\n\nfunction Badge({\n  className,\n  variant = \"default\",\n  ...props\n}: React.ComponentProps<\"span\"> & VariantProps<typeof badgeVariants>) {\n  return (\n    <span data-slot=\"badge\" className={cn(badgeVariants({ variant, className }))} {...props} />\n  );\n}\n\nconst statusVariants = cva(\n  \"inline-flex min-h-6 max-w-full items-center gap-2 text-sm font-medium whitespace-nowrap\",\n  {\n    variants: {\n      tone: {\n        neutral: \"text-foreground\",\n        success: \"text-emerald-700 dark:text-emerald-400\",\n        warning: \"text-amber-700 dark:text-amber-400\",\n        destructive: \"text-destructive\",\n      },\n    },\n    defaultVariants: {\n      tone: \"neutral\",\n    },\n  },\n);\n\nfunction Status({\n  className,\n  children,\n  tone = \"neutral\",\n  ...props\n}: React.ComponentProps<\"span\"> & VariantProps<typeof statusVariants>) {\n  return (\n    <span data-slot=\"status\" className={cn(statusVariants({ tone, className }))} {...props}>\n      <span\n        data-slot=\"status-indicator\"\n        className=\"size-2 shrink-0 bg-current\"\n        aria-hidden=\"true\"\n      />\n      <span className=\"min-w-0 truncate\">{children}</span>\n    </span>\n  );\n}\n\nexport { Badge, badgeVariants, Status, statusVariants };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}
