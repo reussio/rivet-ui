@@ -121,13 +121,8 @@ export default async function ComponentPage({ params }: ComponentPageProps) {
               </div>
             </header>
 
-            <DocsSection
-              id="preview"
-              eyebrow="Live component"
-              title="Preview"
-              description="Interact with the component and inspect its supported states in the Rivet system."
-            >
-              <div className="mt-10">
+            <DocsSection id="preview" title="Preview">
+              <div className="docs-preview mt-8 overflow-hidden border border-border bg-background">
                 <ComponentPreview slug={component.slug} />
               </div>
             </DocsSection>
@@ -318,9 +313,9 @@ function DocsSection({
   children,
 }: {
   id: string;
-  eyebrow: string;
+  eyebrow?: string;
   title: string;
-  description: string;
+  description?: string;
   children: React.ReactNode;
 }) {
   return (
@@ -330,16 +325,20 @@ function DocsSection({
       aria-labelledby={`${id}-title`}
     >
       <div className="max-w-2xl">
-        <p className="font-mono text-[0.6875rem] uppercase tracking-[0.16em] text-muted-foreground">
-          {eyebrow}
-        </p>
+        {eyebrow ? (
+          <p className="font-mono text-[0.6875rem] uppercase tracking-[0.16em] text-muted-foreground">
+            {eyebrow}
+          </p>
+        ) : null}
         <h2
           id={`${id}-title`}
-          className="mt-4 text-3xl font-semibold tracking-[-0.045em] sm:text-4xl"
+          className={`${eyebrow ? "mt-4 " : ""}text-3xl font-semibold tracking-[-0.045em] sm:text-4xl`}
         >
           {title}
         </h2>
-        <p className="mt-4 text-sm leading-7 text-muted-foreground sm:text-base">{description}</p>
+        {description ? (
+          <p className="mt-4 text-sm leading-7 text-muted-foreground sm:text-base">{description}</p>
+        ) : null}
       </div>
       {children}
     </section>

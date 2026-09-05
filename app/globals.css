@@ -150,3 +150,22 @@
     @apply bg-foreground text-background;
   }
 }
+
+.docs-preview > section,
+.docs-preview > div > section {
+  border-width: 0;
+}
+
+.docs-preview > section > header:first-child,
+.docs-preview > div > section > header:first-child,
+.docs-preview aside[aria-label="Component specification"] {
+  display: none;
+}
+
+.docs-preview :has(> aside[aria-label="Component specification"]) {
+  display: block;
+}
+
+.docs-preview :has(> aside[aria-label="Component specification"]) > :first-child {
+  border-right-width: 0;
+}
