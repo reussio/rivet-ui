@@ -1,10 +1,11 @@
 import { ButtonPreview } from "@/app/button-preview";
 import { CheckboxPreview } from "@/app/checkbox-preview";
 import { InputFieldPreview } from "@/app/input-field-preview";
+import { SelectPreview } from "@/app/select-preview";
 
 export default function Home() {
   return (
-    <main className="dark relative min-h-svh overflow-hidden bg-background px-4 py-16 text-foreground sm:px-8 lg:py-24">
+    <main className="relative min-h-svh overflow-hidden bg-background px-4 py-16 text-foreground sm:px-8 lg:py-24">
       <div
         className="pointer-events-none absolute inset-0 opacity-40 [background-image:linear-gradient(to_right,var(--border)_1px,transparent_1px),linear-gradient(to_bottom,var(--border)_1px,transparent_1px)] [background-size:4rem_4rem]"
         aria-hidden="true"
@@ -18,6 +19,7 @@ export default function Home() {
           <ButtonPreview />
           <InputFieldPreview />
           <CheckboxPreview />
+          <SelectPreview />
         </div>
       </div>
     </main>

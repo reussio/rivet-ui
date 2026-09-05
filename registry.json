@@ -52,6 +52,19 @@
           "type": "registry:ui"
         }
       ]
+    },
+    {
+      "name": "select",
+      "type": "registry:ui",
+      "title": "Select",
+      "description": "A composable single-select primitive with keyboard navigation, grouped items, and constrained scrolling.",
+      "dependencies": ["@base-ui/react", "lucide-react"],
+      "files": [
+        {
+          "path": "registry/rivet/blocks/select/select.tsx",
+          "type": "registry:ui"
+        }
+      ]
     }
   ]
 }
