@@ -16,6 +16,7 @@ import { SwitchPreview } from "@/app/switch-preview";
 import { TablePreview } from "@/app/table-preview";
 import { TabsPreview } from "@/app/tabs-preview";
 import { TextareaPreview } from "@/app/textarea-preview";
+import { ToastPreview } from "@/app/toast-preview";
 import { TooltipPreview } from "@/app/tooltip-preview";
 
 export default function Home() {
@@ -50,6 +51,7 @@ export default function Home() {
           <SkeletonPreview />
           <AccordionPreview />
           <CollapsiblePreview />
+          <ToastPreview />
         </div>
       </div>
     </main>

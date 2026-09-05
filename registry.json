@@ -256,6 +256,19 @@
           "type": "registry:ui"
         }
       ]
+    },
+    {
+      "name": "toast",
+      "type": "registry:ui",
+      "title": "Toast",
+      "description": "A queued notification system with polite or urgent announcements, actions, timeout, and swipe dismissal.",
+      "dependencies": ["@base-ui/react", "lucide-react"],
+      "files": [
+        {
+          "path": "registry/rivet/blocks/toast/toast.tsx",
+          "type": "registry:ui"
+        }
+      ]
     }
   ]
 }
