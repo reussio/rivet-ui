@@ -10,6 +10,7 @@ import { SelectPreview } from "@/app/select-preview";
 import { SwitchPreview } from "@/app/switch-preview";
 import { TablePreview } from "@/app/table-preview";
 import { TabsPreview } from "@/app/tabs-preview";
+import { TextareaPreview } from "@/app/textarea-preview";
 import { TooltipPreview } from "@/app/tooltip-preview";
 
 export default function Home() {
@@ -38,6 +39,7 @@ export default function Home() {
           <DialogPreview />
           <TablePreview />
           <DropdownMenuPreview />
+          <TextareaPreview />
         </div>
       </div>
     </main>

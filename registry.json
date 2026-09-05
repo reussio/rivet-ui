@@ -180,6 +180,18 @@
           "type": "registry:ui"
         }
       ]
+    },
+    {
+      "name": "textarea",
+      "type": "registry:ui",
+      "title": "Textarea",
+      "description": "A native multiline text control with keyboard-only focus treatment and precise validation states.",
+      "files": [
+        {
+          "path": "registry/rivet/blocks/textarea/textarea.tsx",
+          "type": "registry:ui"
+        }
+      ]
     }
   ]
 }
