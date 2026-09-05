@@ -1,22 +1,18 @@
+import { ButtonPreview } from "@/app/button-preview";
+
 export default function Home() {
   return (
-    <main className="flex min-h-svh items-center justify-center bg-muted/40 px-4 py-16">
-      <div className="flex w-full max-w-2xl flex-col gap-6 rounded-2xl border bg-background p-8 shadow-sm sm:p-12">
-        <p className="font-mono text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
-          Rivet UI
-        </p>
-        <div className="space-y-3">
-          <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-            Ready for your first component.
-          </h1>
-          <p className="max-w-xl text-muted-foreground">
-            Add your source files under registry/rivet, register them in registry.json, and build
-            the @rivet catalog with Bun.
-          </p>
+    <main className="dark relative min-h-svh overflow-hidden bg-background px-4 py-16 text-foreground sm:px-8 lg:py-24">
+      <div
+        className="pointer-events-none absolute inset-0 opacity-40 [background-image:linear-gradient(to_right,var(--border)_1px,transparent_1px),linear-gradient(to_bottom,var(--border)_1px,transparent_1px)] [background-size:4rem_4rem]"
+        aria-hidden="true"
+      />
+      <div className="relative mx-auto w-full max-w-5xl">
+        <div className="mb-8 flex items-center gap-3 font-mono text-[0.6875rem] uppercase tracking-[0.2em] text-muted-foreground">
+          <span className="h-px w-8 bg-border" />
+          Rivet UI / Component Index
         </div>
-        <code className="overflow-x-auto rounded-lg border bg-background px-4 py-3 font-mono text-xs text-muted-foreground">
-          bun run registry:check
-        </code>
+        <ButtonPreview />
       </div>
     </main>
   );

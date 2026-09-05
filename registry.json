@@ -2,5 +2,19 @@
   "$schema": "https://ui.shadcn.com/schema/registry.json",
   "name": "rivet-ui",
   "homepage": "http://localhost:3000",
-  "items": []
+  "items": [
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Button",
+      "description": "A sharp, composable button primitive with restrained interaction states.",
+      "dependencies": ["@base-ui/react", "class-variance-authority"],
+      "files": [
+        {
+          "path": "registry/rivet/blocks/button/button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    }
+  ]
 }
