@@ -46,6 +46,10 @@ export async function ComponentPreview({ slug }: { slug: ComponentSlug }) {
       const { InputFieldPreview } = await import("@/app/input-field-preview");
       return <InputFieldPreview />;
     }
+    case "loading-bar": {
+      const { LoadingBarPreview } = await import("@/app/loading-bar-preview");
+      return <LoadingBarPreview />;
+    }
     case "popover": {
       const { PopoverPreview } = await import("@/app/popover-preview");
       return <PopoverPreview />;

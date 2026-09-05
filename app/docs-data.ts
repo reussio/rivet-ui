@@ -407,6 +407,41 @@ export const componentDocs = [
     ],
   },
   {
+    number: "027",
+    name: "Loading Bar",
+    slug: "loading-bar",
+    description: "Shows global navigation or loading progress along the top application edge.",
+    usage: code(
+      'import { LoadingBar } from "@/components/ui/loading-bar"',
+      "",
+      "<LoadingBar active={isNavigating} />",
+    ),
+    notes: [
+      {
+        title: "Determinate",
+        description: "Provide a percentage when the application knows the exact progress.",
+        code: "<LoadingBar value={68} />",
+      },
+      {
+        title: "Local preview",
+        description: "Use absolute positioning when the bar belongs to a bounded container.",
+        code: '<div className="relative"><LoadingBar position="absolute" /></div>',
+      },
+      {
+        title: "Idle",
+        description:
+          "Keep the component mounted and remove it from the accessibility tree while idle.",
+        code: "<LoadingBar active={false} />",
+      },
+    ],
+    api: [
+      { name: "active", type: "boolean", defaultValue: "true" },
+      { name: "value", type: "number", defaultValue: "—" },
+      { name: "position", type: '"fixed" | "absolute"', defaultValue: '"fixed"' },
+      { name: "label", type: "string", defaultValue: '"Loading page"' },
+    ],
+  },
+  {
     number: "010",
     name: "Popover",
     slug: "popover",

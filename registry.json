@@ -332,6 +332,18 @@
           "type": "registry:ui"
         }
       ]
+    },
+    {
+      "name": "loading-bar",
+      "type": "registry:ui",
+      "title": "Loading Bar",
+      "description": "A global top-edge loading indicator with determinate and indeterminate modes.",
+      "files": [
+        {
+          "path": "registry/rivet/blocks/loading-bar/loading-bar.tsx",
+          "type": "registry:ui"
+        }
+      ]
     }
   ]
 }

@@ -65,6 +65,11 @@ const components = [
     description: "A native text input with precise focus and error states.",
   },
   {
+    name: "Loading Bar",
+    slug: "loading-bar",
+    description: "Global navigation progress anchored to the application edge.",
+  },
+  {
     name: "Popover",
     slug: "popover",
     description: "A collision-aware interactive surface anchored to a trigger.",
