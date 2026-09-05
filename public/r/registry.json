@@ -269,6 +269,19 @@
           "type": "registry:ui"
         }
       ]
+    },
+    {
+      "name": "alert",
+      "type": "registry:ui",
+      "title": "Alert",
+      "description": "A composable static message with semantic tones, optional icon, and optional action.",
+      "dependencies": ["class-variance-authority"],
+      "files": [
+        {
+          "path": "registry/rivet/blocks/alert/alert.tsx",
+          "type": "registry:ui"
+        }
+      ]
     }
   ]
 }
