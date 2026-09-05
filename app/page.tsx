@@ -109,6 +109,11 @@ const components = [
     description: "Horizontal and vertical tab navigation with complete keyboard support.",
   },
   {
+    name: "Terminal",
+    slug: "terminal",
+    description: "Commands, multiline output, and switchable package-manager variants.",
+  },
+  {
     name: "Textarea",
     slug: "textarea",
     description: "A multiline native input with deliberate validation states.",

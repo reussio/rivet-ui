@@ -295,6 +295,19 @@
           "type": "registry:ui"
         }
       ]
+    },
+    {
+      "name": "terminal",
+      "type": "registry:ui",
+      "title": "Terminal",
+      "description": "A command display with copy support, multiline content, and keyboard-accessible command variants.",
+      "dependencies": ["@base-ui/react", "lucide-react"],
+      "files": [
+        {
+          "path": "registry/rivet/blocks/terminal/terminal.tsx",
+          "type": "registry:ui"
+        }
+      ]
     }
   ]
 }
