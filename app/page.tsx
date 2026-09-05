@@ -1,6 +1,7 @@
 import { ButtonPreview } from "@/app/button-preview";
 import { CardPreview } from "@/app/card-preview";
 import { CheckboxPreview } from "@/app/checkbox-preview";
+import { DialogPreview } from "@/app/dialog-preview";
 import { InputFieldPreview } from "@/app/input-field-preview";
 import { PopoverPreview } from "@/app/popover-preview";
 import { RadioGroupPreview } from "@/app/radio-group-preview";
@@ -32,6 +33,7 @@ export default function Home() {
           <TooltipPreview />
           <PopoverPreview />
           <CardPreview />
+          <DialogPreview />
         </div>
       </div>
     </main>

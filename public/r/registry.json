@@ -142,6 +142,19 @@
           "type": "registry:ui"
         }
       ]
+    },
+    {
+      "name": "dialog",
+      "type": "registry:ui",
+      "title": "Dialog",
+      "description": "A structured modal surface with focus management, viewport scrolling, and explicit dismissal.",
+      "dependencies": ["@base-ui/react", "lucide-react"],
+      "files": [
+        {
+          "path": "registry/rivet/blocks/dialog/dialog.tsx",
+          "type": "registry:ui"
+        }
+      ]
     }
   ]
 }
