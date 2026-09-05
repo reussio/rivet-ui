@@ -6,13 +6,17 @@ import * as React from "react";
 
 import { cn } from "@/lib/utils";
 
-type TerminalCommand = {
+type TerminalCommand<TValue extends string = string> = {
   label: string;
-  value: string;
+  value: TValue;
   command: string;
 };
 
-type TerminalCommonProps = Omit<React.ComponentProps<"div">, "children"> & {
+type TerminalCommandList = readonly [TerminalCommand, ...TerminalCommand[]];
+
+type StringWithAutocomplete<TValue extends string> = TValue | (string & Record<never, never>);
+
+type TerminalCommonProps = Omit<React.ComponentProps<"div">, "children" | "defaultValue"> & {
   label?: React.ReactNode;
   prompt?: React.ReactNode | false;
   copyable?: boolean;
@@ -26,16 +30,23 @@ type TerminalSingleProps = TerminalCommonProps & {
   onValueChange?: never;
 };
 
-type TerminalVariantsProps = TerminalCommonProps & {
-  command?: never;
-  commands: readonly [TerminalCommand, ...TerminalCommand[]];
-  defaultValue?: string;
-  value?: string;
-  onValueChange?: (value: string) => void;
-};
+type TerminalVariantsProps<TCommands extends TerminalCommandList = TerminalCommandList> =
+  TerminalCommonProps & {
+    command?: never;
+    commands: TCommands;
+    defaultValue?: StringWithAutocomplete<NoInfer<TCommands[number]["value"]>>;
+    value?: StringWithAutocomplete<NoInfer<TCommands[number]["value"]>>;
+    onValueChange?: (value: string) => void;
+  };
 
-type TerminalProps = TerminalSingleProps | TerminalVariantsProps;
+type TerminalProps<TCommands extends TerminalCommandList = TerminalCommandList> =
+  | TerminalSingleProps
+  | TerminalVariantsProps<TCommands>;
 
+function Terminal<const TCommands extends TerminalCommandList>(
+  props: TerminalVariantsProps<TCommands>,
+): React.JSX.Element;
+function Terminal(props: TerminalSingleProps): React.JSX.Element;
 function Terminal(props: TerminalProps) {
   if (props.commands !== undefined) {
     return <TerminalVariants {...props} />;
@@ -66,7 +77,7 @@ function TerminalSingle({
   );
 }
 
-function TerminalVariants({
+function TerminalVariants<const TCommands extends TerminalCommandList>({
   commands,
   defaultValue,
   value,
@@ -76,7 +87,7 @@ function TerminalVariants({
   copyable = true,
   className,
   ...props
-}: TerminalVariantsProps) {
+}: TerminalVariantsProps<TCommands>) {
   const firstValue = commands[0].value;
   const initialValue = commands.some((item) => item.value === defaultValue)
     ? (defaultValue ?? firstValue)

@@ -744,8 +744,16 @@ export const componentDocs = [
     api: [
       { name: "command", type: "string", defaultValue: "—" },
       { name: "commands", type: "readonly TerminalCommand[]", defaultValue: "—" },
-      { name: "defaultValue", type: "string", defaultValue: "first command" },
-      { name: "value", type: "string", defaultValue: "—" },
+      {
+        name: "defaultValue",
+        type: 'TCommands[number]["value"] | string',
+        defaultValue: "first command",
+      },
+      {
+        name: "value",
+        type: 'TCommands[number]["value"] | string',
+        defaultValue: "—",
+      },
       { name: "onValueChange", type: "(value: string) => void", defaultValue: "—" },
       { name: "label", type: "ReactNode", defaultValue: '"Terminal"' },
       { name: "prompt", type: "ReactNode | false", defaultValue: '"$"' },
