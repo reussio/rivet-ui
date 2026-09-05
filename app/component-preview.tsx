@@ -26,6 +26,10 @@ export async function ComponentPreview({ slug }: { slug: ComponentSlug }) {
       const { CheckboxPreview } = await import("@/app/checkbox-preview");
       return <CheckboxPreview />;
     }
+    case "code-block": {
+      const { CodeBlockPreview } = await import("@/app/code-block-preview");
+      return <CodeBlockPreview />;
+    }
     case "collapsible": {
       const { CollapsiblePreview } = await import("@/app/collapsible-preview");
       return <CollapsiblePreview />;

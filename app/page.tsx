@@ -4,6 +4,7 @@ import { getShadcnCommands } from "@/app/install-commands";
 import { Badge, Status } from "@/registry/rivet/blocks/badge/badge";
 import { Button, buttonVariants } from "@/registry/rivet/blocks/button/button";
 import { Checkbox } from "@/registry/rivet/blocks/checkbox/checkbox";
+import { CodeBlock } from "@/registry/rivet/blocks/code-block/code-block";
 import { Input } from "@/registry/rivet/blocks/input/input";
 import { Switch } from "@/registry/rivet/blocks/switch/switch";
 import { Terminal } from "@/registry/rivet/blocks/terminal/terminal";
@@ -38,6 +39,11 @@ const components = [
     name: "Checkbox",
     slug: "checkbox",
     description: "A native form control for binary and indeterminate choices.",
+  },
+  {
+    name: "Code Block",
+    slug: "code-block",
+    description: "Source code with file metadata, copying, and optional line numbers.",
   },
   {
     name: "Collapsible",
@@ -400,7 +406,8 @@ export default function Home() {
                 </InstallStep>
                 <InstallStep index="03" title="Import from your project">
                   <CodeBlock
-                    label="app/page.tsx"
+                    filename="app/page.tsx"
+                    language="tsx"
                     code={
                       'import { Button } from "@/components/ui/button"\n\nexport default function Page() {\n  return <Button>Deploy</Button>\n}'
                     }
@@ -620,19 +627,6 @@ function InstallStep({
         <h3 className="mt-2 text-sm font-medium">{title}</h3>
       </div>
       <div className="min-w-0">{children}</div>
-    </div>
-  );
-}
-
-function CodeBlock({ label, code }: { label: string; code: string }) {
-  return (
-    <div className="overflow-hidden border border-border bg-card">
-      <div className="border-b border-border px-4 py-2 font-mono text-[0.625rem] uppercase tracking-[0.14em] text-muted-foreground">
-        {label}
-      </div>
-      <pre className="overflow-x-auto p-4 font-mono text-xs leading-6">
-        <code>{code}</code>
-      </pre>
     </div>
   );
 }

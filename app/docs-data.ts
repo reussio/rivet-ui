@@ -233,6 +233,46 @@ export const componentDocs = [
     ],
   },
   {
+    number: "028",
+    name: "Code Block",
+    slug: "code-block",
+    description: "Presents source code with file metadata, copying, and optional line numbers.",
+    usage: code(
+      'import { CodeBlock } from "@/components/ui/code-block"',
+      "",
+      "<CodeBlock",
+      '  filename="route.ts"',
+      '  language="tsx"',
+      "  code={source}",
+      "  showLineNumbers",
+      "/>",
+    ),
+    notes: [
+      {
+        title: "Metadata",
+        description: "Filename and language remain visible without competing with the source.",
+        code: '<CodeBlock filename="route.ts" language="tsx" code={source} />',
+      },
+      {
+        title: "Line numbers",
+        description: "Enable line numbers when readers need to reference exact locations.",
+        code: "<CodeBlock code={source} showLineNumbers />",
+      },
+      {
+        title: "Content only",
+        description: "Remove the header when no metadata or copy action is required.",
+        code: "<CodeBlock code={source} copyable={false} />",
+      },
+    ],
+    api: [
+      { name: "code", type: "string", defaultValue: "—" },
+      { name: "language", type: "string", defaultValue: "—" },
+      { name: "filename", type: "string", defaultValue: "—" },
+      { name: "copyable", type: "boolean", defaultValue: "true" },
+      { name: "showLineNumbers", type: "boolean", defaultValue: "false" },
+    ],
+  },
+  {
     number: "020",
     name: "Collapsible",
     slug: "collapsible",

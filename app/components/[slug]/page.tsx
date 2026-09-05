@@ -8,6 +8,7 @@ import { CopyInstallButton } from "@/app/copy-command";
 import { componentDocs, getComponentDoc } from "@/app/docs-data";
 import { DocsHeader, DocsSidebar } from "@/app/docs-navigation";
 import { getShadcnCommands } from "@/app/install-commands";
+import { CodeBlock } from "@/registry/rivet/blocks/code-block/code-block";
 import { Terminal } from "@/registry/rivet/blocks/terminal/terminal";
 
 type ComponentPageProps = {
@@ -160,7 +161,7 @@ export default async function ComponentPage({ params }: ComponentPageProps) {
               description="Import the component from your local UI directory and compose it in your application."
             >
               <div className="mt-8">
-                <CodeBlock label="example.tsx" code={component.usage} />
+                <CodeBlock filename="example.tsx" language="tsx" code={component.usage} />
               </div>
             </DocsSection>
 
@@ -346,19 +347,6 @@ function DocsSection({
       </div>
       {children}
     </section>
-  );
-}
-
-function CodeBlock({ label, code }: { label: string; code: string }) {
-  return (
-    <div className="overflow-hidden border border-border bg-card">
-      <div className="border-b border-border px-4 py-2 font-mono text-[0.625rem] uppercase tracking-[0.14em] text-muted-foreground">
-        {label}
-      </div>
-      <pre className="overflow-x-auto p-4 font-mono text-xs leading-6">
-        <code>{code}</code>
-      </pre>
-    </div>
   );
 }
 
