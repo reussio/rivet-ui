@@ -186,6 +186,7 @@ const principles = [
 ] as const;
 
 const initializeCommands = getShadcnCommands("init");
+const addRivetStyleCommands = getShadcnCommands("add @rivet/rivet-style");
 const addButtonCommands = getShadcnCommands("add @rivet/button");
 
 export default function Home() {
@@ -412,14 +413,21 @@ export default function Home() {
                     defaultValue="pnpm"
                   />
                 </InstallStep>
-                <InstallStep index="02" title="Add a Rivet component">
+                <InstallStep index="02" title="Add Rivet global styles">
+                  <Terminal
+                    label="Add global styles"
+                    commands={addRivetStyleCommands}
+                    defaultValue="pnpm"
+                  />
+                </InstallStep>
+                <InstallStep index="03" title="Add a Rivet component">
                   <Terminal
                     label="Add component"
                     commands={addButtonCommands}
                     defaultValue="pnpm"
                   />
                 </InstallStep>
-                <InstallStep index="03" title="Import from your project">
+                <InstallStep index="04" title="Import from your project">
                   <CodeBlock
                     filename="app/page.tsx"
                     language="tsx"
