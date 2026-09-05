@@ -205,6 +205,19 @@
           "type": "registry:ui"
         }
       ]
+    },
+    {
+      "name": "separator",
+      "type": "registry:ui",
+      "title": "Separator",
+      "description": "An accessible one-pixel structural divider with horizontal and vertical orientations.",
+      "dependencies": ["@base-ui/react"],
+      "files": [
+        {
+          "path": "registry/rivet/blocks/separator/separator.tsx",
+          "type": "registry:ui"
+        }
+      ]
     }
   ]
 }
