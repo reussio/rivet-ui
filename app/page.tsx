@@ -5,6 +5,7 @@ import { RadioGroupPreview } from "@/app/radio-group-preview";
 import { SelectPreview } from "@/app/select-preview";
 import { SwitchPreview } from "@/app/switch-preview";
 import { TabsPreview } from "@/app/tabs-preview";
+import { TooltipPreview } from "@/app/tooltip-preview";
 
 export default function Home() {
   return (
@@ -26,6 +27,7 @@ export default function Home() {
           <RadioGroupPreview />
           <SwitchPreview />
           <TabsPreview />
+          <TooltipPreview />
         </div>
       </div>
     </main>

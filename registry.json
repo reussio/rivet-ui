@@ -104,6 +104,19 @@
           "type": "registry:ui"
         }
       ]
+    },
+    {
+      "name": "tooltip",
+      "type": "registry:ui",
+      "title": "Tooltip",
+      "description": "A composable supplementary hint with shared delays, collision-aware positioning, and keyboard support.",
+      "dependencies": ["@base-ui/react"],
+      "files": [
+        {
+          "path": "registry/rivet/blocks/tooltip/tooltip.tsx",
+          "type": "registry:ui"
+        }
+      ]
     }
   ]
 }
