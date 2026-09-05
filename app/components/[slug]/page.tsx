@@ -139,11 +139,7 @@ export default async function ComponentPage({ params }: ComponentPageProps) {
               description="Add the component source and its declared dependencies with the shadcn CLI."
             >
               <div className="mt-8">
-                <Terminal
-                  label="Install component"
-                  commands={installCommands}
-                  defaultValue="pnpm"
-                />
+                <Terminal label="Install component" commands={installCommands} defaultValue="bun" />
               </div>
               <a
                 href={`/r/${component.slug}.json`}
