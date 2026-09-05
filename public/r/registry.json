@@ -320,6 +320,18 @@
           "type": "registry:ui"
         }
       ]
+    },
+    {
+      "name": "spinner",
+      "type": "registry:ui",
+      "title": "Spinner",
+      "description": "A compact indeterminate activity indicator with three sizes and reduced-motion support.",
+      "files": [
+        {
+          "path": "registry/rivet/blocks/spinner/spinner.tsx",
+          "type": "registry:ui"
+        }
+      ]
     }
   ]
 }

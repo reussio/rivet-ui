@@ -95,6 +95,11 @@ const components = [
     description: "A neutral loading placeholder with reduced-motion support.",
   },
   {
+    name: "Spinner",
+    slug: "spinner",
+    description: "A compact activity indicator for controls and status regions.",
+  },
+  {
     name: "Stepper",
     slug: "stepper",
     description: "A controlled or uncontrolled sequence with precise progress states.",

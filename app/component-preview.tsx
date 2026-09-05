@@ -70,6 +70,10 @@ export async function ComponentPreview({ slug }: { slug: ComponentSlug }) {
       const { SkeletonPreview } = await import("@/app/skeleton-preview");
       return <SkeletonPreview />;
     }
+    case "spinner": {
+      const { SpinnerPreview } = await import("@/app/spinner-preview");
+      return <SpinnerPreview />;
+    }
     case "stepper": {
       const { StepperPreview } = await import("@/app/stepper-preview");
       return <StepperPreview />;

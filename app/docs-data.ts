@@ -608,6 +608,34 @@ export const componentDocs = [
     ],
   },
   {
+    number: "026",
+    name: "Spinner",
+    slug: "spinner",
+    description: "Indicates indeterminate activity in controls and compact status regions.",
+    usage: code(
+      'import { Spinner } from "@/components/ui/spinner"',
+      "",
+      '<Spinner aria-label="Loading deployment" />',
+    ),
+    notes: [
+      {
+        title: "Sizes",
+        description: "Match the spinner to the surrounding control or status text.",
+        code: '<Spinner size="sm" /> <Spinner /> <Spinner size="lg" />',
+      },
+      {
+        title: "Decorative",
+        description: "Hide the spinner when adjacent text already communicates the loading state.",
+        code: '<Button disabled><Spinner aria-hidden="true" /> Deploying</Button>',
+      },
+    ],
+    api: [
+      { name: "size", type: '"sm" | "default" | "lg"', defaultValue: '"default"' },
+      { name: "aria-label", type: "string", defaultValue: '"Loading"' },
+      { name: "className", type: "string", defaultValue: "—" },
+    ],
+  },
+  {
     number: "025",
     name: "Stepper",
     slug: "stepper",
