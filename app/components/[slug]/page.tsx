@@ -113,7 +113,7 @@ export default async function ComponentPage({ params }: ComponentPageProps) {
                 </p>
 
                 <div className="mt-9 flex flex-wrap items-center gap-3">
-                  <code className="border border-border bg-background px-3 py-2 font-mono text-xs">
+                  <code className="inline-flex h-10 items-center border border-border bg-background px-3 font-mono text-xs">
                     @rivet/{component.slug}
                   </code>
                   <CopyInstallButton command={installCommand} />
