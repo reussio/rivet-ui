@@ -150,7 +150,6 @@ function TerminalHeader({
       className="flex min-h-11 min-w-0 items-stretch border-b border-border bg-muted/20"
     >
       <div className="flex min-w-0 flex-1 items-center gap-2 px-3 font-mono text-[0.6875rem] uppercase tracking-[0.14em] text-muted-foreground">
-        <span className="size-1.5 shrink-0 bg-foreground" aria-hidden="true" />
         <span className="truncate">{label}</span>
       </div>
       <div className="flex min-w-0 max-w-[75%] items-stretch">{children}</div>

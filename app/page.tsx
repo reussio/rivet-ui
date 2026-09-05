@@ -1,11 +1,12 @@
 import { ArrowRight, ArrowUpRight, Check } from "lucide-react";
 
-import { CopyCommand } from "@/app/copy-command";
+import { getShadcnCommands } from "@/app/install-commands";
 import { Badge, Status } from "@/registry/rivet/blocks/badge/badge";
 import { Button, buttonVariants } from "@/registry/rivet/blocks/button/button";
 import { Checkbox } from "@/registry/rivet/blocks/checkbox/checkbox";
 import { Input } from "@/registry/rivet/blocks/input/input";
 import { Switch } from "@/registry/rivet/blocks/switch/switch";
+import { Terminal } from "@/registry/rivet/blocks/terminal/terminal";
 
 const components = [
   {
@@ -147,6 +148,9 @@ const principles = [
     description: "Sharp geometry, restrained motion, and technical typography stay consistent.",
   },
 ] as const;
+
+const initializeCommands = getShadcnCommands("init");
+const addButtonCommands = getShadcnCommands("add @rivet/button");
 
 export default function Home() {
   return (
@@ -366,10 +370,18 @@ export default function Home() {
 
               <div className="mt-10 divide-y divide-border border-y border-border">
                 <InstallStep index="01" title="Initialize shadcn">
-                  <CopyCommand command="npx shadcn@latest init" />
+                  <Terminal
+                    label="Initialize registry"
+                    commands={initializeCommands}
+                    defaultValue="pnpm"
+                  />
                 </InstallStep>
                 <InstallStep index="02" title="Add a Rivet component">
-                  <CopyCommand command="npx shadcn add @rivet/button" />
+                  <Terminal
+                    label="Add component"
+                    commands={addButtonCommands}
+                    defaultValue="pnpm"
+                  />
                 </InstallStep>
                 <InstallStep index="03" title="Import from your project">
                   <CodeBlock

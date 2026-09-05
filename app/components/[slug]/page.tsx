@@ -4,9 +4,11 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { ComponentPreview } from "@/app/component-preview";
-import { CopyCommand, CopyInstallButton } from "@/app/copy-command";
+import { CopyInstallButton } from "@/app/copy-command";
 import { componentDocs, getComponentDoc } from "@/app/docs-data";
 import { DocsHeader, DocsSidebar } from "@/app/docs-navigation";
+import { getShadcnCommands } from "@/app/install-commands";
+import { Terminal } from "@/registry/rivet/blocks/terminal/terminal";
 
 type ComponentPageProps = {
   params: Promise<{ slug: string }>;
@@ -43,7 +45,8 @@ export default async function ComponentPage({ params }: ComponentPageProps) {
   const componentIndex = componentDocs.findIndex((item) => item.slug === component.slug);
   const previousComponent = componentDocs[componentIndex - 1];
   const nextComponent = componentDocs[componentIndex + 1];
-  const installCommand = `pnpm dlx shadcn@latest add @rivet/${component.slug}`;
+  const installCommands = getShadcnCommands(`add @rivet/${component.slug}`);
+  const installCommand = installCommands[0].command;
 
   return (
     <div className="min-h-svh bg-background text-foreground">
@@ -135,7 +138,11 @@ export default async function ComponentPage({ params }: ComponentPageProps) {
               description="Add the component source and its declared dependencies with the shadcn CLI."
             >
               <div className="mt-8">
-                <CopyCommand command={installCommand} />
+                <Terminal
+                  label="Install component"
+                  commands={installCommands}
+                  defaultValue="pnpm"
+                />
               </div>
               <a
                 href={`/r/${component.slug}.json`}
