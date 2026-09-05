@@ -95,6 +95,11 @@ const components = [
     description: "A neutral loading placeholder with reduced-motion support.",
   },
   {
+    name: "Stepper",
+    slug: "stepper",
+    description: "A controlled or uncontrolled sequence with precise progress states.",
+  },
+  {
     name: "Switch",
     slug: "switch",
     description: "A compact boolean control with native form behavior.",

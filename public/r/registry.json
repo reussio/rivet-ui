@@ -308,6 +308,18 @@
           "type": "registry:ui"
         }
       ]
+    },
+    {
+      "name": "stepper",
+      "type": "registry:ui",
+      "title": "Stepper",
+      "description": "A composable sequence indicator with controlled progress, step navigation, and horizontal or vertical layouts.",
+      "files": [
+        {
+          "path": "registry/rivet/blocks/stepper/stepper.tsx",
+          "type": "registry:ui"
+        }
+      ]
     }
   ]
 }
