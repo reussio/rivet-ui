@@ -130,6 +130,18 @@
           "type": "registry:ui"
         }
       ]
+    },
+    {
+      "name": "card",
+      "type": "registry:ui",
+      "title": "Card",
+      "description": "A sharp, composable content container with distinct header, content, action, and footer regions.",
+      "files": [
+        {
+          "path": "registry/rivet/blocks/card/card.tsx",
+          "type": "registry:ui"
+        }
+      ]
     }
   ]
 }
