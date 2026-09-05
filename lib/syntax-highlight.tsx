@@ -146,6 +146,7 @@ function SyntaxHighlight({
 }: SyntaxHighlightProps) {
   const normalizedLanguage = normalizeLanguage(language);
   const lineIds = getLineIds(code);
+  const lineNumberWidth = `calc(${String(lineIds.length).length}ch + 1.5rem)`;
 
   return (
     <Highlight code={code} language={normalizedLanguage} theme={rivetSyntaxTheme}>
@@ -178,7 +179,8 @@ function SyntaxHighlight({
                     <span
                       key="line-number"
                       aria-hidden="true"
-                      className="table-cell w-12 select-none border-r border-border pr-2 pl-4 text-left tabular-nums text-muted-foreground/60"
+                      className="table-cell select-none border-r border-border pr-2 pl-4 text-left tabular-nums text-muted-foreground/60"
+                      style={{ width: lineNumberWidth }}
                     >
                       {lineIndex + 1}
                     </span>
