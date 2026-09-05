@@ -156,7 +156,7 @@ function StepperTrigger({
       type={type}
       disabled={isDisabled}
       className={cn(
-        "group/stepper-trigger relative z-10 grid w-full cursor-pointer appearance-none grid-cols-[2rem_minmax(0,1fr)] items-start gap-x-3 border-0 bg-transparent p-0 text-left outline-none disabled:cursor-not-allowed",
+        "group/stepper-trigger relative z-10 grid w-full cursor-pointer appearance-none items-start border-0 bg-transparent p-0 text-left outline-none disabled:cursor-not-allowed data-[orientation=horizontal]:grid-cols-1 data-[orientation=horizontal]:gap-y-3 data-[orientation=vertical]:grid-cols-[2rem_minmax(0,1fr)] data-[orientation=vertical]:gap-x-3",
         className,
       )}
       onClick={handleClick}
@@ -191,10 +191,16 @@ function StepperIndicator({ className, children, ...props }: React.ComponentProp
 }
 
 function StepperContent({ className, ...props }: React.ComponentProps<"span">) {
+  const item = useStepperItemContext();
+
   return (
     <span
       data-slot="stepper-content"
-      className={cn("grid min-w-0 gap-1 pt-0.5", className)}
+      data-orientation={item.orientation}
+      className={cn(
+        "grid min-w-0 gap-1 data-[orientation=horizontal]:pr-4 data-[orientation=vertical]:pt-0.5",
+        className,
+      )}
       {...props}
     />
   );
