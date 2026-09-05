@@ -1,4 +1,6 @@
-import type { ComponentProps } from "react";
+"use client";
+
+import * as React from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -21,10 +23,21 @@ type KeyboardShortcutKeyName =
 
 type KeyboardShortcutKey = KeyboardShortcutKeyName | (string & Record<never, never>);
 type KeyboardShortcutKeys = readonly [KeyboardShortcutKey, ...KeyboardShortcutKey[]];
+type KeyboardShortcutPlatform = "auto" | "mac" | "windows" | "linux";
+type ResolvedPlatform = Exclude<KeyboardShortcutPlatform, "auto"> | "unknown";
 
-type KeyboardShortcutProps = Omit<ComponentProps<"kbd">, "children"> & {
+type KeyboardShortcutProps = Omit<React.ComponentProps<"kbd">, "children"> & {
   keys: KeyboardShortcutKeys;
+  platform?: KeyboardShortcutPlatform;
   size?: "sm" | "default";
+};
+
+type UseKeyboardShortcutOptions = {
+  allowInEditable?: boolean;
+  allowRepeat?: boolean;
+  enabled?: boolean;
+  platform?: KeyboardShortcutPlatform;
+  preventDefault?: boolean;
 };
 
 type KeyDefinition = {
@@ -33,14 +46,6 @@ type KeyDefinition = {
 };
 
 const keyDefinitions: Record<string, KeyDefinition> = {
-  mod: { label: "Modifier", symbol: "Mod" },
-  command: { label: "Command", symbol: "⌘" },
-  cmd: { label: "Command", symbol: "⌘" },
-  meta: { label: "Meta", symbol: "⌘" },
-  control: { label: "Control", symbol: "⌃" },
-  ctrl: { label: "Control", symbol: "Ctrl" },
-  option: { label: "Option", symbol: "⌥" },
-  alt: { label: "Alt", symbol: "Alt" },
   shift: { label: "Shift", symbol: "⇧" },
   enter: { label: "Enter", symbol: "↵" },
   return: { label: "Enter", symbol: "↵" },
@@ -56,12 +61,126 @@ const keyDefinitions: Record<string, KeyDefinition> = {
   "arrow-right": { label: "Arrow right", symbol: "→" },
 };
 
-function getShortcutItems(keys: KeyboardShortcutKeys) {
+const modifierKeys = new Set([
+  "mod",
+  "command",
+  "cmd",
+  "meta",
+  "control",
+  "ctrl",
+  "option",
+  "alt",
+  "shift",
+]);
+const primaryModifierKeys = new Set(["mod", "command", "cmd"]);
+const controlKeys = new Set(["control", "ctrl"]);
+const optionKeys = new Set(["option", "alt"]);
+const eventKeyAliases: Record<string, string> = {
+  " ": "space",
+  arrowdown: "arrow-down",
+  arrowleft: "arrow-left",
+  arrowright: "arrow-right",
+  arrowup: "arrow-up",
+  esc: "escape",
+  return: "enter",
+};
+const keydownSubscribers = new Set<(event: KeyboardEvent) => void>();
+
+function subscribeToPlatform() {
+  return () => undefined;
+}
+
+function dispatchKeydown(event: KeyboardEvent) {
+  for (const subscriber of keydownSubscribers) {
+    subscriber(event);
+  }
+}
+
+function subscribeToKeydown(subscriber: (event: KeyboardEvent) => void) {
+  keydownSubscribers.add(subscriber);
+  if (keydownSubscribers.size === 1) {
+    window.addEventListener("keydown", dispatchKeydown);
+  }
+
+  return () => {
+    keydownSubscribers.delete(subscriber);
+    if (keydownSubscribers.size === 0) {
+      window.removeEventListener("keydown", dispatchKeydown);
+    }
+  };
+}
+
+function detectPlatform(): ResolvedPlatform {
+  if (typeof navigator === "undefined") {
+    return "unknown";
+  }
+
+  const navigatorWithHints = navigator as Navigator & {
+    userAgentData?: { platform?: string };
+  };
+  const platform = [
+    navigatorWithHints.userAgentData?.platform,
+    navigator.platform,
+    navigator.userAgent,
+  ]
+    .filter(Boolean)
+    .join(" ")
+    .toLowerCase();
+
+  if (/mac|iphone|ipad|ipod/.test(platform)) {
+    return "mac";
+  }
+  if (platform.includes("win")) {
+    return "windows";
+  }
+  if (/linux|android/.test(platform)) {
+    return "linux";
+  }
+  return "unknown";
+}
+
+function useResolvedPlatform(platform: KeyboardShortcutPlatform): ResolvedPlatform {
+  const detectedPlatform = React.useSyncExternalStore<ResolvedPlatform>(
+    subscribeToPlatform,
+    detectPlatform,
+    (): ResolvedPlatform => "unknown",
+  );
+
+  return platform === "auto" ? detectedPlatform : platform;
+}
+
+function getKeyDefinition(key: KeyboardShortcutKey, platform: ResolvedPlatform): KeyDefinition {
+  const normalizedKey = key.trim().toLowerCase();
+  const isMac = platform === "mac";
+
+  if (primaryModifierKeys.has(normalizedKey)) {
+    if (platform === "unknown") {
+      return { label: "Modifier", symbol: "Mod" };
+    }
+    return isMac ? { label: "Command", symbol: "⌘" } : { label: "Control", symbol: "Ctrl" };
+  }
+  if (normalizedKey === "meta") {
+    return isMac ? { label: "Command", symbol: "⌘" } : { label: "Meta", symbol: "Meta" };
+  }
+  if (controlKeys.has(normalizedKey)) {
+    return isMac ? { label: "Control", symbol: "⌃" } : { label: "Control", symbol: "Ctrl" };
+  }
+  if (optionKeys.has(normalizedKey)) {
+    return isMac ? { label: "Option", symbol: "⌥" } : { label: "Alt", symbol: "Alt" };
+  }
+  if (normalizedKey === "shift") {
+    return isMac ? { label: "Shift", symbol: "⇧" } : { label: "Shift", symbol: "Shift" };
+  }
+
+  return keyDefinitions[normalizedKey] ?? { label: key, symbol: key };
+}
+
+function getShortcutItems(keys: KeyboardShortcutKeys, platform: ResolvedPlatform) {
   const occurrences = new Map<string, number>();
 
   return keys.map((key) => {
     const normalizedKey = key.trim().toLowerCase();
-    const definition = keyDefinitions[normalizedKey] ?? { label: key, symbol: key };
+    const definition = getKeyDefinition(key, platform);
     const occurrence = (occurrences.get(normalizedKey) ?? 0) + 1;
     occurrences.set(normalizedKey, occurrence);
 
@@ -72,18 +191,118 @@ function getShortcutItems(keys: KeyboardShortcutKeys) {
   });
 }
 
+function normalizeEventKey(key: string) {
+  const normalizedKey = key.toLowerCase();
+  return eventKeyAliases[normalizedKey] ?? normalizedKey;
+}
+
+function matchesShortcut(
+  event: KeyboardEvent,
+  keys: readonly string[],
+  platform: ResolvedPlatform,
+) {
+  const normalizedKeys = keys.map((key) => key.trim().toLowerCase());
+  const primaryModifier = platform === "mac" ? "meta" : "control";
+  let requiresMeta = false;
+  let requiresControl = false;
+  let requiresAlt = false;
+  let requiresShift = false;
+
+  for (const key of normalizedKeys) {
+    if (primaryModifierKeys.has(key)) {
+      requiresMeta ||= primaryModifier === "meta";
+      requiresControl ||= primaryModifier === "control";
+    } else if (key === "meta") {
+      requiresMeta = true;
+    } else if (controlKeys.has(key)) {
+      requiresControl = true;
+    } else if (optionKeys.has(key)) {
+      requiresAlt = true;
+    } else if (key === "shift") {
+      requiresShift = true;
+    }
+  }
+
+  const triggerKeys = normalizedKeys.filter((key) => !modifierKeys.has(key));
+  if (triggerKeys.length !== 1 || normalizeEventKey(event.key) !== triggerKeys[0]) {
+    return false;
+  }
+
+  return (
+    event.metaKey === requiresMeta &&
+    event.ctrlKey === requiresControl &&
+    event.altKey === requiresAlt &&
+    event.shiftKey === requiresShift
+  );
+}
+
+function isEditableTarget(target: EventTarget | null) {
+  return (
+    target instanceof HTMLElement &&
+    (target.isContentEditable || ["INPUT", "SELECT", "TEXTAREA"].includes(target.tagName))
+  );
+}
+
+function useKeyboardShortcut(
+  keys: KeyboardShortcutKeys,
+  onTrigger: (event: KeyboardEvent) => void,
+  {
+    allowInEditable = false,
+    allowRepeat = false,
+    enabled = true,
+    platform = "auto",
+    preventDefault = true,
+  }: UseKeyboardShortcutOptions = {},
+) {
+  const resolvedPlatform = useResolvedPlatform(platform);
+  const onTriggerRef = React.useRef(onTrigger);
+  const shortcutSignature = keys.map((key) => key.trim().toLowerCase()).join("\u001f");
+
+  React.useEffect(() => {
+    onTriggerRef.current = onTrigger;
+  }, [onTrigger]);
+
+  React.useEffect(() => {
+    if (!enabled) {
+      return;
+    }
+
+    const shortcutKeys = shortcutSignature.split("\u001f");
+
+    function handleKeyDown(event: KeyboardEvent) {
+      if (
+        (!allowRepeat && event.repeat) ||
+        (!allowInEditable && isEditableTarget(event.target)) ||
+        !matchesShortcut(event, shortcutKeys, resolvedPlatform)
+      ) {
+        return;
+      }
+
+      if (preventDefault) {
+        event.preventDefault();
+      }
+      onTriggerRef.current(event);
+    }
+
+    return subscribeToKeydown(handleKeyDown);
+  }, [allowInEditable, allowRepeat, enabled, preventDefault, resolvedPlatform, shortcutSignature]);
+}
+
 function KeyboardShortcut({
   keys,
+  platform = "auto",
   size = "default",
   className,
   "aria-label": ariaLabel,
   ...props
 }: KeyboardShortcutProps) {
-  const items = getShortcutItems(keys);
+  const resolvedPlatform = useResolvedPlatform(platform);
+  const items = getShortcutItems(keys, resolvedPlatform);
 
   return (
     <kbd
       data-slot="keyboard-shortcut"
+      data-platform={resolvedPlatform}
       data-size={size}
       aria-label={ariaLabel ?? items.map((item) => item.label).join(" plus ")}
       className={cn(
@@ -115,6 +334,8 @@ export type {
   KeyboardShortcutKey,
   KeyboardShortcutKeyName,
   KeyboardShortcutKeys,
+  KeyboardShortcutPlatform,
   KeyboardShortcutProps,
+  UseKeyboardShortcutOptions,
 };
-export { KeyboardShortcut };
+export { KeyboardShortcut, useKeyboardShortcut };

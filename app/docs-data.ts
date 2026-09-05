@@ -545,28 +545,36 @@ export const componentDocs = [
     number: "032",
     name: "Keyboard Shortcut",
     slug: "keyboard-shortcut",
-    description: "Displays one key or a keyboard combination with an accessible text label.",
+    description:
+      "Displays platform-aware key combinations and registers matching keyboard listeners.",
     usage: code(
-      'import { KeyboardShortcut } from "@/components/ui/keyboard-shortcut"',
+      '"use client"',
       "",
-      '<KeyboardShortcut keys={["command", "K"]} />',
+      'import { KeyboardShortcut, useKeyboardShortcut } from "@/components/ui/keyboard-shortcut"',
+      "",
+      "function CommandMenuShortcut() {",
+      '  useKeyboardShortcut(["mod", "K"], openCommandMenu)',
+      "",
+      '  return <KeyboardShortcut keys={["mod", "K"]} />',
+      "}",
     ),
     notes: [
       {
-        title: "Known keys",
+        title: "Platform aware",
+        description: "mod and command resolve to Command on macOS and Control on Windows or Linux.",
+        code: '<KeyboardShortcut keys={["mod", "P"]} />',
+      },
+      {
+        title: "Listener",
         description:
-          "Canonical key names render familiar symbols while remaining readable to assistive technology.",
-        code: '<KeyboardShortcut keys={["shift", "command", "P"]} />',
+          "The hook matches the same typed key combination and prevents the browser default by default.",
+        code: 'useKeyboardShortcut(["mod", "K"], openCommandMenu)',
       },
       {
-        title: "Custom keys",
-        description: "Arbitrary string values remain available for application-specific shortcuts.",
-        code: '<KeyboardShortcut keys={["G", "G"]} />',
-      },
-      {
-        title: "Compact",
-        description: "Use the compact size inside dense menus and command surfaces.",
-        code: '<KeyboardShortcut keys={["command", "K"]} size="sm" />',
+        title: "Editable controls",
+        description:
+          "Shortcuts ignore input, textarea, select, and editable content unless explicitly enabled.",
+        code: 'useKeyboardShortcut(["mod", "K"], open, { allowInEditable: true })',
       },
     ],
     api: [
@@ -576,8 +584,21 @@ export const componentDocs = [
         defaultValue: "—",
       },
       { name: "size", type: '"sm" | "default"', defaultValue: '"default"' },
+      {
+        name: "platform",
+        type: '"auto" | "mac" | "windows" | "linux"',
+        defaultValue: '"auto"',
+      },
       { name: "aria-label", type: "string", defaultValue: "generated" },
-      { name: "className", type: "string", defaultValue: "—" },
+      {
+        name: "useKeyboardShortcut",
+        type: "(keys, onTrigger, options?) => void",
+        defaultValue: "—",
+      },
+      { name: "options.enabled", type: "boolean", defaultValue: "true" },
+      { name: "options.preventDefault", type: "boolean", defaultValue: "true" },
+      { name: "options.allowInEditable", type: "boolean", defaultValue: "false" },
+      { name: "options.allowRepeat", type: "boolean", defaultValue: "false" },
     ],
   },
   {

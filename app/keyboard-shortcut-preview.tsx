@@ -1,6 +1,19 @@
-import { KeyboardShortcut } from "@/registry/rivet/blocks/keyboard-shortcut/keyboard-shortcut";
+"use client";
+
+import * as React from "react";
+
+import {
+  KeyboardShortcut,
+  useKeyboardShortcut,
+} from "@/registry/rivet/blocks/keyboard-shortcut/keyboard-shortcut";
 
 export function KeyboardShortcutPreview() {
+  const [triggerCount, setTriggerCount] = React.useState(0);
+
+  useKeyboardShortcut(["mod", "shift", "L"], () => {
+    setTriggerCount((count) => count + 1);
+  });
+
   return (
     <section
       className="w-full border border-border bg-background"
@@ -26,9 +39,9 @@ export function KeyboardShortcutPreview() {
       <div className="grid lg:grid-cols-[minmax(0,1fr)_15rem]">
         <div className="min-w-0 p-5 sm:p-8 lg:border-r lg:border-border">
           <div className="mx-auto max-w-2xl border border-border bg-card">
-            <ShortcutRow label="Open command bar" keys={["command", "K"]} />
-            <ShortcutRow label="Open project" keys={["command", "P"]} />
-            <ShortcutRow label="Run build task" keys={["shift", "command", "B"]} />
+            <ShortcutRow label="Open command bar" keys={["mod", "K"]} />
+            <ShortcutRow label="Open project" keys={["mod", "P"]} />
+            <ShortcutRow label="Run build task" keys={["shift", "mod", "B"]} />
           </div>
         </div>
 
@@ -38,14 +51,26 @@ export function KeyboardShortcutPreview() {
         >
           <dl className="divide-y divide-border font-mono text-[0.6875rem] uppercase tracking-[0.12em]">
             <Specification term="Element" detail="KBD" />
-            <Specification term="Keys" detail="Typed" />
-            <Specification term="Labels" detail="Automatic" />
+            <Specification term="Platform" detail="Auto" />
+            <Specification term="Listener" detail="Hook" />
             <Specification term="Sizes" detail="2" />
           </dl>
         </aside>
       </div>
 
       <div className="border-t border-border">
+        <PreviewRow label="Platforms">
+          <div className="flex flex-wrap items-center gap-5">
+            <span className="flex items-center gap-2 text-sm text-muted-foreground">
+              macOS
+              <KeyboardShortcut keys={["mod", "shift", "P"]} platform="mac" />
+            </span>
+            <span className="flex items-center gap-2 text-sm text-muted-foreground">
+              Windows
+              <KeyboardShortcut keys={["mod", "shift", "P"]} platform="windows" />
+            </span>
+          </div>
+        </PreviewRow>
         <PreviewRow label="Navigation">
           <div className="flex flex-wrap items-center gap-3">
             <KeyboardShortcut keys={["arrow-up"]} />
@@ -59,6 +84,20 @@ export function KeyboardShortcutPreview() {
             <KeyboardShortcut keys={["control", "C"]} size="sm" />
             <KeyboardShortcut keys={["option", "shift", "F"]} size="sm" />
             <KeyboardShortcut keys={["/"]} size="sm" />
+          </div>
+        </PreviewRow>
+        <PreviewRow label="Listener">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <div className="flex items-center gap-3 text-sm">
+              <KeyboardShortcut keys={["mod", "shift", "L"]} size="sm" />
+              <span className="text-muted-foreground">Press to test the global listener.</span>
+            </div>
+            <span
+              className="font-mono text-[0.6875rem] uppercase tracking-[0.12em] text-muted-foreground"
+              aria-live="polite"
+            >
+              {triggerCount === 0 ? "Waiting" : `Triggered ${triggerCount}×`}
+            </span>
           </div>
         </PreviewRow>
       </div>

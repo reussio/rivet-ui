@@ -17,7 +17,7 @@ const actions: readonly CommandBarAction[] = [
     description: "Add a file to the current project",
     group: "Create",
     keywords: ["new", "document"],
-    shortcut: <KeyboardShortcut keys={["command", "N"]} size="sm" />,
+    shortcut: <KeyboardShortcut keys={["mod", "N"]} size="sm" />,
     icon: <FilePlus aria-hidden="true" />,
   },
   {
@@ -34,7 +34,7 @@ const actions: readonly CommandBarAction[] = [
     description: "Create a production deployment",
     group: "Project",
     keywords: ["publish", "release"],
-    shortcut: <KeyboardShortcut keys={["command", "D"]} size="sm" />,
+    shortcut: <KeyboardShortcut keys={["mod", "D"]} size="sm" />,
     icon: <Rocket aria-hidden="true" />,
   },
   {
@@ -42,7 +42,7 @@ const actions: readonly CommandBarAction[] = [
     label: "Project settings",
     description: "Configure build and runtime settings",
     group: "Project",
-    shortcut: <KeyboardShortcut keys={["command", ","]} size="sm" />,
+    shortcut: <KeyboardShortcut keys={["mod", ","]} size="sm" />,
     icon: <Settings aria-hidden="true" />,
   },
 ];
@@ -75,7 +75,7 @@ export function CommandBarPreview() {
           <CommandBar actions={actions}>
             <CommandBarTrigger render={<Button variant="outline" />}>
               Open command bar
-              <KeyboardShortcut keys={["command", "K"]} size="sm" />
+              <KeyboardShortcut keys={["mod", "K"]} size="sm" />
             </CommandBarTrigger>
           </CommandBar>
         </div>
