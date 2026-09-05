@@ -125,6 +125,10 @@
     @apply bg-background text-foreground;
   }
   html {
-    @apply font-sans;
+    @apply scroll-smooth font-sans;
+    scroll-padding-top: 5rem;
+  }
+  ::selection {
+    @apply bg-foreground text-background;
   }
 }
