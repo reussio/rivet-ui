@@ -78,6 +78,19 @@
           "type": "registry:ui"
         }
       ]
+    },
+    {
+      "name": "switch",
+      "type": "registry:ui",
+      "title": "Switch",
+      "description": "A compact boolean switch with native form behavior and precise interaction states.",
+      "dependencies": ["@base-ui/react"],
+      "files": [
+        {
+          "path": "registry/rivet/blocks/switch/switch.tsx",
+          "type": "registry:ui"
+        }
+      ]
     }
   ]
 }

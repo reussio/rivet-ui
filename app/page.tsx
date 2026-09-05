@@ -3,6 +3,7 @@ import { CheckboxPreview } from "@/app/checkbox-preview";
 import { InputFieldPreview } from "@/app/input-field-preview";
 import { RadioGroupPreview } from "@/app/radio-group-preview";
 import { SelectPreview } from "@/app/select-preview";
+import { SwitchPreview } from "@/app/switch-preview";
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
           <CheckboxPreview />
           <SelectPreview />
           <RadioGroupPreview />
+          <SwitchPreview />
         </div>
       </div>
     </main>
