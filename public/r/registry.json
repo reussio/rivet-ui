@@ -261,7 +261,7 @@
       "name": "toast",
       "type": "registry:ui",
       "title": "Toast",
-      "description": "A queued notification system with polite or urgent announcements, actions, timeout, and swipe dismissal.",
+      "description": "A provider-driven notification system with a global hook, queued announcements, actions, and swipe dismissal.",
       "dependencies": ["@base-ui/react", "lucide-react"],
       "files": [
         {
@@ -341,7 +341,7 @@
       "name": "loading-bar",
       "type": "registry:ui",
       "title": "Loading Bar",
-      "description": "A global top-edge loading indicator with determinate and indeterminate modes.",
+      "description": "A global top-edge loading indicator with local rendering and provider-driven controls.",
       "files": [
         {
           "path": "registry/rivet/blocks/loading-bar/loading-bar.tsx",

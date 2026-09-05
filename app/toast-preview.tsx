@@ -67,7 +67,7 @@ function ToastControls() {
           <dl className="divide-y divide-border font-mono text-[0.6875rem] uppercase tracking-[0.12em]">
             <Specification term="Region" detail="live" />
             <Specification term="Priority" detail="polite / high" />
-            <Specification term="Limit" detail="03" />
+            <Specification term="Control" detail="Hook" />
             <Specification term="Dismiss" detail="timer / swipe" />
           </dl>
         </aside>
