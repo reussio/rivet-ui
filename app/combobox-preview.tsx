@@ -81,11 +81,11 @@ function RegionCombobox() {
       <ComboboxContent>
         <ComboboxEmpty>No regions found.</ComboboxEmpty>
         <ComboboxList>
-          {regions.map((region) => (
+          {(region: string) => (
             <ComboboxItem key={region} value={region}>
               {region}
             </ComboboxItem>
-          ))}
+          )}
         </ComboboxList>
       </ComboboxContent>
     </Combobox>
