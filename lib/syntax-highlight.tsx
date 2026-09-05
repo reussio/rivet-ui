@@ -179,7 +179,7 @@ function SyntaxHighlight({
                     <span
                       key="line-number"
                       aria-hidden="true"
-                      className="table-cell select-none border-r border-border pr-2 pl-4 text-left tabular-nums text-muted-foreground/60"
+                      className="table-cell select-none border-r border-border pr-2 pl-4 text-right tabular-nums text-muted-foreground/60"
                       style={{ width: lineNumberWidth }}
                     >
                       {lineIndex + 1}
