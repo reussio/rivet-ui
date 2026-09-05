@@ -65,6 +65,19 @@
           "type": "registry:ui"
         }
       ]
+    },
+    {
+      "name": "radio-group",
+      "type": "registry:ui",
+      "title": "Radio Group",
+      "description": "A composable single-choice control with fully clickable options, labels, and descriptions.",
+      "dependencies": ["@base-ui/react"],
+      "files": [
+        {
+          "path": "registry/rivet/blocks/radio-group/radio-group.tsx",
+          "type": "registry:ui"
+        }
+      ]
     }
   ]
 }

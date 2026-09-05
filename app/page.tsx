@@ -1,6 +1,7 @@
 import { ButtonPreview } from "@/app/button-preview";
 import { CheckboxPreview } from "@/app/checkbox-preview";
 import { InputFieldPreview } from "@/app/input-field-preview";
+import { RadioGroupPreview } from "@/app/radio-group-preview";
 import { SelectPreview } from "@/app/select-preview";
 
 export default function Home() {
@@ -20,6 +21,7 @@ export default function Home() {
           <InputFieldPreview />
           <CheckboxPreview />
           <SelectPreview />
+          <RadioGroupPreview />
         </div>
       </div>
     </main>
