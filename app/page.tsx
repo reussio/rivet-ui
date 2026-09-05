@@ -213,7 +213,7 @@ export default function Home() {
             </SidebarGroup>
             <SidebarGroup title="Components">
               {components.map((component) => (
-                <SidebarLink key={component.slug} href={`#${component.slug}`}>
+                <SidebarLink key={component.slug} href={`/components/${component.slug}`}>
                   {component.name}
                 </SidebarLink>
               ))}
@@ -425,7 +425,7 @@ export default function Home() {
                     className="group scroll-mt-20 border-r border-b border-border"
                   >
                     <a
-                      href={`/r/${component.slug}.json`}
+                      href={`/components/${component.slug}`}
                       className="block h-full p-5 outline-none transition-colors hover:bg-muted/40 focus-visible:bg-muted/40 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring/40 sm:p-6"
                     >
                       <div className="flex items-start justify-between gap-5">

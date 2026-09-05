@@ -12,9 +12,9 @@ export function ButtonPreview() {
           <p className="font-mono text-[0.6875rem] uppercase tracking-[0.18em] text-muted-foreground">
             Primitive / 001
           </p>
-          <h1 id="button-title" className="text-3xl font-semibold tracking-[-0.04em] sm:text-5xl">
+          <h2 id="button-title" className="text-3xl font-semibold tracking-[-0.04em] sm:text-5xl">
             Button
-          </h1>
+          </h2>
         </div>
         <span className="border border-border px-2 py-1 font-mono text-[0.625rem] uppercase tracking-[0.14em] text-muted-foreground">
           Ready
