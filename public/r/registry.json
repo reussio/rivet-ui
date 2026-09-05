@@ -39,6 +39,19 @@
           "type": "registry:ui"
         }
       ]
+    },
+    {
+      "name": "checkbox",
+      "type": "registry:ui",
+      "title": "Checkbox",
+      "description": "A sharp checkbox primitive with checked, indeterminate, and native form states.",
+      "dependencies": ["@base-ui/react", "lucide-react"],
+      "files": [
+        {
+          "path": "registry/rivet/blocks/checkbox/checkbox.tsx",
+          "type": "registry:ui"
+        }
+      ]
     }
   ]
 }

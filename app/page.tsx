@@ -1,4 +1,5 @@
 import { ButtonPreview } from "@/app/button-preview";
+import { CheckboxPreview } from "@/app/checkbox-preview";
 import { InputFieldPreview } from "@/app/input-field-preview";
 
 export default function Home() {
@@ -16,6 +17,7 @@ export default function Home() {
         <div className="space-y-12">
           <ButtonPreview />
           <InputFieldPreview />
+          <CheckboxPreview />
         </div>
       </div>
     </main>
