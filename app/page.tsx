@@ -1,3 +1,4 @@
+import { AccordionPreview } from "@/app/accordion-preview";
 import { BadgePreview } from "@/app/badge-preview";
 import { ButtonPreview } from "@/app/button-preview";
 import { CardPreview } from "@/app/card-preview";
@@ -46,6 +47,7 @@ export default function Home() {
           <BadgePreview />
           <SeparatorPreview />
           <SkeletonPreview />
+          <AccordionPreview />
         </div>
       </div>
     </main>

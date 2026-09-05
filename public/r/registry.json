@@ -230,6 +230,19 @@
           "type": "registry:ui"
         }
       ]
+    },
+    {
+      "name": "accordion",
+      "type": "registry:ui",
+      "title": "Accordion",
+      "description": "A composable disclosure set with semantic headings, single or multiple expansion, and measured panel motion.",
+      "dependencies": ["@base-ui/react", "lucide-react"],
+      "files": [
+        {
+          "path": "registry/rivet/blocks/accordion/accordion.tsx",
+          "type": "registry:ui"
+        }
+      ]
     }
   ]
 }
