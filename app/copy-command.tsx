@@ -60,7 +60,7 @@ export function CopyInstallButton({ commands }: CopyInstallButtonProps) {
         <Button
           type="button"
           variant="outline"
-          className="min-w-0 flex-1 justify-start border-r-0 pr-3 focus-visible:relative focus-visible:z-10"
+          className="peer/install min-w-0 flex-1 justify-start border-r-0 pr-3 focus-visible:relative focus-visible:z-10"
           aria-label={`Copy install command with ${selectedCommand.label}`}
           onClick={() => void copyInstallCommand(selectedCommand)}
         >
@@ -73,7 +73,7 @@ export function CopyInstallButton({ commands }: CopyInstallButtonProps) {
         </Button>
         <DropdownMenuTrigger
           render={<Button type="button" variant="outline" size="icon" />}
-          className="w-10 min-w-10 focus-visible:relative focus-visible:z-10 data-popup-open:bg-muted [&_svg]:transition-transform data-popup-open:[&_svg]:rotate-180 motion-reduce:[&_svg]:transition-none"
+          className="w-10 min-w-10 peer-hover/install:border-l-foreground/40 focus-visible:relative focus-visible:z-10 data-popup-open:bg-muted [&_svg]:transition-transform data-popup-open:[&_svg]:rotate-180 motion-reduce:[&_svg]:transition-none"
           aria-label={`Choose package manager. ${selectedCommand.label} selected`}
         >
           <ChevronDown aria-hidden="true" />
