@@ -126,6 +126,10 @@ export async function ComponentPreview({ slug }: { slug: ComponentSlug }) {
       const { TextareaPreview } = await import("@/app/textarea-preview");
       return <TextareaPreview />;
     }
+    case "theme-switcher": {
+      const { ThemeSwitcherPreview } = await import("@/app/theme-switcher-preview");
+      return <ThemeSwitcherPreview />;
+    }
     case "toast": {
       const { ToastPreview } = await import("@/app/toast-preview");
       return <ToastPreview />;

@@ -431,6 +431,23 @@
       ]
     },
     {
+      "name": "theme-switcher",
+      "type": "registry:ui",
+      "title": "Theme Switcher",
+      "description": "A persistent light, dark, and system theme control with live operating-system synchronization.",
+      "dependencies": ["@base-ui/react", "lucide-react"],
+      "files": [
+        {
+          "path": "registry/rivet/blocks/theme-switcher/theme-switcher.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/rivet/blocks/theme-switcher/theme-script.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "rivet-style",
       "type": "registry:style",
       "title": "Rivet Style",
