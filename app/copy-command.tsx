@@ -53,21 +53,33 @@ export function CopyInstallButton({ commands }: CopyInstallButtonProps) {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger
-        render={<Button type="button" variant="outline" className="min-w-60 justify-between" />}
-        aria-label={`Copy install command. ${selectedCommand.label} selected`}
+      <fieldset
+        className="m-0 inline-flex min-w-0 w-60 border-0 p-0"
+        aria-label="Install command controls"
       >
-        <span className="flex items-center gap-2">
+        <Button
+          type="button"
+          variant="outline"
+          className="min-w-0 flex-1 justify-start border-r-0 pr-3 focus-visible:relative focus-visible:z-10"
+          aria-label={`Copy install command with ${selectedCommand.label}`}
+          onClick={() => void copyInstallCommand(selectedCommand)}
+        >
           {copiedPackageManager ? (
             <Check aria-hidden="true" />
           ) : (
             <SelectedPackageManagerIcon className="size-4 fill-current" aria-hidden="true" />
           )}
           Copy install command
-        </span>
-        <ChevronDown className="ml-auto" aria-hidden="true" />
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="start" className="w-(--anchor-width) min-w-60">
+        </Button>
+        <DropdownMenuTrigger
+          render={<Button type="button" variant="outline" size="icon" />}
+          className="w-10 min-w-10 focus-visible:relative focus-visible:z-10 data-popup-open:bg-muted [&_svg]:transition-transform data-popup-open:[&_svg]:rotate-180 motion-reduce:[&_svg]:transition-none"
+          aria-label={`Choose package manager. ${selectedCommand.label} selected`}
+        >
+          <ChevronDown aria-hidden="true" />
+        </DropdownMenuTrigger>
+      </fieldset>
+      <DropdownMenuContent align="end" className="w-60">
         <DropdownMenuRadioGroup value={selectedCommand.value}>
           <DropdownMenuLabel>Package manager</DropdownMenuLabel>
           {commands.map((command) => {
