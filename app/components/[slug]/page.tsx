@@ -47,7 +47,6 @@ export default async function ComponentPage({ params }: ComponentPageProps) {
   const previousComponent = componentDocs[componentIndex - 1];
   const nextComponent = componentDocs[componentIndex + 1];
   const installCommands = getShadcnCommands(`add @rivet/${component.slug}`);
-  const installCommand = installCommands[0].command;
 
   return (
     <div className="min-h-svh bg-background text-foreground">
@@ -116,7 +115,7 @@ export default async function ComponentPage({ params }: ComponentPageProps) {
                   <code className="inline-flex h-10 items-center border border-border bg-background px-3 font-mono text-xs">
                     @rivet/{component.slug}
                   </code>
-                  <CopyInstallButton command={installCommand} />
+                  <CopyInstallButton commands={installCommands} />
                 </div>
               </div>
             </header>
