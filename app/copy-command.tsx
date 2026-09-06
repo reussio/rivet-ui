@@ -83,12 +83,15 @@ export function CopyInstallButton({ commands }: CopyInstallButtonProps) {
               <DropdownMenuRadioItem
                 key={command.value}
                 value={command.value}
-                className="gap-2"
+                className="gap-2 pl-3 [&_[data-slot=dropdown-menu-radio-item-indicator]]:hidden"
                 closeOnClick
                 onClick={() => void copyInstallCommand(command)}
               >
                 <PackageManagerIcon className="size-4 fill-current" aria-hidden="true" />
-                Install with {command.label}
+                <span>Install with {command.label}</span>
+                {selectedCommand.value === command.value ? (
+                  <Check className="ml-auto size-4" aria-hidden="true" />
+                ) : null}
               </DropdownMenuRadioItem>
             );
           })}
