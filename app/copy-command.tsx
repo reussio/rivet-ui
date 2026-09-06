@@ -38,62 +38,47 @@ export function CopyInstallButton({ commands }: CopyInstallButtonProps) {
   );
   const selectedCommand =
     commands.find((command) => command.value === preferredPackageManager) ?? commands[0];
-  const [copied, setCopied] = React.useState(false);
+  const [copiedPackageManager, setCopiedPackageManager] = React.useState<string | null>(null);
 
-  async function copyCommand() {
-    await navigator.clipboard.writeText(selectedCommand.command);
-    setCopied(true);
-    window.setTimeout(() => setCopied(false), 1600);
-  }
-
-  function selectPackageManager(value: string) {
-    if (!isPackageManager(value)) {
-      return;
-    }
-
-    setCopied(false);
-    setPackageManagerPreference(value);
+  async function copyInstallCommand(command: InstallCommand) {
+    setCopiedPackageManager(null);
+    setPackageManagerPreference(command.value);
+    await navigator.clipboard.writeText(command.command);
+    setCopiedPackageManager(command.label);
+    window.setTimeout(() => setCopiedPackageManager(null), 1600);
   }
 
   return (
-    <div className="inline-flex items-stretch">
-      <Button type="button" variant="outline" className="min-w-48 border-r-0" onClick={copyCommand}>
-        {copied ? <Check aria-hidden="true" /> : <Copy aria-hidden="true" />}
-        {copied ? "Command copied" : "Copy install command"}
-        <span className="sr-only" aria-live="polite">
-          {copied ? `${selectedCommand.label} install command copied to clipboard` : ""}
+    <DropdownMenu>
+      <DropdownMenuTrigger
+        render={<Button type="button" variant="outline" className="min-w-60 justify-between" />}
+        aria-label={`Copy install command. ${selectedCommand.label} selected`}
+      >
+        <span className="flex items-center gap-2">
+          {copiedPackageManager ? <Check aria-hidden="true" /> : <Copy aria-hidden="true" />}
+          {copiedPackageManager ? "Command copied" : "Copy install command"}
         </span>
-      </Button>
-
-      <DropdownMenu>
-        <DropdownMenuTrigger
-          render={
-            <Button
-              type="button"
-              variant="outline"
-              className="min-w-21 gap-1.5 px-3 font-mono text-[0.6875rem] uppercase tracking-[0.12em]"
-            />
-          }
-          aria-label={`Select package manager. ${selectedCommand.label} selected`}
-        >
-          {selectedCommand.label}
-          <ChevronDown aria-hidden="true" />
-        </DropdownMenuTrigger>
-        <DropdownMenuContent align="end" className="min-w-44">
-          <DropdownMenuRadioGroup
-            value={selectedCommand.value}
-            onValueChange={selectPackageManager}
-          >
-            <DropdownMenuLabel>Package manager</DropdownMenuLabel>
-            {commands.map((command) => (
-              <DropdownMenuRadioItem key={command.value} value={command.value} closeOnClick>
-                {command.label}
-              </DropdownMenuRadioItem>
-            ))}
-          </DropdownMenuRadioGroup>
-        </DropdownMenuContent>
-      </DropdownMenu>
-    </div>
+        <ChevronDown className="ml-auto" aria-hidden="true" />
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="start" className="w-(--anchor-width) min-w-60">
+        <DropdownMenuRadioGroup value={selectedCommand.value}>
+          <DropdownMenuLabel>Package manager</DropdownMenuLabel>
+          {commands.map((command) => (
+            <DropdownMenuRadioItem
+              key={command.value}
+              value={command.value}
+              closeOnClick
+              onClick={() => void copyInstallCommand(command)}
+            >
+              Install with {command.label}
+            </DropdownMenuRadioItem>
+          ))}
+        </DropdownMenuRadioGroup>
+      </DropdownMenuContent>
+      <span className="sr-only" aria-live="polite">
+        {copiedPackageManager ? `${copiedPackageManager} install command copied to clipboard` : ""}
+      </span>
+    </DropdownMenu>
   );
 }
 
