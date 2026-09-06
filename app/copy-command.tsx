@@ -26,6 +26,13 @@ const packageManagerIcons = {
   npm: NPM,
 } satisfies Record<PackageManager, React.ComponentType<React.SVGProps<SVGSVGElement>>>;
 
+const packageManagerIconClassNames = {
+  bun: "size-4 scale-[1.2] fill-current",
+  pnpm: "size-4 fill-current",
+  yarn: "size-4 scale-[1.125] fill-current",
+  npm: "size-4 fill-current",
+} satisfies Record<PackageManager, string>;
+
 type InstallCommand = {
   readonly value: PackageManager;
   readonly label: string;
@@ -67,7 +74,10 @@ export function CopyInstallButton({ commands }: CopyInstallButtonProps) {
           {copiedPackageManager ? (
             <Check aria-hidden="true" />
           ) : (
-            <SelectedPackageManagerIcon className="size-4 fill-current" aria-hidden="true" />
+            <SelectedPackageManagerIcon
+              className={packageManagerIconClassNames[selectedCommand.value]}
+              aria-hidden="true"
+            />
           )}
           Copy install command
         </Button>
@@ -93,7 +103,10 @@ export function CopyInstallButton({ commands }: CopyInstallButtonProps) {
                 closeOnClick
                 onClick={() => void copyInstallCommand(command)}
               >
-                <PackageManagerIcon className="size-4 fill-current" aria-hidden="true" />
+                <PackageManagerIcon
+                  className={packageManagerIconClassNames[command.value]}
+                  aria-hidden="true"
+                />
                 <span>Install with {command.label}</span>
                 {selectedCommand.value === command.value ? (
                   <Check className="ml-auto size-4" aria-hidden="true" />
