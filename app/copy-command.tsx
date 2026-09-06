@@ -1,8 +1,9 @@
 "use client";
 
-import { Check, ChevronDown, Copy } from "lucide-react";
+import { Check, ChevronDown } from "lucide-react";
 import * as React from "react";
 
+import { Bun, NPM, Pnpm, Yarn } from "@/app/icons";
 import { Button } from "@/registry/rivet/blocks/button/button";
 import {
   DropdownMenu,
@@ -14,6 +15,13 @@ import {
 } from "@/registry/rivet/blocks/dropdown-menu/dropdown-menu";
 
 type PackageManager = "bun" | "pnpm" | "yarn" | "npm";
+
+const packageManagerIcons = {
+  bun: Bun,
+  pnpm: Pnpm,
+  yarn: Yarn,
+  npm: NPM,
+} satisfies Record<PackageManager, React.ComponentType<React.SVGProps<SVGSVGElement>>>;
 
 const packageManagerStorageKey = "rivet-ui:package-manager:v1";
 const packageManagerChangeEvent = "rivet-ui:package-manager-change";
@@ -38,6 +46,7 @@ export function CopyInstallButton({ commands }: CopyInstallButtonProps) {
   );
   const selectedCommand =
     commands.find((command) => command.value === preferredPackageManager) ?? commands[0];
+  const SelectedPackageManagerIcon = packageManagerIcons[selectedCommand.value];
   const [copiedPackageManager, setCopiedPackageManager] = React.useState<string | null>(null);
 
   async function copyInstallCommand(command: InstallCommand) {
@@ -51,28 +60,38 @@ export function CopyInstallButton({ commands }: CopyInstallButtonProps) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger
-        render={<Button type="button" variant="outline" className="min-w-60 justify-between" />}
+        render={<Button type="button" variant="outline" className="min-w-72 justify-between" />}
         aria-label={`Copy install command. ${selectedCommand.label} selected`}
       >
         <span className="flex items-center gap-2">
-          {copiedPackageManager ? <Check aria-hidden="true" /> : <Copy aria-hidden="true" />}
-          {copiedPackageManager ? "Command copied" : "Copy install command"}
+          {copiedPackageManager ? (
+            <Check aria-hidden="true" />
+          ) : (
+            <SelectedPackageManagerIcon className="size-4 fill-current" aria-hidden="true" />
+          )}
+          Copy install command with {selectedCommand.label}
         </span>
         <ChevronDown className="ml-auto" aria-hidden="true" />
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="start" className="w-(--anchor-width) min-w-60">
+      <DropdownMenuContent align="start" className="w-(--anchor-width) min-w-72">
         <DropdownMenuRadioGroup value={selectedCommand.value}>
           <DropdownMenuLabel>Package manager</DropdownMenuLabel>
-          {commands.map((command) => (
-            <DropdownMenuRadioItem
-              key={command.value}
-              value={command.value}
-              closeOnClick
-              onClick={() => void copyInstallCommand(command)}
-            >
-              Install with {command.label}
-            </DropdownMenuRadioItem>
-          ))}
+          {commands.map((command) => {
+            const PackageManagerIcon = packageManagerIcons[command.value];
+
+            return (
+              <DropdownMenuRadioItem
+                key={command.value}
+                value={command.value}
+                className="gap-2"
+                closeOnClick
+                onClick={() => void copyInstallCommand(command)}
+              >
+                <PackageManagerIcon className="size-4 fill-current" aria-hidden="true" />
+                Install with {command.label}
+              </DropdownMenuRadioItem>
+            );
+          })}
         </DropdownMenuRadioGroup>
       </DropdownMenuContent>
       <span className="sr-only" aria-live="polite">
