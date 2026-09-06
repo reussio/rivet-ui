@@ -60,7 +60,7 @@ export function CopyInstallButton({ commands }: CopyInstallButtonProps) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger
-        render={<Button type="button" variant="outline" className="min-w-72 justify-between" />}
+        render={<Button type="button" variant="outline" className="min-w-60 justify-between" />}
         aria-label={`Copy install command. ${selectedCommand.label} selected`}
       >
         <span className="flex items-center gap-2">
@@ -69,11 +69,11 @@ export function CopyInstallButton({ commands }: CopyInstallButtonProps) {
           ) : (
             <SelectedPackageManagerIcon className="size-4 fill-current" aria-hidden="true" />
           )}
-          Copy install command with {selectedCommand.label}
+          Copy install command
         </span>
         <ChevronDown className="ml-auto" aria-hidden="true" />
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="start" className="w-(--anchor-width) min-w-72">
+      <DropdownMenuContent align="start" className="w-(--anchor-width) min-w-60">
         <DropdownMenuRadioGroup value={selectedCommand.value}>
           <DropdownMenuLabel>Package manager</DropdownMenuLabel>
           {commands.map((command) => {
