@@ -1202,7 +1202,7 @@ export const componentDocs = [
     description: "Selects a light, dark, or system-matched interface theme.",
     usage: code(
       'import { ThemeScript } from "@/components/ui/theme-script"',
-      'import { ThemeSwitcher } from "@/components/ui/theme-switcher"',
+      'import { ThemeMenu, ThemeSwitcher } from "@/components/ui/theme-switcher"',
       "",
       "export default function RootLayout({ children }) {",
       "  return (",
@@ -1210,6 +1210,8 @@ export const componentDocs = [
       "      <head><ThemeScript /></head>",
       "      <body>",
       "        <ThemeSwitcher />",
+      "        <ThemeMenu />",
+      '        <ThemeMenu variant="icon" />',
       "        {children}",
       "      </body>",
       "    </html>",
@@ -1229,6 +1231,17 @@ export const componentDocs = [
         code: '<ThemeSwitcher defaultTheme="system" />',
       },
       {
+        title: "Dropdown",
+        description: "Use a compact menu when the control needs less horizontal space.",
+        code: "<ThemeMenu />",
+      },
+      {
+        title: "Icon trigger",
+        description:
+          "The icon trigger reflects the resolved light or dark appearance while retaining all three choices in its menu.",
+        code: '<ThemeMenu variant="icon" />',
+      },
+      {
         title: "Programmatic control",
         description: "Use the shared hook when another control needs to read or change the theme.",
         code: 'const { theme, resolvedTheme, setTheme } = useTheme()\nsetTheme("dark")',
@@ -1243,6 +1256,7 @@ export const componentDocs = [
       { name: "storageKey", type: "string", defaultValue: '"theme"' },
       { name: "onValueChange", type: "(theme: Theme) => void", defaultValue: "—" },
       { name: "disabled", type: "boolean", defaultValue: "false" },
+      { name: "variant", type: '"default" | "icon"', defaultValue: '"default"' },
       { name: "nonce", type: "string", defaultValue: "—" },
       { name: "theme", type: "Theme", defaultValue: "—" },
       { name: "resolvedTheme", type: '"light" | "dark"', defaultValue: "—" },

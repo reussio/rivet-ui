@@ -434,7 +434,7 @@
       "name": "theme-switcher",
       "type": "registry:ui",
       "title": "Theme Switcher",
-      "description": "A persistent light, dark, and system theme control with live operating-system synchronization.",
+      "description": "Persistent segmented and menu-based light, dark, and system theme controls with live operating-system synchronization.",
       "dependencies": ["@base-ui/react", "lucide-react"],
       "files": [
         {

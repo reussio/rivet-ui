@@ -1,6 +1,10 @@
 "use client";
 
-import { ThemeSwitcher, useTheme } from "@/registry/rivet/blocks/theme-switcher/theme-switcher";
+import {
+  ThemeMenu,
+  ThemeSwitcher,
+  useTheme,
+} from "@/registry/rivet/blocks/theme-switcher/theme-switcher";
 
 const previewThemeOptions = {
   defaultTheme: "dark",
@@ -65,8 +69,16 @@ export function ThemeSwitcherPreview() {
       </div>
 
       <div className="border-t border-border">
+        <PreviewRow label="Dropdown">
+          <ThemeMenu {...previewThemeOptions} />
+        </PreviewRow>
+        <PreviewRow label="Icon trigger">
+          <ThemeMenu {...previewThemeOptions} variant="icon" />
+        </PreviewRow>
         <PreviewRow label="Disabled">
           <ThemeSwitcher {...previewThemeOptions} disabled />
+          <ThemeMenu {...previewThemeOptions} disabled />
+          <ThemeMenu {...previewThemeOptions} variant="icon" disabled />
         </PreviewRow>
       </div>
     </section>
