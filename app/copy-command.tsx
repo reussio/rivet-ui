@@ -4,6 +4,11 @@ import { Check, ChevronDown } from "lucide-react";
 import * as React from "react";
 
 import { Bun, NPM, Pnpm, Yarn } from "@/app/icons";
+import {
+  type PackageManager,
+  setPackageManagerPreference,
+  usePackageManagerPreference,
+} from "@/app/package-manager-preference";
 import { Button } from "@/registry/rivet/blocks/button/button";
 import {
   DropdownMenu,
@@ -14,19 +19,12 @@ import {
   DropdownMenuTrigger,
 } from "@/registry/rivet/blocks/dropdown-menu/dropdown-menu";
 
-type PackageManager = "bun" | "pnpm" | "yarn" | "npm";
-
 const packageManagerIcons = {
   bun: Bun,
   pnpm: Pnpm,
   yarn: Yarn,
   npm: NPM,
 } satisfies Record<PackageManager, React.ComponentType<React.SVGProps<SVGSVGElement>>>;
-
-const packageManagerStorageKey = "rivet-ui:package-manager:v1";
-const packageManagerChangeEvent = "rivet-ui:package-manager-change";
-const defaultPackageManager: PackageManager = "bun";
-let inMemoryPackageManager: PackageManager = defaultPackageManager;
 
 type InstallCommand = {
   readonly value: PackageManager;
@@ -39,11 +37,7 @@ type CopyInstallButtonProps = {
 };
 
 export function CopyInstallButton({ commands }: CopyInstallButtonProps) {
-  const preferredPackageManager = React.useSyncExternalStore(
-    subscribeToPackageManager,
-    getPackageManagerSnapshot,
-    getServerPackageManagerSnapshot,
-  );
+  const preferredPackageManager = usePackageManagerPreference();
   const selectedCommand =
     commands.find((command) => command.value === preferredPackageManager) ?? commands[0];
   const SelectedPackageManagerIcon = packageManagerIcons[selectedCommand.value];
@@ -102,43 +96,4 @@ export function CopyInstallButton({ commands }: CopyInstallButtonProps) {
       </span>
     </DropdownMenu>
   );
-}
-
-function subscribeToPackageManager(onStoreChange: () => void) {
-  window.addEventListener("storage", onStoreChange);
-  window.addEventListener(packageManagerChangeEvent, onStoreChange);
-
-  return () => {
-    window.removeEventListener("storage", onStoreChange);
-    window.removeEventListener(packageManagerChangeEvent, onStoreChange);
-  };
-}
-
-function getPackageManagerSnapshot() {
-  try {
-    const storedValue = window.localStorage.getItem(packageManagerStorageKey);
-    return isPackageManager(storedValue) ? storedValue : inMemoryPackageManager;
-  } catch {
-    return inMemoryPackageManager;
-  }
-}
-
-function getServerPackageManagerSnapshot() {
-  return defaultPackageManager;
-}
-
-function setPackageManagerPreference(value: PackageManager) {
-  inMemoryPackageManager = value;
-
-  try {
-    window.localStorage.setItem(packageManagerStorageKey, value);
-  } catch {
-    // Keep the current page functional when persistent storage is unavailable.
-  }
-
-  window.dispatchEvent(new Event(packageManagerChangeEvent));
-}
-
-function isPackageManager(value: string | null): value is PackageManager {
-  return value === "bun" || value === "pnpm" || value === "yarn" || value === "npm";
 }

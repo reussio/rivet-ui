@@ -7,9 +7,9 @@ import { ComponentPreview } from "@/app/component-preview";
 import { CopyInstallButton } from "@/app/copy-command";
 import { componentDocs, getComponentDoc } from "@/app/docs-data";
 import { DocsHeader, DocsSidebar } from "@/app/docs-navigation";
+import { InstallCommandTerminal } from "@/app/install-command-terminal";
 import { getShadcnCommands } from "@/app/install-commands";
 import { CodeBlock } from "@/registry/rivet/blocks/code-block/code-block";
-import { Terminal } from "@/registry/rivet/blocks/terminal/terminal";
 
 type ComponentPageProps = {
   params: Promise<{ slug: string }>;
@@ -133,7 +133,7 @@ export default async function ComponentPage({ params }: ComponentPageProps) {
               description="Add the component source and its declared dependencies with the shadcn CLI."
             >
               <div className="mt-8">
-                <Terminal label="Install component" commands={installCommands} defaultValue="bun" />
+                <InstallCommandTerminal commands={installCommands} />
               </div>
               <a
                 href={`/r/${component.slug}.json`}
