@@ -20,6 +20,7 @@
 # production
 /build
 /public/r/
+/content/components/index.ts
 
 # misc
 .DS_Store

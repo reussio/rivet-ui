@@ -78,17 +78,17 @@ Rivet follows a visual direction best described as **precision brutalism**: engi
 
 ```text
 app/                         Documentation shell, renderers, and component previews
-content/components/          One MDX documentation file per component
+content/components/          MDX sources and generated documentation manifest
 registry/
 └── rivet/components/        Source for installable components
-public/r/                    Generated registry items
-scripts/                     Registry validation
+public/r/                    Generated registry items (ignored)
+scripts/                     Documentation generation and registry validation
 registry.json                Registry manifest
 components.json              Local shadcn configuration
 mdx-components.tsx           Shared MDX component mapping
 ```
 
-`public/r` is generated from `registry.json` and the component source. Edit the source files rather than the generated JSON.
+`public/r` is generated from `registry.json` and the component source. `content/components/index.ts` is generated from the MDX sources. Both outputs are ignored by Git and should never be edited directly.
 
 ## Development
 
@@ -107,6 +107,7 @@ The local documentation is available at [localhost:3000](http://localhost:3000),
 | --- | --- |
 | `bun run dev` | Start the documentation site and local registry |
 | `bun run build` | Create a production build |
+| `bun run generate` | Generate the documentation manifest and registry JSON |
 | `bun run lint` | Run Biome lint rules |
 | `bun run check` | Check formatting, lint rules, and import organization |
 | `bun run check:write` | Apply safe Biome fixes and formatting |
@@ -128,9 +129,9 @@ bun run build
 bun run registry:check
 ```
 
-5. Inspect the generated item in `public/r/<name>.json` before committing it.
+5. Inspect the generated item in `public/r/<name>.json` before shipping it.
 
-Package dependencies belong in `dependencies`; other shadcn registry items belong in `registryDependencies`. Preview-only files must not be included in the installable registry item.
+Generated outputs are ignored and must not be committed. Package dependencies belong in `dependencies`; other shadcn registry items belong in `registryDependencies`. Preview-only files must not be included in the installable registry item.
 
 ## Global styles
 
