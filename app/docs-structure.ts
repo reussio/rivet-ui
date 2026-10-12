@@ -23,7 +23,7 @@ const groupDefinitions = [
   },
   {
     name: "Navigation",
-    slugs: ["breadcrumb", "pagination", "stepper", "tabs"],
+    slugs: ["breadcrumb", "pagination", "stepper", "tabs", "website-link"],
   },
   {
     name: "Overlays",

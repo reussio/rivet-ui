@@ -1,0 +1,40 @@
+import { defineComponentMetadata } from "@/content/components/schema"
+
+export const metadata = defineComponentMetadata({
+  "name": "Website Link",
+  "slug": "website-link",
+  "description": "Displays a compact inline website link with an automatically derived favicon and resilient fallback."
+})
+
+<ComponentUsage>
+
+```tsx
+import { WebsiteLink } from "@/components/ui/website-link"
+
+<p>
+  Read the documentation on{" "}
+  <WebsiteLink
+    href="https://rivetui.reuss.dev"
+    title="Rivet UI"
+    target="_blank"
+  />.
+</p>
+```
+
+The favicon is derived from the website origin and cannot be supplied through the component API. When no `title` is provided, the visible label falls back to the hostname. `mailto:` and `tel:` links automatically use the address or phone number with a matching icon.
+
+A browser-only component cannot reliably read the document title of another website because cross-origin requests are restricted. Pass `title` when you want a label other than the hostname.
+
+</ComponentUsage>
+
+<ComponentApi>
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `href` | `string` | Required |
+| `title` | `string` | Hostname, email address, or phone number derived from `href` |
+| `target` | `React.ComponentProps<"a">["target"]` | `—` |
+| `rel` | `React.ComponentProps<"a">["rel"]` | Adds `"noopener noreferrer"` when `target="_blank"` |
+| `className` | `string` | `—` |
+
+</ComponentApi>

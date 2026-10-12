@@ -194,5 +194,9 @@ export async function ComponentPreview({ slug }: { slug: ComponentSlug }) {
       const { TooltipPreview } = await import("@/app/tooltip-preview");
       return <TooltipPreview />;
     }
+    case "website-link": {
+      const { WebsiteLinkPreview } = await import("@/app/website-link-preview");
+      return <WebsiteLinkPreview />;
+    }
   }
 }
