@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
   "name": "rivet-ui",
-  "homepage": "http://localhost:3000",
+  "homepage": "https://rivetui.reuss.dev",
   "items": [
     {
       "name": "button",
