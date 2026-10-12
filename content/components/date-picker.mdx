@@ -1,0 +1,45 @@
+import { defineComponentMetadata } from "@/content/components/schema"
+
+export const metadata = defineComponentMetadata({
+  "name": "Date Picker",
+  "slug": "date-picker",
+  "description": "Selects one date or a date range with direct month and year navigation."
+})
+
+<ComponentUsage>
+
+```tsx
+import { DatePicker, DateRangePicker } from "@/components/ui/date-picker"
+
+<DatePicker
+  name="releaseDate"
+  value={date}
+  onValueChange={setDate}
+/>
+
+<DateRangePicker
+  value={range}
+  onValueChange={setRange}
+/>
+```
+
+</ComponentUsage>
+
+<ComponentApi>
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `value` | `Date` | `—` |
+| `defaultValue` | `Date` | `—` |
+| `onValueChange` | `(date?: Date) => void` | `—` |
+| `placeholder` | `string` | `"Select date"` |
+| `formatLocale` | `Intl.LocalesArgument` | `runtime locale` |
+| `dateFormat` | `Intl.DateTimeFormatOptions` | `{ dateStyle: "medium" }` |
+| `calendarProps` | `DayPickerProps` | `—` |
+| `DateRangePicker.value` | `DateRange` | `—` |
+| `DateRangePicker.onValueChange` | `(range?: DateRange) => void` | `—` |
+| `fromName / toName` | `string` | `—` |
+| `disabled` | `boolean` | `false` |
+| `name` | `string` | `—` |
+
+</ComponentApi>

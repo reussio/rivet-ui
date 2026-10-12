@@ -1,0 +1,26 @@
+import { defineComponentMetadata } from "@/content/components/schema"
+
+export const metadata = defineComponentMetadata({
+  "name": "Separator",
+  "slug": "separator",
+  "description": "Creates a semantic visual boundary between related regions."
+})
+
+<ComponentUsage>
+
+```tsx
+import { Separator } from "@/components/ui/separator"
+
+<Separator />
+```
+
+</ComponentUsage>
+
+<ComponentApi>
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` |
+| `className` | `string` | `—` |
+
+</ComponentApi>

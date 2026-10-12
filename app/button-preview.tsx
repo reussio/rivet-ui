@@ -1,6 +1,6 @@
 import { ArrowUpRight, LoaderCircle, Plus } from "lucide-react";
 
-import { Button } from "@/registry/rivet/blocks/button/button";
+import { Button } from "@/registry/rivet/components/button/button";
 
 const variants = ["default", "secondary", "outline", "ghost", "destructive"] as const;
 

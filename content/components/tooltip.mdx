@@ -1,0 +1,33 @@
+import { defineComponentMetadata } from "@/content/components/schema"
+
+export const metadata = defineComponentMetadata({
+  "name": "Tooltip",
+  "slug": "tooltip",
+  "description": "Adds a supplementary hint to an already labelled interactive control."
+})
+
+<ComponentUsage>
+
+```tsx
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
+
+<TooltipProvider>
+  <Tooltip>
+    <TooltipTrigger aria-label="Copy deployment URL">Copy</TooltipTrigger>
+    <TooltipContent>Copy deployment URL</TooltipContent>
+  </Tooltip>
+</TooltipProvider>
+```
+
+</ComponentUsage>
+
+<ComponentApi>
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `delay` | `number` | `400` |
+| `closeDelay` | `number` | `100` |
+| `side` | `"top" \| "right" \| "bottom" \| "left"` | `"top"` |
+| `align` | `"start" \| "center" \| "end"` | `"center"` |
+
+</ComponentApi>

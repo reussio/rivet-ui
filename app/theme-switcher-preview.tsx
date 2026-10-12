@@ -4,7 +4,7 @@ import {
   ThemeMenu,
   ThemeSwitcher,
   useTheme,
-} from "@/registry/rivet/blocks/theme-switcher/theme-switcher";
+} from "@/registry/rivet/components/theme-switcher/theme-switcher";
 
 const previewThemeOptions = {
   defaultTheme: "dark",

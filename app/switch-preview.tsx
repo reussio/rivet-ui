@@ -3,8 +3,8 @@ import {
   FieldDescription,
   FieldError,
   FieldLabel,
-} from "@/registry/rivet/blocks/field/field";
-import { Switch } from "@/registry/rivet/blocks/switch/switch";
+} from "@/registry/rivet/components/field/field";
+import { Switch } from "@/registry/rivet/components/switch/switch";
 
 export function SwitchPreview() {
   return (
@@ -78,9 +78,6 @@ export function SwitchPreview() {
           </StateSample>
           <StateSample label="Disabled on">
             <Switch aria-label="Disabled on" defaultChecked disabled />
-          </StateSample>
-          <StateSample label="Read only">
-            <Switch aria-label="Read only" defaultChecked readOnly />
           </StateSample>
           <StateSample label="Invalid">
             <Switch aria-label="Invalid" aria-invalid="true" />

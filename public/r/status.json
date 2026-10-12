@@ -8,7 +8,7 @@
   ],
   "files": [
     {
-      "path": "registry/rivet/blocks/status/status.tsx",
+      "path": "registry/rivet/components/status/status.tsx",
       "content": "import { cva, type VariantProps } from \"class-variance-authority\";\nimport type * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\nconst statusVariants = cva(\n  \"inline-flex min-h-6 max-w-full items-center gap-2 text-sm font-medium whitespace-nowrap\",\n  {\n    variants: {\n      tone: {\n        neutral: \"text-foreground\",\n        success: \"text-emerald-700 dark:text-emerald-400\",\n        warning: \"text-amber-700 dark:text-amber-400\",\n        destructive: \"text-destructive\",\n      },\n    },\n    defaultVariants: {\n      tone: \"neutral\",\n    },\n  },\n);\n\nfunction Status({\n  className,\n  children,\n  tone = \"neutral\",\n  ...props\n}: React.ComponentProps<\"span\"> & VariantProps<typeof statusVariants>) {\n  return (\n    <span data-slot=\"status\" className={cn(statusVariants({ tone, className }))} {...props}>\n      <span\n        data-slot=\"status-indicator\"\n        className=\"size-2 shrink-0 bg-current\"\n        aria-hidden=\"true\"\n      />\n      <span className=\"min-w-0 truncate\">{children}</span>\n    </span>\n  );\n}\n\nexport { Status, statusVariants };\n",
       "type": "registry:ui"
     }

@@ -1,0 +1,36 @@
+import { defineComponentMetadata } from "@/content/components/schema"
+
+export const metadata = defineComponentMetadata({
+  "name": "QR Code",
+  "slug": "qr-code",
+  "description": "Encodes links and structured payloads as responsive, accessible SVG with scan-safe defaults."
+})
+
+<ComponentUsage>
+
+```tsx
+import { QRCode } from "@/components/ui/qr-code"
+
+<QRCode
+  value="https://rivetui.reuss.dev"
+  aria-label="Open the Rivet UI documentation"
+/>
+```
+
+</ComponentUsage>
+
+<ComponentApi>
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `value` | `string \| string[]` | `required` |
+| `size` | `number` | `192` |
+| `level` | `"L" \| "M" \| "Q" \| "H"` | `"M" / "H" with logo` |
+| `quietZone` | `number` | `4` |
+| `foreground` | `string` | `"#000000"` |
+| `background` | `string` | `"#FFFFFF"` |
+| `logo` | `QRCodeLogo` | `—` |
+| `aria-label` | `string` | `"QR code"` |
+| `className` | `string` | `—` |
+
+</ComponentApi>

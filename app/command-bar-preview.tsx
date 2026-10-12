@@ -1,14 +1,15 @@
 "use client";
 
 import { ArrowRight, FilePlus, Rocket, Settings, TerminalSquare } from "lucide-react";
+import * as React from "react";
 
-import { Button } from "@/registry/rivet/blocks/button/button";
+import { Button } from "@/registry/rivet/components/button/button";
 import {
   CommandBar,
   type CommandBarAction,
   CommandBarTrigger,
-} from "@/registry/rivet/blocks/command-bar/command-bar";
-import { KeyboardShortcut } from "@/registry/rivet/blocks/keyboard-shortcut/keyboard-shortcut";
+} from "@/registry/rivet/components/command-bar/command-bar";
+import { KeyboardShortcut } from "@/registry/rivet/components/keyboard-shortcut/keyboard-shortcut";
 
 const actions: readonly CommandBarAction[] = [
   {
@@ -48,6 +49,8 @@ const actions: readonly CommandBarAction[] = [
 ];
 
 export function CommandBarPreview() {
+  const [selectedAction, setSelectedAction] = React.useState<string | null>(null);
+
   return (
     <section
       className="w-full border border-border bg-background"
@@ -72,12 +75,17 @@ export function CommandBarPreview() {
 
       <div className="grid lg:grid-cols-[minmax(0,1fr)_15rem]">
         <div className="flex min-h-48 items-center justify-center p-5 sm:p-8 lg:border-r lg:border-border">
-          <CommandBar actions={actions}>
-            <CommandBarTrigger render={<Button variant="outline" />}>
-              Open command bar
-              <KeyboardShortcut keys={["mod", "K"]} size="sm" />
-            </CommandBarTrigger>
-          </CommandBar>
+          <div className="grid justify-items-center gap-3">
+            <CommandBar actions={actions} hotkey={false}>
+              <CommandBarTrigger render={<Button variant="outline" />}>
+                Open command bar
+                <ArrowRight aria-hidden="true" />
+              </CommandBarTrigger>
+            </CommandBar>
+            <p className="text-center text-xs text-muted-foreground">
+              The global shortcut is disabled inside the documentation preview.
+            </p>
+          </div>
         </div>
 
         <aside
@@ -94,10 +102,23 @@ export function CommandBarPreview() {
       </div>
 
       <div className="border-t border-border">
-        <PreviewRow label="Pattern">
-          <div className="flex items-center gap-3 text-sm text-muted-foreground">
-            Search actions, inspect shortcuts, then execute without leaving the keyboard.
-            <ArrowRight className="size-4" aria-hidden="true" />
+        <PreviewRow label="Selection callback">
+          <div className="flex flex-wrap items-center gap-3">
+            <CommandBar
+              actions={actions}
+              hotkey={false}
+              label="Project commands"
+              placeholder="Search project commands"
+              onActionSelect={(action) => setSelectedAction(action.label)}
+            >
+              <CommandBarTrigger render={<Button size="sm" variant="outline" />}>
+                Run project action
+                <ArrowRight aria-hidden="true" />
+              </CommandBarTrigger>
+            </CommandBar>
+            <p className="text-sm text-muted-foreground" aria-live="polite">
+              {selectedAction ? `Selected: ${selectedAction}` : "Select an action to inspect it."}
+            </p>
           </div>
         </PreviewRow>
       </div>

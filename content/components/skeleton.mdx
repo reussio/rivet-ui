@@ -1,0 +1,26 @@
+import { defineComponentMetadata } from "@/content/components/schema"
+
+export const metadata = defineComponentMetadata({
+  "name": "Skeleton",
+  "slug": "skeleton",
+  "description": "Reserves layout space while content is loading."
+})
+
+<ComponentUsage>
+
+```tsx
+import { Skeleton } from "@/components/ui/skeleton"
+
+<Skeleton className="h-4 w-48" />
+```
+
+</ComponentUsage>
+
+<ComponentApi>
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `—` |
+| `aria-hidden` | `boolean` | `true` |
+
+</ComponentApi>

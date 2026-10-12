@@ -1,0 +1,43 @@
+import { defineComponentMetadata } from "@/content/components/schema"
+
+export const metadata = defineComponentMetadata({
+  "name": "Slider",
+  "slug": "slider",
+  "description": "Selects one value or a bounded range along a continuous track."
+})
+
+<ComponentUsage>
+
+```tsx
+import { Slider, SliderControl, SliderIndicator, SliderLabel, SliderThumb, SliderTrack, SliderValue } from "@/components/ui/slider"
+
+<Slider defaultValue={64} name="allocation">
+  <SliderLabel>CPU allocation</SliderLabel>
+  <SliderValue />
+  <SliderControl>
+    <SliderTrack>
+      <SliderIndicator />
+      <SliderThumb />
+    </SliderTrack>
+  </SliderControl>
+</Slider>
+```
+
+</ComponentUsage>
+
+<ComponentApi>
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `value` | `number \| readonly number[]` | `—` |
+| `defaultValue` | `number \| readonly number[]` | `—` |
+| `onValueChange` | `(value, details) => void` | `—` |
+| `onValueCommitted` | `(value, details) => void` | `—` |
+| `min` | `number` | `0` |
+| `max` | `number` | `100` |
+| `step` | `number` | `1` |
+| `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` |
+| `disabled` | `boolean` | `false` |
+| `name` | `string` | `—` |
+
+</ComponentApi>

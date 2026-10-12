@@ -1,0 +1,39 @@
+import { defineComponentMetadata } from "@/content/components/schema"
+
+export const metadata = defineComponentMetadata({
+  "name": "Pagination",
+  "slug": "pagination",
+  "description": "Navigates a paginated collection with explicit current and boundary states."
+})
+
+<ComponentUsage>
+
+```tsx
+import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@/components/ui/pagination"
+
+<Pagination>
+  <PaginationContent>
+    <PaginationItem>
+      <PaginationPrevious href="?page=1" />
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationLink href="?page=2" isActive>2</PaginationLink>
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationNext href="?page=3" />
+    </PaginationItem>
+  </PaginationContent>
+</Pagination>
+```
+
+</ComponentUsage>
+
+<ComponentApi>
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `isActive` | `boolean` | `false` |
+| `href` | `string` | `—` |
+| `aria-label` | `string` | `"Pagination"` |
+
+</ComponentApi>

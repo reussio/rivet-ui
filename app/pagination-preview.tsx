@@ -10,7 +10,7 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} from "@/registry/rivet/blocks/pagination/pagination";
+} from "@/registry/rivet/components/pagination/pagination";
 
 export function PaginationPreview() {
   return (

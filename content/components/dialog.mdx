@@ -1,0 +1,33 @@
+import { defineComponentMetadata } from "@/content/components/schema"
+
+export const metadata = defineComponentMetadata({
+  "name": "Dialog",
+  "slug": "dialog",
+  "description": "Presents a modal task with managed focus and explicit dismissal."
+})
+
+<ComponentUsage>
+
+```tsx
+import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
+
+<Dialog>
+  <DialogTrigger>New deployment</DialogTrigger>
+  <DialogContent>
+    <DialogTitle>Create deployment</DialogTitle>
+  </DialogContent>
+</Dialog>
+```
+
+</ComponentUsage>
+
+<ComponentApi>
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `open` | `boolean` | `—` |
+| `defaultOpen` | `boolean` | `false` |
+| `onOpenChange` | `(open: boolean) => void` | `—` |
+| `showCloseButton` | `boolean` | `true` |
+
+</ComponentApi>

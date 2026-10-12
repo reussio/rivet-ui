@@ -1,0 +1,31 @@
+import { defineComponentMetadata } from "@/content/components/schema"
+
+export const metadata = defineComponentMetadata({
+  "name": "Collapsible",
+  "slug": "collapsible",
+  "description": "Reveals or hides one related region from a persistent trigger."
+})
+
+<ComponentUsage>
+
+```tsx
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
+
+<Collapsible>
+  <CollapsibleTrigger>Advanced routing rules</CollapsibleTrigger>
+  <CollapsibleContent>Primary region: fra1</CollapsibleContent>
+</Collapsible>
+```
+
+</ComponentUsage>
+
+<ComponentApi>
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `open` | `boolean` | `—` |
+| `defaultOpen` | `boolean` | `false` |
+| `onOpenChange` | `(open: boolean) => void` | `—` |
+| `disabled` | `boolean` | `false` |
+
+</ComponentApi>

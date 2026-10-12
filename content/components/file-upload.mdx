@@ -1,0 +1,37 @@
+import { defineComponentMetadata } from "@/content/components/schema"
+
+export const metadata = defineComponentMetadata({
+  "name": "File Upload",
+  "slug": "file-upload",
+  "description": "Selects and validates files through a native picker or drag and drop."
+})
+
+<ComponentUsage>
+
+```tsx
+import { FileUpload, FileUploadDropzone, FileUploadList, FileUploadMessage } from "@/components/ui/file-upload"
+
+<FileUpload accept=".png,.jpg,.pdf" maxFiles={4} maxSize={5 * 1024 * 1024} multiple>
+  <FileUploadDropzone />
+  <FileUploadMessage />
+  <FileUploadList />
+</FileUpload>
+```
+
+</ComponentUsage>
+
+<ComponentApi>
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `value` | `File[]` | `—` |
+| `defaultValue` | `File[]` | `[]` |
+| `onValueChange` | `(files: File[]) => void` | `—` |
+| `accept` | `string` | `—` |
+| `multiple` | `boolean` | `false` |
+| `maxFiles` | `number` | `1 / ∞ when multiple` |
+| `maxSize` | `number` | `—` |
+| `disabled` | `boolean` | `false` |
+| `onFileReject` | `(rejection: FileUploadRejection) => void` | `—` |
+
+</ComponentApi>

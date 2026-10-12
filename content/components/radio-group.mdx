@@ -1,0 +1,33 @@
+import { defineComponentMetadata } from "@/content/components/schema"
+
+export const metadata = defineComponentMetadata({
+  "name": "Radio Group",
+  "slug": "radio-group",
+  "description": "Lets a user select exactly one option from a visible set."
+})
+
+<ComponentUsage>
+
+```tsx
+import { RadioGroup, RadioOption, RadioOptionLabel } from "@/components/ui/radio-group"
+
+<RadioGroup defaultValue="staging">
+  <RadioOption value="staging">
+    <RadioOptionLabel>Staging</RadioOptionLabel>
+  </RadioOption>
+</RadioGroup>
+```
+
+</ComponentUsage>
+
+<ComponentApi>
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `value` | `unknown` | `—` |
+| `defaultValue` | `unknown` | `—` |
+| `onValueChange` | `(value) => void` | `—` |
+| `orientation` | `"horizontal" \| "vertical"` | `"vertical"` |
+| `disabled` | `boolean` | `false` |
+
+</ComponentApi>

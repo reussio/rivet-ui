@@ -1,0 +1,27 @@
+import { defineComponentMetadata } from "@/content/components/schema"
+
+export const metadata = defineComponentMetadata({
+  "name": "Input",
+  "slug": "input",
+  "description": "Accepts a single line of native text, search, date, or numeric input."
+})
+
+<ComponentUsage>
+
+```tsx
+import { Input } from "@/components/ui/input"
+
+<Input type="email" placeholder="ops@rivet.run" />
+```
+
+</ComponentUsage>
+
+<ComponentApi>
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `type` | `HTMLInputTypeAttribute` | `"text"` |
+| `disabled` | `boolean` | `false` |
+| `aria-invalid` | `boolean \| string` | `false` |
+
+</ComponentApi>

@@ -1,0 +1,49 @@
+import { defineComponentMetadata } from "@/content/components/schema"
+
+export const metadata = defineComponentMetadata({
+  "name": "Toast",
+  "slug": "toast",
+  "description": "Delivers application-wide, non-blocking feedback through a provider and controller hook."
+})
+
+<ComponentUsage>
+
+```tsx
+"use client"
+
+import { Toaster, ToastProvider, useToast } from "@/components/ui/toast"
+
+function SaveButton() {
+  const toast = useToast()
+
+  return (
+    <button onClick={() => toast.add({ title: "Saved", type: "success" })}>
+      Save
+    </button>
+  )
+}
+
+<ToastProvider>
+  <SaveButton />
+  <Toaster />
+</ToastProvider>
+```
+
+</ComponentUsage>
+
+<ComponentApi>
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `title` | `ReactNode` | `—` |
+| `description` | `ReactNode` | `—` |
+| `type` | `"success" \| "warning" \| "error" \| string` | `—` |
+| `priority` | `"low" \| "high"` | `"low"` |
+| `timeout` | `number` | `5000` |
+| `limit` | `number` | `3` |
+| `add` | `(options) => string` | `—` |
+| `update` | `(id, options) => void` | `—` |
+| `close` | `(id?) => void` | `—` |
+| `promise` | `(promise, states) => Promise` | `—` |
+
+</ComponentApi>

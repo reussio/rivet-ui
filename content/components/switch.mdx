@@ -1,0 +1,29 @@
+import { defineComponentMetadata } from "@/content/components/schema"
+
+export const metadata = defineComponentMetadata({
+  "name": "Switch",
+  "slug": "switch",
+  "description": "Toggles a setting that takes effect immediately."
+})
+
+<ComponentUsage>
+
+```tsx
+import { Switch } from "@/components/ui/switch"
+
+<Switch id="failover" defaultChecked />
+<label htmlFor="failover">Automatic failover</label>
+```
+
+</ComponentUsage>
+
+<ComponentApi>
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `checked` | `boolean` | `—` |
+| `defaultChecked` | `boolean` | `false` |
+| `onCheckedChange` | `(checked: boolean) => void` | `—` |
+| `disabled` | `boolean` | `false` |
+
+</ComponentApi>

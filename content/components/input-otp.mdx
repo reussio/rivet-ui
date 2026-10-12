@@ -1,0 +1,47 @@
+import { defineComponentMetadata } from "@/content/components/schema"
+
+export const metadata = defineComponentMetadata({
+  "name": "Input OTP",
+  "slug": "input-otp",
+  "description": "Captures one-time passcodes through one accessible native input and a precise segmented display."
+})
+
+<ComponentUsage>
+
+```tsx
+import { InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot, REGEXP_ONLY_DIGITS } from "@/components/ui/input-otp"
+
+<InputOTP maxLength={6} pattern={REGEXP_ONLY_DIGITS} aria-label="Verification code">
+  <InputOTPGroup>
+    <InputOTPSlot index={0} />
+    <InputOTPSlot index={1} />
+    <InputOTPSlot index={2} />
+  </InputOTPGroup>
+  <InputOTPSeparator />
+  <InputOTPGroup>
+    <InputOTPSlot index={3} />
+    <InputOTPSlot index={4} />
+    <InputOTPSlot index={5} />
+  </InputOTPGroup>
+</InputOTP>
+```
+
+</ComponentUsage>
+
+<ComponentApi>
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `maxLength` | `number` | `required` |
+| `value` | `string` | `—` |
+| `defaultValue` | `string` | `—` |
+| `onChange` | `(value: string) => void` | `—` |
+| `onComplete` | `(value: string) => void` | `—` |
+| `pattern` | `string \| RegExp` | `—` |
+| `inputMode` | `HTMLInputModeAttribute` | `"numeric"` |
+| `autoComplete` | `string` | `"one-time-code"` |
+| `pasteTransformer` | `(pasted: string) => string` | `—` |
+| `disabled` | `boolean` | `false` |
+| `InputOTPSlot.index` | `number` | `required` |
+
+</ComponentApi>

@@ -1,0 +1,39 @@
+import { defineComponentMetadata } from "@/content/components/schema"
+
+export const metadata = defineComponentMetadata({
+  "name": "Color Picker",
+  "slug": "color-picker",
+  "description": "Edits colors through optional RGB, Hex, RGBA, RYB, CMYK, HSL, HSV, and preset controls."
+})
+
+<ComponentUsage>
+
+```tsx
+import { ColorPicker } from "@/components/ui/color-picker"
+
+<ColorPicker
+  name="brandColor"
+  value={color}
+  onValueChange={setColor}
+  inputs={["rgb", "hsl", "cmyk"]}
+/>
+```
+
+</ComponentUsage>
+
+<ComponentApi>
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `value` | `string` | `—` |
+| `defaultValue` | `string` | `"#18181B"` |
+| `displayFormat` | `ColorPickerInput` | `"hex"` |
+| `onValueChange` | `(value: string) => void` | `—` |
+| `inputs` | `ColorPickerInput \| readonly ColorPickerInput[]` | `"rgb" without presets` |
+| `presets` | `readonly string[]` | `—` |
+| `name` | `string` | `—` |
+| `open` | `boolean` | `—` |
+| `defaultOpen` | `boolean` | `false` |
+| `disabled` | `boolean` | `false` |
+
+</ComponentApi>

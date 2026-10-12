@@ -1,0 +1,32 @@
+import { defineComponentMetadata } from "@/content/components/schema"
+
+export const metadata = defineComponentMetadata({
+  "name": "Avatar",
+  "slug": "avatar",
+  "description": "Represents a person or entity with an image and resilient fallback content."
+})
+
+<ComponentUsage>
+
+```tsx
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+
+<Avatar>
+  <AvatarImage src="/avatar.png" alt="Ada Lovelace" />
+  <AvatarFallback>AL</AvatarFallback>
+</Avatar>
+```
+
+</ComponentUsage>
+
+<ComponentApi>
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `size` | `"sm" \| "default" \| "lg"` | `"default"` |
+| `AvatarImage` | `AvatarPrimitive.Image.Props` | `—` |
+| `AvatarFallback.delay` | `number` | `0` |
+| `AvatarGroup` | `React.ComponentProps<"div">` | `—` |
+| `AvatarGroupCount` | `React.ComponentProps<"span">` | `—` |
+
+</ComponentApi>

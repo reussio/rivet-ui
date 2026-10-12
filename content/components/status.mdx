@@ -1,0 +1,26 @@
+import { defineComponentMetadata } from "@/content/components/schema"
+
+export const metadata = defineComponentMetadata({
+  "name": "Status",
+  "slug": "status",
+  "description": "Communicates a current operational state with text and restrained color."
+})
+
+<ComponentUsage>
+
+```tsx
+import { Status } from "@/components/ui/status"
+
+<Status tone="success">Operational</Status>
+```
+
+</ComponentUsage>
+
+<ComponentApi>
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `tone` | `"neutral" \| "success" \| "warning" \| "destructive"` | `"neutral"` |
+| `className` | `string` | `—` |
+
+</ComponentApi>

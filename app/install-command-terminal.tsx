@@ -6,7 +6,7 @@ import {
   setPackageManagerPreference,
   usePackageManagerPreference,
 } from "@/app/package-manager-preference";
-import { Terminal } from "@/registry/rivet/blocks/terminal/terminal";
+import { Terminal } from "@/registry/rivet/components/terminal/terminal";
 
 type InstallCommand = {
   readonly value: PackageManager;
@@ -17,9 +17,13 @@ type InstallCommand = {
 
 type InstallCommandTerminalProps = {
   commands: readonly [InstallCommand, ...InstallCommand[]];
+  label?: string;
 };
 
-export function InstallCommandTerminal({ commands }: InstallCommandTerminalProps) {
+export function InstallCommandTerminal({
+  commands,
+  label = "Install component",
+}: InstallCommandTerminalProps) {
   const preferredPackageManager = usePackageManagerPreference();
   const selectedPackageManager = commands.some(
     (command) => command.value === preferredPackageManager,
@@ -35,7 +39,7 @@ export function InstallCommandTerminal({ commands }: InstallCommandTerminalProps
 
   return (
     <Terminal
-      label="Install component"
+      label={label}
       commands={commands}
       value={selectedPackageManager}
       onValueChange={selectPackageManager}

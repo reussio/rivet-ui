@@ -1,0 +1,41 @@
+import { defineComponentMetadata } from "@/content/components/schema"
+
+export const metadata = defineComponentMetadata({
+  "name": "Time Picker",
+  "slug": "time-picker",
+  "description": "Selects a precise local time with stepped controls and canonical form values."
+})
+
+<ComponentUsage>
+
+```tsx
+import { TimePicker } from "@/components/ui/time-picker"
+
+<TimePicker
+  name="deploymentTime"
+  value="14:30"
+  minuteStep={5}
+/>
+```
+
+</ComponentUsage>
+
+<ComponentApi>
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `value` | `string` | `—` |
+| `defaultValue` | `string` | `—` |
+| `onValueChange` | `(value?: string) => void` | `—` |
+| `hourCycle` | `12 \| 24` | `24` |
+| `showSeconds` | `boolean` | `false` |
+| `minuteStep` | `number` | `1` |
+| `secondStep` | `number` | `1` |
+| `placeholder` | `string` | `"Select time"` |
+| `name` | `string` | `—` |
+| `open` | `boolean` | `—` |
+| `defaultOpen` | `boolean` | `false` |
+| `onOpenChange` | `(open, details) => void` | `—` |
+| `disabled` | `boolean` | `false` |
+
+</ComponentApi>

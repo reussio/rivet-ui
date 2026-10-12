@@ -1,4 +1,4 @@
-import type { ComponentSlug } from "@/app/docs-data";
+import type { ComponentSlug } from "@/content/components";
 
 export async function ComponentPreview({ slug }: { slug: ComponentSlug }) {
   switch (slug) {
@@ -10,9 +10,21 @@ export async function ComponentPreview({ slug }: { slug: ComponentSlug }) {
       const { AlertPreview } = await import("@/app/alert-preview");
       return <AlertPreview />;
     }
+    case "alert-dialog": {
+      const { AlertDialogPreview } = await import("@/app/alert-dialog-preview");
+      return <AlertDialogPreview />;
+    }
+    case "avatar": {
+      const { AvatarPreview } = await import("@/app/avatar-preview");
+      return <AvatarPreview />;
+    }
     case "badge": {
       const { BadgePreview } = await import("@/app/badge-preview");
       return <BadgePreview />;
+    }
+    case "breadcrumb": {
+      const { BreadcrumbPreview } = await import("@/app/breadcrumb-preview");
+      return <BreadcrumbPreview />;
     }
     case "button": {
       const { ButtonPreview } = await import("@/app/button-preview");
@@ -30,6 +42,10 @@ export async function ComponentPreview({ slug }: { slug: ComponentSlug }) {
       const { CodeBlockPreview } = await import("@/app/code-block-preview");
       return <CodeBlockPreview />;
     }
+    case "color-picker": {
+      const { ColorPickerPreview } = await import("@/app/color-picker-preview");
+      return <ColorPickerPreview />;
+    }
     case "combobox": {
       const { ComboboxPreview } = await import("@/app/combobox-preview");
       return <ComboboxPreview />;
@@ -42,6 +58,14 @@ export async function ComponentPreview({ slug }: { slug: ComponentSlug }) {
       const { CollapsiblePreview } = await import("@/app/collapsible-preview");
       return <CollapsiblePreview />;
     }
+    case "context-menu": {
+      const { ContextMenuPreview } = await import("@/app/context-menu-preview");
+      return <ContextMenuPreview />;
+    }
+    case "date-picker": {
+      const { DatePickerPreview } = await import("@/app/date-picker-preview");
+      return <DatePickerPreview />;
+    }
     case "dialog": {
       const { DialogPreview } = await import("@/app/dialog-preview");
       return <DialogPreview />;
@@ -50,13 +74,25 @@ export async function ComponentPreview({ slug }: { slug: ComponentSlug }) {
       const { DropdownMenuPreview } = await import("@/app/dropdown-menu-preview");
       return <DropdownMenuPreview />;
     }
+    case "empty-state": {
+      const { EmptyStatePreview } = await import("@/app/empty-state-preview");
+      return <EmptyStatePreview />;
+    }
     case "field": {
       const { InputFieldPreview } = await import("@/app/input-field-preview");
       return <InputFieldPreview />;
     }
+    case "file-upload": {
+      const { FileUploadPreview } = await import("@/app/file-upload-preview");
+      return <FileUploadPreview />;
+    }
     case "input": {
       const { InputFieldPreview } = await import("@/app/input-field-preview");
       return <InputFieldPreview />;
+    }
+    case "input-otp": {
+      const { InputOTPPreview } = await import("@/app/input-otp-preview");
+      return <InputOTPPreview />;
     }
     case "keyboard-shortcut": {
       const { KeyboardShortcutPreview } = await import("@/app/keyboard-shortcut-preview");
@@ -70,6 +106,10 @@ export async function ComponentPreview({ slug }: { slug: ComponentSlug }) {
       const { PaginationPreview } = await import("@/app/pagination-preview");
       return <PaginationPreview />;
     }
+    case "password-field": {
+      const { PasswordFieldPreview } = await import("@/app/password-field-preview");
+      return <PasswordFieldPreview />;
+    }
     case "popover": {
       const { PopoverPreview } = await import("@/app/popover-preview");
       return <PopoverPreview />;
@@ -78,9 +118,17 @@ export async function ComponentPreview({ slug }: { slug: ComponentSlug }) {
       const { ProgressPreview } = await import("@/app/progress-preview");
       return <ProgressPreview />;
     }
+    case "qr-code": {
+      const { QRCodePreview } = await import("@/app/qr-code-preview");
+      return <QRCodePreview />;
+    }
     case "radio-group": {
       const { RadioGroupPreview } = await import("@/app/radio-group-preview");
       return <RadioGroupPreview />;
+    }
+    case "rating": {
+      const { RatingPreview } = await import("@/app/rating-preview");
+      return <RatingPreview />;
     }
     case "select": {
       const { SelectPreview } = await import("@/app/select-preview");
@@ -93,6 +141,10 @@ export async function ComponentPreview({ slug }: { slug: ComponentSlug }) {
     case "skeleton": {
       const { SkeletonPreview } = await import("@/app/skeleton-preview");
       return <SkeletonPreview />;
+    }
+    case "slider": {
+      const { SliderPreview } = await import("@/app/slider-preview");
+      return <SliderPreview />;
     }
     case "spinner": {
       const { SpinnerPreview } = await import("@/app/spinner-preview");
@@ -129,6 +181,10 @@ export async function ComponentPreview({ slug }: { slug: ComponentSlug }) {
     case "theme-switcher": {
       const { ThemeSwitcherPreview } = await import("@/app/theme-switcher-preview");
       return <ThemeSwitcherPreview />;
+    }
+    case "time-picker": {
+      const { TimePickerPreview } = await import("@/app/time-picker-preview");
+      return <TimePickerPreview />;
     }
     case "toast": {
       const { ToastPreview } = await import("@/app/toast-preview");

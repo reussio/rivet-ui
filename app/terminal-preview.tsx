@@ -1,4 +1,4 @@
-import { Terminal } from "@/registry/rivet/blocks/terminal/terminal";
+import { Terminal } from "@/registry/rivet/components/terminal/terminal";
 
 const packageCommands = [
   {

@@ -1,0 +1,34 @@
+import { defineComponentMetadata } from "@/content/components/schema"
+
+export const metadata = defineComponentMetadata({
+  "name": "Dropdown Menu",
+  "slug": "dropdown-menu",
+  "description": "Presents contextual actions and selection controls from a compact trigger."
+})
+
+<ComponentUsage>
+
+```tsx
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
+
+<DropdownMenu>
+  <DropdownMenuTrigger>Actions</DropdownMenuTrigger>
+  <DropdownMenuContent>
+    <DropdownMenuItem>Inspect deployment</DropdownMenuItem>
+  </DropdownMenuContent>
+</DropdownMenu>
+```
+
+</ComponentUsage>
+
+<ComponentApi>
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `open` | `boolean` | `—` |
+| `defaultOpen` | `boolean` | `false` |
+| `align` | `"start" \| "center" \| "end"` | `"end"` |
+| `side` | `"top" \| "right" \| "bottom" \| "left"` | `"bottom"` |
+| `sideOffset` | `number` | `6` |
+
+</ComponentApi>

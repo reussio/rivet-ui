@@ -1,4 +1,4 @@
-import { CodeBlock } from "@/registry/rivet/blocks/code-block/code-block";
+import { CodeBlock } from "@/registry/rivet/components/code-block/code-block";
 
 const exampleCode = `import { Button } from "@/components/ui/button"
 
@@ -59,7 +59,7 @@ export function CodeBlockPreview() {
           <CodeBlock
             filename="install.sh"
             language="shell"
-            code="bunx --bun shadcn@latest add @rivet/button"
+            code="bunx --bun shadcn@latest add @rivetui/button"
             highlightLinesOnHover
             className="max-w-2xl"
           />

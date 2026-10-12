@@ -1,0 +1,37 @@
+import { defineComponentMetadata } from "@/content/components/schema"
+
+export const metadata = defineComponentMetadata({
+  "name": "Breadcrumb",
+  "slug": "breadcrumb",
+  "description": "Shows the current location within a hierarchy and links back to parent levels."
+})
+
+<ComponentUsage>
+
+```tsx
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb"
+
+<Breadcrumb>
+  <BreadcrumbList>
+    <BreadcrumbItem><BreadcrumbLink href="/projects">Projects</BreadcrumbLink></BreadcrumbItem>
+    <BreadcrumbSeparator />
+    <BreadcrumbItem><BreadcrumbPage>Rivet UI</BreadcrumbPage></BreadcrumbItem>
+  </BreadcrumbList>
+</Breadcrumb>
+```
+
+</ComponentUsage>
+
+<ComponentApi>
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `Breadcrumb` | `React.ComponentProps<"nav">` | `—` |
+| `BreadcrumbList` | `React.ComponentProps<"ol">` | `—` |
+| `BreadcrumbItem` | `React.ComponentProps<"li">` | `—` |
+| `BreadcrumbLink` | `React.ComponentProps<"a">` | `—` |
+| `BreadcrumbPage` | `React.ComponentProps<"span">` | `—` |
+| `BreadcrumbSeparator` | `React.ComponentProps<"li">` | `"/"` |
+| `BreadcrumbEllipsis` | `React.ComponentProps<"span">` | `—` |
+
+</ComponentApi>

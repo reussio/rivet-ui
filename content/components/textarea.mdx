@@ -1,0 +1,27 @@
+import { defineComponentMetadata } from "@/content/components/schema"
+
+export const metadata = defineComponentMetadata({
+  "name": "Textarea",
+  "slug": "textarea",
+  "description": "Accepts longer, multiline text using a native textarea element."
+})
+
+<ComponentUsage>
+
+```tsx
+import { Textarea } from "@/components/ui/textarea"
+
+<Textarea placeholder="Describe this release" />
+```
+
+</ComponentUsage>
+
+<ComponentApi>
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `rows` | `number` | `—` |
+| `disabled` | `boolean` | `false` |
+| `aria-invalid` | `boolean \| string` | `false` |
+
+</ComponentApi>

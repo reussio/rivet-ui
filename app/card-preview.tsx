@@ -1,6 +1,6 @@
 import { ArrowUpRight, Ellipsis, Server } from "lucide-react";
 
-import { Button } from "@/registry/rivet/blocks/button/button";
+import { Button } from "@/registry/rivet/components/button/button";
 import {
   Card,
   CardAction,
@@ -9,7 +9,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/registry/rivet/blocks/card/card";
+} from "@/registry/rivet/components/card/card";
 
 export function CardPreview() {
   return (

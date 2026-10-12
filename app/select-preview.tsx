@@ -3,7 +3,7 @@ import {
   FieldDescription,
   FieldError,
   FieldLabel,
-} from "@/registry/rivet/blocks/field/field";
+} from "@/registry/rivet/components/field/field";
 import {
   Select,
   SelectContent,
@@ -13,7 +13,7 @@ import {
   SelectSeparator,
   SelectTrigger,
   SelectValue,
-} from "@/registry/rivet/blocks/select/select";
+} from "@/registry/rivet/components/select/select";
 
 const regions = [
   "Amsterdam / eu-west",

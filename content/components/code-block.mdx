@@ -1,0 +1,35 @@
+import { defineComponentMetadata } from "@/content/components/schema"
+
+export const metadata = defineComponentMetadata({
+  "name": "Code Block",
+  "slug": "code-block",
+  "description": "Presents source code with file metadata, copying, and optional line numbers."
+})
+
+<ComponentUsage>
+
+```tsx
+import { CodeBlock } from "@/components/ui/code-block"
+
+<CodeBlock
+  filename="route.ts"
+  language="tsx"
+  code={source}
+  showLineNumbers
+/>
+```
+
+</ComponentUsage>
+
+<ComponentApi>
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `code` | `string` | `—` |
+| `language` | `string` | `—` |
+| `filename` | `string` | `—` |
+| `copyable` | `boolean` | `true` |
+| `showLineNumbers` | `boolean` | `false` |
+| `highlightLinesOnHover` | `boolean` | `false` |
+
+</ComponentApi>

@@ -1,0 +1,40 @@
+import { defineComponentMetadata } from "@/content/components/schema"
+
+export const metadata = defineComponentMetadata({
+  "name": "Stepper",
+  "slug": "stepper",
+  "description": "Shows progress through a sequence and lets users return to available steps."
+})
+
+<ComponentUsage>
+
+```tsx
+import { Stepper, StepperContent, StepperIndicator, StepperItem, StepperSeparator, StepperTitle, StepperTrigger } from "@/components/ui/stepper"
+
+<Stepper defaultValue={2} aria-label="Deployment setup">
+  <StepperItem step={1}>
+    <StepperTrigger>
+      <StepperIndicator />
+      <StepperContent><StepperTitle>Project</StepperTitle></StepperContent>
+    </StepperTrigger>
+    <StepperSeparator />
+  </StepperItem>
+  …
+</Stepper>
+```
+
+</ComponentUsage>
+
+<ComponentApi>
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `value` | `number` | `—` |
+| `defaultValue` | `number` | `1` |
+| `onValueChange` | `(value: number) => void` | `—` |
+| `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` |
+| `disabled` | `boolean` | `false` |
+| `StepperItem.step` | `number` | `—` |
+| `StepperItem.disabled` | `boolean` | `false` |
+
+</ComponentApi>

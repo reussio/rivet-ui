@@ -1,0 +1,42 @@
+import { defineComponentMetadata } from "@/content/components/schema"
+
+export const metadata = defineComponentMetadata({
+  "name": "Combobox",
+  "slug": "combobox",
+  "description": "Combines text search and single selection in one keyboard-ready control."
+})
+
+<ComponentUsage>
+
+```tsx
+import { Combobox, ComboboxContent, ComboboxInput, ComboboxInputGroup, ComboboxItem, ComboboxList, ComboboxTrigger } from "@/components/ui/combobox"
+
+<Combobox items={regions} autoHighlight>
+  <ComboboxInputGroup>
+    <ComboboxInput placeholder="Search regions" />
+    <ComboboxTrigger aria-label="Open regions" />
+  </ComboboxInputGroup>
+  <ComboboxContent>
+    <ComboboxList>
+      {(region) => (
+        <ComboboxItem key={region} value={region}>{region}</ComboboxItem>
+      )}
+    </ComboboxList>
+  </ComboboxContent>
+</Combobox>
+```
+
+</ComponentUsage>
+
+<ComponentApi>
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `items` | `readonly Item[]` | `—` |
+| `value` | `Value \| null` | `—` |
+| `defaultValue` | `Value \| null` | `—` |
+| `onValueChange` | `(value: Value \| null) => void` | `—` |
+| `autoHighlight` | `boolean` | `false` |
+| `disabled` | `boolean` | `false` |
+
+</ComponentApi>

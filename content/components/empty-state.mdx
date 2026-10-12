@@ -1,0 +1,37 @@
+import { defineComponentMetadata } from "@/content/components/schema"
+
+export const metadata = defineComponentMetadata({
+  "name": "Empty State",
+  "slug": "empty-state",
+  "description": "Explains an empty surface and guides the next useful action without adding noise."
+})
+
+<ComponentUsage>
+
+```tsx
+import { EmptyState, EmptyStateActions, EmptyStateDescription, EmptyStateHeader, EmptyStateMedia, EmptyStateTitle } from "@/components/ui/empty-state"
+import { Button } from "@/components/ui/button"
+import { PackageOpen } from "lucide-react"
+
+<EmptyState>
+  <EmptyStateMedia><PackageOpen /></EmptyStateMedia>
+  <EmptyStateHeader>
+    <EmptyStateTitle>No deployments yet</EmptyStateTitle>
+    <EmptyStateDescription>Connect a repository to ship the first revision.</EmptyStateDescription>
+  </EmptyStateHeader>
+  <EmptyStateActions><Button>Create deployment</Button></EmptyStateActions>
+</EmptyState>
+```
+
+</ComponentUsage>
+
+<ComponentApi>
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `variant` | `"plain" \| "outline"` | `"outline"` |
+| `size` | `"default" \| "compact"` | `"default"` |
+| `EmptyStateMedia.variant` | `"default" \| "icon"` | `"icon"` |
+| `className` | `string` | `—` |
+
+</ComponentApi>

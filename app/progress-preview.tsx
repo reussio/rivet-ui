@@ -6,7 +6,7 @@ import {
   ProgressLabel,
   ProgressTrack,
   ProgressValue,
-} from "@/registry/rivet/blocks/progress/progress";
+} from "@/registry/rivet/components/progress/progress";
 
 export function ProgressPreview() {
   return (

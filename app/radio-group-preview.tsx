@@ -3,13 +3,13 @@ import {
   FieldDescription,
   FieldError,
   FieldLabel,
-} from "@/registry/rivet/blocks/field/field";
+} from "@/registry/rivet/components/field/field";
 import {
   RadioGroup,
   RadioOption,
   RadioOptionDescription,
   RadioOptionLabel,
-} from "@/registry/rivet/blocks/radio-group/radio-group";
+} from "@/registry/rivet/components/radio-group/radio-group";
 
 export function RadioGroupPreview() {
   return (
@@ -152,30 +152,17 @@ export function RadioGroupPreview() {
         </PreviewRow>
 
         <PreviewRow label="Group states">
-          <div className="grid w-full gap-5 sm:grid-cols-2">
-            <Field>
-              <FieldLabel id="disabled-mode-label">Disabled</FieldLabel>
-              <RadioGroup defaultValue="locked" disabled aria-labelledby="disabled-mode-label">
-                <RadioOption value="locked">
-                  <RadioOptionLabel>Locked configuration</RadioOptionLabel>
-                </RadioOption>
-                <RadioOption value="alternate">
-                  <RadioOptionLabel>Alternate configuration</RadioOptionLabel>
-                </RadioOption>
-              </RadioGroup>
-            </Field>
-            <Field>
-              <FieldLabel id="readonly-mode-label">Read only</FieldLabel>
-              <RadioGroup defaultValue="inherited" readOnly aria-labelledby="readonly-mode-label">
-                <RadioOption value="inherited">
-                  <RadioOptionLabel>Inherited policy</RadioOptionLabel>
-                </RadioOption>
-                <RadioOption value="custom">
-                  <RadioOptionLabel>Custom policy</RadioOptionLabel>
-                </RadioOption>
-              </RadioGroup>
-            </Field>
-          </div>
+          <Field className="w-full max-w-xl">
+            <FieldLabel id="disabled-mode-label">Disabled</FieldLabel>
+            <RadioGroup defaultValue="locked" disabled aria-labelledby="disabled-mode-label">
+              <RadioOption value="locked">
+                <RadioOptionLabel>Locked configuration</RadioOptionLabel>
+              </RadioOption>
+              <RadioOption value="alternate">
+                <RadioOptionLabel>Alternate configuration</RadioOptionLabel>
+              </RadioOption>
+            </RadioGroup>
+          </Field>
         </PreviewRow>
       </div>
     </section>

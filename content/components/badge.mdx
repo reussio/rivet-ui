@@ -1,0 +1,26 @@
+import { defineComponentMetadata } from "@/content/components/schema"
+
+export const metadata = defineComponentMetadata({
+  "name": "Badge",
+  "slug": "badge",
+  "description": "Displays compact metadata, identifiers, and categorical labels."
+})
+
+<ComponentUsage>
+
+```tsx
+import { Badge } from "@/components/ui/badge"
+
+<Badge variant="outline">FRA1</Badge>
+```
+
+</ComponentUsage>
+
+<ComponentApi>
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `variant` | `"default" \| "secondary" \| "outline" \| "destructive"` | `"default"` |
+| `className` | `string` | `—` |
+
+</ComponentApi>

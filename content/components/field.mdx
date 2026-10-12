@@ -1,0 +1,33 @@
+import { defineComponentMetadata } from "@/content/components/schema"
+
+export const metadata = defineComponentMetadata({
+  "name": "Field",
+  "slug": "field",
+  "description": "Connects a control with its label, supporting text, and validation message."
+})
+
+<ComponentUsage>
+
+```tsx
+import { Field, FieldDescription, FieldLabel } from "@/components/ui/field"
+import { Input } from "@/components/ui/input"
+
+<Field>
+  <FieldLabel htmlFor="endpoint">Endpoint</FieldLabel>
+  <Input id="endpoint" />
+  <FieldDescription>The public base URL.</FieldDescription>
+</Field>
+```
+
+</ComponentUsage>
+
+<ComponentApi>
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `Field` | `React.ComponentProps<"div">` | `—` |
+| `FieldLabel` | `React.ComponentProps<"label">` | `—` |
+| `FieldDescription` | `React.ComponentProps<"p">` | `—` |
+| `FieldError.role` | `React.AriaRole` | `"alert"` |
+
+</ComponentApi>

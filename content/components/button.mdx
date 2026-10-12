@@ -1,0 +1,29 @@
+import { defineComponentMetadata } from "@/content/components/schema"
+
+export const metadata = defineComponentMetadata({
+  "name": "Button",
+  "slug": "button",
+  "description": "Displays an interactive control for actions."
+})
+
+<ComponentUsage>
+
+```tsx
+import { Button } from "@/components/ui/button"
+
+<Button>Execute</Button>
+```
+
+</ComponentUsage>
+
+<ComponentApi>
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `variant` | `"default" \| "secondary" \| "outline" \| "ghost" \| "destructive"` | `"default"` |
+| `size` | `"sm" \| "default" \| "lg" \| "icon-sm" \| "icon" \| "icon-lg"` | `"default"` |
+| `disabled` | `boolean` | `false` |
+| `nativeButton` | `boolean` | `true` |
+| `render` | `ReactElement \| function` | `—` |
+
+</ComponentApi>

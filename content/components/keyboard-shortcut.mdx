@@ -1,0 +1,39 @@
+import { defineComponentMetadata } from "@/content/components/schema"
+
+export const metadata = defineComponentMetadata({
+  "name": "Keyboard Shortcut",
+  "slug": "keyboard-shortcut",
+  "description": "Displays platform-aware key combinations and registers matching keyboard listeners."
+})
+
+<ComponentUsage>
+
+```tsx
+"use client"
+
+import { KeyboardShortcut, useKeyboardShortcut } from "@/components/ui/keyboard-shortcut"
+
+function CommandMenuShortcut() {
+  useKeyboardShortcut(["mod", "K"], openCommandMenu)
+
+  return <KeyboardShortcut keys={["mod", "K"]} />
+}
+```
+
+</ComponentUsage>
+
+<ComponentApi>
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `keys` | `readonly [KeyboardShortcutKey, ...KeyboardShortcutKey[]]` | `—` |
+| `size` | `"sm" \| "default"` | `"default"` |
+| `platform` | `"auto" \| "mac" \| "windows" \| "linux"` | `"auto"` |
+| `aria-label` | `string` | `generated` |
+| `useKeyboardShortcut` | `(keys, onTrigger, options?) => void` | `—` |
+| `options.enabled` | `boolean` | `true` |
+| `options.preventDefault` | `boolean` | `true` |
+| `options.allowInEditable` | `boolean` | `false` |
+| `options.allowRepeat` | `boolean` | `false` |
+
+</ComponentApi>

@@ -1,4 +1,4 @@
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/registry/rivet/blocks/tabs/tabs";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/registry/rivet/components/tabs/tabs";
 
 export function TabsPreview() {
   return (

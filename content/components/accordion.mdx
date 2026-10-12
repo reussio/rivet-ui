@@ -1,0 +1,33 @@
+import { defineComponentMetadata } from "@/content/components/schema"
+
+export const metadata = defineComponentMetadata({
+  "name": "Accordion",
+  "slug": "accordion",
+  "description": "Organizes related disclosure regions in a semantic, keyboard-accessible set."
+})
+
+<ComponentUsage>
+
+```tsx
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
+
+<Accordion defaultValue={["deployment"]}>
+  <AccordionItem value="deployment">
+    <AccordionTrigger>Deployment pipeline</AccordionTrigger>
+    <AccordionContent>Build, verify, and release.</AccordionContent>
+  </AccordionItem>
+</Accordion>
+```
+
+</ComponentUsage>
+
+<ComponentApi>
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `value` | `string[]` | `—` |
+| `defaultValue` | `string[]` | `[]` |
+| `multiple` | `boolean` | `false` |
+| `disabled` | `boolean` | `false` |
+
+</ComponentApi>

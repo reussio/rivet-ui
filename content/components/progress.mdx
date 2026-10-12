@@ -1,0 +1,33 @@
+import { defineComponentMetadata } from "@/content/components/schema"
+
+export const metadata = defineComponentMetadata({
+  "name": "Progress",
+  "slug": "progress",
+  "description": "Communicates determinate, completed, or indeterminate task progress."
+})
+
+<ComponentUsage>
+
+```tsx
+import { Progress, ProgressIndicator, ProgressLabel, ProgressTrack, ProgressValue } from "@/components/ui/progress"
+
+<Progress value={72}>
+  <ProgressLabel>Uploading artifacts</ProgressLabel>
+  <ProgressValue />
+  <ProgressTrack><ProgressIndicator /></ProgressTrack>
+</Progress>
+```
+
+</ComponentUsage>
+
+<ComponentApi>
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `value` | `number \| null` | `null` |
+| `min` | `number` | `0` |
+| `max` | `number` | `100` |
+| `locale` | `Intl.LocalesArgument` | `"en"` |
+| `getAriaValueText` | `(formatted, value) => string` | `—` |
+
+</ComponentApi>

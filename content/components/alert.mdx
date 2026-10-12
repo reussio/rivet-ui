@@ -1,0 +1,32 @@
+import { defineComponentMetadata } from "@/content/components/schema"
+
+export const metadata = defineComponentMetadata({
+  "name": "Alert",
+  "slug": "alert",
+  "description": "Communicates contextual information, success, warnings, and failures."
+})
+
+<ComponentUsage>
+
+```tsx
+import { Alert, AlertContent, AlertDescription, AlertTitle } from "@/components/ui/alert"
+
+<Alert variant="warning">
+  <AlertContent>
+    <AlertTitle>Production variables changed</AlertTitle>
+    <AlertDescription>Create a new deployment to apply them.</AlertDescription>
+  </AlertContent>
+</Alert>
+```
+
+</ComponentUsage>
+
+<ComponentApi>
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `variant` | `"default" \| "success" \| "warning" \| "destructive"` | `"default"` |
+| `role` | `React.AriaRole` | `"alert"` |
+| `className` | `string` | `—` |
+
+</ComponentApi>

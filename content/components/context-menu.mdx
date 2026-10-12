@@ -1,0 +1,35 @@
+import { defineComponentMetadata } from "@/content/components/schema"
+
+export const metadata = defineComponentMetadata({
+  "name": "Context Menu",
+  "slug": "context-menu",
+  "description": "Reveals contextual actions at the pointer on right click or long press."
+})
+
+<ComponentUsage>
+
+```tsx
+import { ContextMenu, ContextMenuContent, ContextMenuItem, ContextMenuTrigger } from "@/components/ui/context-menu"
+
+<ContextMenu>
+  <ContextMenuTrigger>Right click this surface</ContextMenuTrigger>
+  <ContextMenuContent>
+    <ContextMenuItem>Inspect</ContextMenuItem>
+    <ContextMenuItem>Copy identifier</ContextMenuItem>
+  </ContextMenuContent>
+</ContextMenu>
+```
+
+</ComponentUsage>
+
+<ComponentApi>
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `open` | `boolean` | `—` |
+| `defaultOpen` | `boolean` | `false` |
+| `disabled` | `boolean` | `false` |
+| `onOpenChange` | `(open, details) => void` | `—` |
+| `side` | `"top" \| "right" \| "bottom" \| "left"` | `pointer` |
+
+</ComponentApi>

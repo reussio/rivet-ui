@@ -1,0 +1,46 @@
+import { defineComponentMetadata } from "@/content/components/schema"
+
+export const metadata = defineComponentMetadata({
+  "name": "Theme Switcher",
+  "slug": "theme-switcher",
+  "description": "Selects a light, dark, or system-matched interface theme."
+})
+
+<ComponentUsage>
+
+```tsx
+import { ThemeScript } from "@/components/ui/theme-script"
+import { ThemeMenu, ThemeSwitcher } from "@/components/ui/theme-switcher"
+
+export default function RootLayout({ children }) {
+  return (
+    <html suppressHydrationWarning>
+      <head><ThemeScript /></head>
+      <body>
+        <ThemeSwitcher />
+        <ThemeMenu />
+        <ThemeMenu variant="icon" />
+        {children}
+      </body>
+    </html>
+  )
+}
+```
+
+</ComponentUsage>
+
+<ComponentApi>
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `defaultTheme` | `"light" \| "dark" \| "system"` | `"system"` |
+| `storageKey` | `string` | `"theme"` |
+| `onValueChange` | `(theme: Theme) => void` | `—` |
+| `disabled` | `boolean` | `false` |
+| `variant` | `"default" \| "icon"` | `"default"` |
+| `nonce` | `string` | `—` |
+| `theme` | `Theme` | `—` |
+| `resolvedTheme` | `"light" \| "dark"` | `—` |
+| `setTheme` | `(theme: Theme) => void` | `—` |
+
+</ComponentApi>

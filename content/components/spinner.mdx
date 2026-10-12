@@ -1,0 +1,27 @@
+import { defineComponentMetadata } from "@/content/components/schema"
+
+export const metadata = defineComponentMetadata({
+  "name": "Spinner",
+  "slug": "spinner",
+  "description": "Indicates indeterminate activity in controls and compact status regions."
+})
+
+<ComponentUsage>
+
+```tsx
+import { Spinner } from "@/components/ui/spinner"
+
+<Spinner aria-label="Loading deployment" />
+```
+
+</ComponentUsage>
+
+<ComponentApi>
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `size` | `"sm" \| "default" \| "lg"` | `"default"` |
+| `aria-label` | `string` | `"Loading"` |
+| `className` | `string` | `—` |
+
+</ComponentApi>

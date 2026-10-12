@@ -1,10 +1,10 @@
-import { Checkbox } from "@/registry/rivet/blocks/checkbox/checkbox";
+import { Checkbox } from "@/registry/rivet/components/checkbox/checkbox";
 import {
   Field,
   FieldDescription,
   FieldError,
   FieldLabel,
-} from "@/registry/rivet/blocks/field/field";
+} from "@/registry/rivet/components/field/field";
 
 export function CheckboxPreview() {
   return (
@@ -81,9 +81,6 @@ export function CheckboxPreview() {
           </StateSample>
           <StateSample label="Disabled checked">
             <Checkbox aria-label="Disabled checked" defaultChecked disabled />
-          </StateSample>
-          <StateSample label="Read only">
-            <Checkbox aria-label="Read only" defaultChecked readOnly />
           </StateSample>
           <StateSample label="Invalid">
             <Checkbox aria-label="Invalid" aria-invalid="true" />

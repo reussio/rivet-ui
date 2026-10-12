@@ -1,0 +1,32 @@
+import { defineComponentMetadata } from "@/content/components/schema"
+
+export const metadata = defineComponentMetadata({
+  "name": "Command Bar",
+  "slug": "command-bar",
+  "description": "Searches and executes grouped application actions from a modal keyboard surface."
+})
+
+<ComponentUsage>
+
+```tsx
+import { CommandBar, CommandBarTrigger } from "@/components/ui/command-bar"
+
+<CommandBar actions={actions}>
+  <CommandBarTrigger render={<Button />}>Open commands</CommandBarTrigger>
+</CommandBar>
+```
+
+</ComponentUsage>
+
+<ComponentApi>
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `actions` | `readonly CommandBarAction[]` | `—` |
+| `open` | `boolean` | `—` |
+| `defaultOpen` | `boolean` | `false` |
+| `hotkey` | `boolean` | `true` |
+| `closeOnSelect` | `boolean` | `true` |
+| `onActionSelect` | `(action) => void` | `—` |
+
+</ComponentApi>

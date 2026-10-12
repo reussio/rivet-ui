@@ -3,8 +3,8 @@ import {
   FieldDescription,
   FieldError,
   FieldLabel,
-} from "@/registry/rivet/blocks/field/field";
-import { Textarea } from "@/registry/rivet/blocks/textarea/textarea";
+} from "@/registry/rivet/components/field/field";
+import { Textarea } from "@/registry/rivet/components/textarea/textarea";
 
 export function TextareaPreview() {
   return (

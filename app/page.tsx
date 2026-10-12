@@ -1,177 +1,15 @@
 import { ArrowRight, ArrowUpRight, Check } from "lucide-react";
+import Link from "next/link";
 
+import { DocsHeader, DocsSidebar } from "@/app/docs-navigation";
+import { DocsSection } from "@/app/docs-section";
+import { componentGroups, homeSections } from "@/app/docs-structure";
+import { InstallCommandTerminal } from "@/app/install-command-terminal";
 import { getShadcnCommands } from "@/app/install-commands";
-import { Badge } from "@/registry/rivet/blocks/badge/badge";
-import { Button, buttonVariants } from "@/registry/rivet/blocks/button/button";
-import { Checkbox } from "@/registry/rivet/blocks/checkbox/checkbox";
-import { CodeBlock } from "@/registry/rivet/blocks/code-block/code-block";
-import { Input } from "@/registry/rivet/blocks/input/input";
-import { Status } from "@/registry/rivet/blocks/status/status";
-import { Switch } from "@/registry/rivet/blocks/switch/switch";
-import { Terminal } from "@/registry/rivet/blocks/terminal/terminal";
-
-const components = [
-  {
-    name: "Accordion",
-    slug: "accordion",
-    description: "A semantic disclosure set with single and multiple expansion.",
-  },
-  {
-    name: "Alert",
-    slug: "alert",
-    description: "A structured message for information, success, warning, and failure.",
-  },
-  {
-    name: "Badge",
-    slug: "badge",
-    description: "Compact metadata, identifiers, and categorical labels.",
-  },
-  {
-    name: "Button",
-    slug: "button",
-    description: "A sharp action primitive with purposeful variants and sizes.",
-  },
-  {
-    name: "Card",
-    slug: "card",
-    description: "A precise content container with composable regions.",
-  },
-  {
-    name: "Checkbox",
-    slug: "checkbox",
-    description: "A native form control for binary and indeterminate choices.",
-  },
-  {
-    name: "Code Block",
-    slug: "code-block",
-    description: "Source code with file metadata, copying, and optional line numbers.",
-  },
-  {
-    name: "Combobox",
-    slug: "combobox",
-    description: "A searchable single-select control with complete keyboard navigation.",
-  },
-  {
-    name: "Command Bar",
-    slug: "command-bar",
-    description: "Searchable, grouped application actions with visible keyboard shortcuts.",
-  },
-  {
-    name: "Collapsible",
-    slug: "collapsible",
-    description: "A single disclosure region with measured motion.",
-  },
-  {
-    name: "Dialog",
-    slug: "dialog",
-    description: "A modal surface with managed focus and explicit dismissal.",
-  },
-  {
-    name: "Dropdown Menu",
-    slug: "dropdown-menu",
-    description: "A keyboard-ready action menu with nested navigation.",
-  },
-  {
-    name: "Field",
-    slug: "field",
-    description: "Composable labels, descriptions, controls, and validation.",
-  },
-  {
-    name: "Input",
-    slug: "input",
-    description: "A native text input with precise focus and error states.",
-  },
-  {
-    name: "Loading Bar",
-    slug: "loading-bar",
-    description: "Global navigation progress anchored to the application edge.",
-  },
-  {
-    name: "Pagination",
-    slug: "pagination",
-    description: "Page navigation with explicit current, boundary, and overflow states.",
-  },
-  {
-    name: "Popover",
-    slug: "popover",
-    description: "A collision-aware interactive surface anchored to a trigger.",
-  },
-  {
-    name: "Progress",
-    slug: "progress",
-    description: "Determinate and indeterminate progress for ongoing tasks.",
-  },
-  {
-    name: "Radio Group",
-    slug: "radio-group",
-    description: "A composable single-choice control with arrow-key navigation.",
-  },
-  {
-    name: "Select",
-    slug: "select",
-    description: "A single-select primitive with grouping and typeahead.",
-  },
-  {
-    name: "Separator",
-    slug: "separator",
-    description: "A semantic one-pixel divider for horizontal and vertical structure.",
-  },
-  {
-    name: "Skeleton",
-    slug: "skeleton",
-    description: "A neutral loading placeholder with reduced-motion support.",
-  },
-  {
-    name: "Spinner",
-    slug: "spinner",
-    description: "A compact activity indicator for controls and status regions.",
-  },
-  {
-    name: "Stepper",
-    slug: "stepper",
-    description: "A controlled or uncontrolled sequence with precise progress states.",
-  },
-  {
-    name: "Status",
-    slug: "status",
-    description: "A semantic indicator for current operational states.",
-  },
-  {
-    name: "Switch",
-    slug: "switch",
-    description: "A compact boolean control with native form behavior.",
-  },
-  {
-    name: "Table",
-    slug: "table",
-    description: "A responsive native table for dense technical data.",
-  },
-  {
-    name: "Tabs",
-    slug: "tabs",
-    description: "Horizontal and vertical tab navigation with complete keyboard support.",
-  },
-  {
-    name: "Terminal",
-    slug: "terminal",
-    description: "Commands, multiline output, and switchable package-manager variants.",
-  },
-  {
-    name: "Textarea",
-    slug: "textarea",
-    description: "A multiline native input with deliberate validation states.",
-  },
-  {
-    name: "Toast",
-    slug: "toast",
-    description: "Non-blocking feedback with polite and urgent priorities.",
-  },
-  {
-    name: "Tooltip",
-    slug: "tooltip",
-    description: "A supplementary hint available through pointer and keyboard.",
-  },
-] as const;
+import { OnThisPage } from "@/app/on-this-page";
+import { componentDocs } from "@/content/components";
+import { buttonVariants } from "@/registry/rivet/components/button/button";
+import { CodeBlock } from "@/registry/rivet/components/code-block/code-block";
 
 const principles = [
   {
@@ -181,8 +19,8 @@ const principles = [
   },
   {
     index: "02",
-    title: "Open source model",
-    description: "The CLI writes component source into your project. Read it, change it, own it.",
+    title: "Source you own",
+    description: "The CLI writes readable component source directly into your application.",
   },
   {
     index: "03",
@@ -192,8 +30,11 @@ const principles = [
 ] as const;
 
 const initializeCommands = getShadcnCommands("init");
-const addRivetStyleCommands = getShadcnCommands("add @rivet/rivet-style");
-const addButtonCommands = getShadcnCommands("add @rivet/button");
+const connectRegistryCommands = getShadcnCommands(
+  "registry add @rivetui=https://rivetui.reuss.dev/r/{name}.json",
+);
+const addRivetStyleCommands = getShadcnCommands("add @rivetui/rivet-style");
+const addButtonCommands = getShadcnCommands("add @rivetui/button");
 
 export default function Home() {
   return (
@@ -205,235 +46,84 @@ export default function Home() {
         Skip to content
       </a>
 
-      <header className="sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur-sm">
-        <div className="mx-auto flex h-14 max-w-[96rem] items-center px-4 sm:px-6 lg:px-8">
-          <a href="#top" className="group flex items-center gap-3" aria-label="Rivet UI home">
-            <span
-              className="grid size-6 grid-cols-2 gap-px border border-foreground p-1 transition-colors group-hover:bg-foreground"
-              aria-hidden="true"
-            >
-              <span className="bg-foreground group-hover:bg-background" />
-              <span className="bg-transparent" />
-              <span className="bg-transparent" />
-              <span className="bg-foreground group-hover:bg-background" />
-            </span>
-            <span className="text-sm font-semibold tracking-[-0.02em]">Rivet UI</span>
-          </a>
-
-          <nav
-            className="ml-8 hidden items-center gap-6 text-sm text-muted-foreground sm:flex"
-            aria-label="Primary"
-          >
-            <a href="#introduction" className="text-foreground">
-              Docs
-            </a>
-            <a href="#components" className="transition-colors hover:text-foreground">
-              Components
-            </a>
-            <a href="/r/registry.json" className="transition-colors hover:text-foreground">
-              Registry
-            </a>
-          </nav>
-
-          <div className="ml-auto flex items-center gap-3">
-            <span className="hidden items-center gap-2 font-mono text-[0.625rem] uppercase tracking-[0.14em] text-muted-foreground md:flex">
-              <span className="size-1.5 bg-emerald-500" />
-              Registry live
-            </span>
-            <span className="border border-border px-2 py-1 font-mono text-[0.625rem] uppercase tracking-[0.12em] text-muted-foreground">
-              v0.1
-            </span>
-          </div>
-        </div>
-      </header>
+      <DocsHeader />
 
       <div
         id="top"
-        className="mx-auto grid max-w-[96rem] lg:grid-cols-[15rem_minmax(0,1fr)] xl:grid-cols-[15rem_minmax(0,1fr)_13rem]"
+        className="mx-auto grid max-w-[100rem] lg:grid-cols-[17rem_minmax(0,1fr)] xl:grid-cols-[17rem_minmax(0,1fr)_13rem]"
       >
-        <aside
-          className="hidden border-r border-border lg:block"
-          aria-label="Documentation navigation"
-        >
-          <div className="sticky top-14 max-h-[calc(100svh-3.5rem)] overflow-y-auto px-6 py-8">
-            <SidebarGroup title="Getting started">
-              <SidebarLink href="#introduction" active>
-                Introduction
-              </SidebarLink>
-              <SidebarLink href="#quick-start">Quick start</SidebarLink>
-              <SidebarLink href="#principles">Principles</SidebarLink>
-            </SidebarGroup>
-            <SidebarGroup title="Components">
-              {components.map((component) => (
-                <SidebarLink key={component.slug} href={`/components/${component.slug}`}>
-                  {component.name}
-                </SidebarLink>
-              ))}
-            </SidebarGroup>
-          </div>
-        </aside>
+        <DocsSidebar />
 
         <main id="content" className="min-w-0">
-          <div className="border-b border-border px-4 py-3 lg:hidden">
-            <nav
-              className="flex gap-5 overflow-x-auto font-mono text-[0.6875rem] uppercase tracking-[0.12em] text-muted-foreground [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-              aria-label="Section navigation"
-            >
-              <a href="#introduction" className="shrink-0 text-foreground">
-                Introduction
-              </a>
-              <a href="#quick-start" className="shrink-0">
-                Quick start
-              </a>
-              <a href="#principles" className="shrink-0">
-                Principles
-              </a>
-              <a href="#components" className="shrink-0">
-                Components
-              </a>
-            </nav>
+          <div className="sticky top-16 z-30 border-b border-border bg-background/95 px-4 py-3 backdrop-blur-sm lg:hidden">
+            <OnThisPage variant="mobile" sections={homeSections} />
           </div>
 
           <article>
             <section
               id="introduction"
-              className="relative scroll-mt-20 overflow-hidden border-b border-border px-5 py-16 sm:px-10 sm:py-24 xl:px-16 xl:py-28"
+              className="relative scroll-mt-24 overflow-hidden border-b border-border px-5 py-12 sm:px-10 sm:py-16 xl:px-12 xl:py-20"
             >
               <div
-                className="pointer-events-none absolute inset-0 opacity-35 [background-image:linear-gradient(to_right,var(--border)_1px,transparent_1px),linear-gradient(to_bottom,var(--border)_1px,transparent_1px)] [background-size:4rem_4rem]"
+                className="pointer-events-none absolute inset-0 opacity-20 [background-image:linear-gradient(to_right,var(--border)_1px,transparent_1px),linear-gradient(to_bottom,var(--border)_1px,transparent_1px)] [background-size:4rem_4rem]"
                 aria-hidden="true"
               />
-              <div className="relative max-w-4xl">
-                <p className="mb-8 flex items-center gap-3 font-mono text-[0.6875rem] uppercase tracking-[0.18em] text-muted-foreground">
-                  <span className="h-px w-8 bg-border" />
-                  React components / Base UI primitives
+              <div className="relative max-w-3xl">
+                <p className="font-mono text-[0.6875rem] uppercase tracking-[0.16em] text-muted-foreground">
+                  Documentation / 001
                 </p>
-                <h1 className="max-w-4xl text-5xl font-semibold leading-[0.92] tracking-[-0.065em] sm:text-7xl xl:text-[6.75rem]">
-                  Components,
-                  <span className="block text-muted-foreground">engineered.</span>
+                <h1 className="mt-5 text-5xl font-semibold leading-[0.95] tracking-[-0.06em] sm:text-7xl">
+                  Build with
+                  <span className="block text-muted-foreground">Rivet UI.</span>
                 </h1>
-                <p className="mt-8 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg sm:leading-8">
-                  A precise component registry for React. Accessible, composable source code built
-                  on Base UI and distributed through the shadcn CLI.
+                <p className="mt-6 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
+                  Accessible React components with precise APIs, readable source, and a visual
+                  system engineered for technical products.
                 </p>
-                <div className="mt-10 flex flex-wrap gap-3">
+                <div className="mt-8 flex flex-wrap gap-3">
                   <a href="#quick-start" className={buttonVariants()}>
-                    Get started
+                    Quick start
                     <ArrowRight aria-hidden="true" />
                   </a>
                   <a href="#components" className={buttonVariants({ variant: "outline" })}>
-                    Browse {components.length} components
+                    Browse components
                   </a>
                 </div>
               </div>
 
-              <dl className="relative mt-16 grid max-w-4xl border-y border-border sm:grid-cols-3">
-                <Stat term="Components" detail={String(components.length).padStart(2, "0")} />
+              <dl className="relative mt-12 grid max-w-3xl border-y border-border sm:grid-cols-3">
+                <Stat term="Components" detail={String(componentDocs.length).padStart(2, "0")} />
                 <Stat term="Foundation" detail="Base UI" />
-                <Stat term="Delivery" detail="Source" />
+                <Stat term="Delivery" detail="shadcn CLI" />
               </dl>
             </section>
 
-            <section
-              id="system-preview"
-              className="scroll-mt-20 border-b border-border px-5 py-12 sm:px-10 sm:py-16 xl:px-16"
-              aria-labelledby="system-preview-title"
-            >
-              <SectionIntro
-                eyebrow="System preview"
-                title="Designed as one system."
-                description="Every primitive shares the same geometry, spacing rhythm, focus treatment, and restrained interaction language."
-                id="system-preview-title"
-              />
-
-              <div className="mt-10 grid border border-border xl:grid-cols-[minmax(0,1fr)_15rem]">
-                <div className="p-5 sm:p-8 xl:border-r xl:border-border">
-                  <div className="border border-border bg-background">
-                    <div className="flex flex-wrap items-start justify-between gap-4 border-b border-border p-5">
-                      <div>
-                        <p className="font-mono text-[0.625rem] uppercase tracking-[0.14em] text-muted-foreground">
-                          Deployment / Production
-                        </p>
-                        <h3 className="mt-2 text-xl font-semibold tracking-[-0.03em]">
-                          API gateway
-                        </h3>
-                      </div>
-                      <Status tone="success">Operational</Status>
-                    </div>
-                    <div className="grid gap-5 p-5 sm:grid-cols-2">
-                      <label htmlFor="docs-public-alias" className="grid gap-2 text-sm font-medium">
-                        Public alias
-                        <Input id="docs-public-alias" defaultValue="api.rivet.run" />
-                      </label>
-                      <div className="grid content-start gap-3 border border-border p-4">
-                        <div className="flex items-center justify-between gap-4">
-                          <span className="text-sm font-medium">Automatic failover</span>
-                          <Switch defaultChecked aria-label="Automatic failover" />
-                        </div>
-                        <label
-                          htmlFor="docs-retain-release"
-                          className="flex items-center gap-3 text-sm text-muted-foreground"
-                        >
-                          <Checkbox id="docs-retain-release" defaultChecked />
-                          Retain previous release
-                        </label>
-                      </div>
-                    </div>
-                    <div className="flex flex-wrap items-center justify-between gap-3 border-t border-border p-4">
-                      <Badge variant="outline">FRA1 / BUN 1.3</Badge>
-                      <div className="flex gap-2">
-                        <Button variant="ghost" size="sm">
-                          Cancel
-                        </Button>
-                        <Button size="sm">Deploy revision</Button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <dl className="divide-y divide-border border-t border-border font-mono text-[0.6875rem] uppercase tracking-[0.12em] xl:border-t-0">
-                  <Specification term="Geometry" detail="Sharp" />
-                  <Specification term="Contrast" detail="Restrained" />
-                  <Specification term="Input" detail="Keyboard" />
-                  <Specification term="Source" detail="Yours" />
-                </dl>
-              </div>
-            </section>
-
-            <section
+            <DocsSection
               id="quick-start"
-              className="scroll-mt-20 border-b border-border px-5 py-12 sm:px-10 sm:py-16 xl:px-16"
-              aria-labelledby="quick-start-title"
+              eyebrow="Quick start"
+              title="From zero to first component."
+              description="Initialize shadcn, connect the Rivet registry, then install only the components you need."
             >
-              <SectionIntro
-                eyebrow="Quick start"
-                title="Install what you need."
-                description="Rivet UI follows the shadcn distribution model. Components are copied into your project, not hidden behind a package boundary."
-                id="quick-start-title"
-              />
-
-              <div className="mt-10 divide-y divide-border border-y border-border">
+              <div className="mt-8 divide-y divide-border border-y border-border">
                 <InstallStep index="01" title="Initialize shadcn">
-                  <Terminal
-                    label="Initialize registry"
-                    commands={initializeCommands}
-                    defaultValue="pnpm"
+                  <InstallCommandTerminal label="Initialize shadcn" commands={initializeCommands} />
+                </InstallStep>
+                <InstallStep index="02" title="Connect the registry">
+                  <InstallCommandTerminal
+                    label="Add Rivet registry"
+                    commands={connectRegistryCommands}
                   />
                 </InstallStep>
-                <InstallStep index="02" title="Add Rivet global styles">
-                  <Terminal
-                    label="Add global styles"
+                <InstallStep index="03" title="Add global styles">
+                  <InstallCommandTerminal
+                    label="Add Rivet styles"
                     commands={addRivetStyleCommands}
-                    defaultValue="pnpm"
                   />
                 </InstallStep>
-                <InstallStep index="03" title="Add a Rivet component">
-                  <Terminal
-                    label="Add component"
-                    commands={addButtonCommands}
-                    defaultValue="pnpm"
-                  />
+                <InstallStep index="04" title="Install a component">
+                  <InstallCommandTerminal label="Add component" commands={addButtonCommands} />
                 </InstallStep>
-                <InstallStep index="04" title="Import from your project">
+                <InstallStep index="05" title="Import locally">
                   <CodeBlock
                     filename="app/page.tsx"
                     language="tsx"
@@ -443,112 +133,101 @@ export default function Home() {
                   />
                 </InstallStep>
               </div>
-            </section>
+            </DocsSection>
 
-            <section
+            <DocsSection
               id="principles"
-              className="scroll-mt-20 border-b border-border px-5 py-12 sm:px-10 sm:py-16 xl:px-16"
-              aria-labelledby="principles-title"
+              eyebrow="Principles"
+              title="A small set of firm decisions."
+              description="Rivet stays predictable by favoring usability, semantics, and composition over decorative options."
             >
-              <SectionIntro
-                eyebrow="Principles"
-                title="Built to be understood."
-                description="The visual language is technical and exact, but the implementation stays familiar."
-                id="principles-title"
-              />
-              <div className="mt-10 grid border-t border-l border-border md:grid-cols-3">
+              <div className="mt-8 grid border-t border-l border-border md:grid-cols-3">
                 {principles.map((principle) => (
-                  <div key={principle.index} className="border-r border-b border-border p-5 sm:p-6">
+                  <div key={principle.index} className="border-r border-b border-border p-5">
                     <span className="font-mono text-[0.625rem] tracking-[0.16em] text-muted-foreground">
                       {principle.index}
                     </span>
-                    <h3 className="mt-8 text-base font-semibold tracking-[-0.02em]">
+                    <h3 className="mt-6 text-base font-semibold tracking-[-0.02em]">
                       {principle.title}
                     </h3>
-                    <p className="mt-3 text-sm leading-6 text-muted-foreground">
+                    <p className="mt-2 text-sm leading-6 text-muted-foreground">
                       {principle.description}
                     </p>
                   </div>
                 ))}
               </div>
-            </section>
+            </DocsSection>
 
-            <section
+            <DocsSection
               id="components"
-              className="scroll-mt-20 px-5 py-12 sm:px-10 sm:py-16 xl:px-16"
-              aria-labelledby="components-title"
+              eyebrow="Component index"
+              title={`${componentDocs.length} components, grouped by purpose.`}
+              description="Use the categories to scan the system or press Command K to jump directly to a component."
+              last
             >
-              <SectionIntro
-                eyebrow="Component index"
-                title={`${components.length} production-ready primitives.`}
-                description="Start with the component you need. Each registry item includes its source and required dependencies."
-                id="components-title"
-              />
-
-              <ul className="mt-10 grid border-t border-l border-border sm:grid-cols-2">
-                {components.map((component, index) => (
-                  <li
-                    id={component.slug}
-                    key={component.slug}
-                    className="group scroll-mt-20 border-r border-b border-border"
+              <div className="mt-8 border-t border-border">
+                {componentGroups.map((group) => (
+                  <section
+                    key={group.name}
+                    className="grid border-r border-b border-l border-border md:grid-cols-[11rem_minmax(0,1fr)]"
+                    aria-labelledby={`group-${group.name.toLowerCase().replaceAll(/[^a-z]+/g, "-")}`}
                   >
-                    <a
-                      href={`/components/${component.slug}`}
-                      className="block h-full p-5 outline-none transition-colors hover:bg-muted/40 focus-visible:bg-muted/40 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring/40 sm:p-6"
-                    >
-                      <div className="flex items-start justify-between gap-5">
-                        <span className="font-mono text-[0.625rem] tracking-[0.16em] text-muted-foreground">
-                          {String(index + 1).padStart(2, "0")}
-                        </span>
-                        <ArrowUpRight
-                          className="size-4 text-muted-foreground transition-colors group-hover:text-foreground"
-                          aria-hidden="true"
-                        />
-                      </div>
-                      <h3 className="mt-8 text-lg font-semibold tracking-[-0.03em]">
-                        {component.name}
+                    <div className="border-b border-border p-4 md:border-r md:border-b-0 md:p-5">
+                      <h3
+                        id={`group-${group.name.toLowerCase().replaceAll(/[^a-z]+/g, "-")}`}
+                        className="font-mono text-[0.6875rem] uppercase tracking-[0.14em]"
+                      >
+                        {group.name}
                       </h3>
-                      <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                        {component.description}
+                      <p className="mt-2 font-mono text-[0.625rem] text-muted-foreground">
+                        {String(group.components.length).padStart(2, "0")} entries
                       </p>
-                      <code className="mt-5 block font-mono text-[0.6875rem] text-muted-foreground">
-                        @rivet/{component.slug}
-                      </code>
-                    </a>
-                  </li>
+                    </div>
+                    <ul className="grid sm:grid-cols-2">
+                      {group.components.map((component) => (
+                        <li
+                          id={component.slug}
+                          key={component.slug}
+                          className="group border-b border-border last:border-b-0 sm:odd:border-r sm:[&:nth-last-child(-n+2)]:border-b-0"
+                        >
+                          <Link
+                            href={`/components/${component.slug}`}
+                            className="flex h-full min-h-24 items-start gap-4 p-4 outline-none transition-colors hover:bg-muted/40 focus-visible:bg-muted/40 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring/40"
+                          >
+                            <span className="min-w-0 flex-1">
+                              <span className="block font-medium tracking-[-0.015em]">
+                                {component.name}
+                              </span>
+                              <span className="mt-1.5 line-clamp-2 block text-xs leading-5 text-muted-foreground">
+                                {component.description}
+                              </span>
+                            </span>
+                            <ArrowUpRight
+                              className="mt-0.5 size-4 shrink-0 text-muted-foreground transition-colors group-hover:text-foreground"
+                              aria-hidden="true"
+                            />
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </section>
                 ))}
-              </ul>
-            </section>
+              </div>
+            </DocsSection>
           </article>
 
-          <footer className="flex flex-col gap-3 border-t border-border px-5 py-8 font-mono text-[0.625rem] uppercase tracking-[0.14em] text-muted-foreground sm:flex-row sm:items-center sm:justify-between sm:px-10 xl:px-16">
-            <span>Rivet UI / Component registry</span>
+          <footer className="flex flex-col gap-3 border-t border-border px-5 py-8 font-mono text-[0.625rem] uppercase tracking-[0.14em] text-muted-foreground sm:flex-row sm:items-center sm:justify-between sm:px-10 xl:px-12">
+            <span>Rivet UI / Documentation</span>
             <span>Components engineered, not decorated.</span>
           </footer>
         </main>
 
         <aside className="hidden border-l border-border xl:block" aria-label="On this page">
-          <div className="sticky top-14 px-6 py-8">
+          <div className="sticky top-16 px-5 py-6">
             <p className="font-mono text-[0.625rem] uppercase tracking-[0.16em] text-muted-foreground">
               On this page
             </p>
-            <nav className="mt-5 grid gap-3 text-sm text-muted-foreground">
-              <a href="#introduction" className="transition-colors hover:text-foreground">
-                Introduction
-              </a>
-              <a href="#system-preview" className="transition-colors hover:text-foreground">
-                System preview
-              </a>
-              <a href="#quick-start" className="transition-colors hover:text-foreground">
-                Quick start
-              </a>
-              <a href="#principles" className="transition-colors hover:text-foreground">
-                Principles
-              </a>
-              <a href="#components" className="transition-colors hover:text-foreground">
-                Components
-              </a>
-            </nav>
+            <OnThisPage sections={homeSections} />
             <div className="mt-10 border-t border-border pt-5">
               <p className="flex items-center gap-2 text-xs text-muted-foreground">
                 <Check className="size-3.5" aria-hidden="true" />
@@ -562,78 +241,13 @@ export default function Home() {
   );
 }
 
-function SidebarGroup({ title, children }: { title: string; children: React.ReactNode }) {
-  return (
-    <div className="mb-8 last:mb-0">
-      <p className="mb-3 font-mono text-[0.625rem] uppercase tracking-[0.16em] text-muted-foreground">
-        {title}
-      </p>
-      <nav className="grid gap-0.5 text-sm">{children}</nav>
-    </div>
-  );
-}
-
-function SidebarLink({
-  href,
-  active,
-  children,
-}: {
-  href: string;
-  active?: boolean;
-  children: React.ReactNode;
-}) {
-  return (
-    <a
-      href={href}
-      className={`border-l px-3 py-1.5 transition-colors hover:border-foreground hover:text-foreground ${
-        active ? "border-foreground text-foreground" : "border-transparent text-muted-foreground"
-      }`}
-    >
-      {children}
-    </a>
-  );
-}
-
-function SectionIntro({
-  eyebrow,
-  title,
-  description,
-  id,
-}: {
-  eyebrow: string;
-  title: string;
-  description: string;
-  id: string;
-}) {
-  return (
-    <div className="max-w-2xl">
-      <p className="font-mono text-[0.6875rem] uppercase tracking-[0.16em] text-muted-foreground">
-        {eyebrow}
-      </p>
-      <h2 id={id} className="mt-4 text-3xl font-semibold tracking-[-0.045em] sm:text-4xl">
-        {title}
-      </h2>
-      <p className="mt-4 text-sm leading-7 text-muted-foreground sm:text-base">{description}</p>
-    </div>
-  );
-}
-
 function Stat({ term, detail }: { term: string; detail: string }) {
   return (
-    <div className="border-b border-border px-4 py-5 last:border-b-0 sm:border-r sm:border-b-0 sm:last:border-r-0">
+    <div className="border-b border-border px-4 py-4 last:border-b-0 sm:border-r sm:border-b-0 sm:last:border-r-0">
       <dt className="font-mono text-[0.625rem] uppercase tracking-[0.15em] text-muted-foreground">
         {term}
       </dt>
-      <dd className="mt-3 text-lg font-medium tracking-[-0.02em]">{detail}</dd>
-    </div>
-  );
-}
-
-function Specification({ term, detail }: { term: string; detail: string }) {
-  return (
-    <div className="flex justify-between gap-4 p-4">
-      <dt className="text-muted-foreground">{term}</dt>
-      <dd>{detail}</dd>
+      <dd className="mt-2 text-base font-medium tracking-[-0.02em]">{detail}</dd>
     </div>
   );
 }
@@ -648,7 +262,7 @@ function InstallStep({
   children: React.ReactNode;
 }) {
   return (
-    <div className="grid gap-5 py-6 md:grid-cols-[8rem_minmax(0,1fr)] md:gap-8">
+    <div className="grid gap-4 py-5 md:grid-cols-[8rem_minmax(0,1fr)] md:gap-8">
       <div>
         <span className="font-mono text-[0.625rem] tracking-[0.16em] text-muted-foreground">
           {index}

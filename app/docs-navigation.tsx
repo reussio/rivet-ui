@@ -1,14 +1,29 @@
 import Link from "next/link";
 
-import { componentDocs } from "@/app/docs-data";
+import { DocsSearch, type DocsSearchItem } from "@/app/docs-search";
+import { componentGroups } from "@/app/docs-structure";
+import { SidebarLink } from "@/app/sidebar-link";
 
-export function DocsHeader() {
+const searchItems: readonly DocsSearchItem[] = componentGroups.flatMap((group) =>
+  group.components.map((component) => ({
+    slug: component.slug,
+    name: component.name,
+    description: component.description,
+    group: group.name,
+  })),
+);
+
+export function DocsHeader({ active = "docs" }: { active?: "docs" | "components" }) {
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur-sm">
-      <div className="mx-auto flex h-14 max-w-[96rem] items-center px-4 sm:px-6 lg:px-8">
-        <Link href="/" className="group flex items-center gap-3" aria-label="Rivet UI home">
+      <div className="mx-auto flex h-16 max-w-[100rem] items-center gap-4 px-4 sm:px-6 lg:px-8">
+        <Link
+          href="/"
+          className="group flex shrink-0 items-center gap-3"
+          aria-label="Rivet UI home"
+        >
           <span
-            className="grid size-6 grid-cols-2 gap-px border border-foreground p-1 transition-colors group-hover:bg-foreground"
+            className="grid size-7 grid-cols-2 gap-px border border-foreground p-1.5 transition-colors group-hover:bg-foreground"
             aria-hidden="true"
           >
             <span className="bg-foreground group-hover:bg-background" />
@@ -16,60 +31,90 @@ export function DocsHeader() {
             <span className="bg-transparent" />
             <span className="bg-foreground group-hover:bg-background" />
           </span>
-          <span className="text-sm font-semibold tracking-[-0.02em]">Rivet UI</span>
+          <span className="hidden text-sm font-semibold tracking-[-0.02em] sm:inline">
+            Rivet UI
+          </span>
         </Link>
 
         <nav
-          className="ml-8 hidden items-center gap-6 text-sm text-muted-foreground sm:flex"
+          className="ml-3 hidden h-full items-center gap-6 text-sm text-muted-foreground md:flex"
           aria-label="Primary"
         >
-          <Link href="/" className="text-foreground">
+          <Link
+            href="/"
+            aria-current={active === "docs" ? "page" : undefined}
+            className={`flex h-full items-center border-b transition-colors hover:text-foreground ${
+              active === "docs" ? "border-foreground text-foreground" : "border-transparent"
+            }`}
+          >
             Docs
           </Link>
-          <Link href="/#components" className="transition-colors hover:text-foreground">
+          <Link
+            href="/#components"
+            aria-current={active === "components" ? "page" : undefined}
+            className={`flex h-full items-center border-b transition-colors hover:text-foreground ${
+              active === "components" ? "border-foreground text-foreground" : "border-transparent"
+            }`}
+          >
             Components
           </Link>
-          <a href="/r/registry.json" className="transition-colors hover:text-foreground">
+          <a
+            href="/r/registry.json"
+            className="flex h-full items-center border-b border-transparent transition-colors hover:text-foreground"
+          >
             Registry
           </a>
         </nav>
 
-        <div className="ml-auto flex items-center gap-3">
-          <span className="hidden items-center gap-2 font-mono text-[0.625rem] uppercase tracking-[0.14em] text-muted-foreground md:flex">
-            <span className="size-1.5 bg-emerald-500" />
-            Registry live
-          </span>
-          <span className="border border-border px-2 py-1 font-mono text-[0.625rem] uppercase tracking-[0.12em] text-muted-foreground">
-            v0.1
-          </span>
+        <div className="ml-auto flex items-center gap-2">
+          <DocsSearch items={searchItems} />
+          <a
+            href="https://github.com/reussio/rivet-ui"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="View Rivet UI on GitHub"
+            className="inline-flex size-9 shrink-0 items-center justify-center border border-border text-muted-foreground outline-none transition-[background-color,border-color,box-shadow,color] hover:border-foreground/40 hover:bg-muted hover:text-foreground focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/40"
+          >
+            <GitHubIcon className="size-4" />
+          </a>
         </div>
       </div>
     </header>
   );
 }
 
-export function DocsSidebar({ activeSlug }: { activeSlug?: string }) {
+function GitHubIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
+      <path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.1c-3.3.7-4-1.4-4-1.4-.5-1.4-1.3-1.8-1.3-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3Z" />
+    </svg>
+  );
+}
+
+export function DocsSidebar() {
   return (
     <aside className="hidden border-r border-border lg:block" aria-label="Documentation navigation">
-      <div className="sticky top-14 max-h-[calc(100svh-3.5rem)] overflow-y-auto px-6 py-8">
+      <div
+        data-slot="docs-sidebar-scroll"
+        className="sticky top-16 max-h-[calc(100svh-4rem)] overflow-y-auto px-4 py-6"
+      >
         <SidebarGroup title="Getting started">
-          <SidebarLink href="/" active={activeSlug === undefined}>
-            Introduction
-          </SidebarLink>
+          <SidebarLink href="/">Introduction</SidebarLink>
           <SidebarLink href="/#quick-start">Quick start</SidebarLink>
           <SidebarLink href="/#principles">Principles</SidebarLink>
         </SidebarGroup>
-        <SidebarGroup title="Components">
-          {componentDocs.map((component) => (
-            <SidebarLink
-              key={component.slug}
-              href={`/components/${component.slug}`}
-              active={activeSlug === component.slug}
-            >
-              {component.name}
-            </SidebarLink>
-          ))}
-        </SidebarGroup>
+
+        <div className="my-6 border-t border-border" />
+
+        {componentGroups.map((group) => (
+          <SidebarGroup key={group.name} title={group.name}>
+            {group.components.map((component) => (
+              <SidebarLink key={component.slug} href={`/components/${component.slug}`}>
+                {component.name}
+              </SidebarLink>
+            ))}
+          </SidebarGroup>
+        ))}
       </div>
     </aside>
   );
@@ -77,33 +122,11 @@ export function DocsSidebar({ activeSlug }: { activeSlug?: string }) {
 
 function SidebarGroup({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <div className="mb-8 last:mb-0">
-      <p className="mb-3 font-mono text-[0.625rem] uppercase tracking-[0.16em] text-muted-foreground">
+    <section className="mb-6 last:mb-0" aria-label={title}>
+      <div className="mb-2 px-2 font-mono text-[0.625rem] uppercase tracking-[0.14em] text-muted-foreground">
         {title}
-      </p>
-      <nav className="grid gap-0.5 text-sm">{children}</nav>
-    </div>
-  );
-}
-
-function SidebarLink({
-  href,
-  active = false,
-  children,
-}: {
-  href: string;
-  active?: boolean;
-  children: React.ReactNode;
-}) {
-  return (
-    <Link
-      href={href}
-      aria-current={active ? "page" : undefined}
-      className={`border-l px-3 py-1.5 transition-colors hover:border-foreground hover:text-foreground ${
-        active ? "border-foreground text-foreground" : "border-transparent text-muted-foreground"
-      }`}
-    >
-      {children}
-    </Link>
+      </div>
+      <nav className="grid gap-px text-[0.8125rem]">{children}</nav>
+    </section>
   );
 }

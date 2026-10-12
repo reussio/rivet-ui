@@ -3,7 +3,7 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/registry/rivet/blocks/accordion/accordion";
+} from "@/registry/rivet/components/accordion/accordion";
 
 const deploymentQuestions = [
   {
