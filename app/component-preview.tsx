@@ -130,6 +130,10 @@ export async function ComponentPreview({ slug }: { slug: ComponentSlug }) {
       const { RatingPreview } = await import("@/app/rating-preview");
       return <RatingPreview />;
     }
+    case "search-field": {
+      const { SearchFieldPreview } = await import("@/app/search-field-preview");
+      return <SearchFieldPreview />;
+    }
     case "select": {
       const { SelectPreview } = await import("@/app/select-preview");
       return <SelectPreview />;

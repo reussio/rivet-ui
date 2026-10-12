@@ -642,6 +642,19 @@
       ]
     },
     {
+      "name": "search-field",
+      "type": "registry:ui",
+      "title": "Search Field",
+      "description": "A native search input with controlled or uncontrolled state, clear controls, loading feedback, and accessible keyboard behavior.",
+      "dependencies": ["lucide-react"],
+      "files": [
+        {
+          "path": "registry/rivetui/components/search-field/search-field.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "rivet-style",
       "type": "registry:style",
       "title": "Rivet Style",

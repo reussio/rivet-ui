@@ -11,6 +11,7 @@ const groupDefinitions = [
       "password-field",
       "radio-group",
       "rating",
+      "search-field",
       "select",
       "slider",
       "switch",
