@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import { DocsSection } from "@/app/docs-section";
-import { CodeBlock } from "@/registry/rivet/components/code-block/code-block";
+import { CodeBlock } from "@/registry/rivetui/components/code-block/code-block";
 
 function ComponentUsage({ children }: { children: React.ReactNode }) {
   return (

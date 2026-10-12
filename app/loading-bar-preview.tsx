@@ -1,11 +1,11 @@
 "use client";
 
-import { Button } from "@/registry/rivet/components/button/button";
+import { Button } from "@/registry/rivetui/components/button/button";
 import {
   LoadingBar,
   LoadingBarProvider,
   useLoadingBar,
-} from "@/registry/rivet/components/loading-bar/loading-bar";
+} from "@/registry/rivetui/components/loading-bar/loading-bar";
 
 export function LoadingBarPreview() {
   return (

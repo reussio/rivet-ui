@@ -3,13 +3,13 @@
 import { ArrowRight, FilePlus, Rocket, Settings, TerminalSquare } from "lucide-react";
 import * as React from "react";
 
-import { Button } from "@/registry/rivet/components/button/button";
+import { Button } from "@/registry/rivetui/components/button/button";
 import {
   CommandBar,
   type CommandBarAction,
   CommandBarTrigger,
-} from "@/registry/rivet/components/command-bar/command-bar";
-import { KeyboardShortcut } from "@/registry/rivet/components/keyboard-shortcut/keyboard-shortcut";
+} from "@/registry/rivetui/components/command-bar/command-bar";
+import { KeyboardShortcut } from "@/registry/rivetui/components/keyboard-shortcut/keyboard-shortcut";
 
 const actions: readonly CommandBarAction[] = [
   {

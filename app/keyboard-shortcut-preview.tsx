@@ -5,7 +5,7 @@ import * as React from "react";
 import {
   KeyboardShortcut,
   useKeyboardShortcut,
-} from "@/registry/rivet/components/keyboard-shortcut/keyboard-shortcut";
+} from "@/registry/rivetui/components/keyboard-shortcut/keyboard-shortcut";
 
 export function KeyboardShortcutPreview() {
   const [triggerCount, setTriggerCount] = React.useState(0);

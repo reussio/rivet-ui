@@ -1,6 +1,6 @@
 import { ExternalLink, ScanLine } from "lucide-react";
 
-import { QRCode } from "@/registry/rivet/components/qr-code/qr-code";
+import { QRCode } from "@/registry/rivetui/components/qr-code/qr-code";
 
 const docsUrl = "https://rivetui.reuss.dev";
 const rivetMark =

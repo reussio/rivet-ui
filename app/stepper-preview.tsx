@@ -7,7 +7,7 @@ import {
   StepperSeparator,
   StepperTitle,
   StepperTrigger,
-} from "@/registry/rivet/components/stepper/stepper";
+} from "@/registry/rivetui/components/stepper/stepper";
 
 const deploymentSteps = [
   { step: 1, title: "Project", description: "Choose the source." },

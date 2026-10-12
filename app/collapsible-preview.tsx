@@ -1,9 +1,9 @@
-import { Badge } from "@/registry/rivet/components/badge/badge";
+import { Badge } from "@/registry/rivetui/components/badge/badge";
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/registry/rivet/components/collapsible/collapsible";
+} from "@/registry/rivetui/components/collapsible/collapsible";
 
 export function CollapsiblePreview() {
   return (

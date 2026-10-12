@@ -3,7 +3,7 @@ import {
   FieldDescription,
   FieldError,
   FieldLabel,
-} from "@/registry/rivet/components/field/field";
+} from "@/registry/rivetui/components/field/field";
 import {
   Select,
   SelectContent,
@@ -13,7 +13,7 @@ import {
   SelectSeparator,
   SelectTrigger,
   SelectValue,
-} from "@/registry/rivet/components/select/select";
+} from "@/registry/rivetui/components/select/select";
 
 const regions = [
   "Amsterdam / eu-west",

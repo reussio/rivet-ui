@@ -11,7 +11,7 @@
       "dependencies": ["@base-ui/react", "class-variance-authority"],
       "files": [
         {
-          "path": "registry/rivet/components/button/button.tsx",
+          "path": "registry/rivetui/components/button/button.tsx",
           "type": "registry:ui"
         }
       ]
@@ -23,7 +23,7 @@
       "description": "A native text input primitive with precise focus, invalid, and disabled states.",
       "files": [
         {
-          "path": "registry/rivet/components/input/input.tsx",
+          "path": "registry/rivetui/components/input/input.tsx",
           "type": "registry:ui"
         }
       ]
@@ -35,7 +35,7 @@
       "description": "Composable field structure for labels, controls, descriptions, and errors.",
       "files": [
         {
-          "path": "registry/rivet/components/field/field.tsx",
+          "path": "registry/rivetui/components/field/field.tsx",
           "type": "registry:ui"
         }
       ]
@@ -48,7 +48,7 @@
       "dependencies": ["@base-ui/react", "lucide-react"],
       "files": [
         {
-          "path": "registry/rivet/components/checkbox/checkbox.tsx",
+          "path": "registry/rivetui/components/checkbox/checkbox.tsx",
           "type": "registry:ui"
         }
       ]
@@ -61,7 +61,7 @@
       "dependencies": ["@base-ui/react", "lucide-react"],
       "files": [
         {
-          "path": "registry/rivet/components/select/select.tsx",
+          "path": "registry/rivetui/components/select/select.tsx",
           "type": "registry:ui"
         }
       ]
@@ -74,7 +74,7 @@
       "dependencies": ["@base-ui/react"],
       "files": [
         {
-          "path": "registry/rivet/components/radio-group/radio-group.tsx",
+          "path": "registry/rivetui/components/radio-group/radio-group.tsx",
           "type": "registry:ui"
         }
       ]
@@ -87,7 +87,7 @@
       "dependencies": ["@base-ui/react"],
       "files": [
         {
-          "path": "registry/rivet/components/switch/switch.tsx",
+          "path": "registry/rivetui/components/switch/switch.tsx",
           "type": "registry:ui"
         }
       ]
@@ -100,7 +100,7 @@
       "dependencies": ["@base-ui/react"],
       "files": [
         {
-          "path": "registry/rivet/components/tabs/tabs.tsx",
+          "path": "registry/rivetui/components/tabs/tabs.tsx",
           "type": "registry:ui"
         }
       ]
@@ -113,7 +113,7 @@
       "dependencies": ["@base-ui/react"],
       "files": [
         {
-          "path": "registry/rivet/components/tooltip/tooltip.tsx",
+          "path": "registry/rivetui/components/tooltip/tooltip.tsx",
           "type": "registry:ui"
         }
       ]
@@ -126,7 +126,7 @@
       "dependencies": ["@base-ui/react"],
       "files": [
         {
-          "path": "registry/rivet/components/popover/popover.tsx",
+          "path": "registry/rivetui/components/popover/popover.tsx",
           "type": "registry:ui"
         }
       ]
@@ -138,7 +138,7 @@
       "description": "A sharp, composable content container with distinct header, content, action, and footer regions.",
       "files": [
         {
-          "path": "registry/rivet/components/card/card.tsx",
+          "path": "registry/rivetui/components/card/card.tsx",
           "type": "registry:ui"
         }
       ]
@@ -151,7 +151,7 @@
       "dependencies": ["@base-ui/react", "lucide-react"],
       "files": [
         {
-          "path": "registry/rivet/components/dialog/dialog.tsx",
+          "path": "registry/rivetui/components/dialog/dialog.tsx",
           "type": "registry:ui"
         }
       ]
@@ -163,7 +163,7 @@
       "description": "A native responsive table with technical headers, row states, captions, and horizontal overflow.",
       "files": [
         {
-          "path": "registry/rivet/components/table/table.tsx",
+          "path": "registry/rivetui/components/table/table.tsx",
           "type": "registry:ui"
         }
       ]
@@ -176,7 +176,7 @@
       "dependencies": ["@base-ui/react", "lucide-react"],
       "files": [
         {
-          "path": "registry/rivet/components/dropdown-menu/dropdown-menu.tsx",
+          "path": "registry/rivetui/components/dropdown-menu/dropdown-menu.tsx",
           "type": "registry:ui"
         }
       ]
@@ -188,7 +188,7 @@
       "description": "A native multiline text control with keyboard-only focus treatment and precise validation states.",
       "files": [
         {
-          "path": "registry/rivet/components/textarea/textarea.tsx",
+          "path": "registry/rivetui/components/textarea/textarea.tsx",
           "type": "registry:ui"
         }
       ]
@@ -201,7 +201,7 @@
       "dependencies": ["class-variance-authority"],
       "files": [
         {
-          "path": "registry/rivet/components/badge/badge.tsx",
+          "path": "registry/rivetui/components/badge/badge.tsx",
           "type": "registry:ui"
         }
       ]
@@ -214,7 +214,7 @@
       "dependencies": ["class-variance-authority"],
       "files": [
         {
-          "path": "registry/rivet/components/status/status.tsx",
+          "path": "registry/rivetui/components/status/status.tsx",
           "type": "registry:ui"
         }
       ]
@@ -227,7 +227,7 @@
       "dependencies": ["@base-ui/react"],
       "files": [
         {
-          "path": "registry/rivet/components/separator/separator.tsx",
+          "path": "registry/rivetui/components/separator/separator.tsx",
           "type": "registry:ui"
         }
       ]
@@ -239,7 +239,7 @@
       "description": "A neutral loading placeholder with reduced-motion support and composable geometry.",
       "files": [
         {
-          "path": "registry/rivet/components/skeleton/skeleton.tsx",
+          "path": "registry/rivetui/components/skeleton/skeleton.tsx",
           "type": "registry:ui"
         }
       ]
@@ -252,7 +252,7 @@
       "dependencies": ["@base-ui/react", "lucide-react"],
       "files": [
         {
-          "path": "registry/rivet/components/accordion/accordion.tsx",
+          "path": "registry/rivetui/components/accordion/accordion.tsx",
           "type": "registry:ui"
         }
       ]
@@ -265,7 +265,7 @@
       "dependencies": ["@base-ui/react", "lucide-react"],
       "files": [
         {
-          "path": "registry/rivet/components/collapsible/collapsible.tsx",
+          "path": "registry/rivetui/components/collapsible/collapsible.tsx",
           "type": "registry:ui"
         }
       ]
@@ -278,7 +278,7 @@
       "dependencies": ["@base-ui/react", "lucide-react"],
       "files": [
         {
-          "path": "registry/rivet/components/toast/toast.tsx",
+          "path": "registry/rivetui/components/toast/toast.tsx",
           "type": "registry:ui"
         }
       ]
@@ -291,7 +291,7 @@
       "dependencies": ["class-variance-authority"],
       "files": [
         {
-          "path": "registry/rivet/components/alert/alert.tsx",
+          "path": "registry/rivetui/components/alert/alert.tsx",
           "type": "registry:ui"
         }
       ]
@@ -304,7 +304,7 @@
       "dependencies": ["@base-ui/react"],
       "files": [
         {
-          "path": "registry/rivet/components/progress/progress.tsx",
+          "path": "registry/rivetui/components/progress/progress.tsx",
           "type": "registry:ui"
         }
       ]
@@ -317,7 +317,7 @@
       "dependencies": ["@base-ui/react", "lucide-react", "prism-react-renderer"],
       "files": [
         {
-          "path": "registry/rivet/components/terminal/terminal.tsx",
+          "path": "registry/rivetui/components/terminal/terminal.tsx",
           "type": "registry:ui"
         },
         {
@@ -333,7 +333,7 @@
       "description": "A composable sequence indicator with controlled progress, step navigation, and horizontal or vertical layouts.",
       "files": [
         {
-          "path": "registry/rivet/components/stepper/stepper.tsx",
+          "path": "registry/rivetui/components/stepper/stepper.tsx",
           "type": "registry:ui"
         }
       ]
@@ -345,7 +345,7 @@
       "description": "A compact indeterminate activity indicator with three sizes and reduced-motion support.",
       "files": [
         {
-          "path": "registry/rivet/components/spinner/spinner.tsx",
+          "path": "registry/rivetui/components/spinner/spinner.tsx",
           "type": "registry:ui"
         }
       ]
@@ -357,7 +357,7 @@
       "description": "A global top-edge loading indicator with local rendering and provider-driven controls.",
       "files": [
         {
-          "path": "registry/rivet/components/loading-bar/loading-bar.tsx",
+          "path": "registry/rivetui/components/loading-bar/loading-bar.tsx",
           "type": "registry:ui"
         }
       ]
@@ -370,7 +370,7 @@
       "dependencies": ["lucide-react", "prism-react-renderer"],
       "files": [
         {
-          "path": "registry/rivet/components/code-block/code-block.tsx",
+          "path": "registry/rivetui/components/code-block/code-block.tsx",
           "type": "registry:ui"
         },
         {
@@ -387,7 +387,7 @@
       "dependencies": ["@base-ui/react", "lucide-react"],
       "files": [
         {
-          "path": "registry/rivet/components/combobox/combobox.tsx",
+          "path": "registry/rivetui/components/combobox/combobox.tsx",
           "type": "registry:ui"
         }
       ]
@@ -400,7 +400,7 @@
       "dependencies": ["lucide-react"],
       "files": [
         {
-          "path": "registry/rivet/components/pagination/pagination.tsx",
+          "path": "registry/rivetui/components/pagination/pagination.tsx",
           "type": "registry:ui"
         }
       ]
@@ -413,7 +413,7 @@
       "dependencies": ["@base-ui/react", "lucide-react"],
       "files": [
         {
-          "path": "registry/rivet/components/command-bar/command-bar.tsx",
+          "path": "registry/rivetui/components/command-bar/command-bar.tsx",
           "type": "registry:ui"
         }
       ]
@@ -425,7 +425,7 @@
       "description": "A platform-aware key-combination hint with accessible labels and a reusable listener hook.",
       "files": [
         {
-          "path": "registry/rivet/components/keyboard-shortcut/keyboard-shortcut.tsx",
+          "path": "registry/rivetui/components/keyboard-shortcut/keyboard-shortcut.tsx",
           "type": "registry:ui"
         }
       ]
@@ -438,11 +438,11 @@
       "dependencies": ["@base-ui/react", "lucide-react"],
       "files": [
         {
-          "path": "registry/rivet/components/theme-switcher/theme-switcher.tsx",
+          "path": "registry/rivetui/components/theme-switcher/theme-switcher.tsx",
           "type": "registry:ui"
         },
         {
-          "path": "registry/rivet/components/theme-switcher/theme-script.tsx",
+          "path": "registry/rivetui/components/theme-switcher/theme-script.tsx",
           "type": "registry:ui"
         }
       ]
@@ -454,7 +454,7 @@
       "description": "Semantic hierarchy navigation with parent links, a current page, custom separators, and collapsed paths.",
       "files": [
         {
-          "path": "registry/rivet/components/breadcrumb/breadcrumb.tsx",
+          "path": "registry/rivetui/components/breadcrumb/breadcrumb.tsx",
           "type": "registry:ui"
         }
       ]
@@ -467,7 +467,7 @@
       "dependencies": ["@base-ui/react", "class-variance-authority"],
       "files": [
         {
-          "path": "registry/rivet/components/avatar/avatar.tsx",
+          "path": "registry/rivetui/components/avatar/avatar.tsx",
           "type": "registry:ui"
         }
       ]
@@ -480,7 +480,7 @@
       "dependencies": ["lucide-react"],
       "files": [
         {
-          "path": "registry/rivet/components/file-upload/file-upload.tsx",
+          "path": "registry/rivetui/components/file-upload/file-upload.tsx",
           "type": "registry:ui"
         }
       ]
@@ -493,7 +493,7 @@
       "dependencies": ["@base-ui/react", "lucide-react"],
       "files": [
         {
-          "path": "registry/rivet/components/context-menu/context-menu.tsx",
+          "path": "registry/rivetui/components/context-menu/context-menu.tsx",
           "type": "registry:ui"
         }
       ]
@@ -506,7 +506,7 @@
       "dependencies": ["@base-ui/react", "lucide-react", "react-day-picker"],
       "files": [
         {
-          "path": "registry/rivet/components/date-picker/date-picker.tsx",
+          "path": "registry/rivetui/components/date-picker/date-picker.tsx",
           "type": "registry:ui"
         }
       ]
@@ -519,7 +519,7 @@
       "dependencies": ["@base-ui/react"],
       "files": [
         {
-          "path": "registry/rivet/components/slider/slider.tsx",
+          "path": "registry/rivetui/components/slider/slider.tsx",
           "type": "registry:ui"
         }
       ]
@@ -532,7 +532,7 @@
       "dependencies": ["@base-ui/react", "lucide-react"],
       "files": [
         {
-          "path": "registry/rivet/components/color-picker/color-picker.tsx",
+          "path": "registry/rivetui/components/color-picker/color-picker.tsx",
           "type": "registry:ui"
         }
       ]
@@ -545,7 +545,7 @@
       "dependencies": ["@base-ui/react"],
       "files": [
         {
-          "path": "registry/rivet/components/alert-dialog/alert-dialog.tsx",
+          "path": "registry/rivetui/components/alert-dialog/alert-dialog.tsx",
           "type": "registry:ui"
         }
       ]
@@ -558,7 +558,7 @@
       "dependencies": ["lucide-react"],
       "files": [
         {
-          "path": "registry/rivet/components/password-field/password-field.tsx",
+          "path": "registry/rivetui/components/password-field/password-field.tsx",
           "type": "registry:ui"
         }
       ]
@@ -571,7 +571,7 @@
       "dependencies": ["@base-ui/react", "lucide-react"],
       "files": [
         {
-          "path": "registry/rivet/components/rating/rating.tsx",
+          "path": "registry/rivetui/components/rating/rating.tsx",
           "type": "registry:ui"
         }
       ]
@@ -584,7 +584,7 @@
       "dependencies": ["@base-ui/react", "lucide-react"],
       "files": [
         {
-          "path": "registry/rivet/components/time-picker/time-picker.tsx",
+          "path": "registry/rivetui/components/time-picker/time-picker.tsx",
           "type": "registry:ui"
         }
       ]
@@ -597,7 +597,7 @@
       "dependencies": ["class-variance-authority"],
       "files": [
         {
-          "path": "registry/rivet/components/empty-state/empty-state.tsx",
+          "path": "registry/rivetui/components/empty-state/empty-state.tsx",
           "type": "registry:ui"
         }
       ]
@@ -610,7 +610,7 @@
       "dependencies": ["input-otp"],
       "files": [
         {
-          "path": "registry/rivet/components/input-otp/input-otp.tsx",
+          "path": "registry/rivetui/components/input-otp/input-otp.tsx",
           "type": "registry:ui"
         }
       ]
@@ -623,7 +623,7 @@
       "dependencies": ["qrcode.react"],
       "files": [
         {
-          "path": "registry/rivet/components/qr-code/qr-code.tsx",
+          "path": "registry/rivetui/components/qr-code/qr-code.tsx",
           "type": "registry:ui"
         }
       ]

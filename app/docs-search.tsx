@@ -7,8 +7,8 @@ import {
   CommandBar,
   type CommandBarAction,
   CommandBarTrigger,
-} from "@/registry/rivet/components/command-bar/command-bar";
-import { KeyboardShortcut } from "@/registry/rivet/components/keyboard-shortcut/keyboard-shortcut";
+} from "@/registry/rivetui/components/command-bar/command-bar";
+import { KeyboardShortcut } from "@/registry/rivetui/components/keyboard-shortcut/keyboard-shortcut";
 
 type DocsSearchItem = {
   readonly slug: string;

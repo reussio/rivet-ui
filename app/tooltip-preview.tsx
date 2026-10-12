@@ -1,12 +1,12 @@
 import { Copy, RefreshCw, Settings2, Trash2 } from "lucide-react";
 
-import { Button } from "@/registry/rivet/components/button/button";
+import { Button } from "@/registry/rivetui/components/button/button";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/registry/rivet/components/tooltip/tooltip";
+} from "@/registry/rivetui/components/tooltip/tooltip";
 
 export function TooltipPreview() {
   return (

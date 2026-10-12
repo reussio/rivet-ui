@@ -3,8 +3,8 @@ import {
   FieldDescription,
   FieldError,
   FieldLabel,
-} from "@/registry/rivet/components/field/field";
-import { Input } from "@/registry/rivet/components/input/input";
+} from "@/registry/rivetui/components/field/field";
+import { Input } from "@/registry/rivetui/components/input/input";
 
 export function InputFieldPreview() {
   return (

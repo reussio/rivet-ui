@@ -1,4 +1,4 @@
-import { Skeleton } from "@/registry/rivet/components/skeleton/skeleton";
+import { Skeleton } from "@/registry/rivetui/components/skeleton/skeleton";
 
 export function SkeletonPreview() {
   return (

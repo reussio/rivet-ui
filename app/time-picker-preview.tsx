@@ -2,7 +2,7 @@
 
 import * as React from "react";
 
-import { TimePicker } from "@/registry/rivet/components/time-picker/time-picker";
+import { TimePicker } from "@/registry/rivetui/components/time-picker/time-picker";
 
 export function TimePickerPreview() {
   const [time, setTime] = React.useState<string | undefined>("14:30");

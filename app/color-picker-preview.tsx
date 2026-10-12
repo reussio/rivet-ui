@@ -2,7 +2,7 @@
 
 import * as React from "react";
 
-import { ColorPicker } from "@/registry/rivet/components/color-picker/color-picker";
+import { ColorPicker } from "@/registry/rivetui/components/color-picker/color-picker";
 
 const brandPresets = ["#0F172A", "#2563EB", "#0891B2", "#16A34A", "#CA8A04", "#DC2626"];
 

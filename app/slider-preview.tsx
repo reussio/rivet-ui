@@ -10,7 +10,7 @@ import {
   SliderThumb,
   SliderTrack,
   SliderValue,
-} from "@/registry/rivet/components/slider/slider";
+} from "@/registry/rivetui/components/slider/slider";
 
 export function SliderPreview() {
   const [allocation, setAllocation] = React.useState(64);

@@ -1,6 +1,6 @@
 import { Copy, Ellipsis, Eye, GitBranch, Settings2, Trash2 } from "lucide-react";
 
-import { Button } from "@/registry/rivet/components/button/button";
+import { Button } from "@/registry/rivetui/components/button/button";
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -16,7 +16,7 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@/registry/rivet/components/dropdown-menu/dropdown-menu";
+} from "@/registry/rivetui/components/dropdown-menu/dropdown-menu";
 
 export function DropdownMenuPreview() {
   return (

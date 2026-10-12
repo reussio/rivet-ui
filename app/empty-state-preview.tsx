@@ -1,6 +1,6 @@
 import { ArrowRight, PackageOpen, SearchX } from "lucide-react";
 
-import { Button } from "@/registry/rivet/components/button/button";
+import { Button } from "@/registry/rivetui/components/button/button";
 import {
   EmptyState,
   EmptyStateActions,
@@ -10,7 +10,7 @@ import {
   EmptyStateLabel,
   EmptyStateMedia,
   EmptyStateTitle,
-} from "@/registry/rivet/components/empty-state/empty-state";
+} from "@/registry/rivetui/components/empty-state/empty-state";
 
 export function EmptyStatePreview() {
   return (

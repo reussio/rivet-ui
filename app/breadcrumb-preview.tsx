@@ -6,7 +6,7 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/registry/rivet/components/breadcrumb/breadcrumb";
+} from "@/registry/rivetui/components/breadcrumb/breadcrumb";
 
 export function BreadcrumbPreview() {
   return (

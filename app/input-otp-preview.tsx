@@ -3,13 +3,13 @@
 import { ArrowRight, KeyRound, RotateCcw } from "lucide-react";
 import * as React from "react";
 
-import { Button } from "@/registry/rivet/components/button/button";
+import { Button } from "@/registry/rivetui/components/button/button";
 import {
   Field,
   FieldDescription,
   FieldError,
   FieldLabel,
-} from "@/registry/rivet/components/field/field";
+} from "@/registry/rivetui/components/field/field";
 import {
   InputOTP,
   InputOTPGroup,
@@ -17,7 +17,7 @@ import {
   InputOTPSlot,
   REGEXP_ONLY_DIGITS,
   REGEXP_ONLY_DIGITS_AND_CHARS,
-} from "@/registry/rivet/components/input-otp/input-otp";
+} from "@/registry/rivetui/components/input-otp/input-otp";
 
 const sixSlotIndexes = [0, 1, 2, 3, 4, 5] as const;
 

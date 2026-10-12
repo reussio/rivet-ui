@@ -7,8 +7,8 @@ import {
   AlertDescription,
   AlertIcon,
   AlertTitle,
-} from "@/registry/rivet/components/alert/alert";
-import { Button } from "@/registry/rivet/components/button/button";
+} from "@/registry/rivetui/components/alert/alert";
+import { Button } from "@/registry/rivetui/components/button/button";
 
 export function AlertPreview() {
   return (

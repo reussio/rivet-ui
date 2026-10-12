@@ -1,5 +1,5 @@
-import { Button } from "@/registry/rivet/components/button/button";
-import { Spinner } from "@/registry/rivet/components/spinner/spinner";
+import { Button } from "@/registry/rivetui/components/button/button";
+import { Spinner } from "@/registry/rivetui/components/spinner/spinner";
 
 export function SpinnerPreview() {
   return (

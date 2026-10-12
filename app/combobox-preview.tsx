@@ -11,7 +11,7 @@ import {
   ComboboxLabel,
   ComboboxList,
   ComboboxTrigger,
-} from "@/registry/rivet/components/combobox/combobox";
+} from "@/registry/rivetui/components/combobox/combobox";
 
 const regions = ["Amsterdam", "Frankfurt", "London", "New York", "Singapore", "Tokyo"];
 

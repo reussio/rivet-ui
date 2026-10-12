@@ -1,4 +1,4 @@
-import { Separator } from "@/registry/rivet/components/separator/separator";
+import { Separator } from "@/registry/rivetui/components/separator/separator";
 
 export function SeparatorPreview() {
   return (

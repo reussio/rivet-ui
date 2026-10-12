@@ -1,4 +1,4 @@
-import type { TerminalCommand } from "@/registry/rivet/components/terminal/terminal";
+import type { TerminalCommand } from "@/registry/rivetui/components/terminal/terminal";
 
 export function getShadcnCommands(argument: string) {
   return [

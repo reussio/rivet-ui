@@ -4,7 +4,7 @@ import {
   AvatarGroup,
   AvatarGroupCount,
   AvatarImage,
-} from "@/registry/rivet/components/avatar/avatar";
+} from "@/registry/rivetui/components/avatar/avatar";
 
 const portrait =
   "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'%3E%3Crect width='96' height='96' fill='%23d4d4d4'/%3E%3Cpath d='M19 96c2-23 13-34 29-34s27 11 29 34' fill='%23525252'/%3E%3Ccircle cx='48' cy='39' r='21' fill='%23808080'/%3E%3Cpath d='M28 34c4-17 34-25 42 1-9-4-13-12-15-18-5 10-14 15-27 17Z' fill='%23383838'/%3E%3C/svg%3E";

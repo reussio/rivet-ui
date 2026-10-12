@@ -9,7 +9,7 @@ import {
   setPackageManagerPreference,
   usePackageManagerPreference,
 } from "@/app/package-manager-preference";
-import { Button } from "@/registry/rivet/components/button/button";
+import { Button } from "@/registry/rivetui/components/button/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -17,7 +17,7 @@ import {
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
   DropdownMenuTrigger,
-} from "@/registry/rivet/components/dropdown-menu/dropdown-menu";
+} from "@/registry/rivetui/components/dropdown-menu/dropdown-menu";
 
 const packageManagerIcons = {
   bun: Bun,

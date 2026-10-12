@@ -1,4 +1,4 @@
-import { CodeBlock } from "@/registry/rivet/components/code-block/code-block";
+import { CodeBlock } from "@/registry/rivetui/components/code-block/code-block";
 
 const exampleCode = `import { Button } from "@/components/ui/button"
 

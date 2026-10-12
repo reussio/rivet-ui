@@ -117,7 +117,7 @@ The local documentation is available at [localhost:3000](http://localhost:3000),
 
 ## Adding a component
 
-1. Create the component in `registry/rivet/components/<name>/`.
+1. Create the component in `registry/rivetui/components/<name>/`.
 2. Add its metadata, files, and dependencies to `registry.json`.
 3. Add a focused preview in `app/` and its documentation in `content/components/<name>.mdx`.
 4. Run the full quality checks:

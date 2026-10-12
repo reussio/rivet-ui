@@ -13,7 +13,7 @@ import {
   ContextMenuSubContent,
   ContextMenuSubTrigger,
   ContextMenuTrigger,
-} from "@/registry/rivet/components/context-menu/context-menu";
+} from "@/registry/rivetui/components/context-menu/context-menu";
 
 export function ContextMenuPreview() {
   return (

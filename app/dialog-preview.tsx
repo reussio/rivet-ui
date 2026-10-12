@@ -1,6 +1,6 @@
 import { FileText, Plus } from "lucide-react";
 
-import { Button } from "@/registry/rivet/components/button/button";
+import { Button } from "@/registry/rivetui/components/button/button";
 import {
   Dialog,
   DialogBody,
@@ -11,9 +11,9 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/registry/rivet/components/dialog/dialog";
-import { Field, FieldDescription, FieldLabel } from "@/registry/rivet/components/field/field";
-import { Input } from "@/registry/rivet/components/input/input";
+} from "@/registry/rivetui/components/dialog/dialog";
+import { Field, FieldDescription, FieldLabel } from "@/registry/rivetui/components/field/field";
+import { Input } from "@/registry/rivetui/components/input/input";
 
 export function DialogPreview() {
   return (

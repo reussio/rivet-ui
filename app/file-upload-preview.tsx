@@ -7,7 +7,7 @@ import {
   FileUploadDropzone,
   FileUploadList,
   FileUploadMessage,
-} from "@/registry/rivet/components/file-upload/file-upload";
+} from "@/registry/rivetui/components/file-upload/file-upload";
 
 const maxSize = 5 * 1024 * 1024;
 

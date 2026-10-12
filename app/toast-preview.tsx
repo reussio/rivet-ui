@@ -2,8 +2,8 @@
 
 import { AlertTriangle, Check, LoaderCircle } from "lucide-react";
 
-import { Button } from "@/registry/rivet/components/button/button";
-import { Toaster, ToastProvider, useToast } from "@/registry/rivet/components/toast/toast";
+import { Button } from "@/registry/rivetui/components/button/button";
+import { Toaster, ToastProvider, useToast } from "@/registry/rivetui/components/toast/toast";
 
 export function ToastPreview() {
   return (

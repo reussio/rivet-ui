@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
-import { ThemeScript } from "@/registry/rivet/components/theme-switcher/theme-script";
+import { ThemeScript } from "@/registry/rivetui/components/theme-switcher/theme-script";
 
 import "./globals.css";
 

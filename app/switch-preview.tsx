@@ -3,8 +3,8 @@ import {
   FieldDescription,
   FieldError,
   FieldLabel,
-} from "@/registry/rivet/components/field/field";
-import { Switch } from "@/registry/rivet/components/switch/switch";
+} from "@/registry/rivetui/components/field/field";
+import { Switch } from "@/registry/rivetui/components/switch/switch";
 
 export function SwitchPreview() {
   return (

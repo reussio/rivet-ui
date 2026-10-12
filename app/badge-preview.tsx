@@ -1,4 +1,4 @@
-import { Badge } from "@/registry/rivet/components/badge/badge";
+import { Badge } from "@/registry/rivetui/components/badge/badge";
 
 export function BadgePreview() {
   return (

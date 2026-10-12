@@ -1,6 +1,6 @@
 import { Ellipsis, ExternalLink } from "lucide-react";
 
-import { Button } from "@/registry/rivet/components/button/button";
+import { Button } from "@/registry/rivetui/components/button/button";
 import {
   Table,
   TableBody,
@@ -10,7 +10,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/registry/rivet/components/table/table";
+} from "@/registry/rivetui/components/table/table";
 
 const deployments = [
   {

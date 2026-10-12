@@ -3,13 +3,13 @@ import {
   FieldDescription,
   FieldError,
   FieldLabel,
-} from "@/registry/rivet/components/field/field";
+} from "@/registry/rivetui/components/field/field";
 import {
   RadioGroup,
   RadioOption,
   RadioOptionDescription,
   RadioOptionLabel,
-} from "@/registry/rivet/components/radio-group/radio-group";
+} from "@/registry/rivetui/components/radio-group/radio-group";
 
 export function RadioGroupPreview() {
   return (

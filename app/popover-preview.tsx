@@ -1,8 +1,8 @@
 import { Settings2 } from "lucide-react";
 
-import { Button } from "@/registry/rivet/components/button/button";
-import { Field, FieldLabel } from "@/registry/rivet/components/field/field";
-import { Input } from "@/registry/rivet/components/input/input";
+import { Button } from "@/registry/rivetui/components/button/button";
+import { Field, FieldLabel } from "@/registry/rivetui/components/field/field";
+import { Input } from "@/registry/rivetui/components/input/input";
 import {
   Popover,
   PopoverClose,
@@ -10,7 +10,7 @@ import {
   PopoverDescription,
   PopoverTitle,
   PopoverTrigger,
-} from "@/registry/rivet/components/popover/popover";
+} from "@/registry/rivetui/components/popover/popover";
 
 export function PopoverPreview() {
   return (

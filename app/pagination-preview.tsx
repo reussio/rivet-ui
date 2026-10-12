@@ -10,7 +10,7 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} from "@/registry/rivet/components/pagination/pagination";
+} from "@/registry/rivetui/components/pagination/pagination";
 
 export function PaginationPreview() {
   return (

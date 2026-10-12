@@ -8,8 +8,8 @@ import { InstallCommandTerminal } from "@/app/install-command-terminal";
 import { getShadcnCommands } from "@/app/install-commands";
 import { OnThisPage } from "@/app/on-this-page";
 import { componentDocs } from "@/content/components";
-import { buttonVariants } from "@/registry/rivet/components/button/button";
-import { CodeBlock } from "@/registry/rivet/components/code-block/code-block";
+import { buttonVariants } from "@/registry/rivetui/components/button/button";
+import { CodeBlock } from "@/registry/rivetui/components/code-block/code-block";
 
 const principles = [
   {

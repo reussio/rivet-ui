@@ -6,7 +6,7 @@ import {
   setPackageManagerPreference,
   usePackageManagerPreference,
 } from "@/app/package-manager-preference";
-import { Terminal } from "@/registry/rivet/components/terminal/terminal";
+import { Terminal } from "@/registry/rivetui/components/terminal/terminal";
 
 type InstallCommand = {
   readonly value: PackageManager;

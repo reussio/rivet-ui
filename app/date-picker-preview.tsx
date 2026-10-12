@@ -1,6 +1,6 @@
 "use client";
 
-import { DatePicker, DateRangePicker } from "@/registry/rivet/components/date-picker/date-picker";
+import { DatePicker, DateRangePicker } from "@/registry/rivetui/components/date-picker/date-picker";
 
 const releaseDate = new Date(2026, 9, 22);
 const releaseWindow = {

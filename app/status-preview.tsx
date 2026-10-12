@@ -1,4 +1,4 @@
-import { Status } from "@/registry/rivet/components/status/status";
+import { Status } from "@/registry/rivetui/components/status/status";
 
 const services = [
   { name: "API gateway", region: "fra1", state: "Operational", tone: "success" as const },

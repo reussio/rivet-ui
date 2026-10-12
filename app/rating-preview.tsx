@@ -2,14 +2,14 @@
 
 import * as React from "react";
 
-import { Button } from "@/registry/rivet/components/button/button";
+import { Button } from "@/registry/rivetui/components/button/button";
 import {
   Field,
   FieldDescription,
   FieldError,
   FieldLabel,
-} from "@/registry/rivet/components/field/field";
-import { Rating } from "@/registry/rivet/components/rating/rating";
+} from "@/registry/rivetui/components/field/field";
+import { Rating } from "@/registry/rivetui/components/rating/rating";
 
 const ratingCopy = [
   "No rating selected",

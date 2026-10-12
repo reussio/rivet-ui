@@ -1,10 +1,10 @@
-import { Checkbox } from "@/registry/rivet/components/checkbox/checkbox";
+import { Checkbox } from "@/registry/rivetui/components/checkbox/checkbox";
 import {
   Field,
   FieldDescription,
   FieldError,
   FieldLabel,
-} from "@/registry/rivet/components/field/field";
+} from "@/registry/rivetui/components/field/field";
 
 export function CheckboxPreview() {
   return (

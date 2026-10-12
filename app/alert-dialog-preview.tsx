@@ -11,8 +11,8 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/registry/rivet/components/alert-dialog/alert-dialog";
-import { Button } from "@/registry/rivet/components/button/button";
+} from "@/registry/rivetui/components/alert-dialog/alert-dialog";
+import { Button } from "@/registry/rivetui/components/button/button";
 
 export function AlertDialogPreview() {
   return (

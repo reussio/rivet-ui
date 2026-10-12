@@ -2,14 +2,14 @@
 
 import { ArrowRight, LockKeyhole } from "lucide-react";
 
-import { Button } from "@/registry/rivet/components/button/button";
+import { Button } from "@/registry/rivetui/components/button/button";
 import {
   Field,
   FieldDescription,
   FieldError,
   FieldLabel,
-} from "@/registry/rivet/components/field/field";
-import { PasswordField } from "@/registry/rivet/components/password-field/password-field";
+} from "@/registry/rivetui/components/field/field";
+import { PasswordField } from "@/registry/rivetui/components/password-field/password-field";
 
 export function PasswordFieldPreview() {
   return (
