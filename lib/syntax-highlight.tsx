@@ -55,54 +55,71 @@ if (!Prism.languages.bash) {
   Prism.languages.bash = shellGrammar;
 }
 
+const rivetSyntaxThemeClassName = [
+  "[--syntax-comment:#6f7378]",
+  "[--syntax-foreground:#24292e]",
+  "[--syntax-function:#6f42c1]",
+  "[--syntax-keyword:#d32f2f]",
+  "[--syntax-number:#1976d2]",
+  "[--syntax-punctuation:#212121]",
+  "[--syntax-string:#22863a]",
+  "[--syntax-variable:#1976d2]",
+  "dark:[--syntax-comment:#8b949e]",
+  "dark:[--syntax-foreground:#b392f0]",
+  "dark:[--syntax-function:#b392f0]",
+  "dark:[--syntax-keyword:#f97583]",
+  "dark:[--syntax-number:#f8f8f8]",
+  "dark:[--syntax-punctuation:#bbbbbb]",
+  "dark:[--syntax-string:#ffab70]",
+  "dark:[--syntax-variable:#79b8ff]",
+].join(" ");
+
 const rivetSyntaxTheme: PrismTheme = {
   plain: {
-    color: "var(--foreground)",
+    color: "var(--syntax-foreground)",
   },
   styles: [
     {
       types: ["comment", "prolog", "doctype", "cdata"],
       style: {
-        color: "var(--muted-foreground)",
+        color: "var(--syntax-comment)",
         fontStyle: "italic",
       },
     },
     {
       types: ["punctuation", "operator", "entity", "url"],
       style: {
-        color: "color-mix(in oklab, var(--muted-foreground) 84%, transparent)",
+        color: "var(--syntax-punctuation)",
       },
     },
     {
       types: ["string", "char", "attr-value", "regex", "inserted"],
       style: {
-        color: "color-mix(in oklab, var(--foreground) 42%, oklch(0.74 0.14 155))",
+        color: "var(--syntax-string)",
       },
     },
     {
       types: ["keyword", "module", "control-flow", "important", "atrule"],
       style: {
-        color: "color-mix(in oklab, var(--foreground) 42%, oklch(0.72 0.15 300))",
-        fontWeight: "600",
+        color: "var(--syntax-keyword)",
       },
     },
     {
       types: ["function", "function-variable", "class-name", "builtin", "property", "tag"],
       style: {
-        color: "color-mix(in oklab, var(--foreground) 42%, oklch(0.72 0.14 235))",
-        fontWeight: "600",
+        color: "var(--syntax-function)",
       },
     },
     {
       types: ["attr-name", "variable"],
       style: {
-        color: "color-mix(in oklab, var(--foreground) 42%, oklch(0.74 0.14 300))",
+        color: "var(--syntax-variable)",
       },
     },
     {
       types: ["boolean", "number", "constant", "symbol"],
       style: {
-        color: "color-mix(in oklab, var(--foreground) 42%, oklch(0.78 0.13 75))",
+        color: "var(--syntax-number)",
       },
     },
     {
@@ -151,7 +168,10 @@ function SyntaxHighlight({
   return (
     <Highlight code={code} language={normalizedLanguage} theme={rivetSyntaxTheme}>
       {({ tokens, getLineProps, getTokenProps }) => (
-        <code data-language={language} className={`language-${normalizedLanguage}`}>
+        <code
+          data-language={language}
+          className={`language-${normalizedLanguage} ${rivetSyntaxThemeClassName}`}
+        >
           {tokens.map((line, lineIndex) => {
             const lineProps = getLineProps({ line });
             const tokenOccurrences = new Map<string, number>();
