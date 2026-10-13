@@ -1,4 +1,4 @@
-import { ArrowRight, ArrowUpRight, Check } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 
 import { DocsHeader, DocsSidebar } from "@/app/docs-navigation";
@@ -10,6 +10,7 @@ import { OnThisPage } from "@/app/on-this-page";
 import { componentDocs } from "@/content/components";
 import { buttonVariants } from "@/registry/rivetui/components/button/button";
 import { CodeBlock } from "@/registry/rivetui/components/code-block/code-block";
+import { Status } from "@/registry/rivetui/components/status/status";
 
 const principles = [
   {
@@ -229,10 +230,9 @@ export default function Home() {
             </p>
             <OnThisPage sections={homeSections} />
             <div className="mt-10 border-t border-border pt-5">
-              <p className="flex items-center gap-2 text-xs text-muted-foreground">
-                <Check className="size-3.5" aria-hidden="true" />
+              <Status tone="success" className="min-h-0 text-xs font-normal">
                 Registry validated
-              </p>
+              </Status>
             </div>
           </div>
         </aside>

@@ -3,6 +3,7 @@
 import { Search } from "lucide-react";
 import { useRouter } from "next/navigation";
 
+import { Button } from "@/registry/rivetui/components/button/button";
 import {
   CommandBar,
   type CommandBarAction,
@@ -37,9 +38,11 @@ function DocsSearch({ items }: { items: readonly DocsSearchItem[] }) {
     >
       <CommandBarTrigger
         render={
-          <button
+          <Button
             type="button"
-            className="group inline-flex h-9 items-center border border-border text-muted-foreground outline-none transition-[background-color,border-color,box-shadow,color] hover:border-foreground/40 hover:bg-muted/50 hover:text-foreground focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/40"
+            variant="outline"
+            size="sm"
+            className="group h-9 justify-start gap-0 px-0 font-normal text-muted-foreground hover:text-foreground"
             aria-label="Search documentation"
           />
         }

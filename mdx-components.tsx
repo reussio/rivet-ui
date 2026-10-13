@@ -14,6 +14,7 @@ import {
   MdxTableCell,
   MdxTableHead,
   MdxTableHeader,
+  MdxTableRow,
 } from "@/app/component-doc-content";
 
 const components = {
@@ -30,6 +31,7 @@ const components = {
   td: MdxTableCell,
   th: MdxTableHeader,
   thead: MdxTableHead,
+  tr: MdxTableRow,
 } satisfies MDXComponents;
 
 export function useMDXComponents(): MDXComponents {

@@ -7,6 +7,14 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/registry/rivetui/components/collapsible/collapsible";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/registry/rivetui/components/table/table";
 
 function ComponentUsage({ children }: { children: React.ReactNode }) {
   return (
@@ -117,8 +125,12 @@ function MdxPre({ children }: React.ComponentProps<"pre">) {
 
 function MdxTable(props: React.ComponentProps<"table">) {
   return (
-    <div data-slot="component-doc-table" className="mt-8 overflow-x-auto border border-border">
-      <table className="w-full min-w-[36rem] border-collapse text-left text-sm" {...props} />
+    <div data-slot="component-doc-table" className="mt-8">
+      <Table
+        containerClassName="border-border"
+        className="min-w-[36rem] border-collapse text-left"
+        {...props}
+      />
     </div>
   );
 }
@@ -137,25 +149,29 @@ function MdxHeadingThree({ children, ...props }: React.ComponentProps<"h3">) {
 
 function MdxTableHead(props: React.ComponentProps<"thead">) {
   return (
-    <thead
-      className="border-b border-border bg-muted/30 font-mono text-[0.625rem] uppercase tracking-[0.14em] text-muted-foreground"
+    <TableHeader
+      className="bg-muted/30 font-mono text-[0.625rem] uppercase tracking-[0.14em] text-muted-foreground"
       {...props}
     />
   );
 }
 
 function MdxTableBody(props: React.ComponentProps<"tbody">) {
-  return <tbody className="divide-y divide-border" {...props} />;
+  return <TableBody {...props} />;
+}
+
+function MdxTableRow(props: React.ComponentProps<"tr">) {
+  return <TableRow className="hover:bg-transparent" {...props} />;
 }
 
 function MdxTableHeader(props: React.ComponentProps<"th">) {
-  return <th className="px-4 py-3 font-medium last:text-right" {...props} />;
+  return <TableHead className="h-auto py-3 last:text-right" {...props} />;
 }
 
 function MdxTableCell(props: React.ComponentProps<"td">) {
   return (
-    <td
-      className="px-4 py-3 font-mono text-xs text-muted-foreground last:text-right last:text-foreground"
+    <TableCell
+      className="font-mono text-xs text-muted-foreground last:text-right last:text-foreground"
       {...props}
     />
   );
@@ -179,4 +195,5 @@ export {
   MdxTableCell,
   MdxTableHead,
   MdxTableHeader,
+  MdxTableRow,
 };

@@ -12,6 +12,14 @@ import { InstallCommandTerminal } from "@/app/install-command-terminal";
 import { getShadcnCommands } from "@/app/install-commands";
 import { OnThisPage } from "@/app/on-this-page";
 import { getComponentContent, getComponentDoc } from "@/content/components";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/registry/rivetui/components/breadcrumb/breadcrumb";
 
 type ComponentPageProps = {
   params: Promise<{ slug: string }>;
@@ -70,16 +78,21 @@ export default async function ComponentPage({ params }: ComponentPageProps) {
               aria-hidden="true"
             />
             <div className="relative max-w-3xl">
-              <nav
-                className="flex items-center gap-2 font-mono text-[0.6875rem] uppercase tracking-[0.16em] text-muted-foreground"
-                aria-label="Breadcrumb"
-              >
-                <Link href="/#components" className="transition-colors hover:text-foreground">
-                  Components
-                </Link>
-                <span aria-hidden="true">/</span>
-                <span>{componentGroup?.name}</span>
-              </nav>
+              <Breadcrumb>
+                <BreadcrumbList className="text-[0.6875rem] uppercase tracking-[0.16em]">
+                  <BreadcrumbItem>
+                    <BreadcrumbLink href="/#components">Components</BreadcrumbLink>
+                  </BreadcrumbItem>
+                  <BreadcrumbSeparator />
+                  <BreadcrumbItem>
+                    <span>{componentGroup?.name}</span>
+                  </BreadcrumbItem>
+                  <BreadcrumbSeparator />
+                  <BreadcrumbItem>
+                    <BreadcrumbPage>{component.name}</BreadcrumbPage>
+                  </BreadcrumbItem>
+                </BreadcrumbList>
+              </Breadcrumb>
 
               <h1 className="mt-5 text-4xl font-semibold tracking-[-0.055em] sm:text-6xl">
                 {component.name}
