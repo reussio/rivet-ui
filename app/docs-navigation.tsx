@@ -4,7 +4,7 @@ import { DocsSearch, type DocsSearchItem } from "@/app/docs-search";
 import { componentGroups } from "@/app/docs-structure";
 import { HomeSidebarLinks } from "@/app/home-sidebar-links";
 import { SidebarLink } from "@/app/sidebar-link";
-import { Button } from "@/registry/rivetui/components/button/button";
+import { buttonVariants } from "@/registry/rivetui/components/button/button";
 
 const searchItems: readonly DocsSearchItem[] = componentGroups.flatMap((group) =>
   group.components.map((component) => ({
@@ -64,21 +64,19 @@ export function DocsHeader({ active = "docs" }: { active?: "docs" | "components"
 
         <div className="ml-auto flex items-center gap-2">
           <DocsSearch items={searchItems} />
-          <Button
-            render={
-              <a
-                href="https://github.com/reussio/rivet-ui"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="View Rivet UI on GitHub"
-              />
-            }
-            variant="outline"
-            size="icon-sm"
-            className="size-9 text-muted-foreground hover:text-foreground"
+          <a
+            href="https://github.com/reussio/rivet-ui"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="View Rivet UI on GitHub"
+            className={buttonVariants({
+              variant: "outline",
+              size: "icon-sm",
+              className: "size-9 text-muted-foreground hover:text-foreground",
+            })}
           >
             <GitHubIcon className="size-4" />
-          </Button>
+          </a>
         </div>
       </div>
     </header>
