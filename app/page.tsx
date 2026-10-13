@@ -70,15 +70,15 @@ export default function Home() {
               />
               <div className="relative max-w-3xl">
                 <p className="font-mono text-[0.6875rem] uppercase tracking-[0.16em] text-muted-foreground">
-                  Documentation / 001
+                  Rivet UI documentation
                 </p>
                 <h1 className="mt-5 text-5xl font-semibold leading-[0.95] tracking-[-0.06em] sm:text-7xl">
-                  Build with
-                  <span className="block text-muted-foreground">Rivet UI.</span>
+                  Components,
+                  <span className="block text-muted-foreground">engineered.</span>
                 </h1>
                 <p className="mt-6 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
                   Accessible React components with precise APIs, readable source, and a visual
-                  system engineered for technical products.
+                  system built for technical products.
                 </p>
                 <div className="mt-8 flex flex-wrap gap-3">
                   <a href="#quick-start" className={buttonVariants()}>
