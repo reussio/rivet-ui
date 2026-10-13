@@ -138,6 +138,10 @@ export async function ComponentPreview({ slug }: { slug: ComponentSlug }) {
       const { SelectPreview } = await import("@/app/select-preview");
       return <SelectPreview />;
     }
+    case "sheet": {
+      const { SheetPreview } = await import("@/app/sheet-preview");
+      return <SheetPreview />;
+    }
     case "separator": {
       const { SeparatorPreview } = await import("@/app/separator-preview");
       return <SeparatorPreview />;

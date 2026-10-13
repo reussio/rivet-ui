@@ -35,6 +35,7 @@ const groupDefinitions = [
       "dialog",
       "dropdown-menu",
       "popover",
+      "sheet",
       "tooltip",
     ],
   },

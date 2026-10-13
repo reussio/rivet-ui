@@ -1,0 +1,58 @@
+import { defineComponentMetadata } from "@/content/components/schema"
+
+export const metadata = defineComponentMetadata({
+  "name": "Sheet",
+  "slug": "sheet",
+  "description": "Presents a focused task in an edge-anchored modal panel without replacing the current page."
+})
+
+<ComponentUsage>
+
+```tsx
+import {
+  Sheet,
+  SheetBody,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet"
+
+<Sheet>
+  <SheetTrigger>Open settings</SheetTrigger>
+  <SheetContent side="right">
+    <SheetHeader>
+      <SheetTitle>Environment settings</SheetTitle>
+      <SheetDescription>Configure the production runtime.</SheetDescription>
+    </SheetHeader>
+    <SheetBody>{/* Settings */}</SheetBody>
+  </SheetContent>
+</Sheet>
+```
+
+`SheetBody` owns vertical overflow so headers and footers remain reachable with long content.
+
+</ComponentUsage>
+
+<ComponentApi>
+
+### Sheet
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `open` | `boolean` | `—` |
+| `defaultOpen` | `boolean` | `false` |
+| `onOpenChange` | `(open: boolean) => void` | `—` |
+| `modal` | `boolean` | `true` |
+
+### SheetContent
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `side` | `"top" \| "right" \| "bottom" \| "left"` | `"right"` |
+| `showCloseButton` | `boolean` | `true` |
+| `closeLabel` | `string` | `"Close sheet"` |
+| `className` | `string` | `—` |
+
+</ComponentApi>
