@@ -74,6 +74,10 @@ export async function ComponentPreview({ slug }: { slug: ComponentSlug }) {
       const { DropdownMenuPreview } = await import("@/app/dropdown-menu-preview");
       return <DropdownMenuPreview />;
     }
+    case "drawer": {
+      const { DrawerPreview } = await import("@/app/drawer-preview");
+      return <DrawerPreview />;
+    }
     case "empty-state": {
       const { EmptyStatePreview } = await import("@/app/empty-state-preview");
       return <EmptyStatePreview />;

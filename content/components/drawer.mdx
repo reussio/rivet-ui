@@ -1,0 +1,69 @@
+import { defineComponentMetadata } from "@/content/components/schema"
+
+export const metadata = defineComponentMetadata({
+  "name": "Drawer",
+  "slug": "drawer",
+  "description": "Presents mobile-first actions or content in a bottom panel with swipe dismissal and optional snap points."
+})
+
+<ComponentUsage>
+
+```tsx
+import {
+  Drawer,
+  DrawerBody,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer"
+
+<Drawer>
+  <DrawerTrigger>Open actions</DrawerTrigger>
+  <DrawerContent>
+    <DrawerHeader>
+      <DrawerTitle>Deployment actions</DrawerTitle>
+      <DrawerDescription>Choose the next operation.</DrawerDescription>
+    </DrawerHeader>
+    <DrawerBody>{/* Actions */}</DrawerBody>
+    <DrawerClose>Done</DrawerClose>
+  </DrawerContent>
+</Drawer>
+```
+
+Use `snapPoints` for a drawer that moves between compact and expanded positions. Numbers from `0` to `1` represent fractions of the viewport height; pixel and rem values are also supported.
+
+```tsx
+<Drawer snapPoints={[0.35, 0.75]} defaultSnapPoint={0.35}>
+  {/* ... */}
+</Drawer>
+```
+
+</ComponentUsage>
+
+<ComponentApi>
+
+### Drawer
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `open` | `boolean` | `—` |
+| `defaultOpen` | `boolean` | `false` |
+| `onOpenChange` | `(open, details) => void` | `—` |
+| `snapPoints` | `(number \| string)[]` | `—` |
+| `snapPoint` | `number \| string \| null` | `—` |
+| `defaultSnapPoint` | `number \| string \| null` | first snap point |
+| `onSnapPointChange` | `(snapPoint, details) => void` | `—` |
+| `snapToSequentialPoints` | `boolean` | `false` |
+| `modal` | `boolean \| "trap-focus"` | `true` |
+
+### DrawerContent
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `showHandle` | `boolean` | `true` |
+| `className` | `string` | `—` |
+
+</ComponentApi>

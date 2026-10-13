@@ -33,6 +33,7 @@ const groupDefinitions = [
       "command-bar",
       "context-menu",
       "dialog",
+      "drawer",
       "dropdown-menu",
       "popover",
       "sheet",
