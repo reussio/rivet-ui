@@ -66,6 +66,14 @@ export async function ComponentPreview({ slug }: { slug: ComponentSlug }) {
       const { DatePickerPreview } = await import("@/app/date-picker-preview");
       return <DatePickerPreview />;
     }
+    case "data-list": {
+      const { DataListPreview } = await import("@/app/data-list-preview");
+      return <DataListPreview />;
+    }
+    case "data-table": {
+      const { DataTablePreview } = await import("@/app/data-table-preview");
+      return <DataTablePreview />;
+    }
     case "dialog": {
       const { DialogPreview } = await import("@/app/dialog-preview");
       return <DialogPreview />;

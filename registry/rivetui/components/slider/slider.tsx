@@ -48,7 +48,7 @@ function SliderControl({ className, ...props }: SliderPrimitive.Control.Props) {
     <SliderPrimitive.Control
       data-slot="slider-control"
       className={cn(
-        "col-span-2 flex w-full touch-none items-center py-3 select-none data-[orientation=vertical]:col-span-1 data-[orientation=vertical]:h-48 data-[orientation=vertical]:w-auto data-[orientation=vertical]:flex-col data-[orientation=vertical]:px-3 data-[orientation=vertical]:py-0",
+        "col-span-2 flex w-full cursor-pointer touch-none items-center py-3 select-none data-disabled:cursor-not-allowed data-[orientation=vertical]:col-span-1 data-[orientation=vertical]:h-48 data-[orientation=vertical]:w-auto data-[orientation=vertical]:flex-col data-[orientation=vertical]:px-3 data-[orientation=vertical]:py-0",
         className,
       )}
       {...props}

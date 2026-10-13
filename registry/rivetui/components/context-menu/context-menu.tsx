@@ -224,6 +224,7 @@ function ContextMenuSubContent({
   );
 }
 
+export type { ContextMenuContentProps };
 export {
   ContextMenu,
   ContextMenuCheckboxItem,

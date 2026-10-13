@@ -2,7 +2,7 @@ import type * as React from "react";
 
 import { cn } from "@/lib/utils";
 
-type SpinnerSize = "sm" | "default" | "lg";
+type SpinnerSize = "sm" | "md" | "lg";
 
 type SpinnerProps = React.ComponentProps<"svg"> & {
   size?: SpinnerSize;
@@ -10,12 +10,12 @@ type SpinnerProps = React.ComponentProps<"svg"> & {
 
 const spinnerSizes: Record<SpinnerSize, string> = {
   sm: "size-3.5",
-  default: "size-4",
+  md: "size-4",
   lg: "size-6",
 };
 
 function Spinner({
-  size = "default",
+  size = "md",
   className,
   "aria-label": ariaLabel = "Loading",
   ...props

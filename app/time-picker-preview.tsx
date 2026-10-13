@@ -59,6 +59,7 @@ export function TimePickerPreview() {
             <Specification term="Value" detail="hh:mm" />
             <Specification term="Cycles" detail="12 / 24" />
             <Specification term="Adjust" detail="keys / stepper" />
+            <Specification term="Actions" detail="now / clear" />
             <Specification term="Form" detail="native value" />
           </dl>
         </aside>

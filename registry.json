@@ -659,7 +659,7 @@
       "type": "registry:ui",
       "title": "Website Link",
       "description": "A compact inline link with an automatically derived favicon, protocol-aware fallback, and native anchor behavior.",
-      "dependencies": ["lucide-react"],
+      "dependencies": ["class-variance-authority", "lucide-react"],
       "files": [
         {
           "path": "registry/rivetui/components/website-link/website-link.tsx",
@@ -676,6 +676,31 @@
       "files": [
         {
           "path": "registry/rivetui/components/search-field/search-field.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "data-list",
+      "type": "registry:ui",
+      "title": "Data List",
+      "description": "A semantic, responsive list of labeled values with horizontal and vertical layouts.",
+      "files": [
+        {
+          "path": "registry/rivetui/components/data-list/data-list.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "data-table",
+      "type": "registry:ui",
+      "title": "Data Table",
+      "description": "A typed data table with sorting, scoped search, row selection, column visibility, loading and empty states, and client pagination.",
+      "dependencies": ["@base-ui/react", "@tanstack/react-table", "lucide-react"],
+      "files": [
+        {
+          "path": "registry/rivetui/components/data-table/data-table.tsx",
           "type": "registry:ui"
         }
       ]

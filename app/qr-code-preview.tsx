@@ -1,10 +1,9 @@
 import { ExternalLink, ScanLine } from "lucide-react";
 
+import { rivetMarkDataUrl } from "@/app/rivet-logo";
 import { QRCode } from "@/registry/rivetui/components/qr-code/qr-code";
 
 const docsUrl = "https://rivetui.reuss.dev";
-const rivetMark =
-  "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='white'/%3E%3Cpath fill='black' d='M12 12h40v40H12zm8 8v24h24V20zm8 8h12v12H28z'/%3E%3C/svg%3E";
 
 export function QRCodePreview() {
   return (
@@ -77,7 +76,7 @@ export function QRCodePreview() {
           <QRCode
             value={docsUrl}
             size={152}
-            logo={{ src: rivetMark, size: 32 }}
+            logo={{ src: rivetMarkDataUrl, size: 32 }}
             aria-label="Rivet UI documentation with embedded Rivet mark"
           />
           <div className="max-w-sm">

@@ -27,19 +27,39 @@ import { DatePicker, DateRangePicker } from "@/components/ui/date-picker"
 
 <ComponentApi>
 
+### DatePicker
+
 | Prop | Type | Default |
 | --- | --- | --- |
 | `value` | `Date` | `—` |
 | `defaultValue` | `Date` | `—` |
-| `onValueChange` | `(date?: Date) => void` | `—` |
+| `onValueChange` | `(date: Date \| undefined) => void` | `—` |
 | `placeholder` | `string` | `"Select date"` |
 | `formatLocale` | `Intl.LocalesArgument` | `runtime locale` |
 | `dateFormat` | `Intl.DateTimeFormatOptions` | `{ dateStyle: "medium" }` |
 | `calendarProps` | `DayPickerProps` | `—` |
-| `DateRangePicker.value` | `DateRange` | `—` |
-| `DateRangePicker.onValueChange` | `(range?: DateRange) => void` | `—` |
-| `fromName / toName` | `string` | `—` |
+| `open` | `boolean` | `—` |
+| `defaultOpen` | `boolean` | `false` |
+| `onOpenChange` | `(open: boolean, details) => void` | `—` |
 | `disabled` | `boolean` | `false` |
 | `name` | `string` | `—` |
+
+### DateRangePicker
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `value` | `DateRange` | `—` |
+| `defaultValue` | `DateRange` | `—` |
+| `onValueChange` | `(range: DateRange \| undefined) => void` | `—` |
+| `placeholder` | `string` | `"Select date range"` |
+| `formatLocale` | `Intl.LocalesArgument` | `runtime locale` |
+| `dateFormat` | `Intl.DateTimeFormatOptions` | `{ dateStyle: "medium" }` |
+| `calendarProps` | `DayPickerProps` | `—` |
+| `open` | `boolean` | `—` |
+| `defaultOpen` | `boolean` | `false` |
+| `onOpenChange` | `(open: boolean, details) => void` | `—` |
+| `fromName` | `string` | `—` |
+| `toName` | `string` | `—` |
+| `disabled` | `boolean` | `false` |
 
 </ComponentApi>

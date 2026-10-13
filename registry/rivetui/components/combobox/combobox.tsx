@@ -2,6 +2,7 @@
 
 import { Combobox as ComboboxPrimitive } from "@base-ui/react/combobox";
 import { Check, ChevronDown, X } from "lucide-react";
+import type * as React from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -11,13 +12,19 @@ function Combobox<Value, Multiple extends boolean | undefined = false, Item = Va
   return <ComboboxPrimitive.Root {...props} />;
 }
 
-function ComboboxLabel({ className, ...props }: ComboboxPrimitive.Label.Props) {
+function ComboboxLabel({ children, className, htmlFor, ...props }: React.ComponentProps<"label">) {
   return (
-    <ComboboxPrimitive.Label
+    <label
+      htmlFor={htmlFor}
       data-slot="combobox-label"
-      className={cn("mb-2 block text-sm font-medium", className)}
+      className={cn(
+        "mb-2 block w-fit font-mono text-[0.6875rem] font-medium uppercase leading-none tracking-[0.14em] text-foreground",
+        className,
+      )}
       {...props}
-    />
+    >
+      {children}
+    </label>
   );
 }
 
@@ -49,7 +56,7 @@ function ComboboxTrigger({ className, children, ...props }: ComboboxPrimitive.Tr
     <ComboboxPrimitive.Trigger
       data-slot="combobox-trigger"
       className={cn(
-        "absolute top-px right-px grid size-[2.375rem] place-items-center text-muted-foreground outline-none transition-colors hover:text-foreground focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring/40 disabled:pointer-events-none disabled:opacity-50",
+        "absolute top-px right-px grid size-[2.375rem] cursor-pointer place-items-center text-muted-foreground outline-none transition-colors hover:text-foreground focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring/40 disabled:pointer-events-none disabled:opacity-50 motion-reduce:transition-none",
         className,
       )}
       {...props}
@@ -64,7 +71,7 @@ function ComboboxClear({ className, children, ...props }: ComboboxPrimitive.Clea
     <ComboboxPrimitive.Clear
       data-slot="combobox-clear"
       className={cn(
-        "absolute top-px right-10 grid size-[2.375rem] place-items-center text-muted-foreground outline-none transition-colors hover:text-foreground focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring/40 disabled:pointer-events-none disabled:opacity-50",
+        "absolute top-px right-10 grid size-[2.375rem] cursor-pointer place-items-center text-muted-foreground outline-none transition-colors hover:text-foreground focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring/40 disabled:pointer-events-none disabled:opacity-50 motion-reduce:transition-none",
         className,
       )}
       {...props}

@@ -1,15 +1,41 @@
 "use client";
 
+import { cva, type VariantProps } from "class-variance-authority";
 import { ExternalLink, Globe2, Link2, Mail, Phone } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
-type WebsiteLinkProps = Omit<React.ComponentProps<"a">, "children" | "href" | "title"> & {
-  href: string;
-  title?: string;
-};
+const websiteLinkVariants = cva(
+  "group/website-link inline-flex max-w-full items-center border border-border bg-muted/20 align-middle font-medium leading-none text-foreground no-underline outline-none transition-[background-color,border-color,box-shadow] duration-100 hover:border-foreground/30 hover:bg-muted/50 focus-visible:ring-2 focus-visible:ring-ring/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background active:bg-muted motion-reduce:transition-none",
+  {
+    variants: {
+      size: {
+        sm: "h-6 gap-1 px-1 text-xs",
+        md: "h-7 gap-1.5 px-1.5 text-sm",
+        lg: "h-9 gap-2 px-2.5 text-base",
+      },
+    },
+    defaultVariants: {
+      size: "md",
+    },
+  },
+);
 
-function WebsiteLink({ href, title, className, rel, target, ...props }: WebsiteLinkProps) {
+type WebsiteLinkProps = Omit<React.ComponentProps<"a">, "children" | "href" | "title"> &
+  VariantProps<typeof websiteLinkVariants> & {
+    href: string;
+    title?: string;
+  };
+
+function WebsiteLink({
+  href,
+  title,
+  size = "md",
+  className,
+  rel,
+  target,
+  ...props
+}: WebsiteLinkProps) {
   const { faviconUrl, fallbackTitle, kind } = getLinkIdentity(href);
   const FallbackIcon = getFallbackIcon(kind);
 
@@ -17,20 +43,21 @@ function WebsiteLink({ href, title, className, rel, target, ...props }: WebsiteL
     <a
       data-slot="website-link"
       data-kind={kind}
+      data-size={size}
       href={href}
       target={target}
       rel={getLinkRel(rel, target)}
-      className={cn(
-        "group inline-flex h-7 max-w-full items-center gap-1.5 border border-border bg-muted/20 px-1.5 align-middle text-sm font-medium leading-none text-foreground no-underline outline-none transition-[background-color,border-color,box-shadow] duration-100 hover:border-foreground/30 hover:bg-muted/50 focus-visible:ring-2 focus-visible:ring-ring/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background active:bg-muted motion-reduce:transition-none",
-        className,
-      )}
+      className={cn(websiteLinkVariants({ size, className }))}
       {...props}
     >
       <span
         data-slot="website-link-leading-icon"
-        className="relative inline-flex size-4 shrink-0 items-center justify-center overflow-hidden text-muted-foreground"
+        className="relative inline-flex size-4 shrink-0 items-center justify-center overflow-hidden text-muted-foreground group-data-[size=sm]/website-link:size-3.5 group-data-[size=lg]/website-link:size-5"
       >
-        <FallbackIcon className="size-3" aria-hidden="true" />
+        <FallbackIcon
+          className="size-3 group-data-[size=sm]/website-link:size-2.5 group-data-[size=lg]/website-link:size-3.5"
+          aria-hidden="true"
+        />
         {faviconUrl ? (
           // biome-ignore lint/performance/noImgElement: Favicons are arbitrary external resources in this framework-agnostic registry component.
           <img
@@ -56,7 +83,7 @@ function WebsiteLink({ href, title, className, rel, target, ...props }: WebsiteL
       {kind === "website" ? (
         <ExternalLink
           data-slot="website-link-icon"
-          className="size-3.5 shrink-0 text-muted-foreground transition-colors duration-100 group-hover:text-foreground motion-reduce:transition-none"
+          className="size-3.5 shrink-0 text-muted-foreground transition-colors duration-100 group-hover/website-link:text-foreground group-data-[size=sm]/website-link:size-3 group-data-[size=lg]/website-link:size-4 motion-reduce:transition-none"
           aria-hidden="true"
         />
       ) : null}
@@ -138,4 +165,4 @@ function getLinkIdentity(href: string): {
 }
 
 export type { WebsiteLinkProps };
-export { WebsiteLink };
+export { WebsiteLink, websiteLinkVariants };

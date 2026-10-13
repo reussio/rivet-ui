@@ -31,14 +31,36 @@ export default function RootLayout({ children }) {
 
 <ComponentApi>
 
+### ThemeSwitcher
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `defaultTheme` | `"light" \| "dark" \| "system"` | `"system"` |
+| `storageKey` | `string` | `"theme"` |
+| `onValueChange` | `(theme: Theme) => void` | `—` |
+
+### ThemeMenu
+
 | Prop | Type | Default |
 | --- | --- | --- |
 | `defaultTheme` | `"light" \| "dark" \| "system"` | `"system"` |
 | `storageKey` | `string` | `"theme"` |
 | `onValueChange` | `(theme: Theme) => void` | `—` |
 | `disabled` | `boolean` | `false` |
-| `variant` | `"default" \| "icon"` | `"default"` |
+| `variant` | `"label" \| "icon"` | `"label"` |
+
+### ThemeScript
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `defaultTheme` | `"light" \| "dark" \| "system"` | `"system"` |
+| `storageKey` | `string` | `"theme"` |
 | `nonce` | `string` | `—` |
+
+### useTheme
+
+| Member | Type | Default |
+| --- | --- | --- |
 | `theme` | `Theme` | `—` |
 | `resolvedTheme` | `"light" \| "dark"` | `—` |
 | `setTheme` | `(theme: Theme) => void` | `—` |

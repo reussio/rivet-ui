@@ -23,10 +23,18 @@ import { Popover, PopoverContent, PopoverTitle, PopoverTrigger } from "@/compone
 
 <ComponentApi>
 
+### Popover
+
 | Prop | Type | Default |
 | --- | --- | --- |
 | `open` | `boolean` | `—` |
 | `defaultOpen` | `boolean` | `false` |
+| `onOpenChange` | `(open: boolean, details) => void` | `—` |
+
+### PopoverContent
+
+| Prop | Type | Default |
+| --- | --- | --- |
 | `side` | `"top" \| "right" \| "bottom" \| "left"` | `"bottom"` |
 | `align` | `"start" \| "center" \| "end"` | `"center"` |
 | `sideOffset` | `number` | `8` |

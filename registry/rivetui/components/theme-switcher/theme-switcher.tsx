@@ -25,7 +25,7 @@ type ThemeSwitcherProps = Omit<
     onValueChange?: (theme: Theme) => void;
   };
 
-type ThemeMenuVariant = "default" | "icon";
+type ThemeMenuVariant = "label" | "icon";
 
 type ThemeMenuProps = ThemeStoreOptions & {
   align?: MenuPrimitive.Positioner.Props["align"];
@@ -101,7 +101,7 @@ function ThemeMenu({
   onValueChange,
   side = "bottom",
   storageKey = defaultStorageKey,
-  variant = "default",
+  variant = "label",
   "aria-label": ariaLabel,
 }: ThemeMenuProps) {
   const { theme, resolvedTheme, setTheme } = useTheme({ defaultTheme, storageKey });
@@ -132,7 +132,7 @@ function ThemeMenu({
         )}
       >
         <TriggerIcon className="size-4 shrink-0" aria-hidden="true" />
-        {variant === "default" ? (
+        {variant === "label" ? (
           <>
             <span className="min-w-0 flex-1 truncate text-left">{selectedOption.label}</span>
             <ChevronDown

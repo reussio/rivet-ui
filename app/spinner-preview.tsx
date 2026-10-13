@@ -43,7 +43,7 @@ export function SpinnerPreview() {
         <PreviewRow label="Sizes">
           <div className="flex items-center gap-8">
             <Spinner size="sm" aria-label="Small loader" />
-            <Spinner aria-label="Default loader" />
+            <Spinner aria-label="Medium loader" />
             <Spinner size="lg" aria-label="Large loader" />
           </div>
         </PreviewRow>

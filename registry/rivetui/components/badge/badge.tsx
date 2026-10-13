@@ -8,26 +8,25 @@ const badgeVariants = cva(
   {
     variants: {
       variant: {
-        default: "border-primary bg-primary text-primary-foreground",
+        primary: "border-primary bg-primary text-primary-foreground",
         secondary: "border-border bg-secondary text-secondary-foreground",
         outline: "border-border bg-background text-foreground",
         destructive: "border-destructive/40 bg-destructive/10 text-destructive",
       },
     },
     defaultVariants: {
-      variant: "default",
+      variant: "primary",
     },
   },
 );
 
-function Badge({
-  className,
-  variant = "default",
-  ...props
-}: React.ComponentProps<"span"> & VariantProps<typeof badgeVariants>) {
+type BadgeProps = React.ComponentProps<"span"> & VariantProps<typeof badgeVariants>;
+
+function Badge({ className, variant = "primary", ...props }: BadgeProps) {
   return (
     <span data-slot="badge" className={cn(badgeVariants({ variant, className }))} {...props} />
   );
 }
 
+export type { BadgeProps };
 export { Badge, badgeVariants };

@@ -34,7 +34,7 @@ function DrawerContent({ className, children, showHandle = true, ...props }: Dra
     <DrawerPrimitive.Portal>
       <DrawerPrimitive.Backdrop
         data-slot="drawer-backdrop"
-        className="fixed inset-0 z-50 min-h-dvh bg-black/70 opacity-[calc(1-var(--drawer-swipe-progress))] transition-opacity [transition-duration:calc(var(--drawer-swipe-strength)*240ms)] data-ending-style:opacity-0 data-starting-style:opacity-0 data-swiping:duration-0 supports-[-webkit-touch-callout:none]:absolute motion-reduce:transition-none"
+        className="fixed inset-0 z-50 min-h-dvh bg-black/55 opacity-[calc(1-var(--drawer-swipe-progress))] transition-opacity [transition-duration:calc(var(--drawer-swipe-strength)*240ms)] data-ending-style:opacity-0 data-starting-style:opacity-0 data-swiping:duration-0 supports-[-webkit-touch-callout:none]:absolute motion-reduce:transition-none dark:bg-black/70"
       />
       <DrawerPrimitive.Viewport
         data-slot="drawer-viewport"

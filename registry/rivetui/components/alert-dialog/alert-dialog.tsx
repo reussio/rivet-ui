@@ -50,7 +50,7 @@ const AlertDialogContent = React.forwardRef<HTMLDivElement, AlertDialogContentPr
       <AlertDialogPrimitive.Portal>
         <AlertDialogPrimitive.Backdrop
           data-slot="alert-dialog-backdrop"
-          className="fixed inset-0 z-50 min-h-dvh bg-black/60 transition-opacity duration-150 data-ending-style:opacity-0 data-starting-style:opacity-0 supports-[-webkit-touch-callout:none]:absolute motion-reduce:transition-none dark:bg-black/75"
+          className="fixed inset-0 z-50 min-h-dvh bg-black/55 transition-opacity duration-150 data-ending-style:opacity-0 data-starting-style:opacity-0 supports-[-webkit-touch-callout:none]:absolute motion-reduce:transition-none dark:bg-black/70"
         />
         <AlertDialogPrimitive.Viewport
           data-slot="alert-dialog-viewport"
@@ -61,7 +61,7 @@ const AlertDialogContent = React.forwardRef<HTMLDivElement, AlertDialogContentPr
             data-slot="alert-dialog-content"
             initialFocus={initialFocus ?? focusSafeAction}
             className={cn(
-              "relative my-auto flex w-full max-w-md flex-col border border-border bg-background text-foreground outline-none transition-[opacity,transform] duration-100 focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/40 data-ending-style:translate-y-1 data-ending-style:opacity-0 data-starting-style:translate-y-1 data-starting-style:opacity-0 motion-reduce:transition-none",
+              "relative my-auto flex w-full max-w-md flex-col border border-border bg-background text-foreground outline-none transition-opacity duration-100 focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/40 data-ending-style:opacity-0 data-starting-style:opacity-0 motion-reduce:transition-none",
               className,
             )}
             {...props}
@@ -121,6 +121,7 @@ function AlertDialogFooter({ className, ...props }: React.ComponentProps<"div">)
   );
 }
 
+export type { AlertDialogContentProps };
 export {
   AlertDialog,
   AlertDialogAction,

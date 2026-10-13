@@ -60,6 +60,7 @@ export function DatePickerPreview() {
             <Specification term="Input" detail="single date" />
             <Specification term="Navigate" detail="arrow keys" />
             <Specification term="Dismiss" detail="esc / select" />
+            <Specification term="Actions" detail="today / clear" />
             <Specification term="Form" detail="yyyy-mm-dd" />
           </dl>
         </aside>
@@ -87,6 +88,14 @@ export function DatePickerPreview() {
               disabled: { before: new Date(2026, 9, 15) },
               startMonth: new Date(2026, 9),
             }}
+          />
+        </PreviewRow>
+        <PreviewRow label="Invalid">
+          <DatePicker
+            className="max-w-sm"
+            defaultValue={releaseDate}
+            formatLocale="en"
+            aria-invalid="true"
           />
         </PreviewRow>
         <PreviewRow label="Disabled">

@@ -47,11 +47,11 @@ function Calendar({
           defaultClassNames.nav,
         ),
         button_previous: cn(
-          "inline-flex size-8 items-center justify-center border border-transparent text-muted-foreground outline-none transition-[background-color,border-color,box-shadow,color] duration-100 hover:border-border hover:bg-muted hover:text-foreground focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/40 disabled:pointer-events-none disabled:opacity-40 motion-reduce:transition-none",
+          "inline-flex size-8 cursor-pointer items-center justify-center border border-transparent text-muted-foreground outline-none transition-[background-color,border-color,box-shadow,color] duration-100 hover:border-border hover:bg-muted hover:text-foreground focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/40 disabled:pointer-events-none disabled:opacity-40 motion-reduce:transition-none",
           defaultClassNames.button_previous,
         ),
         button_next: cn(
-          "inline-flex size-8 items-center justify-center border border-transparent text-muted-foreground outline-none transition-[background-color,border-color,box-shadow,color] duration-100 hover:border-border hover:bg-muted hover:text-foreground focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/40 disabled:pointer-events-none disabled:opacity-40 motion-reduce:transition-none",
+          "inline-flex size-8 cursor-pointer items-center justify-center border border-transparent text-muted-foreground outline-none transition-[background-color,border-color,box-shadow,color] duration-100 hover:border-border hover:bg-muted hover:text-foreground focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/40 disabled:pointer-events-none disabled:opacity-40 motion-reduce:transition-none",
           defaultClassNames.button_next,
         ),
         month_caption: cn(
@@ -88,7 +88,7 @@ function Calendar({
           defaultClassNames.day,
         ),
         day_button: cn(
-          "inline-flex size-9 items-center justify-center border border-transparent bg-transparent text-sm outline-none transition-[background-color,border-color,box-shadow,color] duration-100 hover:border-border hover:bg-muted focus-visible:relative focus-visible:z-10 focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/40 motion-reduce:transition-none",
+          "inline-flex size-9 cursor-pointer items-center justify-center border border-transparent bg-transparent text-sm outline-none transition-[background-color,border-color,box-shadow,color] duration-100 hover:border-border hover:bg-muted focus-visible:relative focus-visible:z-10 focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/40 motion-reduce:transition-none",
           defaultClassNames.day_button,
         ),
         selected: cn(
@@ -217,6 +217,15 @@ function DatePicker({
     }
   };
 
+  const handleClear = () => {
+    if (value === undefined) {
+      setUncontrolledValue(undefined);
+    }
+
+    onValueChange?.(undefined);
+    actionsRef.current?.close();
+  };
+
   return (
     <PopoverPrimitive.Root
       actionsRef={actionsRef}
@@ -230,7 +239,7 @@ function DatePicker({
             type="button"
             data-slot="date-picker-trigger"
             className={cn(
-              "flex h-10 w-full min-w-0 items-center gap-2 border border-input bg-background px-3 text-left text-sm outline-none transition-[background-color,border-color,box-shadow,color] duration-100 hover:border-foreground/40 focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/40 disabled:cursor-not-allowed disabled:bg-muted disabled:text-muted-foreground disabled:opacity-60 aria-invalid:border-destructive aria-invalid:focus-visible:border-destructive aria-invalid:focus-visible:ring-destructive/25 motion-reduce:transition-none",
+              "flex h-10 w-full min-w-0 cursor-pointer items-center gap-2 border border-input bg-background px-3 text-left text-sm outline-none transition-[background-color,border-color,box-shadow,color] duration-100 hover:border-foreground/40 focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/40 disabled:cursor-not-allowed disabled:bg-muted disabled:text-muted-foreground disabled:opacity-60 aria-invalid:border-destructive aria-invalid:focus-visible:border-destructive aria-invalid:focus-visible:ring-destructive/25 motion-reduce:transition-none",
               !selected && "text-muted-foreground",
               className,
             )}
@@ -261,6 +270,14 @@ function DatePicker({
             data-slot="date-picker-content"
             className="w-[min(17.25rem,var(--available-width))] overflow-auto border border-border bg-popover text-popover-foreground outline-none transition-opacity duration-100 data-ending-style:opacity-0 data-instant:transition-none data-starting-style:opacity-0 motion-reduce:transition-none"
           >
+            <div className="flex items-center justify-between gap-3 border-b border-border px-3 py-3">
+              <span className="font-mono text-[0.625rem] uppercase tracking-[0.14em] text-muted-foreground">
+                Date
+              </span>
+              <output className="truncate font-mono text-xs tabular-nums" aria-live="polite">
+                {selected ? formatter.format(selected) : "Not selected"}
+              </output>
+            </div>
             <Calendar
               {...calendarProps}
               mode="single"
@@ -269,6 +286,24 @@ function DatePicker({
               defaultMonth={calendarProps?.defaultMonth ?? selected}
               onSelect={handleSelect}
             />
+            <div className="flex items-center border-t border-border p-2">
+              <button
+                type="button"
+                className="h-8 cursor-pointer px-2.5 font-mono text-[0.625rem] uppercase tracking-[0.12em] text-muted-foreground outline-none transition-colors duration-100 hover:bg-muted hover:text-foreground focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring/40 motion-reduce:transition-none"
+                onClick={() => handleSelect(new Date())}
+              >
+                Today
+              </button>
+              {selected ? (
+                <button
+                  type="button"
+                  className="h-8 cursor-pointer px-2.5 font-mono text-[0.625rem] uppercase tracking-[0.12em] text-muted-foreground outline-none transition-colors duration-100 hover:bg-muted hover:text-foreground focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring/40 motion-reduce:transition-none"
+                  onClick={handleClear}
+                >
+                  Clear
+                </button>
+              ) : null}
+            </div>
           </PopoverPrimitive.Popup>
         </PopoverPrimitive.Positioner>
       </PopoverPrimitive.Portal>
@@ -325,6 +360,15 @@ function DateRangePicker({
     }
   };
 
+  const handleClear = () => {
+    if (value === undefined) {
+      setUncontrolledValue(undefined);
+    }
+
+    onValueChange?.(undefined);
+    actionsRef.current?.close();
+  };
+
   return (
     <PopoverPrimitive.Root
       actionsRef={actionsRef}
@@ -338,7 +382,7 @@ function DateRangePicker({
             type="button"
             data-slot="date-range-picker-trigger"
             className={cn(
-              "flex h-10 w-full min-w-0 items-center gap-2 border border-input bg-background px-3 text-left text-sm outline-none transition-[background-color,border-color,box-shadow,color] duration-100 hover:border-foreground/40 focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/40 disabled:cursor-not-allowed disabled:bg-muted disabled:text-muted-foreground disabled:opacity-60 aria-invalid:border-destructive aria-invalid:focus-visible:border-destructive aria-invalid:focus-visible:ring-destructive/25 motion-reduce:transition-none",
+              "flex h-10 w-full min-w-0 cursor-pointer items-center gap-2 border border-input bg-background px-3 text-left text-sm outline-none transition-[background-color,border-color,box-shadow,color] duration-100 hover:border-foreground/40 focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/40 disabled:cursor-not-allowed disabled:bg-muted disabled:text-muted-foreground disabled:opacity-60 aria-invalid:border-destructive aria-invalid:focus-visible:border-destructive aria-invalid:focus-visible:ring-destructive/25 motion-reduce:transition-none",
               !selected?.from && "text-muted-foreground",
               className,
             )}
@@ -369,6 +413,14 @@ function DateRangePicker({
             data-slot="date-range-picker-content"
             className="w-[min(17.25rem,var(--available-width))] overflow-auto border border-border bg-popover text-popover-foreground outline-none transition-opacity duration-100 data-ending-style:opacity-0 data-instant:transition-none data-starting-style:opacity-0 motion-reduce:transition-none"
           >
+            <div className="flex items-center justify-between gap-3 border-b border-border px-3 py-3">
+              <span className="font-mono text-[0.625rem] uppercase tracking-[0.14em] text-muted-foreground">
+                Date range
+              </span>
+              <output className="truncate font-mono text-xs tabular-nums" aria-live="polite">
+                {formatRange(selected, formatter, "Not selected")}
+              </output>
+            </div>
             <Calendar
               {...calendarProps}
               mode="range"
@@ -379,6 +431,27 @@ function DateRangePicker({
               resetOnSelect={calendarProps?.resetOnSelect ?? true}
               onSelect={handleSelect}
             />
+            <div className="flex items-center border-t border-border p-2">
+              <button
+                type="button"
+                className="h-8 cursor-pointer px-2.5 font-mono text-[0.625rem] uppercase tracking-[0.12em] text-muted-foreground outline-none transition-colors duration-100 hover:bg-muted hover:text-foreground focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring/40 motion-reduce:transition-none"
+                onClick={() => {
+                  const today = new Date();
+                  handleSelect({ from: today, to: today });
+                }}
+              >
+                Today
+              </button>
+              {selected?.from ? (
+                <button
+                  type="button"
+                  className="h-8 cursor-pointer px-2.5 font-mono text-[0.625rem] uppercase tracking-[0.12em] text-muted-foreground outline-none transition-colors duration-100 hover:bg-muted hover:text-foreground focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring/40 motion-reduce:transition-none"
+                  onClick={handleClear}
+                >
+                  Clear
+                </button>
+              ) : null}
+            </div>
           </PopoverPrimitive.Popup>
         </PopoverPrimitive.Positioner>
       </PopoverPrimitive.Portal>

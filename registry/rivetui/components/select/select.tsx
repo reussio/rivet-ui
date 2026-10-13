@@ -30,7 +30,7 @@ function SelectTrigger({ className, children, ...props }: SelectPrimitive.Trigge
     <SelectPrimitive.Trigger
       data-slot="select-trigger"
       className={cn(
-        "group/select-trigger flex h-10 w-full min-w-0 items-center justify-between gap-3 rounded-none border border-input bg-background px-3 py-2 text-sm outline-none transition-[background-color,border-color,box-shadow,color,opacity] duration-100 data-disabled:cursor-not-allowed data-disabled:bg-muted data-disabled:text-muted-foreground data-disabled:opacity-60 data-placeholder:text-muted-foreground data-popup-open:border-foreground/50 focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/40 aria-invalid:border-destructive aria-invalid:data-popup-open:border-destructive aria-invalid:focus-visible:border-destructive aria-invalid:focus-visible:ring-destructive/25 motion-reduce:transition-none",
+        "group/select-trigger flex h-10 w-full min-w-0 cursor-pointer items-center justify-between gap-3 rounded-none border border-input bg-background px-3 py-2 text-sm outline-none transition-[background-color,border-color,box-shadow,color,opacity] duration-100 data-disabled:cursor-not-allowed data-disabled:bg-muted data-disabled:text-muted-foreground data-disabled:opacity-60 data-placeholder:text-muted-foreground data-popup-open:border-foreground/50 focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/40 aria-invalid:border-destructive aria-invalid:data-popup-open:border-destructive aria-invalid:focus-visible:border-destructive aria-invalid:focus-visible:ring-destructive/25 motion-reduce:transition-none",
         className,
       )}
       {...props}

@@ -1,7 +1,6 @@
 "use client";
 
-import * as React from "react";
-
+import { useActiveSection } from "@/app/use-active-section";
 import { cn } from "@/lib/utils";
 
 const componentSections = [
@@ -23,54 +22,7 @@ type OnThisPageProps = {
 };
 
 function OnThisPage({ variant = "desktop", sections = componentSections }: OnThisPageProps) {
-  const [activeId, setActiveId] = React.useState(sections[0]?.id ?? "");
-
-  React.useEffect(() => {
-    let animationFrame: number | undefined;
-
-    function updateActiveSection() {
-      const marker = Math.min(window.innerHeight * 0.25, 160);
-      let nextActiveId = sections[0]?.id ?? "";
-
-      for (const section of sections) {
-        const element = document.getElementById(section.id);
-
-        if (element && element.getBoundingClientRect().top <= marker) {
-          nextActiveId = section.id;
-        }
-      }
-
-      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) {
-        nextActiveId = sections.at(-1)?.id ?? nextActiveId;
-      }
-
-      setActiveId((currentId) => (currentId === nextActiveId ? currentId : nextActiveId));
-    }
-
-    function scheduleUpdate() {
-      if (animationFrame !== undefined) {
-        return;
-      }
-
-      animationFrame = window.requestAnimationFrame(() => {
-        animationFrame = undefined;
-        updateActiveSection();
-      });
-    }
-
-    updateActiveSection();
-    window.addEventListener("scroll", scheduleUpdate, { passive: true });
-    window.addEventListener("resize", scheduleUpdate);
-
-    return () => {
-      window.removeEventListener("scroll", scheduleUpdate);
-      window.removeEventListener("resize", scheduleUpdate);
-
-      if (animationFrame !== undefined) {
-        window.cancelAnimationFrame(animationFrame);
-      }
-    };
-  }, [sections]);
+  const [activeId, setActiveId] = useActiveSection(sections);
 
   if (variant === "mobile") {
     return (

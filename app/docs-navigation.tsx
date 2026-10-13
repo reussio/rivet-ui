@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import { DocsSearch, type DocsSearchItem } from "@/app/docs-search";
 import { componentGroups } from "@/app/docs-structure";
+import { HomeSidebarLinks } from "@/app/home-sidebar-links";
 import { SidebarLink } from "@/app/sidebar-link";
 
 const searchItems: readonly DocsSearchItem[] = componentGroups.flatMap((group) =>
@@ -19,20 +20,14 @@ export function DocsHeader({ active = "docs" }: { active?: "docs" | "components"
       <div className="mx-auto flex h-16 max-w-[100rem] items-center gap-4 px-4 sm:px-6 lg:px-8">
         <Link
           href="/"
-          className="group flex shrink-0 items-center gap-3"
+          className="group flex shrink-0 items-center outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
           aria-label="Rivet UI home"
         >
-          <span
-            className="grid size-7 grid-cols-2 gap-px border border-foreground p-1.5 transition-colors group-hover:bg-foreground"
-            aria-hidden="true"
-          >
-            <span className="bg-foreground group-hover:bg-background" />
-            <span className="bg-transparent" />
-            <span className="bg-transparent" />
-            <span className="bg-foreground group-hover:bg-background" />
-          </span>
-          <span className="hidden text-sm font-semibold tracking-[-0.02em] sm:inline">
-            Rivet UI
+          <span className="flex items-baseline gap-1.5">
+            <span className="text-sm font-semibold tracking-[-0.03em]">Rivet</span>
+            <span className="font-mono text-[0.625rem] uppercase tracking-[0.14em] text-muted-foreground">
+              UI
+            </span>
           </span>
         </Link>
 
@@ -99,9 +94,7 @@ export function DocsSidebar() {
         className="sticky top-16 max-h-[calc(100svh-4rem)] overflow-y-auto px-4 py-6"
       >
         <SidebarGroup title="Getting started">
-          <SidebarLink href="/">Introduction</SidebarLink>
-          <SidebarLink href="/#quick-start">Quick start</SidebarLink>
-          <SidebarLink href="/#principles">Principles</SidebarLink>
+          <HomeSidebarLinks />
         </SidebarGroup>
 
         <div className="my-6 border-t border-border" />

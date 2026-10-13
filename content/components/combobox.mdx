@@ -9,11 +9,12 @@ export const metadata = defineComponentMetadata({
 <ComponentUsage>
 
 ```tsx
-import { Combobox, ComboboxContent, ComboboxInput, ComboboxInputGroup, ComboboxItem, ComboboxList, ComboboxTrigger } from "@/components/ui/combobox"
+import { Combobox, ComboboxContent, ComboboxInput, ComboboxInputGroup, ComboboxItem, ComboboxLabel, ComboboxList, ComboboxTrigger } from "@/components/ui/combobox"
 
 <Combobox items={regions} autoHighlight>
+  <ComboboxLabel htmlFor="deployment-region">Deployment region</ComboboxLabel>
   <ComboboxInputGroup>
-    <ComboboxInput placeholder="Search regions" />
+    <ComboboxInput id="deployment-region" placeholder="Search regions" />
     <ComboboxTrigger aria-label="Open regions" />
   </ComboboxInputGroup>
   <ComboboxContent>
@@ -30,13 +31,25 @@ import { Combobox, ComboboxContent, ComboboxInput, ComboboxInputGroup, ComboboxI
 
 <ComponentApi>
 
+### Combobox
+
 | Prop | Type | Default |
 | --- | --- | --- |
 | `items` | `readonly Item[]` | `—` |
 | `value` | `Value \| null` | `—` |
 | `defaultValue` | `Value \| null` | `—` |
-| `onValueChange` | `(value: Value \| null) => void` | `—` |
+| `onValueChange` | `(value: Value \| null, details) => void` | `—` |
+| `open` | `boolean` | `—` |
+| `defaultOpen` | `boolean` | `false` |
+| `onOpenChange` | `(open: boolean, details) => void` | `—` |
 | `autoHighlight` | `boolean` | `false` |
 | `disabled` | `boolean` | `false` |
+
+### ComboboxLabel
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `htmlFor` | `string` | `—` |
+| `className` | `string` | `—` |
 
 </ComponentApi>

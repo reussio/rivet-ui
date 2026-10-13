@@ -7,7 +7,7 @@ import * as React from "react";
 
 import { cn } from "@/lib/utils";
 
-type RatingSize = "sm" | "default" | "lg";
+type RatingSize = "sm" | "md" | "lg";
 
 type RatingProps = Omit<
   RadioGroupPrimitive.Props<number>,
@@ -24,7 +24,7 @@ type RatingProps = Omit<
 
 const ratingSizeClasses: Record<RatingSize, string> = {
   sm: "size-8 [&_svg]:size-3.5",
-  default: "size-10 [&_svg]:size-4",
+  md: "size-10 [&_svg]:size-4",
   lg: "size-12 [&_svg]:size-5",
 };
 
@@ -37,7 +37,7 @@ function Rating({
   onBlur,
   onPointerLeave,
   onValueChange,
-  size = "default",
+  size = "md",
   value: valueProp,
   "aria-label": ariaLabel = "Rating",
   ...props

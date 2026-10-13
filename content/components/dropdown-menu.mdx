@@ -23,10 +23,18 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 
 <ComponentApi>
 
+### DropdownMenu
+
 | Prop | Type | Default |
 | --- | --- | --- |
 | `open` | `boolean` | `—` |
 | `defaultOpen` | `boolean` | `false` |
+| `onOpenChange` | `(open: boolean, details) => void` | `—` |
+
+### DropdownMenuContent
+
+| Prop | Type | Default |
+| --- | --- | --- |
 | `align` | `"start" \| "center" \| "end"` | `"end"` |
 | `side` | `"top" \| "right" \| "bottom" \| "left"` | `"bottom"` |
 | `sideOffset` | `number` | `6` |

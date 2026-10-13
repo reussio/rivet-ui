@@ -23,11 +23,27 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/comp
 
 <ComponentApi>
 
+### TooltipProvider
+
 | Prop | Type | Default |
 | --- | --- | --- |
 | `delay` | `number` | `400` |
-| `closeDelay` | `number` | `100` |
+| `closeDelay` | `number` | `80` |
+
+### Tooltip
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `open` | `boolean` | `—` |
+| `defaultOpen` | `boolean` | `false` |
+| `onOpenChange` | `(open: boolean, details) => void` | `—` |
+
+### TooltipContent
+
+| Prop | Type | Default |
+| --- | --- | --- |
 | `side` | `"top" \| "right" \| "bottom" \| "left"` | `"top"` |
 | `align` | `"start" \| "center" \| "end"` | `"center"` |
+| `sideOffset` | `number` | `8` |
 
 </ComponentApi>

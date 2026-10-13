@@ -1,0 +1,61 @@
+import { defineComponentMetadata } from "@/content/components/schema"
+
+export const metadata = defineComponentMetadata({
+  "name": "Data List",
+  "slug": "data-list",
+  "description": "Presents the labeled properties of a single object with native description-list semantics."
+})
+
+<ComponentUsage>
+
+```tsx
+import {
+  DataList,
+  DataListItem,
+  DataListLabel,
+  DataListValue,
+} from "@/components/ui/data-list"
+
+<DataList>
+  <DataListItem>
+    <DataListLabel>Status</DataListLabel>
+    <DataListValue>Ready</DataListValue>
+  </DataListItem>
+  <DataListItem>
+    <DataListLabel>Region</DataListLabel>
+    <DataListValue>fra1</DataListValue>
+  </DataListItem>
+  <DataListItem>
+    <DataListLabel>Deployment ID</DataListLabel>
+    <DataListValue>dpl_8f31c2a</DataListValue>
+  </DataListItem>
+</DataList>
+```
+
+Horizontal lists stack their labels above the values on narrow screens. Use `orientation="vertical"` when the stacked layout should remain at every width.
+
+</ComponentUsage>
+
+<ComponentApi>
+
+### DataList
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` |
+| `size` | `"sm" \| "md" \| "lg"` | `"md"` |
+| `className` | `string` | `—` |
+
+### DataListItem
+
+Extends `React.ComponentProps<"div">` and groups one label-value pair.
+
+### DataListLabel
+
+Extends `React.ComponentProps<"dt">`.
+
+### DataListValue
+
+Extends `React.ComponentProps<"dd">`.
+
+</ComponentApi>

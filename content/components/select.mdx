@@ -23,12 +23,22 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 
 <ComponentApi>
 
+### Select
+
 | Prop | Type | Default |
 | --- | --- | --- |
 | `value` | `unknown` | `—` |
 | `defaultValue` | `unknown` | `—` |
-| `onValueChange` | `(value) => void` | `—` |
+| `onValueChange` | `(value: unknown, details) => void` | `—` |
+| `open` | `boolean` | `—` |
+| `defaultOpen` | `boolean` | `false` |
+| `onOpenChange` | `(open: boolean, details) => void` | `—` |
 | `disabled` | `boolean` | `false` |
+
+### SelectContent
+
+| Prop | Type | Default |
+| --- | --- | --- |
 | `alignItemWithTrigger` | `boolean` | `true` |
 
 </ComponentApi>

@@ -17,7 +17,7 @@ function Tooltip<Payload>(props: TooltipPrimitive.Root.Props<Payload>) {
 }
 
 function TooltipTrigger<Payload>(props: TooltipPrimitive.Trigger.Props<Payload>) {
-  return <TooltipPrimitive.Trigger {...props} />;
+  return <TooltipPrimitive.Trigger data-slot="tooltip-trigger" {...props} />;
 }
 
 type TooltipContentProps = TooltipPrimitive.Popup.Props &
@@ -61,4 +61,5 @@ function TooltipContent({
   );
 }
 
+export type { TooltipContentProps };
 export { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger };

@@ -1,0 +1,118 @@
+import { defineComponentMetadata } from "@/content/components/schema"
+
+export const metadata = defineComponentMetadata({
+  "name": "Data Table",
+  "slug": "data-table",
+  "description": "Turns typed records into a sortable, searchable, selectable, and paginated data surface."
+})
+
+<ComponentUsage>
+
+```tsx
+"use client"
+
+import { useState } from "react"
+import {
+  createDataTableColumnHelper,
+  DataTable,
+  DataTableColumnHeader,
+  type DataTableRowSelectionState,
+  DataTableSelectCell,
+  DataTableSelectHeader,
+} from "@/components/ui/data-table"
+
+type Deployment = {
+  id: string
+  name: string
+  region: string
+  requests: number
+}
+
+const column = createDataTableColumnHelper<Deployment>()
+const columns = column.columns([
+  column.display({
+    id: "select",
+    header: ({ table }) => <DataTableSelectHeader table={table} />,
+    cell: ({ row }) => <DataTableSelectCell row={row} />,
+    enableHiding: false,
+    enableSorting: false,
+  }),
+  column.accessor("name", {
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Deployment" />
+    ),
+  }),
+  column.accessor("region", {
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Region" />
+    ),
+  }),
+  column.accessor("requests", {
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Requests" />
+    ),
+  }),
+])
+
+export function DeploymentsTable() {
+  const [rowSelection, setRowSelection] = useState<DataTableRowSelectionState>({})
+
+  return (
+    <DataTable
+      aria-label="Deployments"
+      columns={columns}
+      data={deployments}
+      getRowId={(deployment) => deployment.id}
+      rowSelection={rowSelection}
+      onRowSelectionChange={setRowSelection}
+      search={{ columnIds: ["name", "region"], placeholder: "Search deployments…" }}
+      pagination={{ pageSize: 10, pageSizeOptions: [10, 20, 50] }}
+    />
+  )
+}
+```
+
+</ComponentUsage>
+
+<ComponentApi>
+
+### DataTable
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `columns` | `DataTableColumnDef<TData>[]` | `—` |
+| `data` | `readonly TData[]` | `—` |
+| `getRowId` | `(row, index, parent?) => string` | row index |
+| `rowSelection` | `DataTableRowSelectionState` | `—` |
+| `defaultRowSelection` | `DataTableRowSelectionState` | `{}` |
+| `onRowSelectionChange` | `(selection: DataTableRowSelectionState) => void` | `—` |
+| `search` | `string \| DataTableSearchOptions` | `—` |
+| `pagination` | `false \| DataTablePaginationOptions` | `{ pageSize: 10 }` |
+| `toolbar` | `ReactNode \| ((table) => ReactNode)` | `—` |
+| `initialState` | `DataTableInitialState` | `—` |
+| `loading` | `boolean` | `false` |
+| `loadingRows` | `number` | `5` |
+| `emptyState` | `ReactNode` | built-in empty message |
+| `tableClassName` | `string` | `—` |
+| `className` | `string` | `—` |
+
+### DataTableSearchOptions
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `columnIds` | `readonly string[]` | all accessor columns |
+| `label` | `string` | `"Search table"` |
+| `placeholder` | `string` | `"Search rows…"` |
+
+### DataTablePaginationOptions
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `pageSize` | `number` | `10` |
+| `pageSizeOptions` | `readonly number[]` | `[10, 20, 50]` |
+
+`DataTableColumnHeader` adds the accessible sorting control. Selection remains opt-in through the exported `DataTableSelectHeader` and `DataTableSelectCell` helpers.
+
+Selection state is keyed by the value returned from `getRowId`. Use `rowSelection` together with `onRowSelectionChange` for controlled state, or `defaultRowSelection` when the table should own subsequent updates.
+
+</ComponentApi>

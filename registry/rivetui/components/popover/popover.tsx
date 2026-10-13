@@ -77,4 +77,5 @@ function PopoverClose(props: PopoverPrimitive.Close.Props) {
   return <PopoverPrimitive.Close data-slot="popover-close" {...props} />;
 }
 
+export type { PopoverContentProps };
 export { Popover, PopoverClose, PopoverContent, PopoverDescription, PopoverTitle, PopoverTrigger };

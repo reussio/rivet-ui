@@ -220,6 +220,7 @@ function DropdownMenuSubContent({
   );
 }
 
+export type { DropdownMenuContentProps };
 export {
   DropdownMenu,
   DropdownMenuCheckboxItem,

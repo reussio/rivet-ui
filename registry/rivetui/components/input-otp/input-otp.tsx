@@ -22,7 +22,7 @@ type ComposedOTPInputProps = Extract<
 
 type InputOTPProps = Omit<ComposedOTPInputProps, "defaultValue" | "onChange"> & {
   defaultValue?: string;
-  onChange?: (value: string) => unknown;
+  onValueChange?: (value: string) => void;
 };
 
 function InputOTP({
@@ -32,7 +32,7 @@ function InputOTP({
   containerClassName,
   defaultValue = "",
   disabled = false,
-  onChange,
+  onValueChange,
   value: valueProp,
   ...props
 }: InputOTPProps) {
@@ -45,7 +45,7 @@ function InputOTP({
       setUncontrolledValue(nextValue);
     }
 
-    onChange?.(nextValue);
+    onValueChange?.(nextValue);
   }
 
   return (

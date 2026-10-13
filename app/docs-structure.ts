@@ -56,7 +56,16 @@ const groupDefinitions = [
   },
   {
     name: "Layout & data",
-    slugs: ["accordion", "avatar", "card", "collapsible", "separator", "table"],
+    slugs: [
+      "accordion",
+      "avatar",
+      "card",
+      "collapsible",
+      "data-list",
+      "data-table",
+      "separator",
+      "table",
+    ],
   },
   {
     name: "Developer tools",

@@ -25,10 +25,11 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 | Prop | Type | Default |
 | --- | --- | --- |
-| `value` | `string` | `—` |
-| `defaultValue` | `string` | `—` |
+| `value` | `unknown` | `—` |
+| `defaultValue` | `unknown` | `0` |
+| `onValueChange` | `(value: unknown, details) => void` | `—` |
 | `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` |
 | `activateOnFocus` | `boolean` | `true` |
-| `disabled` | `boolean` | `false` |
+| `TabsTrigger.disabled` | `boolean` | `false` |
 
 </ComponentApi>

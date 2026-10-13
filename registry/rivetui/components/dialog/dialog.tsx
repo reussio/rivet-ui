@@ -19,12 +19,14 @@ function DialogClose(props: DialogPrimitive.Close.Props) {
 }
 
 type DialogContentProps = DialogPrimitive.Popup.Props & {
+  closeLabel?: string;
   showCloseButton?: boolean;
 };
 
 function DialogContent({
   className,
   children,
+  closeLabel = "Close dialog",
   showCloseButton = true,
   ...props
 }: DialogContentProps) {
@@ -50,8 +52,8 @@ function DialogContent({
           {showCloseButton ? (
             <DialogPrimitive.Close
               data-slot="dialog-close"
-              aria-label="Close dialog"
-              className="absolute top-4 right-4 inline-flex size-8 items-center justify-center border border-transparent text-muted-foreground outline-none transition-[background-color,border-color,color] duration-100 hover:border-border hover:bg-muted hover:text-foreground focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/40 disabled:pointer-events-none disabled:opacity-40 motion-reduce:transition-none"
+              aria-label={closeLabel}
+              className="absolute top-4 right-4 inline-flex size-8 cursor-pointer items-center justify-center border border-transparent text-muted-foreground outline-none transition-[background-color,border-color,color] duration-100 hover:border-border hover:bg-muted hover:text-foreground focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/40 disabled:pointer-events-none disabled:opacity-40 motion-reduce:transition-none"
             >
               <X className="size-4" aria-hidden="true" />
             </DialogPrimitive.Close>
@@ -109,6 +111,7 @@ function DialogFooter({ className, ...props }: React.ComponentProps<"div">) {
   );
 }
 
+export type { DialogContentProps };
 export {
   Dialog,
   DialogBody,

@@ -93,7 +93,7 @@ export function RatingPreview() {
         <PreviewRow label="Sizes">
           <div className="flex flex-wrap items-center gap-4">
             <Rating size="sm" defaultValue={3} aria-label="Small rating" />
-            <Rating defaultValue={4} aria-label="Default rating" />
+            <Rating defaultValue={4} aria-label="Medium rating" />
             <Rating size="lg" defaultValue={5} aria-label="Large rating" />
           </div>
         </PreviewRow>

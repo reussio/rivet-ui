@@ -74,7 +74,7 @@ export function EmptyStatePreview() {
 
       <div className="border-t border-border">
         <PreviewRow label="Compact">
-          <EmptyState size="compact" className="max-w-xl">
+          <EmptyState size="sm" className="max-w-xl">
             <EmptyStateMedia>
               <SearchX />
             </EmptyStateMedia>
@@ -93,7 +93,7 @@ export function EmptyStatePreview() {
         </PreviewRow>
 
         <PreviewRow label="Unframed">
-          <EmptyState variant="plain" size="compact" className="max-w-xl items-start text-left">
+          <EmptyState variant="plain" size="sm" className="max-w-xl items-start text-left">
             <EmptyStateHeader className="items-start">
               <EmptyStateLabel>Activity</EmptyStateLabel>
               <EmptyStateTitle>Nothing to review</EmptyStateTitle>

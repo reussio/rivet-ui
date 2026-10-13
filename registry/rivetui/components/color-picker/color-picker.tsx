@@ -315,7 +315,7 @@ function ColorPicker({
               type="button"
               data-slot="color-picker-trigger"
               className={cn(
-                "flex h-10 w-full min-w-0 items-center gap-2 border border-input bg-background px-3 text-left text-sm outline-none transition-[background-color,border-color,box-shadow,color] duration-100 hover:border-foreground/40 focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/40 disabled:cursor-not-allowed disabled:bg-muted disabled:text-muted-foreground aria-invalid:border-destructive aria-invalid:focus-visible:border-destructive aria-invalid:focus-visible:ring-destructive/25 motion-reduce:transition-none",
+                "flex h-10 w-full min-w-0 cursor-pointer items-center gap-2 border border-input bg-background px-3 text-left text-sm outline-none transition-[background-color,border-color,box-shadow,color] duration-100 hover:border-foreground/40 focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/40 disabled:cursor-not-allowed disabled:bg-muted disabled:text-muted-foreground aria-invalid:border-destructive aria-invalid:focus-visible:border-destructive aria-invalid:focus-visible:ring-destructive/25 motion-reduce:transition-none",
                 className,
               )}
               disabled={disabled}
@@ -341,7 +341,7 @@ function ColorPicker({
               <button
                 type="button"
                 data-slot="color-picker-trigger"
-                className="flex min-w-0 flex-1 items-center gap-2 px-3 text-left text-sm outline-none disabled:cursor-not-allowed"
+                className="flex min-w-0 flex-1 cursor-pointer items-center gap-2 px-3 text-left text-sm outline-none disabled:cursor-not-allowed"
                 disabled={disabled}
                 {...props}
               />
@@ -436,7 +436,7 @@ function ColorPicker({
                             type="button"
                             aria-pressed={activeInput === input}
                             className={cn(
-                              "h-8 min-w-[3.5rem] flex-1 basis-[calc(25%-1px)] bg-popover px-2 font-mono text-[0.625rem] uppercase tracking-[0.12em] text-muted-foreground outline-none transition-colors hover:bg-muted hover:text-foreground focus-visible:z-10 focus-visible:ring-2 focus-visible:ring-ring/40",
+                              "h-8 min-w-[3.5rem] flex-1 basis-[calc(25%-1px)] cursor-pointer bg-popover px-2 font-mono text-[0.625rem] uppercase tracking-[0.12em] text-muted-foreground outline-none transition-colors hover:bg-muted hover:text-foreground focus-visible:z-10 focus-visible:ring-2 focus-visible:ring-ring/40 motion-reduce:transition-none",
                               activeInput === input &&
                                 "bg-foreground text-background hover:bg-foreground hover:text-background",
                             )}
@@ -495,7 +495,7 @@ function ColorPicker({
                         type="button"
                         aria-label={`Use color ${presetValue}`}
                         aria-pressed={selectedValue === presetValue}
-                        className="relative aspect-square border border-foreground/20 outline-none transition-[border-color,box-shadow] duration-100 hover:border-foreground focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/40 motion-reduce:transition-none"
+                        className="relative aspect-square cursor-pointer border border-foreground/20 outline-none transition-[border-color,box-shadow] duration-100 hover:border-foreground focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/40 disabled:cursor-not-allowed motion-reduce:transition-none"
                         onClick={() => updateColor(presetColor)}
                         disabled={disabled}
                       >

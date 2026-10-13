@@ -46,12 +46,20 @@ export function WebsiteLinkPreview() {
             <Specification term="Element" detail="Anchor" />
             <Specification term="Favicon" detail="Derived" />
             <Specification term="Protocol" detail="Aware" />
+            <Specification term="Sizes" detail="03" />
             <Specification term="Focus" detail="Visible" />
           </dl>
         </aside>
       </div>
 
       <div className="border-t border-border">
+        <PreviewRow label="Sizes">
+          <div className="flex flex-wrap items-center gap-3">
+            <WebsiteLink href="https://rivetui.reuss.dev" title="Small" target="_blank" size="sm" />
+            <WebsiteLink href="https://rivetui.reuss.dev" title="Medium" target="_blank" />
+            <WebsiteLink href="https://rivetui.reuss.dev" title="Large" target="_blank" size="lg" />
+          </div>
+        </PreviewRow>
         <PreviewRow label="Automatic">
           <WebsiteLink href="https://github.com" target="_blank" />
         </PreviewRow>

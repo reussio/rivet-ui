@@ -28,13 +28,27 @@ function Navigation() {
 
 <ComponentApi>
 
+### LoadingBar
+
 | Prop | Type | Default |
 | --- | --- | --- |
 | `active` | `boolean` | `true` |
 | `value` | `number` | `—` |
 | `position` | `"fixed" \| "absolute"` | `"fixed"` |
 | `label` | `string` | `"Loading page"` |
+
+### LoadingBarProvider
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `position` | `"fixed" \| "absolute"` | `"fixed"` |
+| `label` | `string` | `"Loading page"` |
 | `completionDuration` | `number` | `200` |
+
+### useLoadingBar
+
+| Member | Type | Default |
+| --- | --- | --- |
 | `start` | `(label?: string) => void` | `—` |
 | `setProgress` | `(value: number, label?: string) => void` | `—` |
 | `complete` | `() => void` | `—` |

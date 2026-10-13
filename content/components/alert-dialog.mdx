@@ -33,12 +33,24 @@ import { Button } from "@/components/ui/button"
 
 <ComponentApi>
 
+### AlertDialog
+
 | Prop | Type | Default |
 | --- | --- | --- |
 | `open` | `boolean` | `—` |
 | `defaultOpen` | `boolean` | `false` |
-| `onOpenChange` | `(open: boolean) => void` | `—` |
+| `onOpenChange` | `(open: boolean, details) => void` | `—` |
+
+### AlertDialogContent
+
+| Prop | Type | Default |
+| --- | --- | --- |
 | `initialFocus` | `boolean \| RefObject \| function` | `cancel control` |
+
+### Actions
+
+| Component | Type | Default |
+| --- | --- | --- |
 | `AlertDialogAction` | `AlertDialog.Close.Props` | `—` |
 | `AlertDialogCancel` | `AlertDialog.Close.Props` | `—` |
 

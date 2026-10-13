@@ -10,22 +10,19 @@ const emptyStateVariants = cva("flex min-w-0 flex-col items-center justify-cente
       outline: "border border-dashed border-border bg-background",
     },
     size: {
-      default: "min-h-72 gap-6 px-6 py-12 sm:px-10",
-      compact: "min-h-0 gap-4 px-5 py-8",
+      sm: "min-h-0 gap-4 px-5 py-8",
+      md: "min-h-72 gap-6 px-6 py-12 sm:px-10",
     },
   },
   defaultVariants: {
     variant: "outline",
-    size: "default",
+    size: "md",
   },
 });
 
-function EmptyState({
-  className,
-  variant = "outline",
-  size = "default",
-  ...props
-}: React.ComponentProps<"div"> & VariantProps<typeof emptyStateVariants>) {
+type EmptyStateProps = React.ComponentProps<"div"> & VariantProps<typeof emptyStateVariants>;
+
+function EmptyState({ className, variant = "outline", size = "md", ...props }: EmptyStateProps) {
   return (
     <div
       data-slot="empty-state"
@@ -42,7 +39,7 @@ const emptyStateMediaVariants = cva(
   {
     variants: {
       variant: {
-        default: "[&_svg:not([class*='size-'])]:size-8",
+        plain: "[&_svg:not([class*='size-'])]:size-8",
         icon: "size-12 border border-border bg-muted/30 text-foreground [&_svg]:size-5",
       },
     },
@@ -52,11 +49,10 @@ const emptyStateMediaVariants = cva(
   },
 );
 
-function EmptyStateMedia({
-  className,
-  variant = "icon",
-  ...props
-}: React.ComponentProps<"div"> & VariantProps<typeof emptyStateMediaVariants>) {
+type EmptyStateMediaProps = React.ComponentProps<"div"> &
+  VariantProps<typeof emptyStateMediaVariants>;
+
+function EmptyStateMedia({ className, variant = "icon", ...props }: EmptyStateMediaProps) {
   return (
     <div
       data-slot="empty-state-media"
@@ -131,6 +127,7 @@ function EmptyStateFooter({ className, ...props }: React.ComponentProps<"div">) 
   );
 }
 
+export type { EmptyStateMediaProps, EmptyStateProps };
 export {
   EmptyState,
   EmptyStateActions,

@@ -29,7 +29,7 @@ type ResolvedPlatform = Exclude<KeyboardShortcutPlatform, "auto"> | "unknown";
 type KeyboardShortcutProps = Omit<React.ComponentProps<"kbd">, "children"> & {
   keys: KeyboardShortcutKeys;
   platform?: KeyboardShortcutPlatform;
-  size?: "sm" | "default";
+  size?: "sm" | "md";
 };
 
 type UseKeyboardShortcutOptions = {
@@ -291,7 +291,7 @@ function useKeyboardShortcut(
 function KeyboardShortcut({
   keys,
   platform = "auto",
-  size = "default",
+  size = "md",
   className,
   "aria-label": ariaLabel,
   ...props

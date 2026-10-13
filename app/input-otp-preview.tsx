@@ -74,7 +74,7 @@ export function InputOTPPreview() {
                   maxLength={6}
                   pattern={REGEXP_ONLY_DIGITS}
                   value={value}
-                  onChange={setValue}
+                  onValueChange={setValue}
                   required
                   aria-describedby="verification-code-description verification-code-status"
                 >

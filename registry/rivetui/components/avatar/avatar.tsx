@@ -9,19 +9,19 @@ const avatarVariants = cva(
     variants: {
       size: {
         sm: "size-8",
-        default: "size-10",
+        md: "size-10",
         lg: "size-12",
       },
     },
     defaultVariants: {
-      size: "default",
+      size: "md",
     },
   },
 );
 
 type AvatarProps = AvatarPrimitive.Root.Props & VariantProps<typeof avatarVariants>;
 
-function Avatar({ className, size = "default", ...props }: AvatarProps) {
+function Avatar({ className, size = "md", ...props }: AvatarProps) {
   return (
     <AvatarPrimitive.Root
       data-slot="avatar"

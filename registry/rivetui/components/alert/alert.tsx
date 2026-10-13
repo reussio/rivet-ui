@@ -8,7 +8,7 @@ const alertVariants = cva(
   {
     variants: {
       variant: {
-        default: "border-border bg-background [&>[data-slot=alert-icon]]:text-foreground",
+        neutral: "border-border bg-background [&>[data-slot=alert-icon]]:text-foreground",
         success:
           "border-emerald-700/35 bg-emerald-500/5 [&>[data-slot=alert-icon]]:text-emerald-700 dark:[&>[data-slot=alert-icon]]:text-emerald-400",
         warning:
@@ -18,17 +18,14 @@ const alertVariants = cva(
       },
     },
     defaultVariants: {
-      variant: "default",
+      variant: "neutral",
     },
   },
 );
 
-function Alert({
-  className,
-  variant = "default",
-  role = "alert",
-  ...props
-}: React.ComponentProps<"div"> & VariantProps<typeof alertVariants>) {
+type AlertProps = React.ComponentProps<"div"> & VariantProps<typeof alertVariants>;
+
+function Alert({ className, variant = "neutral", role = "alert", ...props }: AlertProps) {
   return (
     <div
       data-slot="alert"
@@ -77,4 +74,5 @@ function AlertAction({ className, ...props }: React.ComponentProps<"div">) {
   return <div data-slot="alert-action" className={cn("shrink-0", className)} {...props} />;
 }
 
+export type { AlertProps };
 export { Alert, AlertAction, AlertContent, AlertDescription, AlertIcon, AlertTitle, alertVariants };

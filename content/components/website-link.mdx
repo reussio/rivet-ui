@@ -25,6 +25,8 @@ The favicon is derived from the website origin and cannot be supplied through th
 
 A browser-only component cannot reliably read the document title of another website because cross-origin requests are restricted. Pass `title` when you want a label other than the hostname.
 
+Use `size="sm"`, `size="md"`, or `size="lg"` to match the surrounding text and control density. The medium size preserves the compact inline treatment.
+
 </ComponentUsage>
 
 <ComponentApi>
@@ -33,6 +35,7 @@ A browser-only component cannot reliably read the document title of another webs
 | --- | --- | --- |
 | `href` | `string` | Required |
 | `title` | `string` | Hostname, email address, or phone number derived from `href` |
+| `size` | `"sm" \| "md" \| "lg"` | `"md"` |
 | `target` | `React.ComponentProps<"a">["target"]` | `—` |
 | `rel` | `React.ComponentProps<"a">["rel"]` | Adds `"noopener noreferrer"` when `target="_blank"` |
 | `className` | `string` | `—` |

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <title>Rivet UI</title>
+  <style>
+    path { fill: #0a0a0a; }
+    @media (prefers-color-scheme: dark) { path { fill: #fafafa; } }
+  </style>
+  <path d="M7 9h6v3.5C14.8 10 17.5 8.7 21 8.7h3v6h-3.5c-4.8 0-7.5 2.5-7.5 7.2V28H7V9Z"/>
+</svg>

@@ -101,7 +101,7 @@ function TimePicker({
             type="button"
             data-slot="time-picker-trigger"
             className={cn(
-              "flex h-10 w-full min-w-0 items-center gap-2 border border-input bg-background px-3 text-left text-sm outline-none transition-[background-color,border-color,box-shadow,color] duration-100 hover:border-foreground/40 focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/40 disabled:cursor-not-allowed disabled:bg-muted disabled:text-muted-foreground disabled:opacity-60 aria-invalid:border-destructive aria-invalid:focus-visible:border-destructive aria-invalid:focus-visible:ring-destructive/25 motion-reduce:transition-none",
+              "flex h-10 w-full min-w-0 cursor-pointer items-center gap-2 border border-input bg-background px-3 text-left text-sm outline-none transition-[background-color,border-color,box-shadow,color] duration-100 hover:border-foreground/40 focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/40 disabled:cursor-not-allowed disabled:bg-muted disabled:text-muted-foreground disabled:opacity-60 aria-invalid:border-destructive aria-invalid:focus-visible:border-destructive aria-invalid:focus-visible:ring-destructive/25 motion-reduce:transition-none",
               !selected && "text-muted-foreground",
               className,
             )}
@@ -211,7 +211,7 @@ function TimePicker({
                         <button
                           key={period}
                           type="button"
-                          className="min-w-11 border-b border-border px-2 font-mono text-xs outline-none transition-colors duration-100 last:border-b-0 hover:bg-muted focus-visible:z-10 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring/40 data-active:bg-foreground data-active:text-background motion-reduce:transition-none"
+                          className="min-w-11 cursor-pointer border-b border-border px-2 font-mono text-xs outline-none transition-colors duration-100 last:border-b-0 hover:bg-muted focus-visible:z-10 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring/40 data-active:bg-foreground data-active:text-background motion-reduce:transition-none"
                           data-active={active ? "" : undefined}
                           aria-pressed={active}
                           onClick={() => {
@@ -233,7 +233,7 @@ function TimePicker({
             <div className="flex items-center border-t border-border p-2">
               <button
                 type="button"
-                className="h-8 px-2.5 font-mono text-[0.625rem] uppercase tracking-[0.12em] text-muted-foreground outline-none transition-colors duration-100 hover:bg-muted hover:text-foreground focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring/40 motion-reduce:transition-none"
+                className="h-8 cursor-pointer px-2.5 font-mono text-[0.625rem] uppercase tracking-[0.12em] text-muted-foreground outline-none transition-colors duration-100 hover:bg-muted hover:text-foreground focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring/40 motion-reduce:transition-none"
                 onClick={() => commitTime(getCurrentTime())}
               >
                 Now
@@ -241,7 +241,7 @@ function TimePicker({
               {selected ? (
                 <button
                   type="button"
-                  className="h-8 px-2.5 font-mono text-[0.625rem] uppercase tracking-[0.12em] text-muted-foreground outline-none transition-colors duration-100 hover:bg-muted hover:text-foreground focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring/40 motion-reduce:transition-none"
+                  className="h-8 cursor-pointer px-2.5 font-mono text-[0.625rem] uppercase tracking-[0.12em] text-muted-foreground outline-none transition-colors duration-100 hover:bg-muted hover:text-foreground focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring/40 motion-reduce:transition-none"
                   onClick={handleClear}
                 >
                   Clear
@@ -301,7 +301,7 @@ function TimeSegment({
       </span>
       <div className="grid w-14 border border-border">
         <NumberFieldPrimitive.Increment
-          className="flex h-8 items-center justify-center border-b border-border text-muted-foreground outline-none transition-colors duration-100 hover:bg-muted hover:text-foreground focus-visible:z-10 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring/40 disabled:pointer-events-none disabled:opacity-30 motion-reduce:transition-none"
+          className="flex h-8 cursor-pointer items-center justify-center border-b border-border text-muted-foreground outline-none transition-colors duration-100 hover:bg-muted hover:text-foreground focus-visible:z-10 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring/40 disabled:pointer-events-none disabled:opacity-30 motion-reduce:transition-none"
           aria-label={`Increase ${label.toLowerCase()}`}
         >
           <ChevronUp className="size-3.5" aria-hidden="true" />
@@ -313,7 +313,7 @@ function TimeSegment({
           inputMode="numeric"
         />
         <NumberFieldPrimitive.Decrement
-          className="flex h-8 items-center justify-center border-t border-border text-muted-foreground outline-none transition-colors duration-100 hover:bg-muted hover:text-foreground focus-visible:z-10 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring/40 disabled:pointer-events-none disabled:opacity-30 motion-reduce:transition-none"
+          className="flex h-8 cursor-pointer items-center justify-center border-t border-border text-muted-foreground outline-none transition-colors duration-100 hover:bg-muted hover:text-foreground focus-visible:z-10 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring/40 disabled:pointer-events-none disabled:opacity-30 motion-reduce:transition-none"
           aria-label={`Decrease ${label.toLowerCase()}`}
         >
           <ChevronDown className="size-3.5" aria-hidden="true" />

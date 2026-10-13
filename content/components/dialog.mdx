@@ -23,11 +23,19 @@ import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "@/components/
 
 <ComponentApi>
 
+### Dialog
+
 | Prop | Type | Default |
 | --- | --- | --- |
 | `open` | `boolean` | `—` |
 | `defaultOpen` | `boolean` | `false` |
-| `onOpenChange` | `(open: boolean) => void` | `—` |
+| `onOpenChange` | `(open: boolean, details) => void` | `—` |
+
+### DialogContent
+
+| Prop | Type | Default |
+| --- | --- | --- |
 | `showCloseButton` | `boolean` | `true` |
+| `closeLabel` | `string` | `"Close dialog"` |
 
 </ComponentApi>

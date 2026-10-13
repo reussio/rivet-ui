@@ -56,9 +56,9 @@ export function ComboboxPreview() {
         <PreviewRow label="Disabled">
           <div className="w-full max-w-sm">
             <Combobox items={regions} disabled>
-              <ComboboxLabel>Region</ComboboxLabel>
+              <ComboboxLabel htmlFor="disabled-region">Region</ComboboxLabel>
               <ComboboxInputGroup>
-                <ComboboxInput placeholder="Select a region" />
+                <ComboboxInput id="disabled-region" placeholder="Select a region" />
                 <ComboboxTrigger aria-label="Open regions" />
               </ComboboxInputGroup>
             </Combobox>
@@ -72,9 +72,9 @@ export function ComboboxPreview() {
 function RegionCombobox() {
   return (
     <Combobox items={regions} autoHighlight>
-      <ComboboxLabel>Deployment region</ComboboxLabel>
+      <ComboboxLabel htmlFor="deployment-region">Deployment region</ComboboxLabel>
       <ComboboxInputGroup>
-        <ComboboxInput placeholder="Search regions" />
+        <ComboboxInput id="deployment-region" placeholder="Search regions" />
         <ComboboxClear aria-label="Clear selection" />
         <ComboboxTrigger aria-label="Open regions" />
       </ComboboxInputGroup>

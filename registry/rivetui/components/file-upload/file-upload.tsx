@@ -358,7 +358,7 @@ function FileUploadItem({ children, className, file, ...props }: FileUploadItemP
           <button
             type="button"
             data-slot="file-upload-remove"
-            className="flex size-9 shrink-0 items-center justify-center border border-transparent text-muted-foreground outline-none transition-[background-color,border-color,box-shadow,color] duration-100 hover:border-border hover:bg-muted hover:text-foreground focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/40 disabled:pointer-events-none disabled:opacity-50 motion-reduce:transition-none"
+            className="flex size-9 shrink-0 cursor-pointer items-center justify-center border border-transparent text-muted-foreground outline-none transition-[background-color,border-color,box-shadow,color] duration-100 hover:border-border hover:bg-muted hover:text-foreground focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/40 disabled:pointer-events-none disabled:opacity-50 motion-reduce:transition-none"
             aria-label={`Remove ${file.name}`}
             disabled={disabled}
             onClick={() => removeFile(file)}
@@ -500,7 +500,13 @@ function formatBytes(bytes: number) {
   return `${formattedValue} ${units[index]}`;
 }
 
-export type { FileUploadErrorCode, FileUploadProps, FileUploadRejection };
+export type {
+  FileUploadErrorCode,
+  FileUploadItemProps,
+  FileUploadListProps,
+  FileUploadProps,
+  FileUploadRejection,
+};
 export {
   FileUpload,
   FileUploadDropzone,

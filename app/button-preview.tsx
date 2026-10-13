@@ -2,7 +2,7 @@ import { ArrowUpRight, LoaderCircle, Plus } from "lucide-react";
 
 import { Button } from "@/registry/rivetui/components/button/button";
 
-const variants = ["default", "secondary", "outline", "ghost", "destructive"] as const;
+const variants = ["primary", "secondary", "outline", "ghost", "destructive"] as const;
 
 export function ButtonPreview() {
   return (
@@ -69,12 +69,12 @@ export function ButtonPreview() {
 
         <PreviewRow label="Scale">
           <Button size="sm">Small</Button>
-          <Button>Default</Button>
+          <Button>Medium</Button>
           <Button size="lg">Large</Button>
           <Button size="icon-sm" variant="outline" aria-label="Create item">
             <Plus aria-hidden="true" />
           </Button>
-          <Button size="icon" variant="outline" aria-label="Create item">
+          <Button size="icon-md" variant="outline" aria-label="Create item">
             <Plus aria-hidden="true" />
           </Button>
           <Button size="icon-lg" variant="outline" aria-label="Create item">

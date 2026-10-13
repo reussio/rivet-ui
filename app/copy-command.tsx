@@ -82,7 +82,7 @@ export function CopyInstallButton({ commands }: CopyInstallButtonProps) {
           Copy install command
         </Button>
         <DropdownMenuTrigger
-          render={<Button type="button" variant="outline" size="icon" />}
+          render={<Button type="button" variant="outline" size="icon-md" />}
           className="w-10 min-w-10 peer-hover/install:border-l-foreground/40 focus-visible:relative focus-visible:z-10 data-popup-open:bg-muted [&_svg]:transition-transform data-popup-open:[&_svg]:rotate-180 motion-reduce:[&_svg]:transition-none"
           aria-label={`Choose package manager. ${selectedCommand.label} selected`}
         >

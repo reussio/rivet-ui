@@ -20,12 +20,9 @@ const statusVariants = cva(
   },
 );
 
-function Status({
-  className,
-  children,
-  tone = "neutral",
-  ...props
-}: React.ComponentProps<"span"> & VariantProps<typeof statusVariants>) {
+type StatusProps = React.ComponentProps<"span"> & VariantProps<typeof statusVariants>;
+
+function Status({ className, children, tone = "neutral", ...props }: StatusProps) {
   return (
     <span data-slot="status" className={cn(statusVariants({ tone, className }))} {...props}>
       <span
@@ -38,4 +35,5 @@ function Status({
   );
 }
 
+export type { StatusProps };
 export { Status, statusVariants };
