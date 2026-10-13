@@ -1,8 +1,12 @@
-import { ChevronRight } from "lucide-react";
 import * as React from "react";
 
 import { DocsSection } from "@/app/docs-section";
 import { CodeBlock } from "@/registry/rivetui/components/code-block/code-block";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/registry/rivetui/components/collapsible/collapsible";
 
 function ComponentUsage({ children }: { children: React.ReactNode }) {
   return (
@@ -44,18 +48,12 @@ type ComponentTreeNodeProps = {
 
 function ComponentTree({ children }: { children: React.ReactNode }) {
   return (
-    <details data-slot="component-tree" className="group/component-tree mt-8 border border-border">
-      <summary className="relative z-0 flex min-h-10 cursor-pointer list-none items-center gap-3 bg-muted/20 px-4 font-mono text-[0.625rem] uppercase tracking-[0.14em] text-muted-foreground outline-none transition-[background-color,box-shadow,color] duration-100 hover:bg-muted/40 hover:text-foreground focus-visible:z-10 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring/40 motion-reduce:transition-none [&::-webkit-details-marker]:hidden">
-        <span>Composition</span>
-        <ChevronRight
-          className="ml-auto size-3.5 shrink-0 transition-transform duration-150 group-open/component-tree:rotate-90 motion-reduce:transition-none"
-          aria-hidden="true"
-        />
-      </summary>
-      <div className="overflow-x-auto border-t border-border p-4 sm:p-5">
+    <Collapsible className="mt-8">
+      <CollapsibleTrigger>Composition</CollapsibleTrigger>
+      <CollapsibleContent className="overflow-x-auto">
         <ul className="grid min-w-max gap-2">{children}</ul>
-      </div>
-    </details>
+      </CollapsibleContent>
+    </Collapsible>
   );
 }
 
