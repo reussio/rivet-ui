@@ -2,6 +2,7 @@
 
 import { cva, type VariantProps } from "class-variance-authority";
 import { ExternalLink, Globe2, Link2, Mail, Phone } from "lucide-react";
+import * as React from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -36,7 +37,7 @@ function WebsiteLink({
   target,
   ...props
 }: WebsiteLinkProps) {
-  const { faviconUrl, fallbackTitle, kind } = getLinkIdentity(href);
+  const { faviconUrls, fallbackTitle, kind } = getLinkIdentity(href);
   const FallbackIcon = getFallbackIcon(kind);
 
   return (
@@ -58,24 +59,7 @@ function WebsiteLink({
           className="size-3 group-data-[size=sm]/website-link:size-2.5 group-data-[size=lg]/website-link:size-3.5"
           aria-hidden="true"
         />
-        {faviconUrl ? (
-          // biome-ignore lint/performance/noImgElement: Favicons are arbitrary external resources in this framework-agnostic registry component.
-          <img
-            key={faviconUrl}
-            src={faviconUrl}
-            alt=""
-            aria-hidden="true"
-            decoding="async"
-            referrerPolicy="no-referrer"
-            className="absolute inset-0 size-full bg-background object-cover"
-            onLoad={(event) => {
-              event.currentTarget.hidden = false;
-            }}
-            onError={(event) => {
-              event.currentTarget.hidden = true;
-            }}
-          />
-        ) : null}
+        <WebsiteLinkFavicon key={href} sources={faviconUrls} />
       </span>
       <span data-slot="website-link-title" className="truncate">
         {title ?? fallbackTitle}
@@ -89,6 +73,35 @@ function WebsiteLink({
       ) : null}
       {target === "_blank" ? <span className="sr-only"> (opens in a new tab)</span> : null}
     </a>
+  );
+}
+
+function WebsiteLinkFavicon({ sources }: { sources: readonly string[] }) {
+  const [sourceIndex, setSourceIndex] = React.useState(0);
+  const [loaded, setLoaded] = React.useState(false);
+  const source = sources[sourceIndex];
+
+  if (!source) {
+    return null;
+  }
+
+  return (
+    // biome-ignore lint/performance/noImgElement: Favicons are arbitrary external resources in this framework-agnostic registry component.
+    <img
+      key={source}
+      src={source}
+      alt=""
+      aria-hidden="true"
+      decoding="async"
+      referrerPolicy="no-referrer"
+      data-loaded={loaded ? "" : undefined}
+      className="absolute inset-0 size-full bg-background object-cover opacity-0 data-loaded:opacity-100"
+      onLoad={() => setLoaded(true)}
+      onError={() => {
+        setLoaded(false);
+        setSourceIndex((currentIndex) => currentIndex + 1);
+      }}
+    />
   );
 }
 
@@ -124,7 +137,7 @@ function getFallbackIcon(kind: WebsiteLinkKind) {
 
 function getLinkIdentity(href: string): {
   fallbackTitle: string;
-  faviconUrl: string | null;
+  faviconUrls: readonly string[];
   kind: WebsiteLinkKind;
 } {
   try {
@@ -132,7 +145,9 @@ function getLinkIdentity(href: string): {
 
     if (url.protocol === "http:" || url.protocol === "https:") {
       return {
-        faviconUrl: new URL("/favicon.ico", url.origin).toString(),
+        faviconUrls: ["/favicon.ico", "/favicon.svg", "/icon.svg", "/apple-touch-icon.png"].map(
+          (path) => new URL(path, url.origin).toString(),
+        ),
         fallbackTitle: url.hostname.replace(/^www\./, ""),
         kind: "website",
       };
@@ -140,7 +155,7 @@ function getLinkIdentity(href: string): {
 
     if (url.protocol === "mailto:") {
       return {
-        faviconUrl: null,
+        faviconUrls: [],
         fallbackTitle: decodeURIComponent(url.pathname),
         kind: "email",
       };
@@ -148,19 +163,19 @@ function getLinkIdentity(href: string): {
 
     if (url.protocol === "tel:") {
       return {
-        faviconUrl: null,
+        faviconUrls: [],
         fallbackTitle: decodeURIComponent(url.pathname),
         kind: "phone",
       };
     }
 
     return {
-      faviconUrl: null,
+      faviconUrls: [],
       fallbackTitle: href,
       kind: "link",
     };
   } catch {
-    return { faviconUrl: null, fallbackTitle: href, kind: "link" };
+    return { faviconUrls: [], fallbackTitle: href, kind: "link" };
   }
 }
 

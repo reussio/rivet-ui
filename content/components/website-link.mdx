@@ -21,9 +21,9 @@ import { WebsiteLink } from "@/components/ui/website-link"
 </p>
 ```
 
-The favicon is derived from the website origin and cannot be supplied through the component API. When no `title` is provided, the visible label falls back to the hostname. `mailto:` and `tel:` links automatically use the address or phone number with a matching icon.
+The favicon is derived from the website origin and cannot be supplied through the component API. The component tries `/favicon.ico`, `/favicon.svg`, `/icon.svg`, and `/apple-touch-icon.png` in order before keeping the globe fallback. When no `title` is provided, the visible label falls back to the hostname. `mailto:` and `tel:` links automatically use the address or phone number with a matching icon.
 
-A browser-only component cannot reliably read the document title of another website because cross-origin requests are restricted. Pass `title` when you want a label other than the hostname.
+A browser-only component cannot reliably read the document title or custom icon declarations of another website because cross-origin requests are restricted. Pass `title` when you want a label other than the hostname.
 
 Use `size="sm"`, `size="md"`, or `size="lg"` to match the surrounding text and control density. The medium size preserves the compact inline treatment.
 
