@@ -24,7 +24,12 @@ function ComponentApi({ children }: { children: React.ReactNode }) {
       title="API reference"
       description="Component-specific props are listed here. Native element and Base UI props continue to pass through."
     >
-      {children}
+      <div
+        data-slot="component-api-content"
+        className="mt-8 [&>[data-slot=component-api-heading]:first-child]:mt-0 [&>[data-slot=component-api-heading]+[data-slot=component-doc-table]]:mt-0"
+      >
+        {children}
+      </div>
     </DocsSection>
   );
 }
@@ -55,9 +60,21 @@ function MdxPre({ children }: React.ComponentProps<"pre">) {
 
 function MdxTable(props: React.ComponentProps<"table">) {
   return (
-    <div className="mt-8 overflow-x-auto border border-border">
+    <div data-slot="component-doc-table" className="mt-8 overflow-x-auto border border-border">
       <table className="w-full min-w-[36rem] border-collapse text-left text-sm" {...props} />
     </div>
+  );
+}
+
+function MdxHeadingThree({ children, ...props }: React.ComponentProps<"h3">) {
+  return (
+    <h3
+      data-slot="component-api-heading"
+      className="mt-6 flex min-h-11 items-center border border-b-0 border-border bg-muted/20 px-4 font-mono text-xs font-medium text-foreground"
+      {...props}
+    >
+      {children}
+    </h3>
   );
 }
 
@@ -94,6 +111,7 @@ function MdxInlineCode(props: React.ComponentProps<"code">) {
 export {
   ComponentApi,
   ComponentUsage,
+  MdxHeadingThree,
   MdxInlineCode,
   MdxParagraph,
   MdxPre,

@@ -3,6 +3,7 @@ import type { MDXComponents } from "mdx/types";
 import {
   ComponentApi,
   ComponentUsage,
+  MdxHeadingThree,
   MdxInlineCode,
   MdxParagraph,
   MdxPre,
@@ -17,6 +18,7 @@ const components = {
   ComponentApi,
   ComponentUsage,
   code: MdxInlineCode,
+  h3: MdxHeadingThree,
   p: MdxParagraph,
   pre: MdxPre,
   table: MdxTable,
