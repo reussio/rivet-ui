@@ -24,16 +24,31 @@ function CommandMenuShortcut() {
 
 <ComponentApi>
 
+### KeyboardShortcut
+
 | Prop | Type | Default |
 | --- | --- | --- |
 | `keys` | `readonly [KeyboardShortcutKey, ...KeyboardShortcutKey[]]` | `—` |
 | `size` | `"sm" \| "md"` | `"md"` |
 | `platform` | `"auto" \| "mac" \| "windows" \| "linux"` | `"auto"` |
 | `aria-label` | `string` | `generated` |
-| `useKeyboardShortcut` | `(keys, onTrigger, options?) => void` | `—` |
-| `options.enabled` | `boolean` | `true` |
-| `options.preventDefault` | `boolean` | `true` |
-| `options.allowInEditable` | `boolean` | `false` |
-| `options.allowRepeat` | `boolean` | `false` |
+
+### useKeyboardShortcut
+
+| Parameter | Type | Default |
+| --- | --- | --- |
+| `keys` | `KeyboardShortcutKeys` | `required` |
+| `onTrigger` | `(event: KeyboardEvent) => void` | `required` |
+| `options` | `UseKeyboardShortcutOptions` | `{}` |
+
+### UseKeyboardShortcutOptions
+
+| Option | Type | Default |
+| --- | --- | --- |
+| `enabled` | `boolean` | `true` |
+| `preventDefault` | `boolean` | `true` |
+| `allowInEditable` | `boolean` | `false` |
+| `allowRepeat` | `boolean` | `false` |
+| `platform` | `"auto" \| "mac" \| "windows" \| "linux"` | `"auto"` |
 
 </ComponentApi>
