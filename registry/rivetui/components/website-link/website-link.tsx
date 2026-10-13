@@ -77,17 +77,45 @@ function WebsiteLink({
 }
 
 function WebsiteLinkFavicon({ sources }: { sources: readonly string[] }) {
+  const [mounted, setMounted] = React.useState(false);
   const [sourceIndex, setSourceIndex] = React.useState(0);
   const [loaded, setLoaded] = React.useState(false);
+  const imageRef = React.useRef<HTMLImageElement>(null);
   const source = sources[sourceIndex];
 
-  if (!source) {
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const advanceSource = React.useCallback(() => {
+    setLoaded(false);
+    setSourceIndex((currentIndex) =>
+      sources[currentIndex] === source ? currentIndex + 1 : currentIndex,
+    );
+  }, [source, sources]);
+
+  React.useEffect(() => {
+    const image = imageRef.current;
+
+    if (!mounted || !source || !image?.complete) {
+      return;
+    }
+
+    if (image.naturalWidth > 0) {
+      setLoaded(true);
+    } else {
+      advanceSource();
+    }
+  }, [advanceSource, mounted, source]);
+
+  if (!mounted || !source) {
     return null;
   }
 
   return (
     // biome-ignore lint/performance/noImgElement: Favicons are arbitrary external resources in this framework-agnostic registry component.
     <img
+      ref={imageRef}
       key={source}
       src={source}
       alt=""
@@ -97,10 +125,7 @@ function WebsiteLinkFavicon({ sources }: { sources: readonly string[] }) {
       data-loaded={loaded ? "" : undefined}
       className="absolute inset-0 size-full bg-background object-cover opacity-0 data-loaded:opacity-100"
       onLoad={() => setLoaded(true)}
-      onError={() => {
-        setLoaded(false);
-        setSourceIndex((currentIndex) => currentIndex + 1);
-      }}
+      onError={advanceSource}
     />
   );
 }
