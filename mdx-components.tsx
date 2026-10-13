@@ -2,6 +2,8 @@ import type { MDXComponents } from "mdx/types";
 
 import {
   ComponentApi,
+  ComponentTree,
+  ComponentTreeNode,
   ComponentUsage,
   MdxHeadingThree,
   MdxInlineCode,
@@ -16,6 +18,8 @@ import {
 
 const components = {
   ComponentApi,
+  ComponentTree,
+  ComponentTreeNode,
   ComponentUsage,
   code: MdxInlineCode,
   h3: MdxHeadingThree,

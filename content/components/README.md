@@ -40,5 +40,20 @@ Rivet `CodeBlock` component automatically, including syntax highlighting and cop
 the usage example focused on the smallest realistic composition; do not repeat every variant in
 MDX.
 
+Compound components with at least three distinct child components should include a `ComponentTree`
+at the start of `ComponentApi`. Show the recommended nesting rather than every possible export.
+Mark nodes with `optional` or `repeatable` when that relationship helps explain the composition.
+
+```mdx
+<ComponentTree>
+  <ComponentTreeNode name="Tabs">
+    <ComponentTreeNode name="TabsList">
+      <ComponentTreeNode name="TabsTrigger" repeatable />
+    </ComponentTreeNode>
+    <ComponentTreeNode name="TabsContent" repeatable />
+  </ComponentTreeNode>
+</ComponentTree>
+```
+
 After adding a document, run `bun run docs:manifest` to regenerate the statically analyzable
 manifest, then place its slug in the appropriate group in `app/docs-structure.ts`.

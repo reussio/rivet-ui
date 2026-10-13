@@ -27,6 +27,19 @@ import { PackageOpen } from "lucide-react"
 
 <ComponentApi>
 
+<ComponentTree>
+  <ComponentTreeNode name="EmptyState">
+    <ComponentTreeNode name="EmptyStateMedia" optional />
+    <ComponentTreeNode name="EmptyStateHeader">
+      <ComponentTreeNode name="EmptyStateLabel" optional />
+      <ComponentTreeNode name="EmptyStateTitle" />
+      <ComponentTreeNode name="EmptyStateDescription" optional />
+    </ComponentTreeNode>
+    <ComponentTreeNode name="EmptyStateActions" optional />
+    <ComponentTreeNode name="EmptyStateFooter" optional />
+  </ComponentTreeNode>
+</ComponentTree>
+
 ### EmptyState
 
 | Prop | Type | Default |

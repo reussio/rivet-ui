@@ -27,6 +27,19 @@ import { Slider, SliderControl, SliderIndicator, SliderLabel, SliderThumb, Slide
 
 <ComponentApi>
 
+<ComponentTree>
+  <ComponentTreeNode name="Slider">
+    <ComponentTreeNode name="SliderLabel" optional />
+    <ComponentTreeNode name="SliderValue" optional />
+    <ComponentTreeNode name="SliderControl">
+      <ComponentTreeNode name="SliderTrack">
+        <ComponentTreeNode name="SliderIndicator" />
+        <ComponentTreeNode name="SliderThumb" repeatable />
+      </ComponentTreeNode>
+    </ComponentTreeNode>
+  </ComponentTreeNode>
+</ComponentTree>
+
 | Prop | Type | Default |
 | --- | --- | --- |
 | `value` | `number \| readonly number[]` | `—` |

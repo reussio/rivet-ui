@@ -22,6 +22,14 @@ import { FileUpload, FileUploadDropzone, FileUploadList, FileUploadMessage } fro
 
 <ComponentApi>
 
+<ComponentTree>
+  <ComponentTreeNode name="FileUpload">
+    <ComponentTreeNode name="FileUploadDropzone" />
+    <ComponentTreeNode name="FileUploadMessage" optional />
+    <ComponentTreeNode name="FileUploadList" optional />
+  </ComponentTreeNode>
+</ComponentTree>
+
 | Prop | Type | Default |
 | --- | --- | --- |
 | `value` | `File[]` | `—` |

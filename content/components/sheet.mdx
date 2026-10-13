@@ -37,6 +37,21 @@ import {
 
 <ComponentApi>
 
+<ComponentTree>
+  <ComponentTreeNode name="Sheet">
+    <ComponentTreeNode name="SheetTrigger" />
+    <ComponentTreeNode name="SheetContent">
+      <ComponentTreeNode name="SheetHeader">
+        <ComponentTreeNode name="SheetTitle" />
+        <ComponentTreeNode name="SheetDescription" optional />
+      </ComponentTreeNode>
+      <ComponentTreeNode name="SheetBody" optional />
+      <ComponentTreeNode name="SheetFooter" optional />
+      <ComponentTreeNode name="SheetClose" optional />
+    </ComponentTreeNode>
+  </ComponentTreeNode>
+</ComponentTree>
+
 ### Sheet
 
 | Prop | Type | Default |

@@ -23,6 +23,21 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 
 <ComponentApi>
 
+<ComponentTree>
+  <ComponentTreeNode name="Select">
+    <ComponentTreeNode name="SelectTrigger">
+      <ComponentTreeNode name="SelectValue" />
+    </ComponentTreeNode>
+    <ComponentTreeNode name="SelectContent">
+      <ComponentTreeNode name="SelectGroup" optional>
+        <ComponentTreeNode name="SelectLabel" optional />
+        <ComponentTreeNode name="SelectItem" repeatable />
+      </ComponentTreeNode>
+      <ComponentTreeNode name="SelectItem" repeatable />
+    </ComponentTreeNode>
+  </ComponentTreeNode>
+</ComponentTree>
+
 ### Select
 
 | Prop | Type | Default |

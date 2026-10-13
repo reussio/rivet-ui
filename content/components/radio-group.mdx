@@ -22,6 +22,15 @@ import { RadioGroup, RadioOption, RadioOptionLabel } from "@/components/ui/radio
 
 <ComponentApi>
 
+<ComponentTree>
+  <ComponentTreeNode name="RadioGroup">
+    <ComponentTreeNode name="RadioOption" repeatable>
+      <ComponentTreeNode name="RadioOptionLabel" />
+      <ComponentTreeNode name="RadioOptionDescription" optional />
+    </ComponentTreeNode>
+  </ComponentTreeNode>
+</ComponentTree>
+
 | Prop | Type | Default |
 | --- | --- | --- |
 | `value` | `unknown` | `—` |

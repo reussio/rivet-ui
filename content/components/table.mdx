@@ -21,6 +21,23 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 
 <ComponentApi>
 
+<ComponentTree>
+  <ComponentTreeNode name="Table">
+    <ComponentTreeNode name="TableCaption" optional />
+    <ComponentTreeNode name="TableHeader">
+      <ComponentTreeNode name="TableRow">
+        <ComponentTreeNode name="TableHead" repeatable />
+      </ComponentTreeNode>
+    </ComponentTreeNode>
+    <ComponentTreeNode name="TableBody">
+      <ComponentTreeNode name="TableRow" repeatable>
+        <ComponentTreeNode name="TableCell" repeatable />
+      </ComponentTreeNode>
+    </ComponentTreeNode>
+    <ComponentTreeNode name="TableFooter" optional />
+  </ComponentTreeNode>
+</ComponentTree>
+
 ### Table
 
 | Prop | Type | Default |

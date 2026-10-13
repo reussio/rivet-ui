@@ -23,6 +23,21 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 
 <ComponentApi>
 
+<ComponentTree>
+  <ComponentTreeNode name="DropdownMenu">
+    <ComponentTreeNode name="DropdownMenuTrigger" />
+    <ComponentTreeNode name="DropdownMenuContent">
+      <ComponentTreeNode name="DropdownMenuLabel" optional />
+      <ComponentTreeNode name="DropdownMenuItem" repeatable />
+      <ComponentTreeNode name="DropdownMenuSeparator" optional />
+      <ComponentTreeNode name="DropdownMenuSub" optional>
+        <ComponentTreeNode name="DropdownMenuSubTrigger" />
+        <ComponentTreeNode name="DropdownMenuSubContent" />
+      </ComponentTreeNode>
+    </ComponentTreeNode>
+  </ComponentTreeNode>
+</ComponentTree>
+
 ### DropdownMenu
 
 | Prop | Type | Default |

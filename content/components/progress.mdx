@@ -22,6 +22,16 @@ import { Progress, ProgressIndicator, ProgressLabel, ProgressTrack, ProgressValu
 
 <ComponentApi>
 
+<ComponentTree>
+  <ComponentTreeNode name="Progress">
+    <ComponentTreeNode name="ProgressLabel" optional />
+    <ComponentTreeNode name="ProgressValue" optional />
+    <ComponentTreeNode name="ProgressTrack">
+      <ComponentTreeNode name="ProgressIndicator" />
+    </ComponentTreeNode>
+  </ComponentTreeNode>
+</ComponentTree>
+
 | Prop | Type | Default |
 | --- | --- | --- |
 | `value` | `number \| null` | `null` |

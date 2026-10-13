@@ -30,6 +30,15 @@ import { InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot, REGEXP_ONLY_D
 
 <ComponentApi>
 
+<ComponentTree>
+  <ComponentTreeNode name="InputOTP">
+    <ComponentTreeNode name="InputOTPGroup" repeatable>
+      <ComponentTreeNode name="InputOTPSlot" repeatable />
+    </ComponentTreeNode>
+    <ComponentTreeNode name="InputOTPSeparator" optional />
+  </ComponentTreeNode>
+</ComponentTree>
+
 ### InputOTP
 
 | Prop | Type | Default |

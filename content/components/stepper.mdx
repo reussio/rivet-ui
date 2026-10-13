@@ -27,6 +27,21 @@ import { Stepper, StepperContent, StepperIndicator, StepperItem, StepperSeparato
 
 <ComponentApi>
 
+<ComponentTree>
+  <ComponentTreeNode name="Stepper">
+    <ComponentTreeNode name="StepperItem" repeatable>
+      <ComponentTreeNode name="StepperTrigger">
+        <ComponentTreeNode name="StepperIndicator" />
+        <ComponentTreeNode name="StepperContent">
+          <ComponentTreeNode name="StepperTitle" />
+          <ComponentTreeNode name="StepperDescription" optional />
+        </ComponentTreeNode>
+      </ComponentTreeNode>
+      <ComponentTreeNode name="StepperSeparator" />
+    </ComponentTreeNode>
+  </ComponentTreeNode>
+</ComponentTree>
+
 ### Stepper
 
 | Prop | Type | Default |

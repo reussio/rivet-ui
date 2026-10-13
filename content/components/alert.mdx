@@ -23,6 +23,17 @@ import { Alert, AlertContent, AlertDescription, AlertTitle } from "@/components/
 
 <ComponentApi>
 
+<ComponentTree>
+  <ComponentTreeNode name="Alert">
+    <ComponentTreeNode name="AlertIcon" optional />
+    <ComponentTreeNode name="AlertContent">
+      <ComponentTreeNode name="AlertTitle" />
+      <ComponentTreeNode name="AlertDescription" />
+    </ComponentTreeNode>
+    <ComponentTreeNode name="AlertAction" optional />
+  </ComponentTreeNode>
+</ComponentTree>
+
 | Prop | Type | Default |
 | --- | --- | --- |
 | `variant` | `"neutral" \| "success" \| "warning" \| "destructive"` | `"neutral"` |

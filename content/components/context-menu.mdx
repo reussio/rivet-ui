@@ -24,6 +24,21 @@ import { ContextMenu, ContextMenuContent, ContextMenuItem, ContextMenuTrigger } 
 
 <ComponentApi>
 
+<ComponentTree>
+  <ComponentTreeNode name="ContextMenu">
+    <ComponentTreeNode name="ContextMenuTrigger" />
+    <ComponentTreeNode name="ContextMenuContent">
+      <ComponentTreeNode name="ContextMenuLabel" optional />
+      <ComponentTreeNode name="ContextMenuItem" repeatable />
+      <ComponentTreeNode name="ContextMenuSeparator" optional />
+      <ComponentTreeNode name="ContextMenuSub" optional>
+        <ComponentTreeNode name="ContextMenuSubTrigger" />
+        <ComponentTreeNode name="ContextMenuSubContent" />
+      </ComponentTreeNode>
+    </ComponentTreeNode>
+  </ComponentTreeNode>
+</ComponentTree>
+
 ### ContextMenu
 
 | Prop | Type | Default |

@@ -31,6 +31,21 @@ import { Combobox, ComboboxContent, ComboboxInput, ComboboxInputGroup, ComboboxI
 
 <ComponentApi>
 
+<ComponentTree>
+  <ComponentTreeNode name="Combobox">
+    <ComponentTreeNode name="ComboboxLabel" optional />
+    <ComponentTreeNode name="ComboboxInputGroup">
+      <ComponentTreeNode name="ComboboxInput" />
+      <ComponentTreeNode name="ComboboxTrigger" />
+    </ComponentTreeNode>
+    <ComponentTreeNode name="ComboboxContent">
+      <ComponentTreeNode name="ComboboxList">
+        <ComponentTreeNode name="ComboboxItem" repeatable />
+      </ComponentTreeNode>
+    </ComponentTreeNode>
+  </ComponentTreeNode>
+</ComponentTree>
+
 ### Combobox
 
 | Prop | Type | Default |

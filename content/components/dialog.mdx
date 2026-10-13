@@ -23,6 +23,21 @@ import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "@/components/
 
 <ComponentApi>
 
+<ComponentTree>
+  <ComponentTreeNode name="Dialog">
+    <ComponentTreeNode name="DialogTrigger" />
+    <ComponentTreeNode name="DialogContent">
+      <ComponentTreeNode name="DialogHeader" optional>
+        <ComponentTreeNode name="DialogTitle" />
+        <ComponentTreeNode name="DialogDescription" optional />
+      </ComponentTreeNode>
+      <ComponentTreeNode name="DialogBody" optional />
+      <ComponentTreeNode name="DialogFooter" optional />
+      <ComponentTreeNode name="DialogClose" optional />
+    </ComponentTreeNode>
+  </ComponentTreeNode>
+</ComponentTree>
+
 ### Dialog
 
 | Prop | Type | Default |

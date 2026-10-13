@@ -24,6 +24,19 @@ import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbP
 
 <ComponentApi>
 
+<ComponentTree>
+  <ComponentTreeNode name="Breadcrumb">
+    <ComponentTreeNode name="BreadcrumbList">
+      <ComponentTreeNode name="BreadcrumbItem" repeatable>
+        <ComponentTreeNode name="BreadcrumbLink" optional />
+        <ComponentTreeNode name="BreadcrumbPage" optional />
+      </ComponentTreeNode>
+      <ComponentTreeNode name="BreadcrumbSeparator" repeatable />
+      <ComponentTreeNode name="BreadcrumbEllipsis" optional />
+    </ComponentTreeNode>
+  </ComponentTreeNode>
+</ComponentTree>
+
 ### Breadcrumb
 
 | Prop | Type | Default |

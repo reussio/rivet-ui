@@ -30,6 +30,25 @@ import { Pagination, PaginationContent, PaginationItem, PaginationLink, Paginati
 
 <ComponentApi>
 
+<ComponentTree>
+  <ComponentTreeNode name="Pagination">
+    <ComponentTreeNode name="PaginationContent">
+      <ComponentTreeNode name="PaginationItem" optional>
+        <ComponentTreeNode name="PaginationPrevious" />
+      </ComponentTreeNode>
+      <ComponentTreeNode name="PaginationItem" repeatable>
+        <ComponentTreeNode name="PaginationLink" />
+      </ComponentTreeNode>
+      <ComponentTreeNode name="PaginationItem" optional>
+        <ComponentTreeNode name="PaginationEllipsis" />
+      </ComponentTreeNode>
+      <ComponentTreeNode name="PaginationItem" optional>
+        <ComponentTreeNode name="PaginationNext" />
+      </ComponentTreeNode>
+    </ComponentTreeNode>
+  </ComponentTreeNode>
+</ComponentTree>
+
 | Prop | Type | Default |
 | --- | --- | --- |
 | `isActive` | `boolean` | `false` |

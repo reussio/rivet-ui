@@ -24,6 +24,18 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 
 <ComponentApi>
 
+<ComponentTree>
+  <ComponentTreeNode name="Card">
+    <ComponentTreeNode name="CardHeader">
+      <ComponentTreeNode name="CardTitle" />
+      <ComponentTreeNode name="CardDescription" optional />
+      <ComponentTreeNode name="CardAction" optional />
+    </ComponentTreeNode>
+    <ComponentTreeNode name="CardContent" />
+    <ComponentTreeNode name="CardFooter" optional />
+  </ComponentTreeNode>
+</ComponentTree>
+
 ### Card
 
 | Prop | Type | Default |
