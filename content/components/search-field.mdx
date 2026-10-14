@@ -6,28 +6,6 @@ export const metadata = defineComponentMetadata({
   "description": "Collects a search query with native form behavior, clear controls, loading feedback, and controlled or uncontrolled state."
 })
 
-<ComponentUsage>
-
-```tsx
-import { SearchField } from "@/components/ui/search-field"
-import { Field, FieldLabel } from "@/components/ui/field"
-
-<Field>
-  <FieldLabel htmlFor="docs-search">Search documentation</FieldLabel>
-  <SearchField
-    id="docs-search"
-    name="query"
-    placeholder="Search components…"
-  />
-</Field>
-```
-
-Use `onValueChange` when controlling the value. The clear button and <kbd>Escape</kbd> both emit an empty string through the same callback.
-
-Set `loading` while results are being resolved. The indicator is non-blocking, so the query remains editable and clearable.
-
-</ComponentUsage>
-
 <ComponentApi>
 
 | Prop | Type | Default |

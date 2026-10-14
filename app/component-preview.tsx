@@ -99,8 +99,8 @@ export async function ComponentPreview({ slug }: { slug: ComponentSlug }) {
       return <FileUploadPreview />;
     }
     case "input": {
-      const { InputFieldPreview } = await import("@/app/input-field-preview");
-      return <InputFieldPreview />;
+      const { InputPreview } = await import("@/app/input-preview");
+      return <InputPreview />;
     }
     case "input-otp": {
       const { InputOTPPreview } = await import("@/app/input-otp-preview");

@@ -68,7 +68,8 @@ export default async function ComponentPage({ params }: ComponentPageProps) {
   const nextComponent = orderedComponents[componentIndex + 1];
   const installCommands = getShadcnCommands(`add @rivetui/${component.slug}`);
   const ComponentContent = await getComponentContent(component.slug);
-  const usesExampleDocumentation = component.slug === "stepper";
+  const usesExampleDocumentation =
+    component.slug === "stepper" || componentGroup?.name === "Controls";
   const pageSections = usesExampleDocumentation ? exampleComponentSections : undefined;
 
   return (
