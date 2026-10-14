@@ -28,6 +28,11 @@ type ComponentPageProps = {
 export const dynamicParams = false;
 
 const orderedComponents = componentGroups.flatMap((group) => group.components);
+const exampleComponentSections = [
+  { id: "preview", label: "Preview" },
+  { id: "installation", label: "Installation" },
+  { id: "api-reference", label: "API reference", compactLabel: "API" },
+] as const;
 
 export function generateStaticParams() {
   return orderedComponents.map((component) => ({ slug: component.slug }));
@@ -63,12 +68,14 @@ export default async function ComponentPage({ params }: ComponentPageProps) {
   const nextComponent = orderedComponents[componentIndex + 1];
   const installCommands = getShadcnCommands(`add @rivetui/${component.slug}`);
   const ComponentContent = await getComponentContent(component.slug);
+  const usesExampleDocumentation = component.slug === "stepper";
+  const pageSections = usesExampleDocumentation ? exampleComponentSections : undefined;
 
   return (
     <>
       <main id="content" className="min-w-0">
         <div className="sticky top-16 z-30 border-b border-border bg-background/95 px-4 py-3 backdrop-blur-sm lg:hidden">
-          <OnThisPage variant="mobile" />
+          <OnThisPage variant="mobile" sections={pageSections} />
         </div>
 
         <article>
@@ -113,11 +120,19 @@ export default async function ComponentPage({ params }: ComponentPageProps) {
           <DocsSection
             id="preview"
             title="Preview"
-            description="Explore the primary composition, then switch to focused examples for variants and states."
+            description={
+              usesExampleDocumentation
+                ? "Explore each composition interactively, then open its matching implementation."
+                : "Explore the primary composition, then switch to focused examples for variants and states."
+            }
           >
-            <ComponentPreviewPanel key={component.slug}>
+            {usesExampleDocumentation ? (
               <ComponentPreview slug={component.slug} />
-            </ComponentPreviewPanel>
+            ) : (
+              <ComponentPreviewPanel key={component.slug}>
+                <ComponentPreview slug={component.slug} />
+              </ComponentPreviewPanel>
+            )}
           </DocsSection>
 
           <DocsSection
@@ -194,7 +209,7 @@ export default async function ComponentPage({ params }: ComponentPageProps) {
           <p className="font-mono text-[0.625rem] uppercase tracking-[0.16em] text-muted-foreground">
             On this page
           </p>
-          <OnThisPage />
+          <OnThisPage sections={pageSections} />
           <div className="mt-10 border-t border-border pt-5">
             <p className="font-mono text-[0.625rem] uppercase tracking-[0.14em] text-muted-foreground">
               Registry item

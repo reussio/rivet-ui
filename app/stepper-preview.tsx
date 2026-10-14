@@ -1,3 +1,4 @@
+import { ComponentExample } from "@/app/component-example";
 import {
   Stepper,
   StepperContent,
@@ -16,69 +17,171 @@ const deploymentSteps = [
   { step: 4, title: "Deploy", description: "Publish revision." },
 ] as const;
 
+const defaultExampleCode = `import {
+  Stepper,
+  StepperContent,
+  StepperDescription,
+  StepperIndicator,
+  StepperItem,
+  StepperSeparator,
+  StepperTitle,
+  StepperTrigger,
+} from "@/components/ui/stepper"
+
+const steps = [
+  { step: 1, title: "Project", description: "Choose the source." },
+  { step: 2, title: "Configure", description: "Set build options." },
+  { step: 3, title: "Review", description: "Verify the release." },
+  { step: 4, title: "Deploy", description: "Publish revision." },
+]
+
+export function DeploymentStepper() {
+  return (
+    <Stepper defaultValue={2} aria-label="Deployment setup">
+      {steps.map((item) => (
+        <StepperItem key={item.step} step={item.step}>
+          <StepperTrigger>
+            <StepperIndicator />
+            <StepperContent>
+              <StepperTitle>{item.title}</StepperTitle>
+              <StepperDescription>{item.description}</StepperDescription>
+            </StepperContent>
+          </StepperTrigger>
+          <StepperSeparator />
+        </StepperItem>
+      ))}
+    </Stepper>
+  )
+}`;
+
+const verticalExampleCode = `import {
+  Stepper,
+  StepperContent,
+  StepperDescription,
+  StepperIndicator,
+  StepperItem,
+  StepperSeparator,
+  StepperTitle,
+  StepperTrigger,
+} from "@/components/ui/stepper"
+
+const steps = [
+  { step: 1, title: "Workspace", description: "Repository connected." },
+  { step: 2, title: "Runtime", description: "Build settings saved." },
+  { step: 3, title: "Access", description: "Configure team permissions." },
+  { step: 4, title: "Finish", description: "Create the workspace." },
+]
+
+export function WorkspaceStepper() {
+  return (
+    <Stepper
+      defaultValue={3}
+      orientation="vertical"
+      aria-label="Workspace configuration"
+    >
+      {steps.map((item) => (
+        <StepperItem key={item.step} step={item.step}>
+          <StepperTrigger>
+            <StepperIndicator />
+            <StepperContent>
+              <StepperTitle>{item.title}</StepperTitle>
+              <StepperDescription>{item.description}</StepperDescription>
+            </StepperContent>
+          </StepperTrigger>
+          <StepperSeparator />
+        </StepperItem>
+      ))}
+    </Stepper>
+  )
+}`;
+
+const disabledExampleCode = `import {
+  Stepper,
+  StepperContent,
+  StepperDescription,
+  StepperIndicator,
+  StepperItem,
+  StepperSeparator,
+  StepperTitle,
+  StepperTrigger,
+} from "@/components/ui/stepper"
+
+const steps = [
+  { step: 1, title: "Build", description: "Artifacts ready." },
+  { step: 2, title: "Review", description: "Approval required." },
+  {
+    step: 3,
+    title: "Release",
+    description: "Locked until approval.",
+    disabled: true,
+  },
+]
+
+export function ReleaseStepper() {
+  return (
+    <Stepper defaultValue={2} aria-label="Release sequence">
+      {steps.map((item) => (
+        <StepperItem key={item.step} step={item.step} disabled={item.disabled}>
+          <StepperTrigger>
+            <StepperIndicator />
+            <StepperContent>
+              <StepperTitle>{item.title}</StepperTitle>
+              <StepperDescription>{item.description}</StepperDescription>
+            </StepperContent>
+          </StepperTrigger>
+          <StepperSeparator />
+        </StepperItem>
+      ))}
+    </Stepper>
+  )
+}`;
+
 export function StepperPreview() {
   return (
-    <section className="w-full border border-border bg-background" aria-labelledby="stepper-title">
-      <header className="flex items-start justify-between gap-6 border-b border-border p-5 sm:p-6">
-        <div className="space-y-2">
-          <p className="font-mono text-[0.6875rem] uppercase tracking-[0.18em] text-muted-foreground">
-            Primitive / 025
-          </p>
-          <h2 id="stepper-title" className="text-3xl font-semibold tracking-[-0.04em] sm:text-5xl">
-            Stepper
-          </h2>
-        </div>
-        <span className="border border-border px-2 py-1 font-mono text-[0.625rem] uppercase tracking-[0.14em] text-muted-foreground">
-          Sequence
-        </span>
-      </header>
+    <div className="mt-8 grid gap-12">
+      <ComponentExample
+        title="Default"
+        description="Communicate the current position while keeping completed steps available."
+        code={defaultExampleCode}
+      >
+        <Stepper defaultValue={2} aria-label="Deployment setup">
+          {deploymentSteps.map((item) => (
+            <DemoStep key={item.step} {...item} />
+          ))}
+        </Stepper>
+      </ComponentExample>
 
-      <div className="grid lg:grid-cols-[minmax(0,1fr)_15rem]">
-        <div className="min-w-0 p-5 sm:p-8 lg:border-r lg:border-border">
-          <Stepper defaultValue={2} aria-label="Deployment setup">
-            {deploymentSteps.map((item) => (
-              <DemoStep key={item.step} {...item} />
-            ))}
-          </Stepper>
-        </div>
-
-        <aside
-          className="border-t border-border lg:border-t-0"
-          aria-label="Component specification"
+      <ComponentExample
+        title="Vertical"
+        description="Use a vertical sequence when labels need more room or the available width is constrained."
+        code={verticalExampleCode}
+        previewClassName="items-start justify-start"
+      >
+        <Stepper
+          defaultValue={3}
+          orientation="vertical"
+          aria-label="Workspace configuration"
+          className="max-w-md"
         >
-          <dl className="divide-y divide-border font-mono text-[0.6875rem] uppercase tracking-[0.12em]">
-            <Specification term="States" detail="3" />
-            <Specification term="Layouts" detail="2" />
-            <Specification term="Input" detail="native" />
-            <Specification term="Mode" detail="controlled" />
-          </dl>
-        </aside>
-      </div>
+          <DemoStep step={1} title="Workspace" description="Repository connected." />
+          <DemoStep step={2} title="Runtime" description="Build settings saved." />
+          <DemoStep step={3} title="Access" description="Configure team permissions." />
+          <DemoStep step={4} title="Finish" description="Create the workspace." />
+        </Stepper>
+      </ComponentExample>
 
-      <div className="border-t border-border">
-        <PreviewRow label="Vertical">
-          <Stepper
-            defaultValue={3}
-            orientation="vertical"
-            aria-label="Workspace configuration"
-            className="max-w-md"
-          >
-            <DemoStep step={1} title="Workspace" description="Repository connected." />
-            <DemoStep step={2} title="Runtime" description="Build settings saved." />
-            <DemoStep step={3} title="Access" description="Configure team permissions." />
-            <DemoStep step={4} title="Finish" description="Create the workspace." />
-          </Stepper>
-        </PreviewRow>
-
-        <PreviewRow label="Disabled step">
-          <Stepper defaultValue={2} aria-label="Release sequence" className="max-w-2xl">
-            <DemoStep step={1} title="Build" description="Artifacts ready." />
-            <DemoStep step={2} title="Review" description="Approval required." />
-            <DemoStep step={3} title="Release" description="Locked until approval." disabled />
-          </Stepper>
-        </PreviewRow>
-      </div>
-    </section>
+      <ComponentExample
+        title="Disabled step"
+        description="Keep unavailable steps visible while preventing interaction until their prerequisite is complete."
+        code={disabledExampleCode}
+      >
+        <Stepper defaultValue={2} aria-label="Release sequence" className="max-w-2xl">
+          <DemoStep step={1} title="Build" description="Artifacts ready." />
+          <DemoStep step={2} title="Review" description="Approval required." />
+          <DemoStep step={3} title="Release" description="Locked until approval." disabled />
+        </Stepper>
+      </ComponentExample>
+    </div>
   );
 }
 
@@ -104,25 +207,5 @@ function DemoStep({
       </StepperTrigger>
       <StepperSeparator />
     </StepperItem>
-  );
-}
-
-function Specification({ term, detail }: { term: string; detail: string }) {
-  return (
-    <div className="flex justify-between gap-4 p-4">
-      <dt className="text-muted-foreground">{term}</dt>
-      <dd>{detail}</dd>
-    </div>
-  );
-}
-
-function PreviewRow({ label, children }: { label: string; children: React.ReactNode }) {
-  return (
-    <div className="grid border-b border-border last:border-b-0 md:grid-cols-[10rem_minmax(0,1fr)]">
-      <p className="border-b border-border p-4 font-mono text-[0.6875rem] uppercase tracking-[0.16em] text-muted-foreground md:border-r md:border-b-0">
-        {label}
-      </p>
-      <div className="min-w-0 p-4">{children}</div>
-    </div>
   );
 }
