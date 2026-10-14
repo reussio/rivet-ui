@@ -66,6 +66,7 @@ export function RecoveryCode() {
       maxLength={6}
       pattern={REGEXP_ONLY_DIGITS_AND_CHARS}
       inputMode="text"
+      defaultValue="RV8"
       aria-label="Recovery code"
     >
       <InputOTPGroup>
@@ -87,7 +88,7 @@ import {
 
 export function InvalidCode() {
   return (
-    <Field>
+    <Field className="w-full max-w-md">
       <InputOTP
         maxLength={6}
         pattern={REGEXP_ONLY_DIGITS}

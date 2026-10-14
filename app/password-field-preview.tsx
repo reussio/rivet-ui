@@ -12,7 +12,7 @@ import { PasswordField } from "@/components/ui/password-field"
 
 export function CurrentPassword() {
   return (
-    <Field>
+    <Field className="w-full max-w-lg">
       <FieldLabel htmlFor="password">Password</FieldLabel>
       <PasswordField
         id="password"
@@ -47,7 +47,7 @@ import { PasswordField } from "@/components/ui/password-field"
 
 export function NewPassword() {
   return (
-    <Field>
+    <Field className="w-full max-w-lg">
       <FieldLabel htmlFor="new-password">New password</FieldLabel>
       <PasswordField
         id="new-password"

@@ -36,7 +36,7 @@ const compactCode = `import { RadioGroup, RadioOption, RadioOptionLabel } from "
 
 export function BackupFrequency() {
   return (
-    <RadioGroup defaultValue="weekly" aria-label="Backup frequency" className="sm:grid-cols-3">
+    <RadioGroup defaultValue="weekly" aria-label="Backup frequency" className="w-full sm:grid-cols-3">
       <RadioOption value="daily"><RadioOptionLabel>Daily</RadioOptionLabel></RadioOption>
       <RadioOption value="weekly"><RadioOptionLabel>Weekly</RadioOptionLabel></RadioOption>
       <RadioOption value="monthly"><RadioOptionLabel>Monthly</RadioOptionLabel></RadioOption>

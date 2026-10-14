@@ -13,6 +13,7 @@ type CodeBlockProps = Omit<React.ComponentProps<"div">, "children"> & {
   copyable?: boolean;
   showLineNumbers?: boolean;
   highlightLinesOnHover?: boolean;
+  softWrap?: boolean;
 };
 
 function CodeBlock({
@@ -22,6 +23,7 @@ function CodeBlock({
   copyable = true,
   showLineNumbers = false,
   highlightLinesOnHover = false,
+  softWrap = false,
   className,
   ...props
 }: CodeBlockProps) {
@@ -42,6 +44,7 @@ function CodeBlock({
     <div
       data-slot="code-block"
       data-language={language}
+      data-soft-wrap={softWrap ? "true" : undefined}
       className={cn("min-w-0 overflow-hidden border border-border bg-card", className)}
       {...props}
     >
@@ -78,7 +81,8 @@ function CodeBlock({
       <pre
         data-slot="code-block-content"
         className={cn(
-          "min-w-0 overflow-x-auto py-4 font-mono text-xs leading-6",
+          "min-w-0 py-4 font-mono text-xs leading-6",
+          softWrap ? "overflow-x-hidden" : "overflow-x-auto",
           !showLineNumbers && !highlightLinesOnHover && "px-4",
         )}
       >
@@ -87,6 +91,7 @@ function CodeBlock({
           language={language}
           showLineNumbers={showLineNumbers}
           highlightLinesOnHover={highlightLinesOnHover}
+          softWrap={softWrap}
         />
       </pre>
     </div>

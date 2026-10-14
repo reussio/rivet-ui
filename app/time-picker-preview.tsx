@@ -1,36 +1,77 @@
 "use client";
 
 import * as React from "react";
-
+import { ComponentExample } from "@/app/component-example";
 import { TimePicker } from "@/registry/rivetui/components/time-picker/time-picker";
+
+const primaryCode = `"use client"
+
+import * as React from "react"
+import { TimePicker } from "@/components/ui/time-picker"
+
+export function DeploymentTime() {
+  const [time, setTime] = React.useState<string | undefined>("14:30")
+
+  return (
+    <div className="w-full max-w-sm space-y-2">
+      <label
+        htmlFor="deployment-time"
+        className="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.14em]"
+      >
+        Deployment time
+      </label>
+      <TimePicker
+        id="deployment-time"
+        name="deploymentTime"
+        value={time}
+        onValueChange={setTime}
+        minuteStep={5}
+      />
+      <p className="text-sm text-muted-foreground">
+        {time ? \`Scheduled for \${time}.\` : "No deployment time selected."}
+      </p>
+    </div>
+  )
+}`;
+
+const formatsCode = `import { TimePicker } from "@/components/ui/time-picker"
+
+<div className="grid gap-4 sm:grid-cols-2">
+  <TimePicker
+    defaultValue="09:45"
+    hourCycle={12}
+    minuteStep={15}
+    aria-label="Meeting time"
+  />
+  <TimePicker
+    defaultValue="18:24:30"
+    showSeconds
+    secondStep={5}
+    aria-label="Precise execution time"
+  />
+</div>`;
+
+const statesCode = `import { TimePicker } from "@/components/ui/time-picker"
+
+<div className="grid gap-4 sm:grid-cols-3">
+  <TimePicker aria-label="Optional time" />
+  <TimePicker defaultValue="08:00" aria-label="Invalid time" aria-invalid />
+  <TimePicker defaultValue="22:15" aria-label="Locked time" disabled />
+</div>`;
 
 export function TimePickerPreview() {
   const [time, setTime] = React.useState<string | undefined>("14:30");
 
   return (
-    <section
-      className="w-full border border-border bg-background"
-      aria-labelledby="time-picker-title"
-    >
-      <header className="flex items-start justify-between gap-6 border-b border-border p-5 sm:p-6">
-        <div className="space-y-2">
-          <p className="font-mono text-[0.6875rem] uppercase tracking-[0.18em] text-muted-foreground">
-            Component / 045
-          </p>
-          <h2
-            id="time-picker-title"
-            className="text-3xl font-semibold tracking-[-0.04em] sm:text-5xl"
-          >
-            Time picker
-          </h2>
-        </div>
-        <span className="border border-border px-2 py-1 font-mono text-[0.625rem] uppercase tracking-[0.14em] text-muted-foreground">
-          Local time
-        </span>
-      </header>
-
-      <div className="grid lg:grid-cols-[minmax(0,1fr)_15rem]">
-        <div className="flex min-h-64 items-center justify-center p-5 sm:p-8 lg:border-r lg:border-border">
+    <div className="mt-8 grid gap-12">
+      <ComponentExample
+        title="Default"
+        description="Use the compact 24-hour picker for scheduling without a separate confirmation step."
+        note="Omit value and defaultValue for an empty picker. Values use HH:mm or HH:mm:ss when seconds are enabled."
+        code={primaryCode}
+        previewClassName="p-0"
+      >
+        <div className="flex min-h-64 items-center justify-center p-5 sm:p-8">
           <div className="w-full max-w-sm space-y-2">
             <label
               htmlFor="deployment-time"
@@ -50,80 +91,57 @@ export function TimePickerPreview() {
             </p>
           </div>
         </div>
+      </ComponentExample>
 
-        <aside
-          className="border-t border-border lg:border-t-0"
-          aria-label="Component specification"
-        >
-          <dl className="divide-y divide-border font-mono text-[0.6875rem] uppercase tracking-[0.12em]">
-            <Specification term="Value" detail="hh:mm" />
-            <Specification term="Cycles" detail="12 / 24" />
-            <Specification term="Adjust" detail="keys / stepper" />
-            <Specification term="Actions" detail="now / clear" />
-            <Specification term="Form" detail="native value" />
-          </dl>
-        </aside>
-      </div>
-
-      <div className="border-t border-border">
-        <PreviewRow label="12 hour">
+      <PreviewRow
+        label="Formats"
+        description="Switch to a 12-hour clock or add seconds only when the workflow requires that precision."
+        code={formatsCode}
+      >
+        <div className="grid w-full gap-4 sm:grid-cols-2">
           <TimePicker
-            className="max-w-sm"
             defaultValue="09:45"
             hourCycle={12}
             minuteStep={15}
             aria-label="Meeting time"
           />
-        </PreviewRow>
-        <PreviewRow label="With seconds">
           <TimePicker
-            className="max-w-sm"
             defaultValue="18:24:30"
             showSeconds
             secondStep={5}
             aria-label="Precise execution time"
           />
-        </PreviewRow>
-        <PreviewRow label="Empty">
-          <TimePicker className="max-w-sm" aria-label="Optional reminder time" />
-        </PreviewRow>
-        <PreviewRow label="Invalid">
-          <TimePicker
-            className="max-w-sm"
-            defaultValue="08:00"
-            aria-label="Unavailable time"
-            aria-invalid="true"
-          />
-        </PreviewRow>
-        <PreviewRow label="Disabled">
-          <TimePicker
-            className="max-w-sm"
-            defaultValue="22:15"
-            aria-label="Locked maintenance time"
-            disabled
-          />
-        </PreviewRow>
-      </div>
-    </section>
-  );
-}
-
-function Specification({ term, detail }: { term: string; detail: string }) {
-  return (
-    <div className="flex justify-between gap-4 p-4">
-      <dt className="text-muted-foreground">{term}</dt>
-      <dd className="text-right">{detail}</dd>
+        </div>
+      </PreviewRow>
+      <PreviewRow
+        label="Form states"
+        description="Empty, invalid, and disabled states follow the same semantics as other Rivet controls."
+        code={statesCode}
+      >
+        <div className="grid w-full gap-4 sm:grid-cols-3">
+          <TimePicker aria-label="Optional time" />
+          <TimePicker defaultValue="08:00" aria-label="Invalid time" aria-invalid="true" />
+          <TimePicker defaultValue="22:15" aria-label="Locked time" disabled />
+        </div>
+      </PreviewRow>
     </div>
   );
 }
 
-function PreviewRow({ label, children }: { label: string; children: React.ReactNode }) {
+function PreviewRow({
+  label,
+  children,
+  code,
+  description,
+}: {
+  label: string;
+  children: React.ReactNode;
+  code: string;
+  description?: string;
+}) {
   return (
-    <div className="grid border-b border-border last:border-b-0 md:grid-cols-[10rem_minmax(0,1fr)]">
-      <p className="border-b border-border p-4 font-mono text-[0.6875rem] uppercase tracking-[0.16em] text-muted-foreground md:border-r md:border-b-0">
-        {label}
-      </p>
+    <ComponentExample title={label} description={description} code={code}>
       <div className="min-w-0 p-4">{children}</div>
-    </div>
+    </ComponentExample>
   );
 }

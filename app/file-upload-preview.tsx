@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-
+import { ComponentExample } from "@/app/component-example";
 import {
   FileUpload,
   FileUploadDropzone,
@@ -9,35 +9,75 @@ import {
   FileUploadMessage,
 } from "@/registry/rivetui/components/file-upload/file-upload";
 
+const primaryCode = `"use client"
+
+import * as React from "react"
+import {
+  FileUpload,
+  FileUploadDropzone,
+  FileUploadList,
+  FileUploadMessage,
+} from "@/components/ui/file-upload"
+
+export function DeploymentFiles() {
+  const [files, setFiles] = React.useState<File[]>([])
+
+  return (
+    <FileUpload
+      value={files}
+      onValueChange={setFiles}
+      accept=".png,.jpg,.jpeg,.pdf,.json"
+      maxFiles={4}
+      maxSize={5 * 1024 * 1024}
+      multiple
+    >
+      <FileUploadDropzone />
+      <FileUploadMessage />
+      <FileUploadList />
+    </FileUpload>
+  )
+}`;
+
+const singleCode = `import * as React from "react";
+import {
+  FileUpload,
+  FileUploadDropzone,
+  FileUploadList,
+  FileUploadMessage,
+} from "@/components/ui/file-upload";
+const maxSize = 5 * 1024 * 1024;
+export function SingleExample() {
+  return (
+    <>
+      <FileUpload accept="image/*" maxSize={maxSize} className="max-w-xl">
+        <FileUploadDropzone className="min-h-28 p-4" />
+        <FileUploadMessage />
+        <FileUploadList />
+      </FileUpload>
+    </>
+  );
+}`;
+
 const maxSize = 5 * 1024 * 1024;
 
 export function FileUploadPreview() {
   const [files, setFiles] = React.useState<File[]>([]);
 
   return (
-    <section
-      className="w-full border border-border bg-background"
-      aria-labelledby="file-upload-title"
-    >
-      <header className="flex items-start justify-between gap-6 border-b border-border p-5 sm:p-6">
-        <div className="space-y-2">
-          <p className="font-mono text-[0.6875rem] uppercase tracking-[0.18em] text-muted-foreground">
-            Component / 037
-          </p>
-          <h2
-            id="file-upload-title"
-            className="text-3xl font-semibold tracking-[-0.04em] sm:text-5xl"
-          >
-            File upload
-          </h2>
-        </div>
-        <span className="border border-border px-2 py-1 font-mono text-[0.625rem] uppercase tracking-[0.14em] text-muted-foreground">
-          Input
-        </span>
-      </header>
-
-      <div className="grid lg:grid-cols-[minmax(0,1fr)_15rem]">
-        <div className="p-5 sm:p-8 lg:border-r lg:border-border">
+    <div className="mt-8 grid gap-12">
+      <ComponentExample
+        title="Default"
+        description="Accept multiple files with shared type, count, and size constraints."
+        note={
+          <>
+            Set <code>disabled</code> on <code>FileUpload</code> to disable the dropzone and file
+            controls together.
+          </>
+        }
+        code={primaryCode}
+        previewClassName="p-0"
+      >
+        <div className="p-5 sm:p-8">
           <FileUpload
             value={files}
             onValueChange={setFiles}
@@ -51,55 +91,37 @@ export function FileUploadPreview() {
             <FileUploadList />
           </FileUpload>
         </div>
+      </ComponentExample>
 
-        <aside
-          className="border-t border-border lg:border-t-0"
-          aria-label="Component specification"
-        >
-          <dl className="divide-y divide-border font-mono text-[0.6875rem] uppercase tracking-[0.12em]">
-            <Specification term="Select" detail="click / drop" />
-            <Specification term="Files" detail="04 max" />
-            <Specification term="Limit" detail="05 MB" />
-            <Specification term="State" detail={files.length ? `${files.length} ready` : "empty"} />
-          </dl>
-        </aside>
-      </div>
-
-      <div className="border-t border-border">
-        <PreviewRow label="Single">
-          <FileUpload accept="image/*" maxSize={maxSize} className="max-w-xl">
-            <FileUploadDropzone className="min-h-28 p-4" />
-            <FileUploadMessage />
-            <FileUploadList />
-          </FileUpload>
-        </PreviewRow>
-
-        <PreviewRow label="Disabled">
-          <FileUpload disabled className="max-w-xl">
-            <FileUploadDropzone className="min-h-28 p-4" />
-          </FileUpload>
-        </PreviewRow>
-      </div>
-    </section>
-  );
-}
-
-function Specification({ term, detail }: { term: string; detail: string }) {
-  return (
-    <div className="flex justify-between gap-4 p-4">
-      <dt className="text-muted-foreground">{term}</dt>
-      <dd className="text-right">{detail}</dd>
+      <PreviewRow
+        label="Single file"
+        description="Omit multiple when the workflow accepts exactly one file."
+        code={singleCode}
+      >
+        <FileUpload accept="image/*" maxSize={maxSize} className="max-w-xl">
+          <FileUploadDropzone className="min-h-28 p-4" />
+          <FileUploadMessage />
+          <FileUploadList />
+        </FileUpload>
+      </PreviewRow>
     </div>
   );
 }
 
-function PreviewRow({ label, children }: { label: string; children: React.ReactNode }) {
+function PreviewRow({
+  label,
+  description,
+  children,
+  code,
+}: {
+  label: string;
+  description?: React.ReactNode;
+  children: React.ReactNode;
+  code: string;
+}) {
   return (
-    <div className="grid border-b border-border last:border-b-0 md:grid-cols-[10rem_minmax(0,1fr)]">
-      <p className="border-b border-border p-4 font-mono text-[0.6875rem] uppercase tracking-[0.16em] text-muted-foreground md:border-r md:border-b-0">
-        {label}
-      </p>
+    <ComponentExample title={label} description={description} code={code}>
       <div className="min-w-0 p-4">{children}</div>
-    </div>
+    </ComponentExample>
   );
 }

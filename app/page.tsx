@@ -128,6 +128,7 @@ export default function Home() {
                   <CodeBlock
                     filename="app/page.tsx"
                     language="tsx"
+                    softWrap
                     code={
                       'import { Button } from "@/components/ui/button"\n\nexport default function Page() {\n  return <Button>Deploy</Button>\n}'
                     }

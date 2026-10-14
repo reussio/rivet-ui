@@ -78,6 +78,7 @@ export function WorkspaceStepper() {
       defaultValue={3}
       orientation="vertical"
       aria-label="Workspace configuration"
+      className="max-w-md"
     >
       {steps.map((item) => (
         <StepperItem key={item.step} step={item.step}>
@@ -119,7 +120,7 @@ const steps = [
 
 export function ReleaseStepper() {
   return (
-    <Stepper defaultValue={2} aria-label="Release sequence">
+    <Stepper defaultValue={2} aria-label="Release sequence" className="max-w-2xl">
       {steps.map((item) => (
         <StepperItem key={item.step} step={item.step} disabled={item.disabled}>
           <StepperTrigger>

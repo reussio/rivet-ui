@@ -150,32 +150,3 @@
     @apply bg-foreground text-background;
   }
 }
-
-.docs-preview [data-slot="component-preview-content"] > section,
-.docs-preview [data-slot="component-preview-content"] > div > section {
-  border-width: 0;
-}
-
-.docs-preview [data-slot="component-preview-content"] > section > header:first-child,
-.docs-preview [data-slot="component-preview-content"] > div > section > header:first-child,
-.docs-preview aside[aria-label="Component specification"] {
-  display: none;
-}
-
-.docs-preview :has(> aside[aria-label="Component specification"]) {
-  display: block;
-}
-
-.docs-preview :has(> aside[aria-label="Component specification"]) > :first-child {
-  min-height: 18rem;
-  border-right-width: 0;
-}
-
-.docs-preview [data-view="overview"] > section > div:last-child,
-.docs-preview [data-view="overview"] > div > section > div:last-child {
-  display: none;
-}
-
-.docs-preview [data-view="examples"] :has(> aside[aria-label="Component specification"]) {
-  display: none;
-}

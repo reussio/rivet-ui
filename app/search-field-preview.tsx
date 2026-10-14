@@ -10,7 +10,14 @@ const registryItems = ["Button", "Command Bar", "Search Field", "Code Block"];
 const defaultCode = `import { SearchField } from "@/components/ui/search-field"
 
 export function DocumentationSearch() {
-  return <SearchField name="query" placeholder="Search components…" />
+  return (
+    <SearchField
+      className="max-w-md"
+      name="query"
+      placeholder="Search components…"
+      aria-label="Search components"
+    />
+  )
 }`;
 
 const controlledCode = `"use client"
@@ -28,9 +35,14 @@ export function RegistrySearch() {
   )
 
   return (
-    <div className="grid gap-3">
+    <div className="grid w-full max-w-md gap-3">
       <SearchField value={query} onValueChange={setQuery} placeholder="Search components…" />
-      <p>{results.length} components found</p>
+      <p
+        className="font-mono text-[0.6875rem] uppercase tracking-[0.12em] text-muted-foreground"
+        aria-live="polite"
+      >
+        {results.length.toString().padStart(2, "0")} components found
+      </p>
     </div>
   )
 }`;
@@ -38,7 +50,14 @@ export function RegistrySearch() {
 const loadingCode = `import { SearchField } from "@/components/ui/search-field"
 
 export function LoadingSearch() {
-  return <SearchField defaultValue="popover" loading aria-label="Search documentation" />
+  return (
+    <SearchField
+      className="max-w-md"
+      defaultValue="popover"
+      loading
+      aria-label="Search documentation"
+    />
+  )
 }`;
 
 export function SearchFieldPreview() {

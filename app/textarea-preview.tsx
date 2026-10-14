@@ -12,7 +12,7 @@ import { Textarea } from "@/components/ui/textarea"
 
 export function ReleaseNotes() {
   return (
-    <Field>
+    <Field className="w-full max-w-xl">
       <FieldLabel htmlFor="release-notes">Release notes</FieldLabel>
       <Textarea
         id="release-notes"
@@ -42,7 +42,7 @@ import { Textarea } from "@/components/ui/textarea"
 
 export function IncidentReason() {
   return (
-    <Field>
+    <Field className="w-full max-w-xl">
       <FieldLabel htmlFor="incident-reason">Incident reason</FieldLabel>
       <Textarea
         id="incident-reason"

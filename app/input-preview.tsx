@@ -4,7 +4,7 @@ import { Input } from "@/registry/rivetui/components/input/input";
 const defaultCode = `import { Input } from "@/components/ui/input"
 
 export function EmailInput() {
-  return <Input type="email" placeholder="ops@rivet.run" aria-label="Email address" />
+  return <Input className="max-w-md" type="email" placeholder="ops@rivet.run" aria-label="Email address" />
 }`;
 
 const statesCode = `import { Input } from "@/components/ui/input"

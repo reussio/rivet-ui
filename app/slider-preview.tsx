@@ -23,7 +23,7 @@ const defaultCode = `import {
 
 export function AllocationSlider() {
   return (
-    <Slider defaultValue={64} name="allocation">
+    <Slider defaultValue={64} name="previewAllocation" className="max-w-lg">
       <SliderLabel>CPU allocation</SliderLabel>
       <SliderValue>{([value]) => \`\${value}%\`}</SliderValue>
       <SliderControl>
@@ -48,7 +48,7 @@ const rangeCode = `import {
 
 export function DeploymentWindow() {
   return (
-    <Slider defaultValue={[24, 72]}>
+    <Slider defaultValue={[24, 72]} className="max-w-lg">
       <SliderLabel>Deployment window</SliderLabel>
       <SliderValue>{(values) => values.join(" – ")}</SliderValue>
       <SliderControl>
@@ -74,7 +74,7 @@ const disabledCode = `import {
 
 export function DisabledSlider() {
   return (
-    <Slider defaultValue={38} disabled>
+    <Slider defaultValue={38} disabled className="max-w-lg">
       <SliderLabel>Memory limit</SliderLabel>
       <SliderValue>{([value]) => \`\${value}%\`}</SliderValue>
       <SliderControl>

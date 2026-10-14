@@ -42,7 +42,7 @@ const runtimes = [
 export function RuntimeSelect() {
   return (
     <Select items={runtimes} defaultValue="node">
-      <SelectTrigger aria-label="Runtime">
+      <SelectTrigger className="max-w-sm" aria-label="Runtime">
         <SelectValue placeholder="Choose a runtime" />
       </SelectTrigger>
       <SelectContent>
@@ -74,7 +74,7 @@ const databases = [
 export function DatabaseSelect() {
   return (
     <Select items={databases} defaultValue="postgres">
-      <SelectTrigger aria-label="Database engine"><SelectValue /></SelectTrigger>
+      <SelectTrigger className="max-w-sm" aria-label="Database engine"><SelectValue /></SelectTrigger>
       <SelectContent>
         <SelectGroup>
           <SelectLabel>Relational</SelectLabel>
@@ -101,7 +101,7 @@ const statesCode = `import {
 
 export function SelectStates() {
   return (
-    <div className="grid gap-3 sm:grid-cols-2">
+    <div className="grid w-full gap-3 sm:grid-cols-2">
       <Select items={[{ label: "Europe", value: "eu" }]}>
         <SelectTrigger aria-label="Region"><SelectValue placeholder="Choose a region" /></SelectTrigger>
         <SelectContent><SelectItem value="eu">Europe</SelectItem></SelectContent>

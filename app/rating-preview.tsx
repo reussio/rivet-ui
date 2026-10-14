@@ -13,17 +13,19 @@ import * as React from "react"
 import { Rating } from "@/components/ui/rating"
 
 export function ExperienceRating() {
-  const [value, setValue] = React.useState(4)
+  const [rating, setRating] = React.useState(4)
 
   return (
-    <div className="flex items-center gap-4">
+    <div className="flex flex-wrap items-center justify-center gap-4">
       <Rating
-        name="experience"
-        value={value}
-        onValueChange={setValue}
+        name="previewExperience"
+        value={rating}
+        onValueChange={setRating}
         aria-label="Deployment experience"
       />
-      <output>{value} / 5</output>
+      <output className="font-mono text-xs tabular-nums" aria-live="polite">
+        {String(rating).padStart(2, "0")} / 05
+      </output>
     </div>
   )
 }`;
@@ -45,7 +47,7 @@ import { Rating } from "@/components/ui/rating"
 
 export function RequiredRating() {
   return (
-    <Field>
+    <Field className="w-full max-w-lg">
       <FieldLabel id="rating-label">Support experience</FieldLabel>
       <Rating
         name="supportRating"

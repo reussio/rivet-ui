@@ -1,5 +1,6 @@
 "use client";
 
+import { ComponentExample } from "@/app/component-example";
 import {
   Progress,
   ProgressIndicator,
@@ -8,25 +9,79 @@ import {
   ProgressValue,
 } from "@/registry/rivetui/components/progress/progress";
 
+const primaryCode = `import {
+  Progress,
+  ProgressIndicator,
+  ProgressLabel,
+  ProgressTrack,
+  ProgressValue,
+} from "@/components/ui/progress"
+
+<div className="border border-border p-5">
+  <Progress value={72}>
+    <ProgressLabel>Uploading deployment artifacts</ProgressLabel>
+    <ProgressValue />
+    <ProgressTrack><ProgressIndicator /></ProgressTrack>
+  </Progress>
+  <div className="mt-4 flex justify-between gap-4 font-mono text-[0.625rem] uppercase tracking-[0.12em] text-muted-foreground">
+    <span>36.8 MB / 51.2 MB</span>
+    <span>12 sec remaining</span>
+  </div>
+</div>`;
+
+const statesCode = `import {
+  Progress,
+  ProgressIndicator,
+  ProgressLabel,
+  ProgressTrack,
+  ProgressValue,
+} from "@/components/ui/progress";
+export function StatesExample() {
+  return (
+    <>
+      <div className="grid w-full gap-6 sm:grid-cols-3">
+        <Progress value={38}>
+          <ProgressLabel>Building</ProgressLabel>
+          <ProgressValue />
+          <ProgressTrack>
+            <ProgressIndicator />
+          </ProgressTrack>
+        </Progress>
+        <Progress value={100}>
+          <ProgressLabel>Complete</ProgressLabel>
+          <ProgressValue />
+          <ProgressTrack>
+            <ProgressIndicator />
+          </ProgressTrack>
+        </Progress>
+        <Progress value={null} aria-valuetext="Waiting for build worker">
+          <ProgressLabel>Waiting</ProgressLabel>
+          <ProgressValue>{() => "Queued"}</ProgressValue>
+          <ProgressTrack>
+            <ProgressIndicator />
+          </ProgressTrack>
+        </Progress>
+      </div>
+    </>
+  );
+}`;
+
 export function ProgressPreview() {
   return (
-    <section className="w-full border border-border bg-background" aria-labelledby="progress-title">
-      <header className="flex items-start justify-between gap-6 border-b border-border p-5 sm:p-6">
-        <div className="space-y-2">
-          <p className="font-mono text-[0.6875rem] uppercase tracking-[0.18em] text-muted-foreground">
-            Primitive / 023
-          </p>
-          <h2 id="progress-title" className="text-3xl font-semibold tracking-[-0.04em] sm:text-5xl">
-            Progress
-          </h2>
-        </div>
-        <span className="border border-border px-2 py-1 font-mono text-[0.625rem] uppercase tracking-[0.14em] text-muted-foreground">
-          Task state
-        </span>
-      </header>
-
-      <div className="grid lg:grid-cols-[minmax(0,1fr)_15rem]">
-        <div className="p-5 sm:p-8 lg:border-r lg:border-border">
+    <div className="mt-8 grid gap-12">
+      <ComponentExample
+        title="Default"
+        description="Pair the visual track with a visible label and value."
+        note={
+          <>
+            Non-percentage ranges use <code>min</code>, <code>max</code>, and a custom value
+            formatter on the same composition.
+          </>
+        }
+        code={primaryCode}
+        previewClassName="p-0"
+      >
+        <div className="p-5 sm:p-8">
           <div className="border border-border p-5">
             <Progress value={72}>
               <ProgressLabel>Uploading deployment artifacts</ProgressLabel>
@@ -41,82 +96,55 @@ export function ProgressPreview() {
             </div>
           </div>
         </div>
+      </ComponentExample>
 
-        <aside
-          className="border-t border-border lg:border-t-0"
-          aria-label="Component specification"
-        >
-          <dl className="divide-y divide-border font-mono text-[0.6875rem] uppercase tracking-[0.12em]">
-            <Specification term="Role" detail="progressbar" />
-            <Specification term="Range" detail="custom" />
-            <Specification term="Value" detail="formatted" />
-            <Specification term="State" detail="3 modes" />
-          </dl>
-        </aside>
-      </div>
-
-      <div className="border-t border-border">
-        <PreviewRow label="States">
-          <div className="grid w-full gap-6 sm:grid-cols-3">
-            <Progress value={38}>
-              <ProgressLabel>Building</ProgressLabel>
-              <ProgressValue />
-              <ProgressTrack>
-                <ProgressIndicator />
-              </ProgressTrack>
-            </Progress>
-            <Progress value={100}>
-              <ProgressLabel>Complete</ProgressLabel>
-              <ProgressValue />
-              <ProgressTrack>
-                <ProgressIndicator />
-              </ProgressTrack>
-            </Progress>
-            <Progress value={null} aria-valuetext="Waiting for build worker">
-              <ProgressLabel>Waiting</ProgressLabel>
-              <ProgressValue>{() => "Queued"}</ProgressValue>
-              <ProgressTrack>
-                <ProgressIndicator />
-              </ProgressTrack>
-            </Progress>
-          </div>
-        </PreviewRow>
-        <PreviewRow label="Custom range">
-          <Progress
-            value={7}
-            min={0}
-            max={10}
-            className="max-w-xl"
-            getAriaValueText={(_, value) => `${value ?? 0} of 10 build steps complete`}
-          >
-            <ProgressLabel>Release pipeline</ProgressLabel>
-            <ProgressValue>{(_, value) => `${value ?? 0} / 10`}</ProgressValue>
+      <PreviewRow
+        label="Progress states"
+        description="Use a numeric value for determinate progress and null while the duration is unknown."
+        code={statesCode}
+      >
+        <div className="grid w-full gap-6 sm:grid-cols-3">
+          <Progress value={38}>
+            <ProgressLabel>Building</ProgressLabel>
+            <ProgressValue />
             <ProgressTrack>
               <ProgressIndicator />
             </ProgressTrack>
           </Progress>
-        </PreviewRow>
-      </div>
-    </section>
-  );
-}
-
-function Specification({ term, detail }: { term: string; detail: string }) {
-  return (
-    <div className="flex justify-between gap-4 p-4">
-      <dt className="text-muted-foreground">{term}</dt>
-      <dd className="text-right">{detail}</dd>
+          <Progress value={100}>
+            <ProgressLabel>Complete</ProgressLabel>
+            <ProgressValue />
+            <ProgressTrack>
+              <ProgressIndicator />
+            </ProgressTrack>
+          </Progress>
+          <Progress value={null} aria-valuetext="Waiting for build worker">
+            <ProgressLabel>Waiting</ProgressLabel>
+            <ProgressValue>{() => "Queued"}</ProgressValue>
+            <ProgressTrack>
+              <ProgressIndicator />
+            </ProgressTrack>
+          </Progress>
+        </div>
+      </PreviewRow>
     </div>
   );
 }
 
-function PreviewRow({ label, children }: { label: string; children: React.ReactNode }) {
+function PreviewRow({
+  label,
+  description,
+  children,
+  code,
+}: {
+  label: string;
+  description?: React.ReactNode;
+  children: React.ReactNode;
+  code: string;
+}) {
   return (
-    <div className="grid border-b border-border last:border-b-0 md:grid-cols-[10rem_minmax(0,1fr)]">
-      <p className="border-b border-border p-4 font-mono text-[0.6875rem] uppercase tracking-[0.16em] text-muted-foreground md:border-r md:border-b-0">
-        {label}
-      </p>
+    <ComponentExample title={label} description={description} code={code}>
       <div className="min-w-0 p-4">{children}</div>
-    </div>
+    </ComponentExample>
   );
 }

@@ -16,17 +16,8 @@ import {
   TableRow,
 } from "@/registry/rivetui/components/table/table";
 
-function ComponentUsage({ children }: { children: React.ReactNode }) {
-  return (
-    <DocsSection
-      id="usage"
-      eyebrow="Basic composition"
-      title="Usage"
-      description="Start with this minimal composition, then adapt it to your application."
-    >
-      <div className="mt-6">{children}</div>
-    </DocsSection>
-  );
+function ComponentUsage(_: { children: React.ReactNode }) {
+  return null;
 }
 
 function ComponentApi({ children }: { children: React.ReactNode }) {
@@ -118,6 +109,7 @@ function MdxPre({ children }: React.ComponentProps<"pre">) {
         filename={language === "tsx" ? "example.tsx" : undefined}
         language={language}
         code={code}
+        softWrap
       />
     </div>
   );

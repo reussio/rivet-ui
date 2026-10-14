@@ -9,7 +9,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/registry/rivetui/com
 type ComponentExampleProps = {
   children: ReactNode;
   code: string;
-  description: string;
+  description?: ReactNode;
+  note?: ReactNode;
   previewClassName?: string;
   title: string;
 };
@@ -18,14 +19,25 @@ function ComponentExample({
   children,
   code,
   description,
+  note,
   previewClassName,
   title,
 }: ComponentExampleProps) {
   return (
-    <article>
+    <article className="min-w-0">
       <div className="max-w-2xl">
         <h3 className="text-base font-semibold tracking-[-0.02em]">{title}</h3>
-        <p className="mt-1.5 text-sm leading-6 text-muted-foreground">{description}</p>
+        {description ? (
+          <p className="mt-1.5 text-sm leading-6 text-muted-foreground">{description}</p>
+        ) : null}
+        {note ? (
+          <div className="mt-3 grid grid-cols-[auto_minmax(0,1fr)] gap-3 border-l border-border pl-3 text-sm leading-6 text-muted-foreground">
+            <span className="font-mono text-[0.625rem] font-medium uppercase tracking-[0.14em] text-foreground">
+              Note
+            </span>
+            <div>{note}</div>
+          </div>
+        ) : null}
       </div>
 
       <Tabs defaultValue="preview" className="mt-4">
@@ -44,8 +56,14 @@ function ComponentExample({
             {children}
           </div>
         </TabsContent>
-        <TabsContent value="code" className="p-0">
-          <CodeBlock filename="example.tsx" language="tsx" code={code} className="border-0" />
+        <TabsContent value="code" className="min-w-0 overflow-hidden p-0">
+          <CodeBlock
+            filename="example.tsx"
+            language="tsx"
+            code={code}
+            softWrap
+            className="w-full max-w-full border-0"
+          />
         </TabsContent>
       </Tabs>
     </article>

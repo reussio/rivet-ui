@@ -12,7 +12,7 @@ import { Switch } from "@/components/ui/switch"
 
 export function FailoverSwitch() {
   return (
-    <Field className="grid-cols-[minmax(0,1fr)_auto] gap-x-4">
+    <Field className="w-full max-w-xl grid-cols-[minmax(0,1fr)_auto] gap-x-4">
       <div className="grid gap-1">
         <FieldLabel htmlFor="failover">Automatic failover</FieldLabel>
         <FieldDescription id="failover-description">
@@ -47,7 +47,7 @@ import { Switch } from "@/components/ui/switch"
 
 export function RequiredSwitch() {
   return (
-    <Field className="grid-cols-[minmax(0,1fr)_auto] gap-x-4">
+    <Field className="w-full max-w-xl grid-cols-[minmax(0,1fr)_auto] gap-x-4">
       <div className="grid gap-1">
         <FieldLabel htmlFor="production">Protected production</FieldLabel>
         <FieldError id="production-error">Enable this control before launch.</FieldError>

@@ -12,7 +12,7 @@ import { Field, FieldDescription, FieldLabel } from "@/components/ui/field"
 
 export function TelemetryCheckbox() {
   return (
-    <Field className="grid-cols-[auto_minmax(0,1fr)] gap-x-3">
+    <Field className="max-w-lg grid-cols-[auto_minmax(0,1fr)] gap-x-3">
       <Checkbox id="telemetry" name="telemetry" defaultChecked />
       <div className="grid gap-1">
         <FieldLabel htmlFor="telemetry">Anonymous telemetry</FieldLabel>
@@ -42,7 +42,7 @@ import { Field, FieldError, FieldLabel } from "@/components/ui/field"
 
 export function RequiredCheckbox() {
   return (
-    <Field className="grid-cols-[auto_minmax(0,1fr)] gap-x-3">
+    <Field className="max-w-lg grid-cols-[auto_minmax(0,1fr)] gap-x-3">
       <Checkbox
         id="policy"
         name="policy"
