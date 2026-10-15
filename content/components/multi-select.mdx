@@ -1,0 +1,62 @@
+import { defineComponentMetadata } from "@/content/components/schema"
+
+export const metadata = defineComponentMetadata({
+  "name": "Multi Select",
+  "slug": "multi-select",
+  "description": "Lets a user choose multiple values from a compact, keyboard-accessible list."
+})
+
+<ComponentApi>
+
+<ComponentTree>
+  <ComponentTreeNode name="MultiSelect">
+    <ComponentTreeNode name="MultiSelectTrigger">
+      <ComponentTreeNode name="MultiSelectValue" />
+    </ComponentTreeNode>
+    <ComponentTreeNode name="MultiSelectContent">
+      <ComponentTreeNode name="MultiSelectGroup" optional>
+        <ComponentTreeNode name="MultiSelectLabel" optional />
+        <ComponentTreeNode name="MultiSelectItem" repeatable />
+      </ComponentTreeNode>
+      <ComponentTreeNode name="MultiSelectItem" repeatable />
+    </ComponentTreeNode>
+  </ComponentTreeNode>
+</ComponentTree>
+
+### MultiSelect
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `value` | `Value[]` | `—` |
+| `defaultValue` | `Value[]` | `[]` |
+| `onValueChange` | `(value: Value[], details) => void` | `—` |
+| `items` | `readonly Item[] \| Record<string, ReactNode>` | `—` |
+| `open` | `boolean` | `—` |
+| `defaultOpen` | `boolean` | `false` |
+| `onOpenChange` | `(open: boolean, details) => void` | `—` |
+| `name` | `string` | `—` |
+| `required` | `boolean` | `false` |
+| `disabled` | `boolean` | `false` |
+
+### MultiSelectValue
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `placeholder` | `ReactNode` | `—` |
+| `children` | `ReactNode \| ((value: Value[]) => ReactNode)` | resolved item labels |
+
+### MultiSelectContent
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `alignItemWithTrigger` | `boolean` | `true` |
+
+### MultiSelectItem
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `value` | `Value` | `null` |
+| `disabled` | `boolean` | `false` |
+| `label` | `string` | item text |
+
+</ComponentApi>

@@ -114,6 +114,10 @@ export async function ComponentPreview({ slug }: { slug: ComponentSlug }) {
       const { LoadingBarPreview } = await import("@/app/loading-bar-preview");
       return <LoadingBarPreview />;
     }
+    case "multi-select": {
+      const { MultiSelectPreview } = await import("@/app/multi-select-preview");
+      return <MultiSelectPreview />;
+    }
     case "number-field": {
       const { NumberFieldPreview } = await import("@/app/number-field-preview");
       return <NumberFieldPreview />;

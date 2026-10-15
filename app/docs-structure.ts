@@ -14,6 +14,7 @@ const groupDefinitions = [
       "rating",
       "search-field",
       "select",
+      "multi-select",
       "slider",
       "switch",
       "textarea",
