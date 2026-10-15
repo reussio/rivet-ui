@@ -5,6 +5,7 @@ import { componentGroups } from "@/app/docs-structure";
 import { HomeSidebarLinks } from "@/app/home-sidebar-links";
 import { SidebarLink } from "@/app/sidebar-link";
 import { buttonVariants } from "@/registry/rivetui/components/button/button";
+import { ThemeMenu } from "@/registry/rivetui/components/theme-switcher/theme-switcher";
 
 const searchItems: readonly DocsSearchItem[] = componentGroups.flatMap((group) =>
   group.components.map((component) => ({
@@ -64,6 +65,12 @@ export function DocsHeader({ active = "docs" }: { active?: "docs" | "components"
 
         <div className="ml-auto flex items-center gap-2">
           <DocsSearch items={searchItems} />
+          <ThemeMenu
+            variant="icon"
+            defaultTheme="dark"
+            storageKey="rivet-ui:theme"
+            className="size-9 text-muted-foreground hover:text-foreground"
+          />
           <a
             href="https://github.com/reussio/rivet-ui"
             target="_blank"
