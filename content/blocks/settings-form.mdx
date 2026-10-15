@@ -1,0 +1,22 @@
+import { defineBlockMetadata } from "@/content/blocks/schema"
+
+export const metadata = defineBlockMetadata({
+  name: "Settings Form",
+  slug: "settings-form",
+  description: "A responsive workspace settings form composed from Rivet form controls.",
+  status: "beta",
+  since: "0.1.0",
+  registryDependencies: ["button", "field", "input", "number-field", "select", "switch"]
+})
+
+<BlockDetails>
+
+### Composition
+
+The block groups identity, regional defaults, numeric policy, and a boolean feature setting into one responsive form. At narrow widths every field and action becomes a single column.
+
+### Integration boundary
+
+Pass a standard form `onSubmit` handler or action. The block owns presentation and native form values only; persistence, validation policy, and request state remain application concerns.
+
+</BlockDetails>

@@ -80,7 +80,7 @@ Rivet follows a visual direction best described as **precision brutalism**: engi
 app/                         Documentation shell, renderers, and component previews
 content/components/          MDX sources and generated documentation manifest
 registry/
-└── rivet/components/        Source for installable components
+└── rivetui/components/      Source for installable components
 public/r/                    Generated registry items (ignored)
 scripts/                     Documentation generation and registry validation
 registry.json                Registry manifest
@@ -111,6 +111,8 @@ The local documentation is available at [localhost:3000](http://localhost:3000),
 | `bun run lint` | Run Biome lint rules |
 | `bun run check` | Check formatting, lint rules, and import organization |
 | `bun run check:write` | Apply safe Biome fixes and formatting |
+| `bun run changeset` | Describe a user-visible change and its SemVer impact |
+| `bun run release:check` | Run every required source, registry, browser, accessibility, and visual gate |
 | `bun run registry:build` | Generate registry JSON in `public/r` |
 | `bun run registry:validate` | Validate the manifest and generated items |
 | `bun run registry:check` | Build and validate the complete registry |
@@ -132,6 +134,27 @@ bun run registry:check
 5. Inspect the generated item in `public/r/<name>.json` before shipping it.
 
 Generated outputs are ignored and must not be committed. Package dependencies belong in `dependencies`; other shadcn registry items belong in `registryDependencies`. Preview-only files must not be included in the installable registry item.
+
+## Versioning and releases
+
+Rivet UI follows SemVer. Add a Changeset for every user-visible component, API, or behavior change:
+
+```bash
+bun run changeset
+```
+
+Use `patch` for compatible fixes, `minor` for compatible features, and `major` for breaking changes. Changesets updates the version and [CHANGELOG](./CHANGELOG.md) through an automated version pull request. After that pull request is merged, run the GitHub `Release` workflow to execute the complete release gate, create the `v*` tag, and publish the GitHub Release.
+
+Documentation metadata records the first Rivet UI version that contains a component and its current maturity:
+
+| Status | Meaning |
+| --- | --- |
+| `experimental` | API and behavior may change substantially |
+| `beta` | Production-usable while final qualification is still in progress |
+| `stable` | API, accessibility, responsive behavior, and tests are approved |
+| `deprecated` | Temporarily retained with a documented replacement |
+
+New components and blocks start as `beta`. Existing components only move to `stable` after their audit evidence is complete.
 
 ## Global styles
 

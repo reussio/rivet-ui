@@ -4,19 +4,30 @@ import { DocsSearch, type DocsSearchItem } from "@/app/docs-search";
 import { componentGroups } from "@/app/docs-structure";
 import { HomeSidebarLinks } from "@/app/home-sidebar-links";
 import { SidebarLink } from "@/app/sidebar-link";
+import { blockDocs } from "@/content/blocks";
 import { buttonVariants } from "@/registry/rivetui/components/button/button";
 import { ThemeMenu } from "@/registry/rivetui/components/theme-switcher/theme-switcher";
 
-const searchItems: readonly DocsSearchItem[] = componentGroups.flatMap((group) =>
-  group.components.map((component) => ({
-    slug: component.slug,
-    name: component.name,
-    description: component.description,
-    group: group.name,
+const searchItems: readonly DocsSearchItem[] = [
+  ...componentGroups.flatMap((group) =>
+    group.components.map((component) => ({
+      href: `/components/${component.slug}`,
+      slug: component.slug,
+      name: component.name,
+      description: component.description,
+      group: group.name,
+    })),
+  ),
+  ...blockDocs.map((block) => ({
+    href: `/blocks/${block.slug}`,
+    slug: block.slug,
+    name: block.name,
+    description: block.description,
+    group: "Blocks",
   })),
-);
+];
 
-export function DocsHeader({ active = "docs" }: { active?: "docs" | "components" }) {
+export function DocsHeader({ active = "docs" }: { active?: "blocks" | "components" | "docs" }) {
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur-sm">
       <div className="mx-auto flex h-16 max-w-[100rem] items-center gap-4 px-4 sm:px-6 lg:px-8">
@@ -54,6 +65,15 @@ export function DocsHeader({ active = "docs" }: { active?: "docs" | "components"
             }`}
           >
             Components
+          </Link>
+          <Link
+            href="/blocks"
+            aria-current={active === "blocks" ? "page" : undefined}
+            className={`flex h-full items-center border-b transition-colors hover:text-foreground ${
+              active === "blocks" ? "border-foreground text-foreground" : "border-transparent"
+            }`}
+          >
+            Blocks
           </Link>
           <a
             href="/r/registry.json"
@@ -120,6 +140,34 @@ export function DocsSidebar() {
             ))}
           </SidebarGroup>
         ))}
+      </div>
+    </aside>
+  );
+}
+
+export function BlocksSidebar() {
+  return (
+    <aside className="hidden border-r border-border lg:block" aria-label="Blocks navigation">
+      <div
+        data-slot="docs-sidebar-scroll"
+        className="sticky top-16 max-h-[calc(100svh-4rem)] overflow-y-auto px-4 py-6"
+      >
+        <SidebarGroup title="Documentation">
+          <SidebarLink href="/">Introduction</SidebarLink>
+          <SidebarLink href="/#quick-start">Quick start</SidebarLink>
+          <SidebarLink href="/#components">Components</SidebarLink>
+        </SidebarGroup>
+
+        <div className="my-6 border-t border-border" />
+
+        <SidebarGroup title="Blocks">
+          <SidebarLink href="/blocks">Overview</SidebarLink>
+          {blockDocs.map((block) => (
+            <SidebarLink key={block.slug} href={`/blocks/${block.slug}`}>
+              {block.name}
+            </SidebarLink>
+          ))}
+        </SidebarGroup>
       </div>
     </aside>
   );

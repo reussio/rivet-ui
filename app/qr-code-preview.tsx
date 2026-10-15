@@ -9,8 +9,8 @@ import { QRCode } from "@/components/ui/qr-code"
 const docsUrl = "https://rivetui.reuss.dev"
 
 export function DocumentationQrCode() {
-  return <div className="mx-auto grid max-w-2xl border border-border sm:grid-cols-[auto_minmax(0,1fr)]">
-  <div className="flex items-center justify-center border-b border-border bg-white p-5 sm:border-r sm:border-b-0">
+  return <div className="mx-auto grid max-w-2xl border border-border [grid-template-columns:repeat(auto-fit,minmax(min(16rem,100%),1fr))]">
+  <div className="flex items-center justify-center border-b border-border bg-white p-5 min-[32rem]:border-r min-[32rem]:border-b-0">
     <QRCode value={docsUrl} size={184} aria-label="Open the Rivet UI documentation" />
   </div>
   <div className="flex min-w-0 flex-col justify-between gap-8 p-5 sm:p-6">
@@ -59,8 +59,8 @@ export function QRCodePreview() {
         previewClassName="p-0"
       >
         <div className="p-5 sm:p-8">
-          <div className="mx-auto grid max-w-2xl border border-border sm:grid-cols-[auto_minmax(0,1fr)]">
-            <div className="flex items-center justify-center border-b border-border bg-white p-5 sm:border-r sm:border-b-0">
+          <div className="mx-auto grid max-w-2xl border border-border [grid-template-columns:repeat(auto-fit,minmax(min(16rem,100%),1fr))]">
+            <div className="flex items-center justify-center border-b border-border bg-white p-5 min-[32rem]:border-r min-[32rem]:border-b-0">
               <QRCode value={docsUrl} size={184} aria-label="Open the Rivet UI documentation" />
             </div>
             <div className="flex min-w-0 flex-col justify-between gap-8 p-5 sm:p-6">

@@ -762,6 +762,94 @@
       ]
     },
     {
+      "name": "settings-form",
+      "type": "registry:block",
+      "title": "Settings Form",
+      "description": "A responsive workspace settings form composed from Rivet form controls.",
+      "categories": ["forms", "settings"],
+      "registryDependencies": [
+        "@rivetui/button",
+        "@rivetui/field",
+        "@rivetui/input",
+        "@rivetui/number-field",
+        "@rivetui/select",
+        "@rivetui/switch"
+      ],
+      "files": [
+        {
+          "path": "registry/rivetui/blocks/settings-form/settings-form.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/settings-form.tsx"
+        }
+      ]
+    },
+    {
+      "name": "deployment-list",
+      "type": "registry:block",
+      "title": "Deployment List",
+      "description": "An operational deployment list with status, row actions, pagination, and destructive confirmation.",
+      "categories": ["dashboard", "data"],
+      "registryDependencies": [
+        "@rivetui/alert-dialog",
+        "@rivetui/button",
+        "@rivetui/data-list",
+        "@rivetui/dropdown-menu",
+        "@rivetui/pagination",
+        "@rivetui/status"
+      ],
+      "files": [
+        {
+          "path": "registry/rivetui/blocks/deployment-list/deployment-list.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/deployment-list.tsx"
+        }
+      ]
+    },
+    {
+      "name": "authentication",
+      "type": "registry:block",
+      "title": "Authentication",
+      "description": "A compact sign-in, verification, and account-recovery flow with no authentication backend assumptions.",
+      "categories": ["authentication", "forms"],
+      "registryDependencies": [
+        "@rivetui/alert",
+        "@rivetui/button",
+        "@rivetui/field",
+        "@rivetui/input",
+        "@rivetui/input-otp",
+        "@rivetui/password-field"
+      ],
+      "files": [
+        {
+          "path": "registry/rivetui/blocks/authentication/authentication.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/authentication.tsx"
+        }
+      ]
+    },
+    {
+      "name": "command-dashboard",
+      "type": "registry:block",
+      "title": "Command Dashboard",
+      "description": "A searchable operations dashboard with service health and a keyboard-accessible command surface.",
+      "categories": ["dashboard", "developer-tools"],
+      "registryDependencies": [
+        "@rivetui/button",
+        "@rivetui/card",
+        "@rivetui/command-bar",
+        "@rivetui/keyboard-shortcut",
+        "@rivetui/search-field",
+        "@rivetui/status"
+      ],
+      "files": [
+        {
+          "path": "registry/rivetui/blocks/command-dashboard/command-dashboard.tsx",
+          "type": "registry:component",
+          "target": "components/blocks/command-dashboard.tsx"
+        }
+      ]
+    },
+    {
       "name": "rivet-style",
       "type": "registry:style",
       "title": "Rivet Style",

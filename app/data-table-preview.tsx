@@ -729,7 +729,7 @@ export function DataTablePreview() {
   return (
     <div className="mt-8 grid gap-12">
       <ComponentExample title="Default" code={primaryCode} previewClassName="p-0">
-        <div className="min-w-0 p-5 sm:p-8">
+        <div className="w-full min-w-0 p-5 sm:p-8">
           <DataTable
             aria-label="Deployments"
             columns={columns}

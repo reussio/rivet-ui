@@ -12,6 +12,9 @@
 
 # testing
 /coverage
+/playwright-report/
+/test-results/
+/tests/.visual-baselines/
 
 # next.js
 /.next/
@@ -21,6 +24,7 @@
 /build
 /public/r/
 /content/components/index.ts
+/content/blocks/index.ts
 
 # misc
 .DS_Store

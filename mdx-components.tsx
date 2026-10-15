@@ -1,5 +1,6 @@
 import type { MDXComponents } from "mdx/types";
 
+import { BlockDetails } from "@/app/block-doc-content";
 import {
   ComponentApi,
   ComponentTree,
@@ -18,6 +19,7 @@ import {
 } from "@/app/component-doc-content";
 
 const components = {
+  BlockDetails,
   ComponentApi,
   ComponentTree,
   ComponentTreeNode,

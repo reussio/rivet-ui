@@ -2,8 +2,8 @@ import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-
 import { ComponentPreview } from "@/app/component-preview";
+import { ComponentStatus } from "@/app/component-status";
 import { CopyInstallButton } from "@/app/copy-command";
 import { DocsSection } from "@/app/docs-section";
 import { componentGroups } from "@/app/docs-structure";
@@ -81,35 +81,43 @@ export default async function ComponentPage({ params }: ComponentPageProps) {
               className="pointer-events-none absolute inset-0 opacity-20 [background-image:linear-gradient(to_right,var(--border)_1px,transparent_1px),linear-gradient(to_bottom,var(--border)_1px,transparent_1px)] [background-size:4rem_4rem]"
               aria-hidden="true"
             />
-            <div className="relative max-w-3xl">
-              <Breadcrumb>
-                <BreadcrumbList className="text-[0.6875rem] uppercase tracking-[0.16em]">
-                  <BreadcrumbItem>
-                    <BreadcrumbLink href="/#components">Components</BreadcrumbLink>
-                  </BreadcrumbItem>
-                  <BreadcrumbSeparator />
-                  <BreadcrumbItem>
-                    <span>{componentGroup?.name}</span>
-                  </BreadcrumbItem>
-                  <BreadcrumbSeparator />
-                  <BreadcrumbItem>
-                    <BreadcrumbPage>{component.name}</BreadcrumbPage>
-                  </BreadcrumbItem>
-                </BreadcrumbList>
-              </Breadcrumb>
+            <div className="relative">
+              <div className="flex items-center justify-between gap-4">
+                <Breadcrumb>
+                  <BreadcrumbList className="text-[0.6875rem] uppercase tracking-[0.16em]">
+                    <BreadcrumbItem>
+                      <BreadcrumbLink href="/#components">Components</BreadcrumbLink>
+                    </BreadcrumbItem>
+                    <BreadcrumbSeparator />
+                    <BreadcrumbItem>
+                      <span>{componentGroup?.name}</span>
+                    </BreadcrumbItem>
+                    <BreadcrumbSeparator />
+                    <BreadcrumbItem>
+                      <BreadcrumbPage>{component.name}</BreadcrumbPage>
+                    </BreadcrumbItem>
+                  </BreadcrumbList>
+                </Breadcrumb>
+                <ComponentStatus
+                  status={component.status}
+                  since={component.since}
+                  replacement={component.replacement}
+                />
+              </div>
+              <div className="max-w-3xl">
+                <h1 className="mt-5 text-4xl font-semibold tracking-[-0.055em] sm:text-6xl">
+                  {component.name}
+                </h1>
+                <p className="mt-4 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
+                  {component.description}
+                </p>
 
-              <h1 className="mt-5 text-4xl font-semibold tracking-[-0.055em] sm:text-6xl">
-                {component.name}
-              </h1>
-              <p className="mt-4 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
-                {component.description}
-              </p>
-
-              <div className="mt-6 flex flex-wrap items-center gap-3">
-                <code className="inline-flex h-10 items-center border border-border bg-background px-3 font-mono text-xs">
-                  @rivetui/{component.slug}
-                </code>
-                <CopyInstallButton commands={installCommands} />
+                <div className="mt-6 flex flex-wrap items-center gap-3">
+                  <code className="inline-flex h-10 items-center border border-border bg-background px-3 font-mono text-xs">
+                    @rivetui/{component.slug}
+                  </code>
+                  <CopyInstallButton commands={installCommands} />
+                </div>
               </div>
             </div>
           </header>

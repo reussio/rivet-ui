@@ -139,7 +139,7 @@ function PaginationExample({
         className={align === "start" ? "justify-start" : undefined}
         aria-label={ariaLabel}
       >
-        <PaginationContent>
+        <PaginationContent className={align === "start" ? "justify-start" : undefined}>
           <PaginationItem>
             <PaginationPrevious
               href={\`#page-\${Math.max(currentPage - 1, 1)}\`}
@@ -214,7 +214,7 @@ export function PaginationPreview() {
   return (
     <div className="mt-8 grid gap-12">
       <ComponentExample title="Default" code={primaryCode} previewClassName="p-0">
-        <div className="flex min-h-44 items-center justify-center overflow-x-auto p-5 sm:p-8">
+        <div className="flex min-h-44 w-full items-center justify-center overflow-x-auto p-5 sm:p-8">
           <PaginationExample />
         </div>
       </ComponentExample>
@@ -266,7 +266,7 @@ function PaginationExample({
         className={align === "start" ? "justify-start" : undefined}
         aria-label={ariaLabel}
       >
-        <PaginationContent>
+        <PaginationContent className={align === "start" ? "justify-start" : undefined}>
           <PaginationItem>
             <PaginationPrevious
               href={`#page-${Math.max(currentPage - 1, 1)}`}
@@ -344,7 +344,7 @@ function PreviewRow({
 }) {
   return (
     <ComponentExample title={label} code={code}>
-      <div className="min-w-0 p-4">{children}</div>
+      <div className="w-full min-w-0 p-4">{children}</div>
     </ComponentExample>
   );
 }

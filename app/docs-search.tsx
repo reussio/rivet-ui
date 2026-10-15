@@ -12,6 +12,7 @@ import {
 import { KeyboardShortcut } from "@/registry/rivetui/components/keyboard-shortcut/keyboard-shortcut";
 
 type DocsSearchItem = {
+  readonly href: string;
   readonly slug: string;
   readonly name: string;
   readonly description: string;
@@ -21,7 +22,7 @@ type DocsSearchItem = {
 function DocsSearch({ items }: { items: readonly DocsSearchItem[] }) {
   const router = useRouter();
   const actions: readonly CommandBarAction[] = items.map((item) => ({
-    id: item.slug,
+    id: item.href,
     label: item.name,
     description: item.description,
     group: item.group,
@@ -32,9 +33,9 @@ function DocsSearch({ items }: { items: readonly DocsSearchItem[] }) {
     <CommandBar
       actions={actions}
       label="Search Rivet UI documentation"
-      placeholder="Search components"
-      emptyMessage="No component matches your search."
-      onActionSelect={(action) => router.push(`/components/${action.id}`)}
+      placeholder="Search documentation"
+      emptyMessage="No documentation matches your search."
+      onActionSelect={(action) => router.push(action.id)}
     >
       <CommandBarTrigger
         render={
@@ -51,7 +52,7 @@ function DocsSearch({ items }: { items: readonly DocsSearchItem[] }) {
           <Search className="size-4" aria-hidden="true" />
         </span>
         <span className="hidden min-w-40 px-3 text-left text-xs sm:block lg:min-w-52">
-          Search components
+          Search documentation
         </span>
         <KeyboardShortcut keys={["mod", "K"]} size="sm" className="mr-2 hidden md:inline-flex" />
       </CommandBarTrigger>

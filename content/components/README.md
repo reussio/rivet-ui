@@ -14,6 +14,8 @@ export const metadata = defineComponentMetadata({
   name: "Button",
   slug: "button",
   description: "Displays an interactive control for actions.",
+  status: "beta",
+  since: "0.1.0",
 })
 
 <ComponentUsage>
@@ -39,6 +41,12 @@ The custom MDX elements are supplied globally by `mdx-components.tsx`. Fenced co
 Rivet `CodeBlock` component automatically, including syntax highlighting and copy controls. Keep
 the usage example focused on the smallest realistic composition; do not repeat every variant in
 MDX.
+
+Every component declares a release status and the first Rivet UI version that contained it. New
+components and blocks start as `beta`. Promote them to `stable` only after their API, accessibility,
+responsive behavior, and automated scenarios have passed review. Use `experimental` when meaningful
+API or behavioral changes are still expected. A `deprecated` component must also declare a
+`replacement`.
 
 Compound components with at least three distinct child components should include a `ComponentTree`
 at the start of `ComponentApi`. Show the recommended nesting rather than every possible export.

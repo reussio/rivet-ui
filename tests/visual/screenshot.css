@@ -1,0 +1,19 @@
+/* biome-ignore-all lint/complexity/noImportantStyles: Screenshot stabilization must override component styles. */
+*,
+*::before,
+*::after {
+  animation-delay: 0s !important;
+  animation-duration: 0s !important;
+  caret-color: transparent !important;
+  cursor: none !important;
+  scroll-behavior: auto !important;
+  transition-delay: 0s !important;
+  transition-duration: 0s !important;
+}
+
+[data-nextjs-toast],
+[data-next-badge-root],
+nextjs-portal,
+[data-slot="block-page-mobile-nav"] {
+  display: none !important;
+}

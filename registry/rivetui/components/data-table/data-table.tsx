@@ -202,7 +202,7 @@ function DataTable<TData extends RowData>({
   return (
     <div
       data-slot="data-table"
-      className={cn("w-full border border-border bg-background", className)}
+      className={cn("w-full min-w-0 max-w-full border border-border bg-background", className)}
     >
       {showToolbar ? (
         <DataTableToolbar table={table} search={searchOptions} hideableColumns={hideableColumns}>
@@ -210,7 +210,7 @@ function DataTable<TData extends RowData>({
         </DataTableToolbar>
       ) : null}
 
-      <div data-slot="data-table-container" className="w-full overflow-x-auto">
+      <div data-slot="data-table-container" className="relative w-full overflow-x-auto">
         <table
           data-slot="data-table-table"
           aria-label={ariaLabel}
@@ -412,10 +412,10 @@ function DataTableToolbar<TData extends RowData>({
   return (
     <div
       data-slot="data-table-toolbar"
-      className="flex min-w-0 flex-col gap-3 border-b border-border p-3 sm:flex-row sm:items-center"
+      className="flex min-w-0 flex-col gap-3 border-b border-border p-3 sm:flex-row sm:flex-wrap sm:items-center"
     >
       {search ? (
-        <div className="relative w-full sm:min-w-48 sm:flex-1 sm:max-w-sm">
+        <div className="relative w-full min-w-0 sm:flex-[1_1_12rem] sm:max-w-sm">
           <label htmlFor={searchId} className="sr-only">
             {search.label ?? "Search table"}
           </label>
@@ -447,7 +447,7 @@ function DataTableToolbar<TData extends RowData>({
         </div>
       ) : null}
 
-      <div className="flex min-w-0 flex-wrap items-center gap-2 sm:ml-auto sm:flex-nowrap">
+      <div className="flex min-w-0 flex-wrap items-center gap-2 sm:ml-auto">
         {children}
         {hideableColumns.length > 0 ? (
           <DataTableViewOptions table={table} columns={hideableColumns} />

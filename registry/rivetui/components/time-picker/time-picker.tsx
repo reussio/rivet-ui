@@ -130,6 +130,7 @@ function TimePicker({
         >
           <PopoverPrimitive.Popup
             data-slot="time-picker-content"
+            aria-label={props["aria-label"] ? `${props["aria-label"]} options` : "Time picker"}
             className={cn(
               "overflow-hidden border border-border bg-popover text-popover-foreground outline-none transition-opacity duration-100 data-ending-style:opacity-0 data-instant:transition-none data-starting-style:opacity-0 motion-reduce:transition-none",
               hourCycle === 12

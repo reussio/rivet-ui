@@ -1,0 +1,22 @@
+import { defineBlockMetadata } from "@/content/blocks/schema"
+
+export const metadata = defineBlockMetadata({
+  name: "Deployment List",
+  slug: "deployment-list",
+  description: "An operational deployment list with status, row actions, pagination, and destructive confirmation.",
+  status: "beta",
+  since: "0.1.0",
+  registryDependencies: ["alert-dialog", "button", "data-list", "dropdown-menu", "pagination", "status"]
+})
+
+<BlockDetails>
+
+### Composition
+
+Each deployment keeps its identity, state, metadata, and actions together. The layout collapses from three aligned desktop regions into a readable mobile stack without hiding operational context.
+
+### Integration boundary
+
+Provide deployment records and connect the inspect, redeploy, and delete callbacks. Fetching, pagination state, mutations, and optimistic updates are intentionally outside the block.
+
+</BlockDetails>

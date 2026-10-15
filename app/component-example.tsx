@@ -1,6 +1,6 @@
 "use client";
 
-import type { ReactNode } from "react";
+import { type ReactNode, useEffect, useState } from "react";
 
 import { cn } from "@/lib/utils";
 import { CodeBlock } from "@/registry/rivetui/components/code-block/code-block";
@@ -23,8 +23,19 @@ function ComponentExample({
   previewClassName,
   title,
 }: ComponentExampleProps) {
+  const [ready, setReady] = useState(false);
+
+  useEffect(() => {
+    setReady(true);
+  }, []);
+
   return (
-    <article className="min-w-0">
+    <article
+      data-slot="component-example"
+      data-example-title={title}
+      data-test-ready={ready ? "true" : "false"}
+      className="min-w-0"
+    >
       <div className="max-w-2xl">
         <h3 className="text-base font-semibold tracking-[-0.02em]">{title}</h3>
         {description ? (
@@ -49,7 +60,7 @@ function ComponentExample({
           <div
             data-slot="component-example-preview"
             className={cn(
-              "flex min-h-64 min-w-0 items-center justify-center p-5 sm:p-8",
+              "flex min-h-64 min-w-0 items-center justify-center p-5 sm:p-8 [&>*]:min-w-0 [&>*]:max-w-full",
               previewClassName,
             )}
           >

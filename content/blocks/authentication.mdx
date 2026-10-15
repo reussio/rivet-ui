@@ -1,0 +1,22 @@
+import { defineBlockMetadata } from "@/content/blocks/schema"
+
+export const metadata = defineBlockMetadata({
+  name: "Authentication",
+  slug: "authentication",
+  description: "A compact sign-in, verification, and account-recovery flow with no authentication backend assumptions.",
+  status: "beta",
+  since: "0.1.0",
+  registryDependencies: ["alert", "button", "field", "input", "input-otp", "password-field"]
+})
+
+<BlockDetails>
+
+### Composition
+
+The block presents sign-in, six-digit verification, and recovery as three focused views inside one stable frame. Labels, autocomplete hints, focus order, and native submission semantics are included.
+
+### Integration boundary
+
+Use `onSubmit` to connect authentication requests and `onViewChange` for analytics or routing. Credential verification, session creation, rate limiting, and recovery delivery remain backend responsibilities.
+
+</BlockDetails>

@@ -1,0 +1,22 @@
+import { defineBlockMetadata } from "@/content/blocks/schema"
+
+export const metadata = defineBlockMetadata({
+  name: "Command Dashboard",
+  slug: "command-dashboard",
+  description: "A searchable operations dashboard with service health and a keyboard-accessible command surface.",
+  status: "beta",
+  since: "0.1.0",
+  registryDependencies: ["button", "card", "command-bar", "keyboard-shortcut", "search-field", "status"]
+})
+
+<BlockDetails>
+
+### Composition
+
+Search narrows the service grid while the command bar exposes cross-service actions. Cards preserve a consistent identity, environment, state, description, and primary navigation target.
+
+### Integration boundary
+
+Provide service records and connect `onCommandSelect` to application commands. The installed block enables Command K by default; documentation previews disable it to avoid intercepting the docs shortcut.
+
+</BlockDetails>

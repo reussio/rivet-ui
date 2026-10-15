@@ -268,6 +268,7 @@ function DatePicker({
         >
           <PopoverPrimitive.Popup
             data-slot="date-picker-content"
+            aria-label={props["aria-label"] ? `${props["aria-label"]} options` : "Date picker"}
             className="w-[min(17.25rem,var(--available-width))] overflow-auto border border-border bg-popover text-popover-foreground outline-none transition-opacity duration-100 data-ending-style:opacity-0 data-instant:transition-none data-starting-style:opacity-0 motion-reduce:transition-none"
           >
             <div className="flex items-center justify-between gap-3 border-b border-border px-3 py-3">
@@ -411,6 +412,9 @@ function DateRangePicker({
         >
           <PopoverPrimitive.Popup
             data-slot="date-range-picker-content"
+            aria-label={
+              props["aria-label"] ? `${props["aria-label"]} options` : "Date range picker"
+            }
             className="w-[min(17.25rem,var(--available-width))] overflow-auto border border-border bg-popover text-popover-foreground outline-none transition-opacity duration-100 data-ending-style:opacity-0 data-instant:transition-none data-starting-style:opacity-0 motion-reduce:transition-none"
           >
             <div className="flex items-center justify-between gap-3 border-b border-border px-3 py-3">

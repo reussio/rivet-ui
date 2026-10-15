@@ -79,7 +79,7 @@ import {
 export function CompositionExample() {
   return (
     <>
-      <div className="grid w-full gap-4 md:grid-cols-2">
+      <div className="grid w-full gap-4 [grid-template-columns:repeat(auto-fit,minmax(min(18rem,100%),1fr))]">
         <Card>
           <CardHeader>
             <CardTitle>Worker capacity</CardTitle>
@@ -165,7 +165,7 @@ export function CardPreview() {
         description="Adapt the same primitive to metrics, settings, or action-oriented content without adding new card variants."
         code={compositionCode}
       >
-        <div className="grid w-full gap-4 md:grid-cols-2">
+        <div className="grid w-full gap-4 [grid-template-columns:repeat(auto-fit,minmax(min(18rem,100%),1fr))]">
           <Card>
             <CardHeader>
               <CardTitle>Worker capacity</CardTitle>

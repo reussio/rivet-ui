@@ -1,0 +1,84 @@
+name: Release
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.14
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Install Playwright browsers
+        run: bunx playwright install --with-deps chromium webkit
+
+      - name: Restore visual baselines
+        uses: actions/cache/restore@v4
+        with:
+          path: tests/.visual-baselines
+          key: visual-${{ runner.os }}-main-${{ github.sha }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            visual-${{ runner.os }}-main-
+
+      - name: Require a visual baseline
+        run: test -d tests/.visual-baselines
+
+      - name: Run release gate
+        run: bun run release:check
+
+      - name: Resolve release version
+        id: release
+        run: echo "tag=v$(bun -e 'console.log(require(\"./package.json\").version)')" >> "$GITHUB_OUTPUT"
+
+      - name: Require an unreleased version
+        run: '! git rev-parse --verify "refs/tags/${{ steps.release.outputs.tag }}"'
+
+      - name: Extract release notes
+        run: bun scripts/extract-release-notes.ts "$RUNNER_TEMP/rivet-ui-release-notes.md"
+
+      - name: Create and push tag
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          bun run release:tag
+          git push --follow-tags
+
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: >-
+          gh release create "${{ steps.release.outputs.tag }}"
+          --verify-tag
+          --title "Rivet UI ${{ steps.release.outputs.tag }}"
+          --notes-file "$RUNNER_TEMP/rivet-ui-release-notes.md"
+
+      - name: Upload failed test output
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-test-results-${{ github.run_id }}
+          path: |
+            playwright-report
+            test-results
+          if-no-files-found: ignore
+          retention-days: 7

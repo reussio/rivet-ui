@@ -11,7 +11,7 @@ function Pagination({
     <nav
       data-slot="pagination"
       aria-label={ariaLabel}
-      className={cn("flex w-full justify-center", className)}
+      className={cn("@container/pagination flex w-full justify-center", className)}
       {...props}
     />
   );
@@ -21,7 +21,7 @@ function PaginationContent({ className, ...props }: React.ComponentProps<"ul">) 
   return (
     <ul
       data-slot="pagination-content"
-      className={cn("flex items-center gap-1", className)}
+      className={cn("flex w-full flex-wrap items-center justify-center gap-1", className)}
       {...props}
     />
   );
@@ -89,7 +89,7 @@ function PaginationPrevious({
       {...props}
     >
       <ChevronLeft className="size-4" aria-hidden="true" />
-      {children ?? <span>Previous</span>}
+      {children ?? <span className="@max-[20rem]/pagination:sr-only">Previous</span>}
     </a>
   );
 }
@@ -118,7 +118,7 @@ function PaginationNext({
       {...(disabled ? {} : { onClick })}
       {...props}
     >
-      {children ?? <span>Next</span>}
+      {children ?? <span className="@max-[20rem]/pagination:sr-only">Next</span>}
       <ChevronRight className="size-4" aria-hidden="true" />
     </a>
   );
