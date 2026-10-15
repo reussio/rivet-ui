@@ -187,6 +187,8 @@ function getShortcutItems(keys: KeyboardShortcutKeys, platform: ResolvedPlatform
     return {
       ...definition,
       id: `${normalizedKey}-${occurrence}`,
+      isLiteralKey: !keyDefinitions[normalizedKey] && !modifierKeys.has(normalizedKey),
+      isMacModifier: platform === "mac" && modifierKeys.has(normalizedKey),
     };
   });
 }
@@ -321,9 +323,13 @@ function KeyboardShortcut({
             size === "sm"
               ? "h-5 min-w-5 px-1 text-[0.625rem]"
               : "h-7 min-w-7 px-1.5 text-[0.6875rem]",
+            (item.isMacModifier || item.isLiteralKey) &&
+              "font-sans font-semibold normal-case antialiased [font-family:system-ui,sans-serif]",
+            item.isMacModifier && (size === "sm" ? "text-[0.8125rem]" : "text-[0.9375rem]"),
+            item.isLiteralKey && (size === "sm" ? "text-xs" : "text-[0.8125rem]"),
           )}
         >
-          {item.symbol}
+          <span className="inline-flex translate-y-px">{item.symbol}</span>
         </span>
       ))}
     </kbd>
