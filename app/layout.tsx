@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
+import { KeyboardShortcutScript } from "@/registry/rivetui/components/keyboard-shortcut/keyboard-shortcut-script";
 import { ThemeScript } from "@/registry/rivetui/components/theme-switcher/theme-script";
 
 import "./globals.css";
@@ -30,6 +31,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       suppressHydrationWarning
     >
       <head>
+        <KeyboardShortcutScript />
         <ThemeScript defaultTheme="dark" storageKey="rivet-ui:theme" />
       </head>
       <body className="flex min-h-full flex-col">{children}</body>

@@ -492,6 +492,10 @@
         {
           "path": "registry/rivetui/components/keyboard-shortcut/keyboard-shortcut.tsx",
           "type": "registry:ui"
+        },
+        {
+          "path": "registry/rivetui/components/keyboard-shortcut/keyboard-shortcut-script.tsx",
+          "type": "registry:ui"
         }
       ]
     },

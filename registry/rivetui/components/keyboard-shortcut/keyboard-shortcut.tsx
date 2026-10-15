@@ -313,27 +313,58 @@ function KeyboardShortcut({
       )}
       {...props}
     >
-      {items.map((item) => (
-        <span
-          key={item.id}
-          data-slot="keyboard-shortcut-key"
-          aria-hidden="true"
-          className={cn(
-            "inline-flex items-center justify-center border-l border-border font-mono font-medium uppercase leading-none first:border-l-0",
-            size === "sm"
-              ? "h-5 min-w-5 px-1 text-[0.625rem]"
-              : "h-7 min-w-7 px-1.5 text-[0.6875rem]",
-            (item.isMacModifier || item.isLiteralKey) &&
-              "font-sans font-semibold normal-case antialiased [font-family:system-ui,sans-serif]",
-            item.isMacModifier && (size === "sm" ? "text-[0.8125rem]" : "text-[0.9375rem]"),
-            item.isLiteralKey && (size === "sm" ? "text-xs" : "text-[0.8125rem]"),
-          )}
-        >
-          <span className="inline-flex translate-y-px">{item.symbol}</span>
-        </span>
-      ))}
+      {platform === "auto" ? (
+        <>
+          <span
+            data-platform-variant="non-mac"
+            aria-hidden="true"
+            className="contents [[data-rivet-platform=mac]_&]:hidden"
+          >
+            <KeyboardShortcutKeys keys={keys} platform="windows" size={size} />
+          </span>
+          <span
+            data-platform-variant="mac"
+            aria-hidden="true"
+            className="hidden [[data-rivet-platform=mac]_&]:contents"
+          >
+            <KeyboardShortcutKeys keys={keys} platform="mac" size={size} />
+          </span>
+        </>
+      ) : (
+        <KeyboardShortcutKeys keys={keys} platform={platform} size={size} />
+      )}
     </kbd>
   );
+}
+
+function KeyboardShortcutKeys({
+  keys,
+  platform,
+  size,
+}: {
+  keys: KeyboardShortcutKeys;
+  platform: Exclude<KeyboardShortcutPlatform, "auto">;
+  size: NonNullable<KeyboardShortcutProps["size"]>;
+}) {
+  const items = getShortcutItems(keys, platform);
+
+  return items.map((item) => (
+    <span
+      key={item.id}
+      data-slot="keyboard-shortcut-key"
+      aria-hidden="true"
+      className={cn(
+        "inline-flex items-center justify-center border-l border-border font-mono font-medium uppercase leading-none first:border-l-0",
+        size === "sm" ? "h-5 min-w-5 px-1 text-[0.625rem]" : "h-7 min-w-7 px-1.5 text-[0.6875rem]",
+        (item.isMacModifier || item.isLiteralKey) &&
+          "font-sans font-semibold normal-case antialiased [font-family:system-ui,sans-serif]",
+        item.isMacModifier && (size === "sm" ? "text-[0.8125rem]" : "text-[0.9375rem]"),
+        item.isLiteralKey && (size === "sm" ? "text-xs" : "text-[0.8125rem]"),
+      )}
+    >
+      <span className="inline-flex translate-y-px">{item.symbol}</span>
+    </span>
+  ));
 }
 
 export type {
