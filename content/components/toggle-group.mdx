@@ -1,0 +1,33 @@
+import { defineComponentMetadata } from "@/content/components/schema"
+
+export const metadata = defineComponentMetadata({
+  "name": "Toggle Group",
+  "slug": "toggle-group",
+  "description": "Groups related two-state controls into a compact single- or multi-selection interface."
+})
+
+<ComponentApi>
+
+### ToggleGroup
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `value` | `readonly string[]` | `—` |
+| `defaultValue` | `readonly string[]` | `[]` |
+| `onValueChange` | `(value: string[], details) => void` | `—` |
+| `multiple` | `boolean` | `false` |
+| `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` |
+| `loopFocus` | `boolean` | `true` |
+| `variant` | `"outline" \| "ghost"` | `"outline"` |
+| `size` | `"sm" \| "md" \| "lg"` | `"md"` |
+| `disabled` | `boolean` | `false` |
+
+### ToggleGroupItem
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `value` | `string` | `required` |
+| `disabled` | `boolean` | `false` |
+| `onPressedChange` | `(pressed: boolean, details) => void` | `—` |
+
+</ComponentApi>

@@ -222,6 +222,10 @@ export async function ComponentPreview({ slug }: { slug: ComponentSlug }) {
       const { ToastPreview } = await import("@/app/toast-preview");
       return <ToastPreview />;
     }
+    case "toggle-group": {
+      const { ToggleGroupPreview } = await import("@/app/toggle-group-preview");
+      return <ToggleGroupPreview />;
+    }
     case "tooltip": {
       const { TooltipPreview } = await import("@/app/tooltip-preview");
       return <TooltipPreview />;

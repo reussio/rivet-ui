@@ -17,6 +17,7 @@ const groupDefinitions = [
       "multi-select",
       "slider",
       "switch",
+      "toggle-group",
       "textarea",
     ],
   },
