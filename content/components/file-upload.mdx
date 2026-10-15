@@ -32,6 +32,8 @@ import { FileUpload, FileUploadDropzone, FileUploadList, FileUploadMessage } fro
   </ComponentTreeNode>
 </ComponentTree>
 
+### FileUpload
+
 | Prop | Type | Default |
 | --- | --- | --- |
 | `value` | `File[]` | `—` |
@@ -43,5 +45,14 @@ import { FileUpload, FileUploadDropzone, FileUploadList, FileUploadMessage } fro
 | `maxSize` | `number` | `—` |
 | `disabled` | `boolean` | `false` |
 | `onFileReject` | `(rejection: FileUploadRejection) => void` | `—` |
+
+### FileUploadDropzone
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `size` | `"sm" \| "md"` | `"md"` |
+| `className` | `string` | `—` |
+
+Use `size="sm"` for a button-height picker. The compact layout keeps click and drag-and-drop behavior and shows the selected filename inline.
 
 </ComponentApi>

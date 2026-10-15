@@ -210,6 +210,12 @@ function FileUpload({
   );
 }
 
+type FileUploadDropzoneSize = "sm" | "md";
+
+type FileUploadDropzoneProps = React.ComponentProps<"label"> & {
+  size?: FileUploadDropzoneSize;
+};
+
 function FileUploadDropzone({
   children,
   className,
@@ -218,14 +224,16 @@ function FileUploadDropzone({
   onDragLeave,
   onDragOver,
   onDrop,
+  size = "md",
   ...props
-}: React.ComponentProps<"label">) {
+}: FileUploadDropzoneProps) {
   const {
     accept,
     addFiles,
     disabled,
     error,
     errorId,
+    files,
     inputId,
     isDragging,
     maxFiles,
@@ -238,16 +246,29 @@ function FileUploadDropzone({
     Number.isFinite(maxFiles) ? `${maxFiles} ${maxFiles === 1 ? "file" : "files"}` : null,
     maxSize ? `Up to ${formatBytes(maxSize)}` : null,
   ].filter(Boolean);
+  const compactLabel = isDragging
+    ? "Release to add files"
+    : files.length > 0
+      ? multiple
+        ? `${files.length} ${files.length === 1 ? "file" : "files"} selected`
+        : files[0]?.name
+      : multiple
+        ? "Choose files"
+        : "Choose file";
 
   return (
     <label
       htmlFor={htmlFor ?? inputId}
       data-slot="file-upload-dropzone"
       data-dragging={isDragging ? "" : undefined}
+      data-size={size}
       aria-describedby={error ? errorId : undefined}
       aria-disabled={disabled || undefined}
       className={cn(
-        "group flex min-h-40 w-full cursor-pointer flex-col items-center justify-center border border-dashed border-border bg-muted/10 p-6 text-center font-sans text-foreground outline-none transition-[background-color,border-color,box-shadow,color] duration-100 hover:border-foreground/40 hover:bg-muted/25 peer-focus-visible:border-ring peer-focus-visible:ring-2 peer-focus-visible:ring-ring/40 data-[dragging]:border-foreground data-[dragging]:border-solid data-[dragging]:bg-muted/50 aria-disabled:pointer-events-none aria-disabled:bg-muted/40 aria-disabled:opacity-50 motion-reduce:transition-none",
+        "group flex w-full cursor-pointer border border-dashed border-border bg-muted/10 font-sans text-foreground outline-none transition-[background-color,border-color,box-shadow,color] duration-100 hover:border-foreground/40 hover:bg-muted/25 peer-focus-visible:border-ring peer-focus-visible:ring-2 peer-focus-visible:ring-ring/40 data-[dragging]:border-foreground data-[dragging]:border-solid data-[dragging]:bg-muted/50 aria-disabled:pointer-events-none aria-disabled:bg-muted/40 aria-disabled:opacity-50 motion-reduce:transition-none",
+        size === "md"
+          ? "min-h-40 flex-col items-center justify-center p-6 text-center"
+          : "h-10 min-w-0 items-center gap-2 overflow-hidden px-3 text-left",
         className,
       )}
       onDragEnter={(event) => {
@@ -280,24 +301,36 @@ function FileUploadDropzone({
       }}
       {...props}
     >
-      {children ?? (
-        <>
-          <span className="mb-4 flex size-10 items-center justify-center border border-border bg-background text-muted-foreground transition-colors group-hover:text-foreground group-data-[dragging]:border-foreground group-data-[dragging]:text-foreground">
-            <Upload className="size-4" aria-hidden="true" />
-          </span>
-          <span className="text-sm font-semibold">
-            {isDragging ? "Release to add files" : "Drop files here or click to browse"}
-          </span>
-          <span className="mt-1 text-sm text-muted-foreground">
-            {multiple
-              ? "Select one or more files from your device."
-              : "Select a file from your device."}
-          </span>
-          <span className="mt-4 font-mono text-[0.625rem] uppercase tracking-[0.14em] text-muted-foreground">
-            {constraints.join(" · ")}
-          </span>
-        </>
-      )}
+      {children ??
+        (size === "sm" ? (
+          <>
+            <Upload
+              className="size-4 shrink-0 text-muted-foreground transition-colors group-hover:text-foreground group-data-[dragging]:text-foreground"
+              aria-hidden="true"
+            />
+            <span className="min-w-0 flex-1 truncate text-sm font-medium">{compactLabel}</span>
+            <span className="min-w-0 max-w-1/2 truncate font-mono text-[0.625rem] uppercase tracking-[0.12em] text-muted-foreground">
+              {constraints.join(" · ")}
+            </span>
+          </>
+        ) : (
+          <>
+            <span className="mb-4 flex size-10 items-center justify-center border border-border bg-background text-muted-foreground transition-colors group-hover:text-foreground group-data-[dragging]:border-foreground group-data-[dragging]:text-foreground">
+              <Upload className="size-4" aria-hidden="true" />
+            </span>
+            <span className="text-sm font-semibold">
+              {isDragging ? "Release to add files" : "Drop files here or click to browse"}
+            </span>
+            <span className="mt-1 text-sm text-muted-foreground">
+              {multiple
+                ? "Select one or more files from your device."
+                : "Select a file from your device."}
+            </span>
+            <span className="mt-4 font-mono text-[0.625rem] uppercase tracking-[0.14em] text-muted-foreground">
+              {constraints.join(" · ")}
+            </span>
+          </>
+        ))}
     </label>
   );
 }
@@ -501,6 +534,8 @@ function formatBytes(bytes: number) {
 }
 
 export type {
+  FileUploadDropzoneProps,
+  FileUploadDropzoneSize,
   FileUploadErrorCode,
   FileUploadItemProps,
   FileUploadListProps,

@@ -58,6 +58,21 @@ export function SingleExample() {
   );
 }`;
 
+const compactCode = `import {
+  FileUpload,
+  FileUploadDropzone,
+  FileUploadMessage,
+} from "@/components/ui/file-upload"
+
+export function CompactFileUpload() {
+  return (
+    <FileUpload accept=".csv,.json" maxSize={2 * 1024 * 1024}>
+      <FileUploadDropzone size="sm" />
+      <FileUploadMessage />
+    </FileUpload>
+  )
+}`;
+
 const maxSize = 5 * 1024 * 1024;
 
 export function FileUploadPreview() {
@@ -92,6 +107,17 @@ export function FileUploadPreview() {
           </FileUpload>
         </div>
       </ComponentExample>
+
+      <PreviewRow
+        label="Compact"
+        description="Fit file selection into a standard control row without losing drag and drop."
+        code={compactCode}
+      >
+        <FileUpload accept=".csv,.json" maxSize={2 * 1024 * 1024} className="max-w-xl">
+          <FileUploadDropzone size="sm" />
+          <FileUploadMessage />
+        </FileUpload>
+      </PreviewRow>
 
       <PreviewRow
         label="Single file"

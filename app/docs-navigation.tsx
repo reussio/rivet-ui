@@ -3,6 +3,7 @@ import Link from "next/link";
 import { DocsSearch, type DocsSearchItem } from "@/app/docs-search";
 import { componentGroups } from "@/app/docs-structure";
 import { HomeSidebarLinks } from "@/app/home-sidebar-links";
+import { MobileDocsNavigation } from "@/app/mobile-docs-navigation";
 import { SidebarLink } from "@/app/sidebar-link";
 import { blockDocs } from "@/content/blocks";
 import { buttonVariants } from "@/registry/rivetui/components/button/button";
@@ -27,7 +28,9 @@ const searchItems: readonly DocsSearchItem[] = [
   })),
 ];
 
-export function DocsHeader({ active = "docs" }: { active?: "blocks" | "components" | "docs" }) {
+type DocsHeaderSection = "blocks" | "changelog" | "docs";
+
+export function DocsHeader({ active = "docs" }: { active?: DocsHeaderSection }) {
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur-sm">
       <div className="mx-auto flex h-16 max-w-[100rem] items-center gap-4 px-4 sm:px-6 lg:px-8">
@@ -58,15 +61,6 @@ export function DocsHeader({ active = "docs" }: { active?: "blocks" | "component
             Docs
           </Link>
           <Link
-            href="/#components"
-            aria-current={active === "components" ? "page" : undefined}
-            className={`flex h-full items-center border-b transition-colors hover:text-foreground ${
-              active === "components" ? "border-foreground text-foreground" : "border-transparent"
-            }`}
-          >
-            Components
-          </Link>
-          <Link
             href="/blocks"
             aria-current={active === "blocks" ? "page" : undefined}
             className={`flex h-full items-center border-b transition-colors hover:text-foreground ${
@@ -74,6 +68,15 @@ export function DocsHeader({ active = "docs" }: { active?: "blocks" | "component
             }`}
           >
             Blocks
+          </Link>
+          <Link
+            href="/changelog"
+            aria-current={active === "changelog" ? "page" : undefined}
+            className={`flex h-full items-center border-b transition-colors hover:text-foreground ${
+              active === "changelog" ? "border-foreground text-foreground" : "border-transparent"
+            }`}
+          >
+            Changelog
           </Link>
           <a
             href="/r/registry.json"
@@ -104,6 +107,7 @@ export function DocsHeader({ active = "docs" }: { active?: "blocks" | "component
           >
             <GitHubIcon className="size-4" />
           </a>
+          <MobileDocsNavigation active={active} />
         </div>
       </div>
     </header>

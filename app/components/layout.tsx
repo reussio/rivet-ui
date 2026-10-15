@@ -10,7 +10,7 @@ export default function ComponentsLayout({ children }: { children: React.ReactNo
         Skip to content
       </a>
 
-      <DocsHeader active="components" />
+      <DocsHeader active="docs" />
 
       <div className="mx-auto grid max-w-[100rem] lg:grid-cols-[17rem_minmax(0,1fr)] xl:grid-cols-[17rem_minmax(0,1fr)_13rem]">
         <DocsSidebar />
