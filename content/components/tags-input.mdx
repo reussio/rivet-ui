@@ -1,0 +1,32 @@
+import { defineComponentMetadata } from "@/content/components/schema"
+
+export const metadata = defineComponentMetadata({
+  "name": "Tags Input",
+  "slug": "tags-input",
+  "description": "Collects removable free-form values with efficient keyboard entry and paste handling."
+})
+
+<ComponentApi>
+
+### TagsInput
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `value` | `readonly string[]` | `—` |
+| `defaultValue` | `readonly string[]` | `[]` |
+| `onValueChange` | `(value: string[]) => void` | `—` |
+| `maxTags` | `number` | `Infinity` |
+| `validateTag` | `(tag: string) => boolean` | `—` |
+| `addOnBlur` | `boolean` | `true` |
+| `removeTagLabel` | `(tag: string) => string` | `` `Remove ${tag}` `` |
+| `name` | `string` | `—` |
+| `disabled` | `boolean` | `false` |
+| `aria-invalid` | `boolean \| string` | `false` |
+| `className` | `string` | `—` |
+| `inputClassName` | `string` | `—` |
+
+### TagsInputLabel
+
+Accepts native `label` props. Connect it to `TagsInput` with matching `htmlFor` and `id` values.
+
+</ComponentApi>

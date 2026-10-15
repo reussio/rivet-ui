@@ -194,6 +194,10 @@ export async function ComponentPreview({ slug }: { slug: ComponentSlug }) {
       const { TabsPreview } = await import("@/app/tabs-preview");
       return <TabsPreview />;
     }
+    case "tags-input": {
+      const { TagsInputPreview } = await import("@/app/tags-input-preview");
+      return <TagsInputPreview />;
+    }
     case "terminal": {
       const { TerminalPreview } = await import("@/app/terminal-preview");
       return <TerminalPreview />;

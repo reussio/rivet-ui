@@ -432,6 +432,19 @@
       ]
     },
     {
+      "name": "tags-input",
+      "type": "registry:ui",
+      "title": "Tags Input",
+      "description": "A free-form multi-value input with removable tags, keyboard entry, and paste handling.",
+      "dependencies": ["lucide-react"],
+      "files": [
+        {
+          "path": "registry/rivetui/components/tags-input/tags-input.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "pagination",
       "type": "registry:ui",
       "title": "Pagination",

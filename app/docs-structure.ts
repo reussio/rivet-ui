@@ -21,7 +21,15 @@ const groupDefinitions = [
   },
   {
     name: "Forms & pickers",
-    slugs: ["field", "combobox", "date-picker", "time-picker", "color-picker", "file-upload"],
+    slugs: [
+      "field",
+      "combobox",
+      "tags-input",
+      "date-picker",
+      "time-picker",
+      "color-picker",
+      "file-upload",
+    ],
   },
   {
     name: "Navigation",
