@@ -8,6 +8,7 @@ const groupDefinitions = [
       "checkbox",
       "input",
       "input-otp",
+      "number-field",
       "password-field",
       "radio-group",
       "rating",

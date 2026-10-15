@@ -1,0 +1,70 @@
+import { defineComponentMetadata } from "@/content/components/schema"
+
+export const metadata = defineComponentMetadata({
+  "name": "Number Field",
+  "slug": "number-field",
+  "description": "Captures formatted numeric values with precise stepping, range constraints, and keyboard control."
+})
+
+<ComponentApi>
+
+<ComponentTree>
+  <ComponentTreeNode name="NumberField">
+    <ComponentTreeNode name="NumberFieldLabel" optional />
+    <ComponentTreeNode name="NumberFieldGroup">
+      <ComponentTreeNode name="NumberFieldDecrement" optional />
+      <ComponentTreeNode name="NumberFieldInput" />
+      <ComponentTreeNode name="NumberFieldIncrement" optional />
+    </ComponentTreeNode>
+  </ComponentTreeNode>
+</ComponentTree>
+
+### NumberField
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `value` | `number \| null` | `—` |
+| `defaultValue` | `number` | `—` |
+| `onValueChange` | `(value: number \| null, details) => void` | `—` |
+| `onValueCommitted` | `(value: number \| null, details) => void` | `—` |
+| `min` | `number` | `—` |
+| `max` | `number` | `—` |
+| `step` | `number \| "any"` | `1` |
+| `smallStep` | `number` | `0.1` |
+| `largeStep` | `number` | `10` |
+| `format` | `Intl.NumberFormatOptions` | `—` |
+| `locale` | `Intl.LocalesArgument` | runtime locale |
+| `disabled` | `boolean` | `false` |
+| `readOnly` | `boolean` | `false` |
+| `required` | `boolean` | `false` |
+| `name` | `string` | `—` |
+
+### NumberFieldLabel
+
+Accepts native `label` props. Connect it to `NumberFieldInput` with matching `htmlFor` and `id` values.
+
+### NumberFieldGroup
+
+Accepts Base UI group props and provides the shared border, focus, invalid, and disabled treatment.
+
+### NumberFieldInput
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `id` | `string` | `—` |
+| `placeholder` | `string` | `—` |
+| `aria-label` | `string` | `—` |
+
+### NumberFieldDecrement
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `aria-label` | `string` | `"Decrease value"` |
+
+### NumberFieldIncrement
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `aria-label` | `string` | `"Increase value"` |
+
+</ComponentApi>
