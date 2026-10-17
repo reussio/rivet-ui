@@ -19,7 +19,7 @@ test("component overview and search stay status-free", async ({ page }) => {
   await expect(page.locator('[data-slot="component-status"]')).toHaveCount(0);
 
   await page.keyboard.press("ControlOrMeta+K");
-  const search = page.getByRole("combobox", { name: "Search components" });
+  const search = page.getByRole("combobox", { name: "Search documentation" });
   await search.fill("website link");
 
   const result = page.getByRole("option", { name: /Website Link/ });
